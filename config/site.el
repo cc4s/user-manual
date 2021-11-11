@@ -45,7 +45,7 @@
                                                      "\x1b[0m")
                                             ,@args))))
     (let* ((site-file-path (file-name-directory (buffer-file-name)))
-           (publish-directory (format "%s/build/" site-file-path))
+           (publish-directory (format "%sbuild/" site-file-path))
            (org-publish-project-alist
             `(("site"
                :base-directory ,site-file-path
@@ -55,7 +55,12 @@
                :publishing-function org-html-publish-to-html
                ;;:publishing-function org-html-export-to-html
                :htmlized-source nil
+               :html-validation-link nil
                :language en
+               :html-use-infojs t
+               :auto-sitemap t
+               :sitemap-title "Sitemap"
+               :html-link-home "sitemap.html"
                :exclude ".*templates.*"
                :recursive t))))
       (gallo/log "Publishing site")

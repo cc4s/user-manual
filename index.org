@@ -1,3 +1,5 @@
+#+title: Cc4s User Documentation
+
 * CC4S User Documentation
   :PROPERTIES:
   :CUSTOM_ID: cc4s-user-documentation
@@ -11,3 +13,6 @@ This wiki contains useful information to use the
    :END:
 If you are writing documentation for =cc4s=, read the
 [[file:how-to-write.org][documentation writing manual]].
+
+** Sitemap
+#+include: sitemap.org :only-contents t
