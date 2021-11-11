@@ -1,2 +1,13 @@
-#+title: User Documentation for CC4S
+* CC4S User Documentation
+  :PROPERTIES:
+  :CUSTOM_ID: cc4s-user-documentation
+  :END:
+This wiki contains useful information to use the
+[[https://cc4s.org][=cc4s=]] code.
 
+** Writing documentation
+   :PROPERTIES:
+   :CUSTOM_ID: writing-documentation
+   :END:
+If you are writing documentation for =cc4s=, read the
+[[file:how-to-write.org][documentation writing manual]].
