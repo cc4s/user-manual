@@ -17,20 +17,18 @@
   (require 'use-package))
 
 (use-package htmlize
+  :defer t
   :ensure t)
 
 (use-package raku-mode
+  :defer t
   :ensure t)
 
 (require 'org)
 
 (use-package org-plus-contrib
-  :ensure t)
-
-(use-package org-src
-  :ensure t)
-
-(use-package org-src
+  :defer t
+  :ensure t
   :config
   (setq org-src-fontify-natively t
         org-src-preserve-indentation t
@@ -41,7 +39,7 @@
 (defun cc4s/publish-site ()
   (interactive)
   (require 'cl-macs)
-  (cl-macrolet ((cc4s/log (fmt &rest args)
+  (cl-macrolet ((gallo/log (fmt &rest args)
                           `(message (format ,(concat "\x1b[35m∀ "
                                                      fmt
                                                      "\x1b[0m")
@@ -60,6 +58,6 @@
                :language en
                :exclude ".*templates.*"
                :recursive t))))
-      (cc4s/log "Publishing site")
-      (cc4s/log "build directory %s" publish-directory)
+      (gallo/log "Publishing site")
+      (gallo/log "build directory %s" publish-directory)
       (org-publish-current-project))))
