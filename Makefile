@@ -13,6 +13,6 @@ init:
 	type -a gollum || gem install gollum
 
 serve:
-	python3 -m http.server $(PORT) --directory ./build
+	python3 -m http.server $(PORT)
 
 .PHONY: init serve publish

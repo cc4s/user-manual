@@ -97,7 +97,8 @@
                                                      "\x1b[0m")
                                             ,@args))))
     (let* ((site-file-path (file-name-directory (buffer-file-name)))
-           (publish-directory (format "%sbuild/" site-file-path))
+           ;; build directory the same one, it's easier like this
+           (publish-directory site-file-path)
            (org-publish-project-alist
             `(("site"
                :base-directory ,site-file-path
