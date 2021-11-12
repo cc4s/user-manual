@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-11-12 Fri 10:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quick Start: Periodic LiH calculation using VASP</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+
+    <meta charset='UTF-8'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU'
+      crossorigin='anonymous'>
+    <script
+      src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js'
+      integrity='sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ'
+      crossorigin='anonymous'></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+
+  <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+    <div class='container-fluid'>
+      <a class='navbar-brand' href='#'>
+        Cc4s
+      </a>
+      <button class='navbar-toggler' type='button'
+              data-bs-toggle='collapse'
+              data-bs-target='#navbarSupportedContent'
+              aria-controls='navbarSupportedContent'
+              aria-expanded='false'
+              aria-label='Toggle navigation'>
+        <span class='navbar-toggler-icon'></span>
+      </button>
+      <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+        <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+          <li class='nav-item'>
+            <a class='nav-link' aria-current='page' href='/index.html'>
+              <i class='fa fa-home'></i>
+              Home
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='/sitemap.html'>
+              <i class='fa fa-sign-out'></i>
+              Sitemap
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<div id="content">
+<h1 class="title">Quick Start: Periodic LiH calculation using VASP</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org344ca7a">Introduction</a></li>
+<li><a href="#orgc0e456e">DFT Calculation</a></li>
+<li><a href="#org7e7cabf">Hartree-Fock calculation</a></li>
+<li><a href="#org78f12fb">Full Space Diagonalization</a></li>
+<li><a href="#org33923e7"><code>CC4S</code> dumping</a></li>
+<li><a href="#org2da2649">Cc4s Calculation</a>
+<ul>
+<li><a href="#org84f3b4b">Reading in</a></li>
+<li><a href="#org6b14b13">CCSD and CCSD(T)</a></li>
+</ul>
+</li>
+<li><a href="#org8502b5f">Putting all together</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org344ca7a" class="outline-2">
+<h2 id="org344ca7a">Introduction</h2>
+<div class="outline-text-2" id="text-org344ca7a">
+<p>
+In this tutorial we are going to present a simple application
+of <code>cc4s</code> by performing a <code>CCSD</code> and <code>CCSD(T)</code> calculation
+of a LiH crystal.
+</p>
+
+<p>
+For this, we will utilize the <a href="https://www.vasp.at"><code>VASP</code></a> interface that is included
+in <code>cc4s</code>. Please note that you should be moderately experienced
+in <code>VASP</code> to follow along.
+</p>
+
+<p>
+The atomic structure of the system is given by the <code>POSCAR</code> file
+</p>
+
+<p>
+&lt;poscar&gt;=
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orgcd68f00">Li4 H4
+1.0
+4.000174 0.000000 0.000000
+0.000000 4.000174 0.000000
+0.000000 0.000000 4.000174
+Li H
+4 4
+direct
+0.000000 0.000000 0.000000
+0.000000 0.500000 0.500000
+0.500000 0.000000 0.500000
+0.500000 0.500000 0.000000
+0.500000 0.000000 0.000000
+0.500000 0.500000 0.500000
+0.000000 0.000000 0.500000
+0.000000 0.500000 0.000000
+</pre>
+</div>
+
+<p>
+This example uses a \( \Gamma \)-only version of <code>VASP</code>, this means
+that we use a single \( k \)-point, i.e., the \( \Gamma \) point.
+In particular the Coulomb integrals are therefore real valued.
+The <code>KPOINTS</code> file is thus
+</p>
+
+<p>
+&lt;kpoints&gt;=
+</p>
+<div class="org-src-container">
+<pre class="src src-sh" id="org525d6b2">Gamma Point Mesh
+       0
+gamma
+ 1 1 1
+</pre>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgc0e456e" class="outline-2">
+<h2 id="orgc0e456e">DFT Calculation</h2>
+<div class="outline-text-2" id="text-orgc0e456e">
+<p>
+&lt;dft-incar&gt;=
+</p>
+<div class="org-src-container">
+<pre class="src src-shell" id="org90dcec6">ENCUT = $<span style="color: #8b4513;">enc</span>
+EDIFF = 1E-6
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org7e7cabf" class="outline-2">
+<h2 id="org7e7cabf">Hartree-Fock calculation</h2>
+<div class="outline-text-2" id="text-org7e7cabf">
+<p>
+A Hartree-Fock calculation is given by the following <code>INCAR</code>
+input
+</p>
+
+<p>
+&lt;hf-incar&gt;=
+</p>
+<div class="org-src-container">
+<pre class="src src-shell" id="orge3388d7">ENCUT   = $<span style="color: #8b4513;">enc</span>
+EDIFF   = 1E-6
+LHFCALC =.TRUE.
+AEXX    = 1.0
+ALGO    = C
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org78f12fb" class="outline-2">
+<h2 id="org78f12fb">Full Space Diagonalization</h2>
+<div class="outline-text-2" id="text-org78f12fb">
+<p>
+&lt;hf-diagonalization-incar&gt;=
+</p>
+<div class="org-src-container">
+<pre class="src src-sh" id="org87ee0a4">ENCUT   = $<span style="color: #8b4513;">enc</span>
+EDIFF   = 1E-6
+LHFCALC = .TRUE.
+AEXX    = 1.0
+ISYM    = -1
+ALGO    = sub
+NELM    = 1
+NBANDS  = $<span style="color: #8b4513;">nb</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org33923e7" class="outline-2">
+<h2 id="org33923e7"><code>CC4S</code> dumping</h2>
+<div class="outline-text-2" id="text-org33923e7">
+<p>
+&lt;cc4s-incar&gt;=
+</p>
+<div class="org-src-container">
+<pre class="src src-sh" id="org8eb4fc4">ENCUT      = $<span style="color: #8b4513;">enc</span>
+EDIFF      = 1E-6
+LHFCALC    = .TRUE.
+AEXX       = 1.0
+ISYM       = -1
+ALGO       = CC4S
+NBANDS     = $<span style="color: #8b4513;">nb</span>
+NBANDSHIGH = $<span style="color: #8b4513;">nb</span>
+</pre>
+</div>
+
+<p>
+this step the following files will be written that are needed for CC4S
+</p>
+
+<dl class="org-dl">
+<dt>\(F_{pq}\)</dt><dd><code>FockOperator.yaml</code>, <code>FockOperator.dat</code></dd>
+<dt>\(\vec G\)</dt><dd><code>GridVectors.yaml</code>, <code>GridVectors.dat</code></dd>
+<dt>\(V(\vec G)\)</dt><dd><code>CoulombPotential.yaml</code>, <code>CoulombPotential.dat</code></dd>
+<dt>\(\delta^{ab}_{ij}\)</dt><dd><code>DeltaPPHH.yaml</code>, <code>DeltaPPHH.dat</code></dd>
+<dt>\(\delta_{ij}\)</dt><dd><code>DeltaHH.yaml</code>, <code>DeltaHH.dat</code></dd>
+<dt>(no term)</dt><dd><code>CoulombVertexSingularVectors.yaml</code>, <code>CoulombVertexSingularVectors.dat</code></dd>
+<dt>\(\Gamma^{pG}_{q}\)</dt><dd><code>CoulombVertex.yaml</code>, <code>CoulombVertex.dat</code></dd>
+<dt>\(\epsilon_{p}\)</dt><dd><code>EigenEnergies.yaml</code>, <code>EigenEnergies.dat</code></dd>
+<dt>(no term)</dt><dd><code>Spins.yaml</code>, <code>Spins.dat</code></dd>
+</dl>
+</div>
+</div>
+
+
+<div id="outline-container-org2da2649" class="outline-2">
+<h2 id="org2da2649">Cc4s Calculation</h2>
+<div class="outline-text-2" id="text-org2da2649">
+</div>
+<div id="outline-container-org84f3b4b" class="outline-3">
+<h3 id="org84f3b4b">Reading in</h3>
+<div class="outline-text-3" id="text-org84f3b4b">
+<div class="org-src-container">
+<pre class="src src-yaml">- name: TensorReader
+  in:
+    fileName: "EigenEnergies.yaml"
+  out:
+    tensor: EigenEnergies
+
+- name: TensorReader
+  in:
+    fileName: "CoulombVertex.yaml"
+  out:
+    tensor: CoulombVertex
+
+- name: TensorReader
+  in:
+    fileName: "CoulombVertexSingularVectors.yaml"
+  out:
+    tensor: CoulombVertexSingularVectors
+
+- name: TensorReader
+  in:
+    fileName: "GridVectors.yaml"
+  out:
+    tensor: GridVectors
+
+- name: TensorReader
+  in:
+    fileName: "CoulombPotential.yaml"
+  out:
+    tensor: CoulombPotential
+</pre>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-yaml">- name: DefineHolesAndParticles
+  in:
+    eigenEnergies: EigenEnergies
+  out:
+    slicedEigenEnergies: EigenEnergies
+
+- name: SliceOperator
+  in:
+    slicedEigenEnergies: EigenEnergies
+    operator: CoulombVertex
+  out:
+    slicedOperator: CoulombVertex
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-yaml">- name: CoulombIntegralsFromVertex
+  in:
+    slicedCoulombVertex: CoulombVertex
+  out:
+    coulombIntegrals: CoulombIntegrals
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6b14b13" class="outline-3">
+<h3 id="org6b14b13">CCSD and CCSD(T)</h3>
+<div class="outline-text-3" id="text-org6b14b13">
+<div class="org-src-container">
+<pre class="src src-yaml">- name: CcsdEnergyFromCoulombIntegrals
+  in:
+    integralsSliceSize: 100
+    slicedEigenEnergies: EigenEnergies
+    coulombIntegrals: CoulombIntegrals
+    slicedCoulombVertex: CoulombVertex
+    maxIterations: 1
+    energyConvergence: 1.0E-5
+    amplitudesConvergence: 1.0E-5
+    mixer:
+      type: DiisMixer
+  out:
+    energy: CcsdEnergy
+    amplitudes: Amplitudes
+
+- name: StructureFactor
+  in:
+    amplitudes: Amplitudes
+    slicedCoulombVertex: CoulombVertex
+    coulombVertexSingularVectors: CoulombVertexSingularVectors
+    coulombPotential: CoulombPotential
+  out:
+    structureFactor: SF
+    deltaIntegrals: DeltaInt
+    nij: Nij
+
+- name: FiniteSizeCorrection
+  in:
+    gridVectors: GridVectors
+    structureFactor: SF
+  out:
+    corrected: Corrected
+    uncorrected: Uncorrected
+
+- name: Atrip
+  in:
+    slicedEigenEnergies: EigenEnergies
+    amplitudes: Amplitudes
+    coulombIntegrals: CoulombIntegrals
+  out:
+    energy: AtripEnergy
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8502b5f" class="outline-2">
+<h2 id="org8502b5f">Putting all together</h2>
+<div class="outline-text-2" id="text-org8502b5f">
+<p>
+We can put all together in a compact script
+that can serve as a starting point to test further variations.
+Using the references above
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C">#<span style="font-weight: bold;">!</span>/bin/bash
+
+NTASKS=48
+
+export OMP_NUM_THREADS=1
+
+VASPBIN=<span style="color: #50a14f;">"/home/fs71337/grueneis4/src/vasp-edge/bin/vasp_gam"</span>
+CC4SBIN=<span style="color: #50a14f;">"/home/fs71337/grueneis4/src/demo/cc4s/build/icc_impi/bin/Cc4s"</span>
+VASP=<span style="color: #50a14f;">"mpirun -machinefile machinefile -np $NTASKS $VASPBIN"</span>
+CC4S=<span style="color: #50a14f;">"mpirun -machinefile machinefile -np $NTASKS $CC4SBIN"</span>
+
+enc=150
+egw=100
+
+
+cat | tee POSCAR &lt;&lt;EOF
+&lt;&lt;poscar&gt;&gt;
+EOF
+
+cat | tee KPOINTS &lt;&lt;EOF
+&lt;&lt;kpoints&gt;&gt;
+EOF
+
+test -f WAVECAR &amp;&amp; rm WAVECAR
+
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+echo <span style="color: #50a14f;">"RUN DFT to get a converged guess for HF"</span>
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+
+cat &gt;INCAR &lt;&lt;EOF
+&lt;&lt;dft-incar&gt;&gt;
+EOF
+cat INCAR
+$VASP
+cp OUTCAR OUTCAR.DFT
+
+
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+echo <span style="color: #50a14f;">"RUN HF"</span>
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+
+cat | tee INCAR &lt;&lt;EOF
+&lt;&lt;hf-incar&gt;&gt;
+EOF
+$VASP
+cp OUTCAR OUTCAR.HF
+
+
+nb=$(awk &lt;OUTCAR <span style="font-weight: bold;">'</span>
+      /maximum number of plane-waves:/ {
+       print $5*2-1
+      }
+    <span style="font-weight: bold;">'</span>)
+
+
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+echo <span style="color: #50a14f;">"RUN HF diag"</span>
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+
+
+cat | tee INCAR &lt;&lt;EOF
+&lt;&lt;hf-diagonalization-incar&gt;&gt;
+EOF
+$VASP
+cp OUTCAR OUTCAR.HFdiag
+
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+echo <span style="color: #50a14f;">"Dump CC4S input using "</span> $nb <span style="color: #50a14f;">" bands."</span>
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+
+
+cat | tee INCAR &lt;&lt;EOF
+&lt;&lt;cc4s-incar&gt;&gt;
+EOF
+$VASP
+cp OUTCAR OUTCAR.CC4S
+
+
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+echo <span style="color: #50a14f;">"Run CC4S using "</span> $nb <span style="color: #50a14f;">" bands."</span>
+echo <span style="color: #50a14f;">"++++++++++++++++++++++++++++++"</span>
+
+cat | tee cc4s.in &lt;&lt;EOF
+&lt;&lt;cc4s-in&gt;&gt;
+EOF
+
+$CC4S -i cc4s.in | tee  cc4s.stdout
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2021-11-12 Fri 10:11</p>
+</div>
+</body>
+</html>
