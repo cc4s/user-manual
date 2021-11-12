@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-12 Fri 10:11 -->
+<!-- 2021-11-12 Fri 10:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick Start: Periodic LiH calculation using VASP</title>
@@ -291,25 +291,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org344ca7a">Introduction</a></li>
-<li><a href="#orgc0e456e">DFT Calculation</a></li>
-<li><a href="#org7e7cabf">Hartree-Fock calculation</a></li>
-<li><a href="#org78f12fb">Full Space Diagonalization</a></li>
-<li><a href="#org33923e7"><code>CC4S</code> dumping</a></li>
-<li><a href="#org2da2649">Cc4s Calculation</a>
+<li><a href="#orgb37878b">Introduction</a></li>
+<li><a href="#org70b207e"><span class="todo TODO">TODO</span> DFT Calculation</a></li>
+<li><a href="#org42197f5"><span class="todo TODO">TODO</span> Hartree-Fock calculation</a></li>
+<li><a href="#org13a4068"><span class="todo TODO">TODO</span> Full Space Diagonalization</a></li>
+<li><a href="#orgcb71ff4"><span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></li>
+<li><a href="#org30f5149"><span class="todo TODO">TODO</span> Cc4s Calculation</a>
 <ul>
-<li><a href="#org84f3b4b">Reading in</a></li>
-<li><a href="#org6b14b13">CCSD and CCSD(T)</a></li>
+<li><a href="#orgb74664e">Reading in</a></li>
+<li><a href="#org14e4777">CCSD and CCSD(T)</a></li>
 </ul>
 </li>
-<li><a href="#org8502b5f">Putting all together</a></li>
+<li><a href="#orgf49d90a">Putting all together</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org344ca7a" class="outline-2">
-<h2 id="org344ca7a">Introduction</h2>
-<div class="outline-text-2" id="text-org344ca7a">
+<div id="outline-container-orgb37878b" class="outline-2">
+<h2 id="orgb37878b">Introduction</h2>
+<div class="outline-text-2" id="text-orgb37878b">
 <p>
 In this tutorial we are going to present a simple application
 of <code>cc4s</code> by performing a <code>CCSD</code> and <code>CCSD(T)</code> calculation
@@ -330,7 +330,7 @@ The atomic structure of the system is given by the <code>POSCAR</code> file
 &lt;poscar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="orgcd68f00">Li4 H4
+<pre class="src src-emacs-lisp" id="orgf54fd2f">Li4 H4
 1.0
 4.000174 0.000000 0.000000
 0.000000 4.000174 0.000000
@@ -360,7 +360,7 @@ The <code>KPOINTS</code> file is thus
 &lt;kpoints&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org525d6b2">Gamma Point Mesh
+<pre class="src src-sh" id="org912a4ae">Gamma Point Mesh
        0
 gamma
  1 1 1
@@ -371,14 +371,14 @@ gamma
 
 
 
-<div id="outline-container-orgc0e456e" class="outline-2">
-<h2 id="orgc0e456e">DFT Calculation</h2>
-<div class="outline-text-2" id="text-orgc0e456e">
+<div id="outline-container-org70b207e" class="outline-2">
+<h2 id="org70b207e"><span class="todo TODO">TODO</span> DFT Calculation</h2>
+<div class="outline-text-2" id="text-org70b207e">
 <p>
 &lt;dft-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-shell" id="org90dcec6">ENCUT = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-shell" id="org574b2f1">ENCUT = $<span style="color: #8b4513;">enc</span>
 EDIFF = 1E-6
 </pre>
 </div>
@@ -386,9 +386,9 @@ EDIFF = 1E-6
 </div>
 
 
-<div id="outline-container-org7e7cabf" class="outline-2">
-<h2 id="org7e7cabf">Hartree-Fock calculation</h2>
-<div class="outline-text-2" id="text-org7e7cabf">
+<div id="outline-container-org42197f5" class="outline-2">
+<h2 id="org42197f5"><span class="todo TODO">TODO</span> Hartree-Fock calculation</h2>
+<div class="outline-text-2" id="text-org42197f5">
 <p>
 A Hartree-Fock calculation is given by the following <code>INCAR</code>
 input
@@ -398,7 +398,7 @@ input
 &lt;hf-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-shell" id="orge3388d7">ENCUT   = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-shell" id="org35fca38">ENCUT   = $<span style="color: #8b4513;">enc</span>
 EDIFF   = 1E-6
 LHFCALC =.TRUE.
 AEXX    = 1.0
@@ -409,14 +409,14 @@ ALGO    = C
 </div>
 
 
-<div id="outline-container-org78f12fb" class="outline-2">
-<h2 id="org78f12fb">Full Space Diagonalization</h2>
-<div class="outline-text-2" id="text-org78f12fb">
+<div id="outline-container-org13a4068" class="outline-2">
+<h2 id="org13a4068"><span class="todo TODO">TODO</span> Full Space Diagonalization</h2>
+<div class="outline-text-2" id="text-org13a4068">
 <p>
 &lt;hf-diagonalization-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org87ee0a4">ENCUT   = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="org809ff66">ENCUT   = $<span style="color: #8b4513;">enc</span>
 EDIFF   = 1E-6
 LHFCALC = .TRUE.
 AEXX    = 1.0
@@ -430,14 +430,14 @@ NBANDS  = $<span style="color: #8b4513;">nb</span>
 </div>
 
 
-<div id="outline-container-org33923e7" class="outline-2">
-<h2 id="org33923e7"><code>CC4S</code> dumping</h2>
-<div class="outline-text-2" id="text-org33923e7">
+<div id="outline-container-orgcb71ff4" class="outline-2">
+<h2 id="orgcb71ff4"><span class="todo TODO">TODO</span> <code>CC4S</code> dumping</h2>
+<div class="outline-text-2" id="text-orgcb71ff4">
 <p>
 &lt;cc4s-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org8eb4fc4">ENCUT      = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="orga85e652">ENCUT      = $<span style="color: #8b4513;">enc</span>
 EDIFF      = 1E-6
 LHFCALC    = .TRUE.
 AEXX       = 1.0
@@ -467,13 +467,13 @@ this step the following files will be written that are needed for CC4S
 </div>
 
 
-<div id="outline-container-org2da2649" class="outline-2">
-<h2 id="org2da2649">Cc4s Calculation</h2>
-<div class="outline-text-2" id="text-org2da2649">
+<div id="outline-container-org30f5149" class="outline-2">
+<h2 id="org30f5149"><span class="todo TODO">TODO</span> Cc4s Calculation</h2>
+<div class="outline-text-2" id="text-org30f5149">
 </div>
-<div id="outline-container-org84f3b4b" class="outline-3">
-<h3 id="org84f3b4b">Reading in</h3>
-<div class="outline-text-3" id="text-org84f3b4b">
+<div id="outline-container-orgb74664e" class="outline-3">
+<h3 id="orgb74664e">Reading in</h3>
+<div class="outline-text-3" id="text-orgb74664e">
 <div class="org-src-container">
 <pre class="src src-yaml">- name: TensorReader
   in:
@@ -536,9 +536,9 @@ this step the following files will be written that are needed for CC4S
 </div>
 
 
-<div id="outline-container-org6b14b13" class="outline-3">
-<h3 id="org6b14b13">CCSD and CCSD(T)</h3>
-<div class="outline-text-3" id="text-org6b14b13">
+<div id="outline-container-org14e4777" class="outline-3">
+<h3 id="org14e4777">CCSD and CCSD(T)</h3>
+<div class="outline-text-3" id="text-org14e4777">
 <div class="org-src-container">
 <pre class="src src-yaml">- name: CcsdEnergyFromCoulombIntegrals
   in:
@@ -586,9 +586,9 @@ this step the following files will be written that are needed for CC4S
 </div>
 </div>
 </div>
-<div id="outline-container-org8502b5f" class="outline-2">
-<h2 id="org8502b5f">Putting all together</h2>
-<div class="outline-text-2" id="text-org8502b5f">
+<div id="outline-container-orgf49d90a" class="outline-2">
+<h2 id="orgf49d90a">Putting all together</h2>
+<div class="outline-text-2" id="text-orgf49d90a">
 <p>
 We can put all together in a compact script
 that can serve as a starting point to test further variations.
@@ -689,7 +689,7 @@ $CC4S -i cc4s.in | tee  cc4s.stdout
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-11-12 Fri 10:11</p>
+<p class="date">Created: 2021-11-12 Fri 10:18</p>
 </div>
 </body>
 </html>

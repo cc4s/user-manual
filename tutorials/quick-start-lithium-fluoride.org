@@ -49,7 +49,7 @@ gamma
 
 
 
-* DFT Calculation
+* TODO DFT Calculation
 
 <dft-incar>=
 #+name: dft-incar
@@ -59,7 +59,7 @@ EDIFF = 1E-6
 #+end_src
 
 
-* Hartree-Fock calculation
+* TODO Hartree-Fock calculation
 
 A Hartree-Fock calculation is given by the following =INCAR=
 input
@@ -75,7 +75,7 @@ ALGO    = C
 #+end_src
 
 
-* Full Space Diagonalization
+* TODO Full Space Diagonalization
 
 <hf-diagonalization-incar>=
 #+name: hf-diagonalization-incar
@@ -91,7 +91,7 @@ NBANDS  = $nb
 #+end_src
 
 
-* =CC4S= dumping
+* TODO =CC4S= dumping
 
 <cc4s-incar>=
 #+name: cc4s-incar
@@ -119,7 +119,7 @@ this step the following files will be written that are needed for CC4S
 - =Spins.yaml=, =Spins.dat=
 
 
-* Cc4s Calculation
+* TODO Cc4s Calculation
 ** Reading in
 
 
