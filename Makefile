@@ -13,7 +13,6 @@ init:
 	type -a gollum || gem install gollum
 
 serve:
-	$(GOLLUM) . &
-	xdg-open http://127.0.0.1:$(PORT)
+	python3 -m http.server $(PORT) --directory ./build
 
 .PHONY: init serve publish
