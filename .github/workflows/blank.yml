@@ -27,6 +27,9 @@ jobs:
 
     - name: Build site
       run: nix-shell config/shell.nix --run 'make publish'
+      
+    - name: remove index.org
+      run: rm index.org
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.0
