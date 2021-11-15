@@ -39,6 +39,9 @@
         org-src-preserve-indentation t
         org-src-tab-acts-natively t))
 
+(message "loading theme..")
+(load-theme 'tsdh-light)
+
 (defvar cc4s/html-head-libs
   "
     <meta charset='UTF-8'>
@@ -53,6 +56,11 @@
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js'
       integrity='sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ'
       crossorigin='anonymous'></script>
+    <style>
+       #content {
+          padding: 5%;
+       }
+    </style>
   ")
 
 (defvar cc4s/root "/user-manual/")
