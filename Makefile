@@ -1,3 +1,5 @@
+BUILD_DIR = user-manual/
+
 PORT = 8888
 GOLLUM = \
 gollum --mathjax --port $(PORT)
@@ -19,6 +21,9 @@ publish: $(ORGFILES) tangle
 
 init:
 	type -a gollum || gem install gollum
+
+clean:
+	rm -r .emacs/ $(BUILD_DIR)
 
 serve:
 	python3 -m http.server $(PORT)

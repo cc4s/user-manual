@@ -111,6 +111,8 @@
                                             ,@args))))
     (let* ((site-file-path (file-name-directory (buffer-file-name)))
            (publish-directory (format "%s/user-manual/" site-file-path))
+           (org-publish-timestamp-directory
+            (format "%s/.emacs/org-timestamps" site-file-path))
            (org-publish-project-alist
             `(("data"
                :base-directory ,(format "%s/data" site-file-path)

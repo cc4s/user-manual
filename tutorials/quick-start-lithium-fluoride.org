@@ -233,7 +233,7 @@ You can find the full working script [[../data/run-simple-lih.sh][here]].
 Schematically however, using the references above
 you can write the following:
 
-#+begin_src C :noweb tangle :tangle ../data/run-simple-lih.sh
+#+begin_src sh :noweb tangle :tangle ../data/run-simple-lih.sh
 #!/bin/bash
 
 
