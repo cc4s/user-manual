@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-11-13 Sat 09:44 -->
+<!-- 2021-11-15 Mon 12:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How To Write</title>
@@ -227,6 +227,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -247,13 +269,13 @@
       <div class='collapse navbar-collapse' id='navbarSupportedContent'>
         <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
           <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='/index.html'>
+            <a class='nav-link' aria-current='page' href='/user-manual/index.html'>
               <i class='fa fa-home'></i>
               Home
             </a>
           </li>
           <li class='nav-item'>
-            <a class='nav-link' href='/sitemap.html'>
+            <a class='nav-link' href='/user-manual/sitemap.html'>
               <i class='fa fa-sign-out'></i>
               Sitemap
             </a>
@@ -269,23 +291,80 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgac51353">Engine</a></li>
+<li><a href="#orgc7f7c9e">1. Engine</a>
+<ul>
+<li><a href="#org4551740">1.1. Quick cheatsheet</a>
+<ul>
+<li><a href="#org9b59564">1.1.1. Math</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf4a31b9">2. Test locally</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgac51353" class="outline-2">
-<h2 id="orgac51353">Engine</h2>
-<div class="outline-text-2" id="text-orgac51353">
+<div id="outline-container-orgc7f7c9e" class="outline-2">
+<h2 id="orgc7f7c9e"><span class="section-number-2">1.</span> <a href="#orgc7f7c9e">Engine</a></h2>
+<div class="outline-text-2" id="text-1">
 <p>
-This documentation wiki is powered by the
-<a href="https://github.com/gollum/gollum">gollum</a> engine.
+This manual is written using the
+<a href="https://orgmode.org"><code>org-mode</code> markup language</a>.
+</p>
+
+<p>
+You can find some cheatsheets for org's markup you can checkout
+</p>
+<ul class="org-ul">
+<li><a href="https://orgmode.org/quickstart.html">https://orgmode.org/quickstart.html</a></li>
+<li><a href="http://xahlee.info/emacs/emacs/emacs_org_markup.html">http://xahlee.info/emacs/emacs/emacs_org_markup.html</a></li>
+</ul>
+</div>
+
+<div id="outline-container-org4551740" class="outline-3">
+<h3 id="org4551740"><span class="section-number-3">1.1.</span> <a href="#org4551740">Quick cheatsheet</a></h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org9b59564" class="outline-4">
+<h4 id="org9b59564"><span class="section-number-4">1.1.1.</span> <a href="#org9b59564">Math</a></h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Just use latex as if you were in latex
+\[\int \sum\]
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf4a31b9" class="outline-2">
+<h2 id="orgf4a31b9"><span class="section-number-2">2.</span> <a href="#orgf4a31b9">Test locally</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To build locally just make
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">make publish
+</pre>
+</div>
+
+<p>
+You can also serve the pages to simulate how they will be deployed
+using
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">make serve
+</pre>
+</div>
+<p>
+and open the url in your browser <a href="http://127.0.0.1:8888">http://127.0.0.1:8888</a>.
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-11-13 Sat 09:44</p>
+<p class="date">Created: 2021-11-15 Mon 12:49</p>
 </div>
 </body>
 </html>
