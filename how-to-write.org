@@ -1,5 +1,29 @@
 #+title: How To Write
 
 * Engine
-This documentation wiki is powered by the
-[[https://github.com/gollum/gollum][gollum]] engine.
+This manual is written using the
+[[https://orgmode.org][=org-mode= markup language]].
+
+You can find some cheatsheets for org's markup you can checkout
+- https://orgmode.org/quickstart.html
+- http://xahlee.info/emacs/emacs/emacs_org_markup.html
+
+** Quick cheatsheet
+
+*** Math
+Just use latex as if you were in latex
+$$\int \sum$$
+
+* Test locally
+
+To build locally just make
+#+begin_src sh
+make publish
+#+end_src
+
+You can also serve the pages to simulate how they will be deployed
+using
+#+begin_src sh
+make serve
+#+end_src
+and open the url in your browser http://127.0.0.1:8888.

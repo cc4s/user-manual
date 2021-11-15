@@ -1,10 +1,11 @@
 #+title: Cc4s User Documentation
+#+options: toc:nil
 
 * CC4S User Documentation
   :PROPERTIES:
   :CUSTOM_ID: cc4s-user-documentation
   :END:
-This wiki contains useful information to use the
+Welcome to the user documentation of the
 [[https://cc4s.org][=cc4s=]] code.
 
 ** Tutorials and examples
@@ -14,9 +15,6 @@ you can start reading
 the [[file:tutorials/quick-start-lithium-fluoride.org][quick start tutorial]].
 
 ** Writing documentation
-   :PROPERTIES:
-   :CUSTOM_ID: writing-documentation
-   :END:
 If you are writing documentation for =cc4s=, read the
 [[file:how-to-write.org][documentation writing manual]].
 

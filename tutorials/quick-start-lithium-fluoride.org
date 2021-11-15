@@ -53,7 +53,7 @@ gamma
 
 <dft-incar>=
 #+name: dft-incar
-#+begin_src shell
+#+begin_src sh
 ENCUT = $enc
 EDIFF = 1E-6
 #+end_src
@@ -66,7 +66,7 @@ input
 
 <hf-incar>=
 #+name: hf-incar
-#+begin_src shell
+#+begin_src sh
 ENCUT   = $enc
 EDIFF   = 1E-6
 LHFCALC =.TRUE.
@@ -229,51 +229,49 @@ this step the following files will be written that are needed for CC4S
 
 We can put all together in a compact script
 that can serve as a starting point to test further variations.
-Using the references above
+You can find the full working script [[../data/run-simple-lih.sh][here]].
+Schematically however, using the references above
+you can write the following:
 
-#+begin_src C :noweb tangle :tangle run-simple-lih.sh
+#+begin_src C :noweb tangle :tangle ../data/run-simple-lih.sh
 #!/bin/bash
 
-NTASKS=48
 
 export OMP_NUM_THREADS=1
 
 VASPBIN="/home/fs71337/grueneis4/src/vasp-edge/bin/vasp_gam"
 CC4SBIN="/home/fs71337/grueneis4/src/demo/cc4s/build/icc_impi/bin/Cc4s"
+NTASKS=48 # number of processes
 VASP="mpirun -machinefile machinefile -np $NTASKS $VASPBIN"
 CC4S="mpirun -machinefile machinefile -np $NTASKS $CC4SBIN"
 
-enc=150
-egw=100
+enc=150 # ENCUT   for the whole calculation
+egw=100 # ENCUTGW for the whole calculation
 
 
-cat | tee POSCAR <<EOF
+cat <<EOF | tee POSCAR
 <<poscar>>
 EOF
 
-cat | tee KPOINTS <<EOF
+cat <<EOF | tee KPOINTS
 <<kpoints>>
 EOF
 
 test -f WAVECAR && rm WAVECAR
 
-echo "++++++++++++++++++++++++++++++"
-echo "RUN DFT to get a converged guess for HF"
-echo "++++++++++++++++++++++++++++++"
-
-cat >INCAR <<EOF
+cat <<EOF | tee INCAR
+#              =======================================
+#              RUN DFT to get a converged guess for HF
+#              =======================================
 <<dft-incar>>
 EOF
-cat INCAR
 $VASP
 cp OUTCAR OUTCAR.DFT
 
-
-echo "++++++++++++++++++++++++++++++"
-echo "RUN HF"
-echo "++++++++++++++++++++++++++++++"
-
-cat | tee INCAR <<EOF
+cat <<EOF | tee INCAR
+#                          ================
+#                          RUN Hartree-Fock
+#                          ================
 <<hf-incar>>
 EOF
 $VASP
@@ -287,34 +285,33 @@ nb=$(awk <OUTCAR '
     ')
 
 
-echo "++++++++++++++++++++++++++++++"
-echo "RUN HF diag"
-echo "++++++++++++++++++++++++++++++"
 
 
-cat | tee INCAR <<EOF
+cat <<EOF | tee INCAR
+#              ========================================
+#              Diagonalize Fock Operator with all bands
+#              ========================================
 <<hf-diagonalization-incar>>
 EOF
 $VASP
 cp OUTCAR OUTCAR.HFdiag
 
-echo "++++++++++++++++++++++++++++++"
-echo "Dump CC4S input using " $nb " bands."
-echo "++++++++++++++++++++++++++++++"
 
 
-cat | tee INCAR <<EOF
+cat <<EOF | tee INCAR
+#                ====================================
+#                Dump CC4S input using $nb bands.
+#                ====================================
 <<cc4s-incar>>
 EOF
 $VASP
 cp OUTCAR OUTCAR.CC4S
 
 
-echo "++++++++++++++++++++++++++++++"
-echo "Run CC4S using " $nb " bands."
-echo "++++++++++++++++++++++++++++++"
-
-cat | tee cc4s.in <<EOF
+cat <<EOF | tee cc4s.in
+#                     =========================
+#                     Run CC4S using $nb bands.
+#                     =========================
 <<cc4s-in>>
 EOF
 

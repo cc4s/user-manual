@@ -7,25 +7,30 @@
         ("org"   . "http://orgmode.org/elpa/"     )))
 (message "Initializing packages")
 (package-initialize)
-(message "done")
 
+(message "Setting up use-package")
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
+(message "Requiring use-package")
 (eval-when-compile
   (require 'use-package))
 
+(message "htmlize")
 (use-package htmlize
   :defer t
   :ensure t)
 
+(message "raku-mode")
 (use-package raku-mode
   :defer t
   :ensure t)
 
+(message "requiring org")
 (require 'org)
 
+(message "up org-contrib")
 (use-package org-plus-contrib
   :defer t
   :ensure t
@@ -33,8 +38,6 @@
   (setq org-src-fontify-natively t
         org-src-preserve-indentation t
         org-src-tab-acts-natively t))
-
-(load-theme 'tsdh-light)
 
 (defvar cc4s/html-head-libs
   "
@@ -52,8 +55,10 @@
       crossorigin='anonymous'></script>
   ")
 
+(defvar cc4s/root "/user-manual/")
+
 (defvar cc4s/navigation-bar
-  "
+  (format "
   <nav class='navbar navbar-expand-lg navbar-light bg-light'>
     <div class='container-fluid'>
       <a class='navbar-brand' href='#'>
@@ -70,13 +75,13 @@
       <div class='collapse navbar-collapse' id='navbarSupportedContent'>
         <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
           <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='/index.html'>
+            <a class='nav-link' aria-current='page' href='%sindex.html'>
               <i class='fa fa-home'></i>
               Home
             </a>
           </li>
           <li class='nav-item'>
-            <a class='nav-link' href='/sitemap.html'>
+            <a class='nav-link' href='%ssitemap.html'>
               <i class='fa fa-sign-out'></i>
               Sitemap
             </a>
@@ -85,7 +90,7 @@
       </div>
     </div>
   </nav>
- ")
+ " cc4s/root cc4s/root))
 
 
 (defun cc4s/publish-site ()
@@ -97,13 +102,21 @@
                                                      "\x1b[0m")
                                             ,@args))))
     (let* ((site-file-path (file-name-directory (buffer-file-name)))
-           ;; build directory the same one, it's easier like this
-           (publish-directory site-file-path)
+           (publish-directory (format "%s/user-manual/" site-file-path))
            (org-publish-project-alist
-            `(("site"
+            `(("data"
+               :base-directory ,(format "%s/data" site-file-path)
+               :publishing-directory ,(format "%s/data" publish-directory)
+               :publishing-function org-publish-attachment
+               :base-extension ".*"
+               :recursive t)
+              ("site"
                :base-directory ,site-file-path
+               :base-extension "org"
                :publishing-directory ,publish-directory
-               :section-numbers nil
+               :with-creator nil
+               :with-author nil
+               :section-numbers t
                :table-of-contents t
                :publishing-function org-html-publish-to-html
                ;;:publishing-function org-html-export-to-html
@@ -115,9 +128,10 @@
                ;:html-link-home "sitemap.html"
                :auto-sitemap t
                :html-preamble ,cc4s/navigation-bar
+               :html-self-link-headlines t
                :sitemap-title "Sitemap"
                :exclude "config/*"
                :recursive t))))
       (gallo/log "Publishing site")
       (gallo/log "build directory %s" publish-directory)
-      (org-publish-current-project))))
+      (org-publish-all))))

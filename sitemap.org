@@ -1,6 +1,6 @@
 #+TITLE: Sitemap
 
-- [[file:how-to-write.org][how-to-write]]
-- [[file:index.org][index]]
+- [[file:index.org][Cc4s User Documentation]]
+- [[file:how-to-write.org][How To Write]]
 - tutorials
-  - [[file:tutorials/quick-start-lithium-fluoride.org][Quick Start: Periodic LiH calculation]]
+  - [[file:tutorials/quick-start-lithium-fluoride.org][Quick Start: Periodic LiH calculation using VASP]]
