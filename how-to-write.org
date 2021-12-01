@@ -1,6 +1,7 @@
 #+title: How To Write
 
 * Engine
+** Introduction
 This manual is written using the
 [[https://orgmode.org][=org-mode= markup language]].
 
@@ -8,11 +9,65 @@ You can find some cheatsheets for org's markup you can checkout
 - https://orgmode.org/quickstart.html
 - http://xahlee.info/emacs/emacs/emacs_org_markup.html
 
-** Quick cheatsheet
+Please notice that for this manual to build you will need
+a recent version of emacs, at least newer than *Emacs 26*.
 
-*** Math
+** Math
 Just use latex as if you were in latex
 $$\int \sum$$
+and you can also use equations
+
+\begin{equation}
+\label{eqseq}
+\hat{H} \psi = E \psi
+\end{equation}
+and references work too \ref{eqseq}.
+
+** Bibliography
+
+In order to use a bibtex file in a page,
+you have to add it with the
+#+begin_src org
+bibliography:group.bib
+# or
+bibliography:./path-to-your-bib-file.bib,other-file.bib
+#+end_src
+
+and add citations like =cite:&yourcite=, for instance
+[[cite:&al2017properties;&gruneis2017perspective]].
+
+
+Here an example of the rendered bibliography of the citations made up here.
+*** Literature
+# bibliography:group.bib
+*** More information
+You can find more information in videos like [[https://www.youtube.com/watch?v=3u6eTSzHT6s][this]] by the
+[[https://github.com/jkitchin/org-ref][org-ref]] author.
+
+
+** Src blocks
+If you want to write some code blocks, the equivalent of markdown's
+#+begin_src markdown
+```python
+def fun():
+  pass
+```
+#+end_src
+in org is
+#+begin_src org
+,#+begin_src python
+def fun():
+    pass
+,#+end_src
+#+end_src
+
+and it renders like:
+
+#+begin_src python
+def fun():
+    pass
+#+end_src
+
 
 * Test locally
 
