@@ -22,6 +22,10 @@
   :defer t
   :ensure t)
 
+(message "loading org-ref and citeproc")
+(use-package citeproc :ensure t)
+(use-package org-ref :ensure t)
+
 (message "raku-mode")
 (use-package raku-mode
   :defer t
@@ -100,6 +104,12 @@
   </nav>
  " cc4s/root cc4s/root))
 
+(defun cc4s/publish-to-html (plist filename pub-dir)
+  (require 'org-ref-refproc)
+  (let ((org-export-before-parsing-hook '(;org-ref-cite-natmove
+                                          org-ref-csl-preprocess-buffer
+                                          org-ref-refproc)))
+    (org-html-publish-to-html plist filename pub-dir)))
 
 (defun cc4s/publish-site ()
   (interactive)
@@ -128,7 +138,8 @@
                :with-author nil
                :section-numbers t
                :table-of-contents t
-               :publishing-function org-html-publish-to-html
+               ;:publishing-function org-html-publish-to-html
+               :publishing-function cc4s/publish-to-html
                ;;:publishing-function org-html-export-to-html
                :htmlized-source nil
                :html-validation-link nil
