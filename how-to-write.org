@@ -39,7 +39,7 @@ and add citations like =cite:&yourcite=, for instance
 
 Here an example of the rendered bibliography of the citations made up here.
 *** Literature
-# bibliography:group.bib
+bibliography:group.bib
 *** More information
 You can find more information in videos like [[https://www.youtube.com/watch?v=3u6eTSzHT6s][this]] by the
 [[https://github.com/jkitchin/org-ref][org-ref]] author.
