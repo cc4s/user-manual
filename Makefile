@@ -1,8 +1,6 @@
 BUILD_DIR = user-manual/
 
 PORT = 8888
-GOLLUM = \
-gollum --mathjax --port $(PORT)
 
 EMACS = emacs -Q --batch
 INDEX = index.org
@@ -18,9 +16,6 @@ tangle: $(TANGLING_FILES_CACHE)
 
 publish: $(ORGFILES) tangle
 	$(EMACS) --load config/site.el $(INDEX) -f cc4s/publish-site
-
-init:
-	type -a gollum || gem install gollum
 
 clean:
 	rm -r .emacs/ $(BUILD_DIR)
