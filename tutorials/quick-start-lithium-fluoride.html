@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-03 Fri 14:39 -->
+<!-- 2021-12-03 Fri 15:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick Start: Periodic LiH calculation using VASP</title>
@@ -296,24 +296,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd5a682a">1. Introduction</a></li>
-<li><a href="#org9a49ab8">2. <span class="todo TODO">TODO</span> DFT Calculation</a></li>
-<li><a href="#org9b20cd1">3. <span class="todo TODO">TODO</span> Hartree-Fock calculation</a></li>
-<li><a href="#org6b1768b">4. <span class="todo TODO">TODO</span> Full Space Diagonalization</a></li>
-<li><a href="#org93d4e00">5. <span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></li>
-<li><a href="#org3077b54">6. <span class="todo TODO">TODO</span> Cc4s Calculation</a>
+<li><a href="#org7e2bdce">1. Introduction</a></li>
+<li><a href="#org526639b">2. <span class="todo TODO">TODO</span> DFT Calculation</a></li>
+<li><a href="#orge4348e6">3. <span class="todo TODO">TODO</span> Hartree-Fock calculation</a></li>
+<li><a href="#org68e6ca3">4. <span class="todo TODO">TODO</span> Full Space Diagonalization</a></li>
+<li><a href="#org58dff07">5. <span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></li>
+<li><a href="#org63702c0">6. <span class="todo TODO">TODO</span> Cc4s Calculation</a>
 <ul>
-<li><a href="#orgefcd7e4">6.1. Reading in</a></li>
-<li><a href="#orgff768a2">6.2. CCSD and CCSD(T)</a></li>
+<li><a href="#orgf5292b4">6.1. Reading in</a></li>
+<li><a href="#org8330654">6.2. CCSD and CCSD(T)</a></li>
 </ul>
 </li>
-<li><a href="#org8138cb0">7. Putting all together</a></li>
+<li><a href="#orgf3b03dd">7. Putting all together</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgd5a682a" class="outline-2">
-<h2 id="orgd5a682a"><span class="section-number-2">1</span> <a href="#orgd5a682a">Introduction</a></h2>
+<div id="outline-container-org7e2bdce" class="outline-2">
+<h2 id="org7e2bdce"><span class="section-number-2">1</span> <a href="#org7e2bdce">Introduction</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In this tutorial we are going to present a simple application
@@ -335,7 +335,7 @@ The atomic structure of the system is given by the <code>POSCAR</code> file
 &lt;poscar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org476a93b">Li4 H4
+<pre class="src src-emacs-lisp" id="org1a6370e">Li4 H4
 1.0
 4.000174 0.000000 0.000000
 0.000000 4.000174 0.000000
@@ -365,7 +365,7 @@ The <code>KPOINTS</code> file is thus
 &lt;kpoints&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org4e84886">Gamma Point Mesh
+<pre class="src src-sh" id="org3b95d8e">Gamma Point Mesh
        0
 gamma
  1 1 1
@@ -376,14 +376,14 @@ gamma
 
 
 
-<div id="outline-container-org9a49ab8" class="outline-2">
-<h2 id="org9a49ab8"><span class="section-number-2">2</span> <a href="#org9a49ab8"><span class="todo TODO">TODO</span> DFT Calculation</a></h2>
+<div id="outline-container-org526639b" class="outline-2">
+<h2 id="org526639b"><span class="section-number-2">2</span> <a href="#org526639b"><span class="todo TODO">TODO</span> DFT Calculation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 &lt;dft-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org1342157">ENCUT = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="orgb841593">ENCUT = $<span style="color: #8b4513;">enc</span>
 EDIFF = 1E-6
 </pre>
 </div>
@@ -391,8 +391,8 @@ EDIFF = 1E-6
 </div>
 
 
-<div id="outline-container-org9b20cd1" class="outline-2">
-<h2 id="org9b20cd1"><span class="section-number-2">3</span> <a href="#org9b20cd1"><span class="todo TODO">TODO</span> Hartree-Fock calculation</a></h2>
+<div id="outline-container-orge4348e6" class="outline-2">
+<h2 id="orge4348e6"><span class="section-number-2">3</span> <a href="#orge4348e6"><span class="todo TODO">TODO</span> Hartree-Fock calculation</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A Hartree-Fock calculation is given by the following <code>INCAR</code>
@@ -403,7 +403,7 @@ input
 &lt;hf-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgac22fee">ENCUT   = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="org6cb2bb0">ENCUT   = $<span style="color: #8b4513;">enc</span>
 EDIFF   = 1E-6
 LHFCALC =.TRUE.
 AEXX    = 1.0
@@ -414,14 +414,14 @@ ALGO    = C
 </div>
 
 
-<div id="outline-container-org6b1768b" class="outline-2">
-<h2 id="org6b1768b"><span class="section-number-2">4</span> <a href="#org6b1768b"><span class="todo TODO">TODO</span> Full Space Diagonalization</a></h2>
+<div id="outline-container-org68e6ca3" class="outline-2">
+<h2 id="org68e6ca3"><span class="section-number-2">4</span> <a href="#org68e6ca3"><span class="todo TODO">TODO</span> Full Space Diagonalization</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 &lt;hf-diagonalization-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgb78bcd5">ENCUT   = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="orgeed961d">ENCUT   = $<span style="color: #8b4513;">enc</span>
 EDIFF   = 1E-6
 LHFCALC = .TRUE.
 AEXX    = 1.0
@@ -435,14 +435,14 @@ NBANDS  = $<span style="color: #8b4513;">nb</span>
 </div>
 
 
-<div id="outline-container-org93d4e00" class="outline-2">
-<h2 id="org93d4e00"><span class="section-number-2">5</span> <a href="#org93d4e00"><span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></h2>
+<div id="outline-container-org58dff07" class="outline-2">
+<h2 id="org58dff07"><span class="section-number-2">5</span> <a href="#org58dff07"><span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 &lt;cc4s-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgfceae77">ENCUT      = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="orgfdadda3">ENCUT      = $<span style="color: #8b4513;">enc</span>
 EDIFF      = 1E-6
 LHFCALC    = .TRUE.
 AEXX       = 1.0
@@ -472,12 +472,12 @@ this step the following files will be written that are needed for CC4S
 </div>
 
 
-<div id="outline-container-org3077b54" class="outline-2">
-<h2 id="org3077b54"><span class="section-number-2">6</span> <a href="#org3077b54"><span class="todo TODO">TODO</span> Cc4s Calculation</a></h2>
+<div id="outline-container-org63702c0" class="outline-2">
+<h2 id="org63702c0"><span class="section-number-2">6</span> <a href="#org63702c0"><span class="todo TODO">TODO</span> Cc4s Calculation</a></h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-orgefcd7e4" class="outline-3">
-<h3 id="orgefcd7e4"><span class="section-number-3">6.1</span> <a href="#orgefcd7e4">Reading in</a></h3>
+<div id="outline-container-orgf5292b4" class="outline-3">
+<h3 id="orgf5292b4"><span class="section-number-3">6.1</span> <a href="#orgf5292b4">Reading in</a></h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
 <pre class="src src-yaml">- name: TensorReader
@@ -541,8 +541,8 @@ this step the following files will be written that are needed for CC4S
 </div>
 
 
-<div id="outline-container-orgff768a2" class="outline-3">
-<h3 id="orgff768a2"><span class="section-number-3">6.2</span> <a href="#orgff768a2">CCSD and CCSD(T)</a></h3>
+<div id="outline-container-org8330654" class="outline-3">
+<h3 id="org8330654"><span class="section-number-3">6.2</span> <a href="#org8330654">CCSD and CCSD(T)</a></h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
 <pre class="src src-yaml">- name: CcsdEnergyFromCoulombIntegrals
@@ -591,8 +591,8 @@ this step the following files will be written that are needed for CC4S
 </div>
 </div>
 </div>
-<div id="outline-container-org8138cb0" class="outline-2">
-<h2 id="org8138cb0"><span class="section-number-2">7</span> <a href="#org8138cb0">Putting all together</a></h2>
+<div id="outline-container-orgf3b03dd" class="outline-2">
+<h2 id="orgf3b03dd"><span class="section-number-2">7</span> <a href="#orgf3b03dd">Putting all together</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 We can put all together in a compact script
@@ -691,7 +691,7 @@ cat &lt;&lt;EOF | tee POSCAR
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-03 Fri 14:39</p>
+<p class="date">Created: 2021-12-03 Fri 15:49</p>
 </div>
 </body>
 </html>
