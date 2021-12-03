@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+server_name="vimacs"
+
+if [[ $1 == kill ]]; then
+  set -x
+  emacsclient -s ${server_name} --eval "(kill-emacs)"
+  exit
+fi
+
+{
+  set -x
+  emacsclient -s ${server_name} -c "$@" 2> /dev/null
+} ||
+{
+  set -x
+  emacs -Q \
+    --bg-daemon="$server_name" \
+    --load config/site.el \
+    --load config/evil.el \
+    "$@"
+  exec $0 "$@"
+}
