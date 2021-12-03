@@ -41,7 +41,11 @@
 
 (cc4s-log "loading org-ref and citeproc")
 (use-package citeproc :defer t :ensure t)
-(use-package org-ref :defer t :ensure t)
+(use-package org-ref :defer t :ensure t
+  :config
+  (setq bibtex-completion-bibliography
+	(list (expand-file-name "./group.bib")))
+  (cc4s-log "Bib files: %s" bibtex-completion-bibliography))
 
 (cc4s-log "raku-mode")
 (use-package raku-mode

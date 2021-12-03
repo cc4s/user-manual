@@ -26,10 +26,13 @@
   (evil-mode +1)
   :config
   ;; some defaul bindings for the people
+  (require 'org-ref)
   (evil-define-key 'normal global-map
     (kbd "SPC") nil
     (kbd "SPC l") #'org-latex-preview
     (kbd "SPC L") #'org-insert-link
     (kbd "SPC i") #'org-insert-structure-template
+    (kbd "SPC c") #'org-ref-insert-cite-link
+    (kbd "SPC C") #'org-ref-insert-link
     (kbd "SPC p") #'cc4s/publish-site)
   (evil-set-undo-system 'undo-tree))
