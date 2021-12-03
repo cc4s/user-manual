@@ -1,3 +1,17 @@
+(defconst *cc4s-start-time* (current-time))
+(defmacro cc4s-log (fmt &rest args)
+  `(let ((elapsed (time-to-seconds (time-since *cc4s-start-time*))))
+     (message ,(concat "%d "
+                       "\x1b[35m∷ "
+                       fmt
+                       "\x1b[0m")
+              elapsed ,@args)))
+(defun !!done () (cc4s-log "\t✓ done"))
+
+;; Minimize garbage collection during startup
+(setq gc-cons-threshold most-positive-fixnum)
+
+(cc4s-log "Requiring package")
 (require 'package)
 
 (setq package-enable-at-startup t)
@@ -5,36 +19,39 @@
       '(("gnu"   . "http://elpa.gnu.org/packages/")
         ("melpa" . "http://melpa.org/packages/"   )
         ("org"   . "http://orgmode.org/elpa/"     )))
-(message "Initializing packages")
+
+(cc4s-log "Initializing packages")
 (package-initialize)
 
-(message "Setting up use-package")
+
+
+(cc4s-log "Setting up use-package")
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-(message "Requiring use-package")
+(cc4s-log "Requiring use-package")
 (eval-when-compile
   (require 'use-package))
 
-(message "htmlize")
+(cc4s-log "htmlize")
 (use-package htmlize
   :defer t
   :ensure t)
 
-(message "loading org-ref and citeproc")
-(use-package citeproc :ensure t)
-(use-package org-ref :ensure t)
+(cc4s-log "loading org-ref and citeproc")
+(use-package citeproc :defer t :ensure t)
+(use-package org-ref :defer t :ensure t)
 
-(message "raku-mode")
+(cc4s-log "raku-mode")
 (use-package raku-mode
   :defer t
   :ensure t)
 
-(message "requiring org")
+(cc4s-log "requiring org")
 (require 'org)
 
-(message "up org-contrib")
+(cc4s-log "up org-contrib")
 (use-package org-plus-contrib
   :defer t
   :ensure t
@@ -43,8 +60,9 @@
         org-src-preserve-indentation t
         org-src-tab-acts-natively t))
 
-(message "loading theme..")
+(cc4s-log "loading theme..")
 (load-theme 'tsdh-light)
+(!!done)
 
 (defvar cc4s/html-head-libs
   "
@@ -93,7 +111,7 @@
             </a>
           </li>
           <li class='nav-item'>
-            <a class='nav-link' href='%ssitemap.html'>
+            <a class='nav-link' href='%1$ssitemap.html'>
               <i class='fa fa-sign-out'></i>
               Sitemap
             </a>
@@ -102,9 +120,10 @@
       </div>
     </div>
   </nav>
- " cc4s/root cc4s/root))
+ " cc4s/root))
 
 (defun cc4s/publish-to-html (plist filename pub-dir)
+  (require 'org-ref)
   (require 'org-ref-refproc)
   (let ((org-export-before-parsing-hook '(;org-ref-cite-natmove
                                           org-ref-csl-preprocess-buffer
@@ -114,45 +133,41 @@
 (defun cc4s/publish-site ()
   (interactive)
   (require 'cl-macs)
-  (cl-macrolet ((gallo/log (fmt &rest args)
-                          `(message (format ,(concat "\x1b[35m∀ "
-                                                     fmt
-                                                     "\x1b[0m")
-                                            ,@args))))
-    (let* ((site-file-path (file-name-directory (buffer-file-name)))
-           (publish-directory (format "%s/user-manual/" site-file-path))
-           (org-publish-timestamp-directory
-            (format "%s/.emacs/org-timestamps" site-file-path))
-           (org-publish-project-alist
-            `(("data"
-               :base-directory ,(format "%s/data" site-file-path)
-               :publishing-directory ,(format "%s/data" publish-directory)
-               :publishing-function org-publish-attachment
-               :base-extension ".*"
-               :recursive t)
-              ("site"
-               :base-directory ,site-file-path
-               :base-extension "org"
-               :publishing-directory ,publish-directory
-               :with-creator nil
-               :with-author nil
-               :section-numbers t
-               :table-of-contents t
-               ;:publishing-function org-html-publish-to-html
-               :publishing-function cc4s/publish-to-html
-               ;;:publishing-function org-html-export-to-html
-               :htmlized-source nil
-               :html-validation-link nil
-               :html-head-extra ,cc4s/html-head-libs
-               :language en
-               ;:html-use-infojs nil
-               ;:html-link-home "sitemap.html"
-               :auto-sitemap t
-               :html-preamble ,cc4s/navigation-bar
-               :html-self-link-headlines t
-               :sitemap-title "Sitemap"
-               :exclude "config/*"
-               :recursive t))))
-      (gallo/log "Publishing site")
-      (gallo/log "build directory %s" publish-directory)
-      (org-publish-all))))
+  (let* ((site-file-path (file-name-directory (buffer-file-name)))
+         (publish-directory (format "%s/user-manual/" site-file-path))
+         (org-publish-timestamp-directory
+          (format "%s/.emacs/org-timestamps" site-file-path))
+         (org-publish-project-alist
+          `(("data"
+             :base-directory ,(format "%s/data" site-file-path)
+             :publishing-directory ,(format "%s/data" publish-directory)
+             :publishing-function org-publish-attachment
+             :base-extension ".*"
+             :recursive t)
+            ("site"
+             :base-directory ,site-file-path
+             :base-extension "org"
+             :publishing-directory ,publish-directory
+             :with-creator nil
+             :with-author nil
+             :section-numbers t
+             :table-of-contents t
+                                        ;:publishing-function org-html-publish-to-html
+             :publishing-function cc4s/publish-to-html
+             ;;:publishing-function org-html-export-to-html
+             :htmlized-source nil
+             :html-validation-link nil
+             :html-head-extra ,cc4s/html-head-libs
+             :language en
+                                        ;:html-use-infojs nil
+                                        ;:html-link-home "sitemap.html"
+             :auto-sitemap t
+             :html-preamble ,cc4s/navigation-bar
+             :html-self-link-headlines t
+             :sitemap-title "Sitemap"
+             :exclude "config/*"
+             :recursive t))))
+    (cc4s-log "Publishing cc4s user manual")
+    (cc4s-log "build directory %s" publish-directory)
+    (org-publish-all)
+    (!!done)))
