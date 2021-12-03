@@ -6,13 +6,41 @@
   :CUSTOM_ID: cc4s-user-documentation
   :END:
 Welcome to the user documentation of the
-[[https://cc4s.org][=cc4s=]] code.
+[[https://gitlab.cc4s.org/][=cc4s=]] code.
+
+** Getting started 
+The [[file:quickstart/quickstart.org][Quickstart]] section explains everything you need to know about
+downloading the code, compiling it and running a few tests.
+
+** How to control input for CC4S?
+This [[file:input/input.org][Input]] section describes how YAML files are used to control CC4S calculations.
+
+** Algorithms in CC4S
+The [[file:algorithms/algorithms.org][Algorithms]] section summarizes and explains the most important algorithms
+available in CC4S. 
+
+** Interfaces to CC4S
+This section describes the available interfaces between electronic structure theory codes and CC4S.
+Interfaces to the following codes are currently available
+- The interface to the Vienna ab initio simulation package is described in the [[file:interfaces/vasp.org][VASP]] section.
+- The interface to the FHI-AIMS code is currently under work but will be described in the [[file:interfaces/fhi-aims.org][FHI-AIMS]] section soon.
+
 
 ** Tutorials and examples
+
+To learn how to run CC4S calculations and interpret its output, we provide the following tutorials
+- LiH solid using CCSD(T)
+- Water adsorption energy on a LiH surface on the level of CCSD(T)
+- Energy difference between r-BN and c-BN crystal phases
+
 
 In order to get started using =cc4s=
 you can start reading
 the [[file:tutorials/quick-start-lithium-fluoride.org][quick start tutorial]].
+
+** Remarks and general notes
+
+** Contributors and Acknowledgements
 
 ** Writing documentation
 If you are writing documentation for =cc4s=, read the

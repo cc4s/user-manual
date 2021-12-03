@@ -1,0 +1,32 @@
+#+title: Description of VASP interface to CC4S
+
+* Interface to VASP
+
+
+
+<cc4s-incar>=
+#+name: cc4s-incar
+#+begin_src sh
+ENCUT      = $enc
+EDIFF      = 1E-6
+LHFCALC    = .TRUE.
+AEXX       = 1.0
+ISYM       = -1
+ALGO       = CC4S
+NBANDS     = $nb
+NBANDSHIGH = $nb
+#+end_src
+
+this step the following files will be written that are needed for CC4S
+
+- $F_{pq}$ :: =FockOperator.yaml=, =FockOperator.dat=
+- $\vec G$ :: =GridVectors.yaml=, =GridVectors.dat=
+- $V(\vec G)$ :: =CoulombPotential.yaml=, =CoulombPotential.dat=
+- $\delta^{ab}_{ij}$ :: =DeltaPPHH.yaml=, =DeltaPPHH.dat=
+- $\delta_{ij}$ :: =DeltaHH.yaml=, =DeltaHH.dat=
+- =CoulombVertexSingularVectors.yaml=, =CoulombVertexSingularVectors.dat=
+- $\Gamma^{pG}_{q}$ ::  =CoulombVertex.yaml=, =CoulombVertex.dat=
+- $\epsilon_{p}$ :: =EigenEnergies.yaml=, =EigenEnergies.dat=
+- =Spins.yaml=, =Spins.dat=
+
+

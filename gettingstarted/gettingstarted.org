@@ -1,0 +1,45 @@
+#+title: Quick Start
+
+* Download the code
+
+You can download the CC4S code by typing
+#+begin_src sh
+  git clone git@gitlab.cc4s.org:cqc/cc4s.git
+#+end_src
+
+This will create a new folder named ./cc4s/ where the complete source code will be downloaded.
+
+* Compilation
+
+Building the CC4S binary is done in two steps.
+
+In the first step, the external libraries employed by CC4S need to be built. 
+This is done by typing
+#+begin_src sh
+  make CONFIG=<config> extern
+#+end_src
+in the main directory.
+
+In the second step, the CC4S code is built. 
+This is done by typing
+#+begin_src sh
+  make CONFIG=<config>
+#+end_src
+in the main directory.
+
+Depending on the available set of compilers and MPI libraries, you can choose any configuration that is currently available in the src_sh[:exports code]{./etc/config/}
+folder.
+
+Building the code using the Intel compiler and Intel MPI library is done by typing
+#+begin_src sh
+  make CONFIG=icc_impi extern
+  make CONFIG=icc_impi
+#+end_src
+in the main directory.
+
+
+* Test
+
+You can test your CC4S binary for a set of test systems.
+
+TODO

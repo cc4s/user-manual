@@ -2,5 +2,13 @@
 
 - [[file:index.org][Cc4s User Documentation]]
 - [[file:how-to-write.org][How To Write]]
+- algorithms
+  - [[file:algorithms/algorithms.org][Quick Start: Periodic LiH calculation using VASP]]
+- gettingstarted
+  - [[file:gettingstarted/gettingstarted.org][Quick Start]]
+- input
+  - [[file:input/input.org][Quick Start: Periodic LiH calculation using VASP]]
+- interfaces
+  - [[file:interfaces/vasp.org][Quick Start: Periodic LiH calculation using VASP]]
 - tutorials
   - [[file:tutorials/quick-start-lithium-fluoride.org][Quick Start: Periodic LiH calculation using VASP]]
