@@ -65,7 +65,7 @@
     :ensure t
     :config
     (setq bibtex-completion-bibliography
-          (list (expand-file-name "./group.bib")))
+          (list (format "%s/%s" cc4s-root-directory "group.bib")))
     (cc4s-log "Bib files: %s" bibtex-completion-bibliography))
 
 (cc4s-log "raku-mode")
