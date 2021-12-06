@@ -167,6 +167,7 @@
              :base-extension ".*"
              :recursive t)
             ("site"
+             :exclude ".emacs/*"
              :base-directory ,site-file-path
              :base-extension "org"
              :publishing-directory ,publish-directory
