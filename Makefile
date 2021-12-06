@@ -17,10 +17,13 @@ tangle: $(TANGLING_FILES_CACHE)
 publish: $(ORGFILES) tangle
 	$(EMACS) --load config/site.el $(INDEX) -f cc4s/publish-site
 
+refresh:
+	$(EMACS) --load config/site.el $(INDEX) -f package-refresh-contents
+
 clean:
 	rm -r .emacs/ $(BUILD_DIR)
 
 serve:
 	python3 -m http.server $(PORT)
 
-.PHONY: init serve publish tangle
+.PHONY: init serve publish tangle refresh

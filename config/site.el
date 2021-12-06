@@ -1,3 +1,4 @@
+(require 'subr-x)
 (defconst *cc4s-start-time* (current-time))
 (defmacro cc4s-log (fmt &rest args)
   `(let ((elapsed (time-to-seconds (time-since *cc4s-start-time*))))
@@ -8,8 +9,18 @@
               elapsed ,@args)))
 (defun !!done () (cc4s-log "\t✓ done"))
 
+(defvar cc4s-root-directory (expand-file-name
+                             (format "%s../"
+                                     (file-name-directory load-file-name))))
+
+(cc4s-log "Manual root directory :: %s" cc4s-root-directory)
+
 ;; Minimize garbage collection during startup
 (setq gc-cons-threshold most-positive-fixnum)
+
+(defvar cc4s-elpa-directory (format "%s/.emacs/elpa" cc4s-root-directory))
+(setq package-user-dir cc4s-elpa-directory)
+(cc4s-log "Installed packages go to %s" package-user-dir)
 
 (cc4s-log "Requiring package")
 (require 'package)
@@ -17,11 +28,12 @@
 (setq package-enable-at-startup t)
 (setq package-archives
       '(("gnu"   . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/"   )
-        ("org"   . "http://orgmode.org/elpa/"     )))
+        ("melpa" . "http://melpa.org/packages/"   )))
 
 (cc4s-log "Initializing packages")
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
 
 
 
@@ -34,6 +46,14 @@
 (eval-when-compile
   (require 'use-package))
 
+(cc4s-log "requiring org")
+(require 'org)
+(use-package org
+    :ensure t
+    :config
+    (setq org-confirm-babel-evaluate nil))
+
+
 (cc4s-log "htmlize")
 (use-package htmlize
   :defer t
@@ -41,19 +61,18 @@
 
 (cc4s-log "loading org-ref and citeproc")
 (use-package citeproc :defer t :ensure t)
-(use-package org-ref :defer t :ensure t
-  :config
-  (setq bibtex-completion-bibliography
-	(list (expand-file-name "./group.bib")))
-  (cc4s-log "Bib files: %s" bibtex-completion-bibliography))
+(use-package org-ref
+    :defer t
+    :ensure t
+    :config
+    (setq bibtex-completion-bibliography
+          (list (expand-file-name "./group.bib")))
+    (cc4s-log "Bib files: %s" bibtex-completion-bibliography))
 
 (cc4s-log "raku-mode")
 (use-package raku-mode
   :defer t
   :ensure t)
-
-(cc4s-log "requiring org")
-(require 'org)
 
 (cc4s-log "up org-contrib")
 (use-package org-plus-contrib
