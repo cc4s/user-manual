@@ -47,11 +47,11 @@
   (require 'use-package))
 
 (cc4s-log "requiring org")
-(require 'org)
 (use-package org
     :ensure t
     :config
     (setq org-confirm-babel-evaluate nil))
+(require 'org)
 
 
 (cc4s-log "htmlize")
