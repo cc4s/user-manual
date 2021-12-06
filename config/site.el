@@ -13,17 +13,16 @@
                              (format "%s../"
                                      (file-name-directory load-file-name))))
 
+(setq user-emacs-directory (format "%s.emacs" cc4s-root-directory))
+
 (cc4s-log "Manual root directory :: %s" cc4s-root-directory)
 
 ;; Minimize garbage collection during startup
 (setq gc-cons-threshold most-positive-fixnum)
 
-(defvar cc4s-elpa-directory (format "%s/.emacs/elpa" cc4s-root-directory))
-(setq package-user-dir cc4s-elpa-directory)
-(cc4s-log "Installed packages go to %s" package-user-dir)
-
 (cc4s-log "Requiring package")
 (require 'package)
+(cc4s-log "Installed packages go to %s" package-user-dir)
 
 (setq package-enable-at-startup t)
 (setq package-archives
@@ -156,7 +155,7 @@
 (defun cc4s/publish-site ()
   (interactive)
   (require 'cl-macs)
-  (let* ((site-file-path (file-name-directory (buffer-file-name)))
+  (let* ((site-file-path cc4s-root-directory)
          (publish-directory (format "%s/user-manual/" site-file-path))
          (org-publish-timestamp-directory
           (format "%s/.emacs/org-timestamps" site-file-path))
