@@ -38,8 +38,98 @@ Building the code using the Intel compiler and Intel MPI library is done by typi
 in the main directory.
 
 
-* Test
-
+* Running tests
+** Quick start
 You can test your CC4S binary for a set of test systems.
+The script =test/testis.py= is used to run all the tests
+and fetch the data dependencies.
 
-TODO
+
+After having built your binary with the configuration
+=<CONFIG>=, you can run the tests like
+
+#+begin_src emacs-lisp
+make -C test run CONFIG=<CONFIG> CC4S_RUN='mpirun -np 48 ${CC4S_PATH}'
+#+end_src
+
+You can also run the post-processing step of the tests separately
+by doing
+#+begin_src emacs-lisp
+make -C test check CONFIG=<CONFIG> CC4S_RUN='mpirun -np 48 ${CC4S_PATH}'
+#+end_src
+
+*** Python Dependencies
+
+Please note that =testis.py= depends on =python3.3= or newer.
+In order to run the =check= phase, it is also necessary
+to have the =pyyaml= python package installed.
+
+You can install the package locally by issuing the command
+#+begin_src sh
+pip3 install --user pyyaml
+#+end_src
+or globally by
+#+begin_src sh
+sudo pip3 install pyyaml
+#+end_src
+
+If you are not able to install =pyyaml= on your own, please contact
+your system administrator.
+
+** Test failed, what now?
+
+If a test failed, you can go to the directory
+of the test that failed with the current configuration
+as this is printed in the output of the failing test.
+
+For every compiler configuration there will be a different
+sub-directory in the test directory.
+In it, a series of linked files can be found that are used
+to run the binary.
+Importantly, also a link to the used binary should be found there,
+=Cc4s=, so that you can enter the test directory and rerun
+the test with
+#+begin_src sh
+mpirun -np <number-of-processes> ./Cc4s
+#+end_src
+
+** Running additional tests
+
+Every test in =cc4s= has some tags assigned to it.
+By default, when a user tests the code, only the
+tests tagged =essential= will be run.
+
+You can however change this by defining the environment
+variable TAGS by issuing the make command, i.e.,
+in the case that you want to run the tests
+tagged as =essential= and =ccsd=, you can issue
+the following command
+#+begin_src sh
+make -C test CONFIG=<CONFIG> run TAGS="essential ccsd"
+#+end_src
+
+
+** Fetching data in network-constrained environments
+
+Some tests depend on dependencies such as coulomb integrals
+coming from various quantum chemical codes in different
+repositories scattered across the internet.
+=testis.py= downloads this data automatically, as you might
+have seen in its output.
+
+If however your cluster does not allow internet requests
+for security reasons, you can prefetch the test data
+and then =scp= it to the respective cluster.
+
+In the root directory you can issue the =make= command
+#+begin_src sh
+make -C test data
+#+end_src
+
+This command downloads in =test/testis-store= the necessary
+data for the tests.
+You can then copy this folder to the required computer
+#+begin_src sh
+scp -r test/testis-store user@remote-computer:path/to/cc4s/test/
+#+end_src
+
