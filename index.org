@@ -9,7 +9,7 @@ Welcome to the user documentation of the
 [[https://gitlab.cc4s.org/][=cc4s=]] code.
 
 ** Getting started 
-The [[file:quickstart/quickstart.org][Quickstart]] section explains everything you need to know about
+The [[file:./gettingstarted/gettingstarted.org][Quickstart]] section explains everything you need to know about
 downloading the code, compiling it and running a few tests.
 
 ** How to control input for CC4S?
