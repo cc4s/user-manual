@@ -82,3 +82,9 @@ using
 make serve
 #+end_src
 and open the url in your browser http://127.0.0.1:8888.
+
+You can also combine both by doing
+#+begin_src sh
+make publish serve
+#+end_src
+periodically and refreshing your browser.
