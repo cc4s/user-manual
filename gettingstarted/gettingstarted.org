@@ -32,8 +32,8 @@ folder.
 
 Building the code using the Intel compiler and Intel MPI library is done by typing
 #+begin_src sh
-  make CONFIG=icc-impi extern
-  make CONFIG=icc-impi
+  make CONFIG=icc-mkl-impi extern
+  make CONFIG=icc-mkl-impi
 #+end_src
 in the main directory.
 
