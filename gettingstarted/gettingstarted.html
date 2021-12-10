@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-10 Fri 11:28 -->
+<!-- 2021-12-10 Fri 12:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick Start</title>
@@ -274,26 +274,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcef34b8">1. Download the code</a></li>
-<li><a href="#org8fb1684">2. Compilation</a></li>
-<li><a href="#orge24a4be">3. Running tests</a>
+<li><a href="#orgfd590b5">1. Download the code</a></li>
+<li><a href="#org70c694e">2. Compilation</a></li>
+<li><a href="#org43000a3">3. Running tests</a>
 <ul>
-<li><a href="#org3a35b83">3.1. Quick start</a>
+<li><a href="#org3b6b8e4">3.1. Quick start</a>
 <ul>
-<li><a href="#org51ff208">3.1.1. Python Dependencies</a></li>
+<li><a href="#org940e6af">3.1.1. Python Dependencies</a></li>
 </ul>
 </li>
-<li><a href="#orgfaca7bf">3.2. Test failed, what now?</a></li>
-<li><a href="#org652c583">3.3. Running additional tests</a></li>
-<li><a href="#org5ac2075">3.4. Fetching data in network-constrained environments</a></li>
+<li><a href="#orga91445d">3.2. Test failed, what now?</a></li>
+<li><a href="#orgd540523">3.3. Running additional tests</a></li>
+<li><a href="#orgb7c98f8">3.4. Fetching data in network-constrained environments</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgcef34b8" class="outline-2">
-<h2 id="orgcef34b8"><span class="section-number-2">1</span> <a href="#orgcef34b8">Download the code</a></h2>
+<div id="outline-container-orgfd590b5" class="outline-2">
+<h2 id="orgfd590b5"><span class="section-number-2">1</span> <a href="#orgfd590b5">Download the code</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 You can download the CC4S code by typing
@@ -309,8 +309,8 @@ This will create a new folder named ./cc4s/ where the complete source code will 
 </div>
 </div>
 
-<div id="outline-container-org8fb1684" class="outline-2">
-<h2 id="org8fb1684"><span class="section-number-2">2</span> <a href="#org8fb1684">Compilation</a></h2>
+<div id="outline-container-org70c694e" class="outline-2">
+<h2 id="org70c694e"><span class="section-number-2">2</span> <a href="#org70c694e">Compilation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Building the CC4S binary is done in two steps.
@@ -349,8 +349,8 @@ folder.
 Building the code using the Intel compiler and Intel MPI library is done by typing
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">make <span style="color: #8b4513;">CONFIG</span>=icc-impi extern
-make <span style="color: #8b4513;">CONFIG</span>=icc-impi
+<pre class="src src-sh">make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi extern
+make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi
 </pre>
 </div>
 <p>
@@ -360,12 +360,12 @@ in the main directory.
 </div>
 
 
-<div id="outline-container-orge24a4be" class="outline-2">
-<h2 id="orge24a4be"><span class="section-number-2">3</span> <a href="#orge24a4be">Running tests</a></h2>
+<div id="outline-container-org43000a3" class="outline-2">
+<h2 id="org43000a3"><span class="section-number-2">3</span> <a href="#org43000a3">Running tests</a></h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org3a35b83" class="outline-3">
-<h3 id="org3a35b83"><span class="section-number-3">3.1</span> <a href="#org3a35b83">Quick start</a></h3>
+<div id="outline-container-org3b6b8e4" class="outline-3">
+<h3 id="org3b6b8e4"><span class="section-number-3">3.1</span> <a href="#org3b6b8e4">Quick start</a></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 You can test your CC4S binary for a set of test systems.
@@ -394,8 +394,8 @@ by doing
 </div>
 </div>
 
-<div id="outline-container-org51ff208" class="outline-4">
-<h4 id="org51ff208"><span class="section-number-4">3.1.1</span> <a href="#org51ff208">Python Dependencies</a></h4>
+<div id="outline-container-org940e6af" class="outline-4">
+<h4 id="org940e6af"><span class="section-number-4">3.1.1</span> <a href="#org940e6af">Python Dependencies</a></h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Please note that <code>testis.py</code> depends on <code>python3.3</code> or newer.
@@ -426,8 +426,8 @@ your system administrator.
 </div>
 </div>
 
-<div id="outline-container-orgfaca7bf" class="outline-3">
-<h3 id="orgfaca7bf"><span class="section-number-3">3.2</span> <a href="#orgfaca7bf">Test failed, what now?</a></h3>
+<div id="outline-container-orga91445d" class="outline-3">
+<h3 id="orga91445d"><span class="section-number-3">3.2</span> <a href="#orga91445d">Test failed, what now?</a></h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 If a test failed, you can go to the directory
@@ -451,8 +451,8 @@ the test with
 </div>
 </div>
 
-<div id="outline-container-org652c583" class="outline-3">
-<h3 id="org652c583"><span class="section-number-3">3.3</span> <a href="#org652c583">Running additional tests</a></h3>
+<div id="outline-container-orgd540523" class="outline-3">
+<h3 id="orgd540523"><span class="section-number-3">3.3</span> <a href="#orgd540523">Running additional tests</a></h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Every test in <code>cc4s</code> has some tags assigned to it.
@@ -475,8 +475,8 @@ the following command
 </div>
 
 
-<div id="outline-container-org5ac2075" class="outline-3">
-<h3 id="org5ac2075"><span class="section-number-3">3.4</span> <a href="#org5ac2075">Fetching data in network-constrained environments</a></h3>
+<div id="outline-container-orgb7c98f8" class="outline-3">
+<h3 id="orgb7c98f8"><span class="section-number-3">3.4</span> <a href="#orgb7c98f8">Fetching data in network-constrained environments</a></h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Some tests depend on dependencies such as coulomb integrals
@@ -514,7 +514,7 @@ You can then copy this folder to the required computer
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-10 Fri 11:28</p>
+<p class="date">Created: 2021-12-10 Fri 12:06</p>
 </div>
 </body>
 </html>
