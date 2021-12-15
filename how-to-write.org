@@ -11,6 +11,9 @@ You can find some cheatsheets for org's markup you can checkout
 
 Please notice that for this manual to build you will need
 a recent version of emacs, at least newer than *Emacs 27*.
+You probably can install it from
+[[https://snapcraft.io/emacs][the snapstore]] if you are using
+a supported distribution.
 
 ** Math
 Just use latex as if you were in latex
