@@ -1,8 +1,10 @@
+-include config.mk
 BUILD_DIR = user-manual/
 
 PORT = 8888
 
-EMACS = emacs -Q --batch
+EMACS_BIN ?= emacs
+EMACS = $(EMACS_BIN) -Q --batch
 INDEX = index.org
 ORGFILES = $(shell find . -name '*.org')
 
