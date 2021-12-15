@@ -10,7 +10,7 @@ You can find some cheatsheets for org's markup you can checkout
 - http://xahlee.info/emacs/emacs/emacs_org_markup.html
 
 Please notice that for this manual to build you will need
-a recent version of emacs, at least newer than *Emacs 26*.
+a recent version of emacs, at least newer than *Emacs 27*.
 
 ** Math
 Just use latex as if you were in latex
