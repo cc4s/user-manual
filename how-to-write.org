@@ -11,9 +11,51 @@ You can find some cheatsheets for org's markup you can checkout
 
 Please notice that for this manual to build you will need
 a recent version of emacs, at least newer than *Emacs 27*.
-You probably can install it from
-[[https://snapcraft.io/emacs][the snapstore]] if you are using
+You probably can install it from [[https://snapcraft.io/emacs][the snapstore]] if you are using
 a supported distribution.
+
+*** Installing a minimal emacs version locally
+
+In case you are having some problems installing emacs
+and you just want to get a minimal emacs version to build the pages,
+consider adapting this script
+
+#+begin_src sh :eval no
+set -eu
+
+url="https://github.com/emacs-mirror/emacs/archive/refs/tags/emacs-28.0.90.tar.gz"
+
+mkdir -p ./emacs
+wget $url -O - | gunzip |  tar xvf - -C ./emacs --strip-components=1
+
+sudo apt-get install \
+     libxml2-dev \
+     gnutls-dev
+
+cd ./emacs
+
+./autogen.sh
+./configure \
+    --with-x-toolkit=no \
+    --with-xml2 \
+    --with-xpm=ifavailable \
+    --with-gif=ifavailable \
+    --with-tiff=ifavailable \
+    --with-gnutls=ifavailable
+
+make -j
+#+end_src
+
+This script installs on a debian-based system the library =xml2= and =gnutls=
+and downloads and builds emacs 28 in the current directory.
+
+You can use this emacs binary by writing a =config.mk= file with the following contents
+
+#+begin_src make
+EMACS_BIN = $PWD/emacs/src/emacs
+#+end_src
+
+
 
 ** Math
 Just use latex as if you were in latex
