@@ -1,9 +1,10 @@
+(setq package-enable-at-startup nil)
 (require 'subr-x)
 (defconst *cc4s-start-time* (current-time))
 (defmacro cc4s-log (fmt &rest args)
   `(let ((elapsed (time-to-seconds (time-since *cc4s-start-time*))))
      (message ,(concat "%d "
-                       "\x1b[35m∷ "
+                       "\x1b[35m∷CC4S» "
                        fmt
                        "\x1b[0m")
               elapsed ,@args)))
@@ -13,6 +14,7 @@
                              (format "%s../"
                                      (file-name-directory load-file-name))))
 
+(setq package-user-dir (format "%s.emacs/packages" cc4s-root-directory))
 (setq user-emacs-directory (format "%s.emacs" cc4s-root-directory))
 
 (cc4s-log "Manual root directory :: %s" cc4s-root-directory)
