@@ -52,7 +52,7 @@ and downloads and builds emacs 28 in the current directory.
 You can use this emacs binary by writing a =config.mk= file with the following contents
 
 #+begin_src make
-EMACS_BIN = $PWD/emacs/src/emacs
+EMACS_BIN = ./emacs/src/emacs
 #+end_src
 
 
