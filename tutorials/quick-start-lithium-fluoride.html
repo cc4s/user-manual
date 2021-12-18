@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-18 Sat 11:12 -->
+<!-- 2021-12-18 Sat 11:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick Start: Periodic LiH calculation using VASP</title>
@@ -296,24 +296,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7f5a29b">1. Introduction</a></li>
-<li><a href="#orgb3dbeb3">2. <span class="todo TODO">TODO</span> DFT Calculation</a></li>
-<li><a href="#org5ca19da">3. <span class="todo TODO">TODO</span> Hartree-Fock calculation</a></li>
-<li><a href="#orgd2208fb">4. <span class="todo TODO">TODO</span> Full Space Diagonalization</a></li>
-<li><a href="#org9fb341f">5. <span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></li>
-<li><a href="#org42ab3da">6. <span class="todo TODO">TODO</span> Cc4s Calculation</a>
+<li><a href="#orga388c2a">1. Introduction</a></li>
+<li><a href="#orga215d4d">2. <span class="todo TODO">TODO</span> DFT Calculation</a></li>
+<li><a href="#orgb9bf11e">3. <span class="todo TODO">TODO</span> Hartree-Fock calculation</a></li>
+<li><a href="#org0d2ff3d">4. <span class="todo TODO">TODO</span> Full Space Diagonalization</a></li>
+<li><a href="#orgeab0e99">5. <span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></li>
+<li><a href="#org206323c">6. <span class="todo TODO">TODO</span> Cc4s Calculation</a>
 <ul>
-<li><a href="#org7fc3756">6.1. Reading in</a></li>
-<li><a href="#org248effe">6.2. CCSD and CCSD(T)</a></li>
+<li><a href="#orgc76f43c">6.1. Reading in</a></li>
+<li><a href="#org5c8aac5">6.2. CCSD and CCSD(T)</a></li>
 </ul>
 </li>
-<li><a href="#org9355ba7">7. Putting all together</a></li>
+<li><a href="#org67b843f">7. Putting all together</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7f5a29b" class="outline-2">
-<h2 id="org7f5a29b"><span class="section-number-2">1</span> <a href="#org7f5a29b">Introduction</a></h2>
+<div id="outline-container-orga388c2a" class="outline-2">
+<h2 id="orga388c2a"><span class="section-number-2">1</span> <a href="#orga388c2a">Introduction</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In this tutorial we are going to present a simple application
@@ -335,7 +335,7 @@ The atomic structure of the system is given by the <code>POSCAR</code> file
 &lt;poscar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="org70dfb0b">Li4 H4
+<pre class="src src-emacs-lisp" id="orga9f6933">Li4 H4
 1.0
 4.000174 0.000000 0.000000
 0.000000 4.000174 0.000000
@@ -365,7 +365,7 @@ The <code>KPOINTS</code> file is thus
 &lt;kpoints&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgb5e7f22">Gamma Point Mesh
+<pre class="src src-sh" id="orgb808412">Gamma Point Mesh
        0
 gamma
  1 1 1
@@ -376,14 +376,14 @@ gamma
 
 
 
-<div id="outline-container-orgb3dbeb3" class="outline-2">
-<h2 id="orgb3dbeb3"><span class="section-number-2">2</span> <a href="#orgb3dbeb3"><span class="todo TODO">TODO</span> DFT Calculation</a></h2>
+<div id="outline-container-orga215d4d" class="outline-2">
+<h2 id="orga215d4d"><span class="section-number-2">2</span> <a href="#orga215d4d"><span class="todo TODO">TODO</span> DFT Calculation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 &lt;dft-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org5f1154c">ENCUT = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="orgbfaee33">ENCUT = $<span style="color: #8b4513;">enc</span>
 EDIFF = 1E-6
 </pre>
 </div>
@@ -391,8 +391,8 @@ EDIFF = 1E-6
 </div>
 
 
-<div id="outline-container-org5ca19da" class="outline-2">
-<h2 id="org5ca19da"><span class="section-number-2">3</span> <a href="#org5ca19da"><span class="todo TODO">TODO</span> Hartree-Fock calculation</a></h2>
+<div id="outline-container-orgb9bf11e" class="outline-2">
+<h2 id="orgb9bf11e"><span class="section-number-2">3</span> <a href="#orgb9bf11e"><span class="todo TODO">TODO</span> Hartree-Fock calculation</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A Hartree-Fock calculation is given by the following <code>INCAR</code>
@@ -403,7 +403,7 @@ input
 &lt;hf-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgd5781f8">ENCUT   = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="orgc25d977">ENCUT   = $<span style="color: #8b4513;">enc</span>
 EDIFF   = 1E-6
 LHFCALC =.TRUE.
 AEXX    = 1.0
@@ -414,14 +414,14 @@ ALGO    = C
 </div>
 
 
-<div id="outline-container-orgd2208fb" class="outline-2">
-<h2 id="orgd2208fb"><span class="section-number-2">4</span> <a href="#orgd2208fb"><span class="todo TODO">TODO</span> Full Space Diagonalization</a></h2>
+<div id="outline-container-org0d2ff3d" class="outline-2">
+<h2 id="org0d2ff3d"><span class="section-number-2">4</span> <a href="#org0d2ff3d"><span class="todo TODO">TODO</span> Full Space Diagonalization</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 &lt;hf-diagonalization-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orga6e3616">ENCUT   = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="orgfe4a219">ENCUT   = $<span style="color: #8b4513;">enc</span>
 EDIFF   = 1E-6
 LHFCALC = .TRUE.
 AEXX    = 1.0
@@ -435,14 +435,14 @@ NBANDS  = $<span style="color: #8b4513;">nb</span>
 </div>
 
 
-<div id="outline-container-org9fb341f" class="outline-2">
-<h2 id="org9fb341f"><span class="section-number-2">5</span> <a href="#org9fb341f"><span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></h2>
+<div id="outline-container-orgeab0e99" class="outline-2">
+<h2 id="orgeab0e99"><span class="section-number-2">5</span> <a href="#orgeab0e99"><span class="todo TODO">TODO</span> <code>CC4S</code> dumping</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 &lt;cc4s-incar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org4692bfc">ENCUT      = $<span style="color: #8b4513;">enc</span>
+<pre class="src src-sh" id="org8cabbb3">ENCUT      = $<span style="color: #8b4513;">enc</span>
 EDIFF      = 1E-6
 LHFCALC    = .TRUE.
 AEXX       = 1.0
@@ -472,127 +472,127 @@ this step the following files will be written that are needed for CC4S
 </div>
 
 
-<div id="outline-container-org42ab3da" class="outline-2">
-<h2 id="org42ab3da"><span class="section-number-2">6</span> <a href="#org42ab3da"><span class="todo TODO">TODO</span> Cc4s Calculation</a></h2>
+<div id="outline-container-org206323c" class="outline-2">
+<h2 id="org206323c"><span class="section-number-2">6</span> <a href="#org206323c"><span class="todo TODO">TODO</span> Cc4s Calculation</a></h2>
 <div class="outline-text-2" id="text-6">
 </div>
-<div id="outline-container-org7fc3756" class="outline-3">
-<h3 id="org7fc3756"><span class="section-number-3">6.1</span> <a href="#org7fc3756">Reading in</a></h3>
+<div id="outline-container-orgc76f43c" class="outline-3">
+<h3 id="orgc76f43c"><span class="section-number-3">6.1</span> <a href="#orgc76f43c">Reading in</a></h3>
 <div class="outline-text-3" id="text-6-1">
 <div class="org-src-container">
-<pre class="src src-yaml">- name: TensorReader
-  in:
-    fileName: "EigenEnergies.yaml"
-  out:
-    tensor: EigenEnergies
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"EigenEnergies.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">tensor</span>: EigenEnergies
 
-- name: TensorReader
-  in:
-    fileName: "CoulombVertex.yaml"
-  out:
-    tensor: CoulombVertex
+- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombVertex.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">tensor</span>: CoulombVertex
 
-- name: TensorReader
-  in:
-    fileName: "CoulombVertexSingularVectors.yaml"
-  out:
-    tensor: CoulombVertexSingularVectors
+- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombVertexSingularVectors.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">tensor</span>: CoulombVertexSingularVectors
 
-- name: TensorReader
-  in:
-    fileName: "GridVectors.yaml"
-  out:
-    tensor: GridVectors
+- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"GridVectors.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">tensor</span>: GridVectors
 
-- name: TensorReader
-  in:
-    fileName: "CoulombPotential.yaml"
-  out:
-    tensor: CoulombPotential
+- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombPotential.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">tensor</span>: CoulombPotential
 </pre>
 </div>
 
 
 <div class="org-src-container">
-<pre class="src src-yaml">- name: DefineHolesAndParticles
-  in:
-    eigenEnergies: EigenEnergies
-  out:
-    slicedEigenEnergies: EigenEnergies
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: DefineHolesAndParticles
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">eigenEnergies</span>: EigenEnergies
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
 
-- name: SliceOperator
-  in:
-    slicedEigenEnergies: EigenEnergies
-    operator: CoulombVertex
-  out:
-    slicedOperator: CoulombVertex
+- <span style="color: #8b4513;">name</span>: SliceOperator
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">operator</span>: CoulombVertex
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">slicedOperator</span>: CoulombVertex
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- name: CoulombIntegralsFromVertex
-  in:
-    slicedCoulombVertex: CoulombVertex
-  out:
-    coulombIntegrals: CoulombIntegrals
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: CoulombIntegralsFromVertex
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org248effe" class="outline-3">
-<h3 id="org248effe"><span class="section-number-3">6.2</span> <a href="#org248effe">CCSD and CCSD(T)</a></h3>
+<div id="outline-container-org5c8aac5" class="outline-3">
+<h3 id="org5c8aac5"><span class="section-number-3">6.2</span> <a href="#org5c8aac5">CCSD and CCSD(T)</a></h3>
 <div class="outline-text-3" id="text-6-2">
 <div class="org-src-container">
-<pre class="src src-yaml">- name: CcsdEnergyFromCoulombIntegrals
-  in:
-    integralsSliceSize: 100
-    slicedEigenEnergies: EigenEnergies
-    coulombIntegrals: CoulombIntegrals
-    slicedCoulombVertex: CoulombVertex
-    maxIterations: 1
-    energyConvergence: 1.0E-5
-    amplitudesConvergence: 1.0E-5
-    mixer:
-      type: DiisMixer
-  out:
-    energy: CcsdEnergy
-    amplitudes: Amplitudes
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: CcsdEnergyFromCoulombIntegrals
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">integralsSliceSize</span>: 100
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
+    <span style="color: #8b4513;">maxIterations</span>: 1
+    <span style="color: #8b4513;">energyConvergence</span>: 1.0E-5
+    <span style="color: #8b4513;">amplitudesConvergence</span>: 1.0E-5
+    <span style="color: #8b4513;">mixer</span>:
+      <span style="color: #8b4513;">type</span>: DiisMixer
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">energy</span>: CcsdEnergy
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
 
-- name: StructureFactor
-  in:
-    amplitudes: Amplitudes
-    slicedCoulombVertex: CoulombVertex
-    coulombVertexSingularVectors: CoulombVertexSingularVectors
-    coulombPotential: CoulombPotential
-  out:
-    structureFactor: SF
-    deltaIntegrals: DeltaInt
-    nij: Nij
+- <span style="color: #8b4513;">name</span>: StructureFactor
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
+    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
+    <span style="color: #8b4513;">coulombVertexSingularVectors</span>: CoulombVertexSingularVectors
+    <span style="color: #8b4513;">coulombPotential</span>: CoulombPotential
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">structureFactor</span>: SF
+    <span style="color: #8b4513;">deltaIntegrals</span>: DeltaInt
+    <span style="color: #8b4513;">nij</span>: Nij
 
-- name: FiniteSizeCorrection
-  in:
-    gridVectors: GridVectors
-    structureFactor: SF
-  out:
-    corrected: Corrected
-    uncorrected: Uncorrected
+- <span style="color: #8b4513;">name</span>: FiniteSizeCorrection
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">gridVectors</span>: GridVectors
+    <span style="color: #8b4513;">structureFactor</span>: SF
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">corrected</span>: Corrected
+    <span style="color: #8b4513;">uncorrected</span>: Uncorrected
 
-- name: Atrip
-  in:
-    slicedEigenEnergies: EigenEnergies
-    amplitudes: Amplitudes
-    coulombIntegrals: CoulombIntegrals
-  out:
-    energy: AtripEnergy
+- <span style="color: #8b4513;">name</span>: Atrip
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
+    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">energy</span>: AtripEnergy
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org9355ba7" class="outline-2">
-<h2 id="org9355ba7"><span class="section-number-2">7</span> <a href="#org9355ba7">Putting all together</a></h2>
+<div id="outline-container-org67b843f" class="outline-2">
+<h2 id="org67b843f"><span class="section-number-2">7</span> <a href="#org67b843f">Putting all together</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 We can put all together in a compact script
@@ -691,7 +691,7 @@ cat &lt;&lt;EOF | tee POSCAR
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-18 Sat 11:12</p>
+<p class="date">Created: 2021-12-18 Sat 11:28</p>
 </div>
 </body>
 </html>
