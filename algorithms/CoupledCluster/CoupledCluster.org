@@ -7,7 +7,7 @@
 
 A typical input to call the CoupledCluster algorithm is given below.
 
-#+begin_src sh
+#+begin_src yaml
 - name: CoupledCluster
   in:
     method:
