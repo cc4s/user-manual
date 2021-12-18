@@ -70,8 +70,8 @@
           (list (format "%s/%s" cc4s-root-directory "group.bib")))
     (cc4s-log "Bib files: %s" bibtex-completion-bibliography))
 
-(cc4s-log "raku-mode")
-(use-package raku-mode
+(cc4s-log "yaml-mode")
+(use-package yaml-mode
   :defer t
   :ensure t)
 
