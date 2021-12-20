@@ -296,10 +296,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8474e30">1. CoupledCluster algorithm</a>
+<li><a href="#org14d74b7">1. CoupledCluster algorithm</a>
 <ul>
-<li><a href="#orgd686bac">1.1. Example yaml input</a></li>
-<li><a href="#org8c7fd2c">1.2. Input description</a>
+<li><a href="#orge5d2aaf">1.1. Example yaml input</a></li>
+<li><a href="#org2fec2f0">1.2. Input description</a>
 <ul>
 <li><a href="#coupled-cluster-type">1.2.1. type</a></li>
 <li><a href="#integralsslicesize">1.2.2. integralsSliceSize</a></li>
@@ -312,26 +312,26 @@
 <li><a href="#mixer">1.2.9. mixer</a></li>
 </ul>
 </li>
-<li><a href="#orgdd65ff4">1.3. Output</a></li>
-<li><a href="#orgc623cfe">1.4. Computational Complexity and memory footprint</a>
+<li><a href="#org8e7b08c">1.3. Output</a></li>
+<li><a href="#org2d30d81">1.4. Computational Complexity and memory footprint</a>
 <ul>
-<li><a href="#org196d22e">1.4.1. <code>Ccsd method</code></a></li>
+<li><a href="#orgc72a4cc">1.4.1. <code>Ccsd method</code></a></li>
 </ul>
 </li>
-<li><a href="#orga77360b">1.5. Theory</a></li>
-<li><a href="#org3424138">1.6. Literature</a></li>
+<li><a href="#orge7384cf">1.5. Theory</a></li>
+<li><a href="#org489693b">1.6. Literature</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8474e30" class="outline-2">
-<h2 id="org8474e30"><span class="section-number-2">1</span> <a href="#org8474e30">CoupledCluster algorithm</a></h2>
+<div id="outline-container-org14d74b7" class="outline-2">
+<h2 id="org14d74b7"><span class="section-number-2">1</span> <a href="#org14d74b7">CoupledCluster algorithm</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd686bac" class="outline-3">
-<h3 id="orgd686bac"><span class="section-number-3">1.1</span> <a href="#orgd686bac">Example yaml input</a></h3>
+<div id="outline-container-orge5d2aaf" class="outline-3">
+<h3 id="orge5d2aaf"><span class="section-number-3">1.1</span> <a href="#orge5d2aaf">Example yaml input</a></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledCluster</b> algorithm is given below.
@@ -359,10 +359,10 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledClus
 </div>
 </div>
 
-<div id="outline-container-org8c7fd2c" class="outline-3">
-<h3 id="org8c7fd2c"><span class="section-number-3">1.2</span> <a href="#org8c7fd2c">Input description</a></h3>
+<div id="outline-container-org2fec2f0" class="outline-3">
+<h3 id="org2fec2f0"><span class="section-number-3">1.2</span> <a href="#org2fec2f0">Input description</a></h3>
 <div class="outline-text-3" id="text-1-2">
-<table id="orgdf465af" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgbc3467d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -554,10 +554,10 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 </div>
 </div>
 
-<div id="outline-container-orgdd65ff4" class="outline-3">
-<h3 id="orgdd65ff4"><span class="section-number-3">1.3</span> <a href="#orgdd65ff4">Output</a></h3>
+<div id="outline-container-org8e7b08c" class="outline-3">
+<h3 id="org8e7b08c"><span class="section-number-3">1.3</span> <a href="#org8e7b08c">Output</a></h3>
 <div class="outline-text-3" id="text-1-3">
-<table id="orgeda3d20" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org4760188" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -621,12 +621,12 @@ realtime 3463.773373
 </div>
 </div>
 
-<div id="outline-container-orgc623cfe" class="outline-3">
-<h3 id="orgc623cfe"><span class="section-number-3">1.4</span> <a href="#orgc623cfe">Computational Complexity and memory footprint</a></h3>
+<div id="outline-container-org2d30d81" class="outline-3">
+<h3 id="org2d30d81"><span class="section-number-3">1.4</span> <a href="#org2d30d81">Computational Complexity and memory footprint</a></h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org196d22e" class="outline-4">
-<h4 id="org196d22e"><span class="section-number-4">1.4.1</span> <a href="#org196d22e"><code>Ccsd method</code></a></h4>
+<div id="outline-container-orgc72a4cc" class="outline-4">
+<h4 id="orgc72a4cc"><span class="section-number-4">1.4.1</span> <a href="#orgc72a4cc"><code>Ccsd method</code></a></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 The computational bottle neck of a typical Ccsd calculation originates from the following contraction, which is
@@ -636,28 +636,30 @@ as \(\mathcal{O}(N_{\rm o}^2 N_{\rm v}^4)\). To avoid a memory footprint of \(\m
 the corresponding memory footprint to \(\mathcal{O}(N_{\rm v}^2 N_{\rm s}^2)\), where \(N_{\rm s}\) is controlled using 
 the <code>integralsSliceSize</code> keyword.
 </p>
+
+<p>
+We note that required storage of a set of doubles amplitudes adds substantially to the memory footprint in Ccsd calculations.
+The Diis algorithm requires the storage of both doubles residua and amplitudes <code>maxResidua</code> times. We recommend to choose the
+type of mixer and its parameters carefully to reduce the memory fottprint if necessary.
+</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orga77360b" class="outline-3">
-<h3 id="orga77360b"><span class="section-number-3">1.5</span> <a href="#orga77360b">Theory</a></h3>
+<div id="outline-container-orge7384cf" class="outline-3">
+<h3 id="orge7384cf"><span class="section-number-3">1.5</span> <a href="#orge7384cf">Theory</a></h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
-This algorithm solves the coupled-cluster amplitude equations.
-TODO: add short description and refs
+We recommend the following review article and references therein to get started with coupled-cluster theory (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>) .
 </p>
+</div>
+</div>
 
-<p>
-An example of a citation (<a href="#citeproc_bib_item_1">Grüneis et al. 2013</a>)
-</p>
-</div>
-</div>
-<div id="outline-container-org3424138" class="outline-3">
-<h3 id="org3424138"><span class="section-number-3">1.6</span> <a href="#org3424138">Literature</a></h3>
+<div id="outline-container-org489693b" class="outline-3">
+<h3 id="org489693b"><span class="section-number-3">1.6</span> <a href="#org489693b">Literature</a></h3>
 <div class="outline-text-3" id="text-1-6">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Grüneis, Andreas, James J Shepherd, Ali Alavi, David P Tew, and George H Booth. 2013. “Explicitly Correlated Plane Waves: Accelerating Convergence in Periodic Wavefunction Expansions.” <i>The Journal of Chemical Physics</i> 139 (8). AIP Publishing: 084112. <a href="http://doi.org/10.1063/1.4818753">http://doi.org/10.1063/1.4818753</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bartlett, R.J., and Monika Musiał. 2007. “Coupled-cluster theory in quantum chemistry.” <i>Rev. Mod. Phys.</i> 79 (1). American Physical Society: 291–352. doi:<a href="https://doi.org/10.1103/RevModPhys.79.291">10.1103/RevModPhys.79.291</a>.</div>
 </div>
 </div>
 </div>
