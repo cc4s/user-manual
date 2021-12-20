@@ -6,20 +6,22 @@
 
 #+caption: Input and Output keywords for CoupledCluster
 #+name: ccsd-input-table
-| Keyword                    | Default     | Description                                    |
-|----------------------------+-------------+------------------------------------------------|
-| =in.method.type=           | *Ccsd*      | Coupled cluster algorithm [[#coupled-cluster-type][Further information.]] |
-| =in.slicedEigenEnergies=   |             |                                                |
-| =in.coulombIntegrals=      |             |                                                |
-| =in.slicedCoulombVertex=   |             |                                                |
-| =in.integralsSliceSize=    |             |                                                |
-| =in.maxIterations=         | 20          |                                                |
-| =in.energyConvergence=     |             |                                                |
-| =in.amplitudesConvergence= |             |                                                |
-| =in.mixer.type=            | *DiisMixer* | Link to mixers...                              |
-|----------------------------+-------------+------------------------------------------------|
-| =out.energy=               |             |                                                |
-| =out.amplitudes=           |             |                                                |
+| Input Key               | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+| =method.type=           | *Ccsd*      | Coupled cluster algorithm [[#coupled-cluster-type][Further information.]] |
+| =slicedEigenEnergies=   |             |                                                |
+| =coulombIntegrals=      |             |                                                |
+| =slicedCoulombVertex=   |             |                                                |
+| =integralsSliceSize=    |             |                                                |
+| =maxIterations=         | 20          |                                                |
+| =energyConvergence=     |             |                                                |
+| =amplitudesConvergence= |             |                                                |
+| =mixer.type=            | *DiisMixer* | Link to mixers...                              |
+|-------------------------+-------------+------------------------------------------------|
+| Output Key              | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+| =energy=                |             |                                                |
+| =amplitudes=            |             |                                                |
 
 
 *** Type
