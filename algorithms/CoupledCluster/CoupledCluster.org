@@ -185,12 +185,14 @@ $V_{cd}^{ab}$, slices $V_{cd}^{xy}$ are computed on-the-fly and used in the cont
 the corresponding memory footprint to $\mathcal{O}(N_{\rm v}^2 N_{\rm s}^2)$, where $N_{\rm s}$ is controlled using 
 the =integralsSliceSize= keyword.
 
+We note that required storage of a set of doubles amplitudes adds substantially to the memory footprint in Ccsd calculations.
+The Diis algorithm requires the storage of both doubles residua and amplitudes =maxResidua= times. We recommend to choose the
+type of mixer and its parameters carefully to reduce the memory fottprint if necessary.
+
 ** Theory
 
-This algorithm solves the coupled-cluster amplitude equations.
-TODO: add short description and refs
+We recommend the following review article and references therein to get started with coupled-cluster theory cite:&Bartlett2007-cm .
 
-An example of a citation cite:&gruneis2013explicitly
 ** Literature
 bibliography:../../group.bib
 
