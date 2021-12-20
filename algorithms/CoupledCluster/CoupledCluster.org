@@ -2,13 +2,13 @@
 
 * CoupledCluster algorithm
 
-** Input
+** Input description
 
 #+caption: Input and Output keywords for CoupledCluster
 #+name: ccsd-input-table
 | Input Key               | Default     | Description                                    |
 |-------------------------+-------------+------------------------------------------------|
-| =method.type=           | *Ccsd*      | Coupled cluster algorithm [[#coupled-cluster-type][Further information.]] |
+| =method.type=           | =Ccsd=      | Coupled cluster algorithm [[#coupled-cluster-type][Further information.]] |
 | =slicedEigenEnergies=   |             |                                                |
 | =coulombIntegrals=      |             |                                                |
 | =slicedCoulombVertex=   |             |                                                |
@@ -16,9 +16,9 @@
 | =maxIterations=         | 20          |                                                |
 | =energyConvergence=     |             |                                                |
 | =amplitudesConvergence= |             |                                                |
-| =mixer.type=            | *DiisMixer* | Link to mixers...                              |
+| =mixer.type=            | =DiisMixer= | Link to mixers...                              |
 |-------------------------+-------------+------------------------------------------------|
-| Output Key              | Default     | Description                                    |
+| *Output Key*            | *Default*   | *Description*                                  |
 |-------------------------+-------------+------------------------------------------------|
 | =energy=                |             |                                                |
 | =amplitudes=            |             |                                                |
@@ -76,7 +76,10 @@ We recommend to set =mixer: ratio: 1.0=. Smaller ratios result in a slower but p
 ** Theory
 
 This algorithm solves the coupled-cluster amplitude equations.
-TODO: add short description and refs
+TODO: add short description and refs.
+
+An example of a citation cite:&gruneis2013explicitly
+
 
 ** Computational Complexity and memory footprint
 
@@ -144,3 +147,6 @@ Ccsd correlation energy:          -151.9981733061
 2nd-order correlation energy:     -151.9959332292
 realtime 3463.773373
 #+end_src
+
+** Literature
+bibliography:../../group.bib
