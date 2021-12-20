@@ -14,10 +14,11 @@ TANGLING_FILES_CACHE = $(patsubst %,$(TANGLING_FILES_DIR)/%,$(TANGLING_FILES))
 $(TANGLING_FILES_DIR)/%: %
 	mkdir -p $(@D)
 	$(EMACS) $< -f org-babel-tangle && touch $@
-tangle: $(TANGLING_FILES_CACHE)
 
 publish: $(ORGFILES) tangle
 	$(EMACS) --load config/site.el $(INDEX) -f cc4s/publish-site
+
+tangle: $(TANGLING_FILES_CACHE)
 
 refresh:
 	$(EMACS) --load config/site.el $(INDEX) -f package-refresh-contents
