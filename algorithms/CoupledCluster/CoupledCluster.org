@@ -6,20 +6,20 @@
 
 #+caption: Input and Output keywords for CoupledCluster
 #+name: ccsd-input-table
-| Keyword                  | Default   | Description                                    |
-|--------------------------+-----------+------------------------------------------------|
-| in.method.type  Ccsd     |           | Coupled cluster algorithm [[#coupled-cluster-type][Further information.]] |
-| in.slicedEigenEnergies   |           |                                                |
-| in.coulombIntegrals      |           |                                                |
-| in.slicedCoulombVertex   |           |                                                |
-| in.integralsSliceSize    |           |                                                |
-| in.maxIterations         |           |                                                |
-| in.energyConvergence     |           |                                                |
-| in.amplitudesConvergence |           |                                                |
-| in.mixer.type            | DiisMixer | Link to mixers...                              |
-|--------------------------+-----------+------------------------------------------------|
-| out.energy               |           |                                                |
-| out.amplitudes           |           |                                                |
+| Keyword                    | Default     | Description                                    |
+|----------------------------+-------------+------------------------------------------------|
+| =in.method.type=           | *Ccsd*      | Coupled cluster algorithm [[#coupled-cluster-type][Further information.]] |
+| =in.slicedEigenEnergies=   |             |                                                |
+| =in.coulombIntegrals=      |             |                                                |
+| =in.slicedCoulombVertex=   |             |                                                |
+| =in.integralsSliceSize=    |             |                                                |
+| =in.maxIterations=         | 20          |                                                |
+| =in.energyConvergence=     |             |                                                |
+| =in.amplitudesConvergence= |             |                                                |
+| =in.mixer.type=            | *DiisMixer* | Link to mixers...                              |
+|----------------------------+-------------+------------------------------------------------|
+| =out.energy=               |             |                                                |
+| =out.amplitudes=           |             |                                                |
 
 
 *** Type
