@@ -1,14 +1,18 @@
 (setq package-enable-at-startup nil)
 (require 'subr-x)
-(defconst *cc4s-start-time* (current-time))
+(defconst +cc4s-start-time+ (current-time))
 (defmacro cc4s-log (fmt &rest args)
-  `(let ((elapsed (time-to-seconds (time-since *cc4s-start-time*))))
+  `(let ((elapsed (time-to-seconds (time-since +cc4s-start-time+))))
      (message ,(concat "%d "
                        "\x1b[35m∷CC4S» "
                        fmt
                        "\x1b[0m")
               elapsed ,@args)))
 (defun !!done () (cc4s-log "\t✓ done"))
+(defmacro use-package! (name &rest body)
+  `(progn
+     (cc4s-log "\t→ %s" ',name)
+     (use-package ,name ,@body)))
 
 (defvar cc4s-root-directory (expand-file-name
                              (format "%s../"
@@ -38,17 +42,15 @@
 
 
 
-(cc4s-log "Setting up use-package")
+(cc4s-log "\t- get use-package")
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-(cc4s-log "Requiring use-package")
+(cc4s-log "\t\t-Requiring use-package")
 (eval-when-compile
   (require 'use-package))
 
-(cc4s-log "requiring org")
-(use-package org
+(use-package! org
     :ensure t
     :config
     (setq org-src-fontify-natively t
@@ -58,14 +60,12 @@
 (require 'org)
 
 
-(cc4s-log "htmlize")
-(use-package htmlize
+(use-package! htmlize
   :defer t
   :ensure t)
 
-(cc4s-log "loading org-ref and citeproc")
-(use-package citeproc :defer t :ensure t)
-(use-package org-ref
+(use-package! citeproc :defer t :ensure t)
+(use-package! org-ref
     :defer t
     :ensure t
     :config
@@ -73,13 +73,11 @@
           (list (format "%s/%s" cc4s-root-directory "group.bib")))
     (cc4s-log "Bib files: %s" bibtex-completion-bibliography))
 
-(cc4s-log "yaml-mode")
-(use-package yaml-mode
+(use-package! yaml-mode
   :defer t
   :ensure t)
 
-(cc4s-log "maybe org-contrib")
-(use-package org-plus-contrib
+(use-package! org-plus-contrib
   :defer t
   :ensure nil)
 
