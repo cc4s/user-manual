@@ -77,6 +77,31 @@ the converged singles and doubles amplitude tensors. The amplitudes can be used 
 that estimate the finite simulation cell size error (=TransitionStructureFactorFiniteSizeCorrection=)
 and the basis set incompleteness errors (=CcsdFocalPointBasisSetCorrection=).
 
+Below an example standard output stream is shown for a successful CoupledCluster algorithm run.
+#+begin_src sh
+step: 9, CoupledCluster
+Using method Ccsd. integralsSliceSize: 96
+Using mixer DiisMixer. maxResidua: 5
+Maximum number of iterations: 30
+Unless reaching energy convergence dE: 0.0001
+and amplitudes convergence dR: 0.0001
+Iter         Energy         dE           dR         time   GF/s/core
+   1  -1.51995933e+02  -1.5200e+02   1.0108e+00     32.6    5.6
+   2  -1.48908010e+02   3.0879e+00   1.8077e-01    381.6    9.3
+   3  -1.51620340e+02  -2.7123e+00   3.8331e-02    381.7    9.3
+   4  -1.52039881e+02  -4.1954e-01   1.2254e-02    380.1    9.3
+   5  -1.52001191e+02   3.8690e-02   2.6566e-03    381.7    9.3
+   6  -1.51996162e+02   5.0293e-03   9.0534e-04    381.3    9.3
+   7  -1.51998504e+02  -2.3416e-03   2.6783e-04    382.1    9.3
+   8  -1.51997751e+02   7.5305e-04   8.5906e-05    383.2    9.2
+   9  -1.51998116e+02  -3.6568e-04   2.4672e-05    380.0    9.3
+  10  -1.51998173e+02  -5.7065e-05   9.5722e-06    376.6    9.4
+
+Ccsd correlation energy:          -151.9981733061
+2nd-order correlation energy:     -151.9959332292
+realtime 3463.773373
+#+end_src
+
 ** Theory
 
 This algorithm solves the coupled-cluster amplitude equations.
@@ -84,7 +109,7 @@ TODO: add short description and refs
 
 ** Computational Complexity and memory footprint
 
-*** =method: type: Ccsd= algorithm
+*** =method: type: Ccsd=
 The computational bottle neck of the =Ccsd= algorithm originates in most calculations from the following expression, which is
 part of the doubles amplitude equations: $V_{cd}^{ab} t_{ij}^{cd}$. The computational cost of evaluating this expression scales
 as $\mathcal{O}(N_{\rm o}^2 N_{\rm v}^4)$. To avoid a memory footprint of $\mathcal{O}(N_{\rm v}^4)$ from storing
@@ -92,5 +117,3 @@ $V_{cd}^{ab}$, only slices of $V_{cd}^{xy}$ are computed on-the-fly and used in 
 the corresponding memory footprint to $\mathcal{O}(N_{\rm v}^2 N_{\rm s}^2)$, where $N_{\rm s}$ is controlled using 
 the =integralsSliceSize= keyword.
 
-*** =method: type: Drccd= algorithm
-TODO: add short info about Drccd

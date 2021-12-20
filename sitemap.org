@@ -4,6 +4,8 @@
 - [[file:how-to-write.org][How To Write]]
 - algorithms
   - [[file:algorithms/algorithms.org][Algorithms in CC4S]]
+  - CoupledCluster
+    - [[file:algorithms/CoupledCluster/CoupledCluster.org][CoupledCluster]]
 - gettingstarted
   - [[file:gettingstarted/gettingstarted.org][Quick Start]]
 - input
