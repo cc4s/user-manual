@@ -2,12 +2,14 @@
 
 * Engine
 ** Introduction
-This manual is written using the
-[[https://orgmode.org][=org-mode= markup language]].
+This manual is written using the [[https://orgmode.org][=org-mode= markup language]].
 
 You can find some cheatsheets for org's markup you can checkout
 - https://orgmode.org/quickstart.html
 - http://xahlee.info/emacs/emacs/emacs_org_markup.html
+
+Additionally, org-mode's manual is found [[https://orgmode.org/manual/][here]]
+and a *compact guide* is found [[https://orgmode.org/guide/index.html][here]].
 
 Please notice that for this manual to build you will need
 a recent version of emacs, at least newer than *Emacs 27*.
@@ -67,6 +69,46 @@ and you can also use equations
 \hat{H} \psi = E \psi
 \end{equation}
 and references work too \ref{eqseq}.
+
+** Links
+org-mode has several types of links.
+
+The equivalent to tex's
+#+begin_src tex
+\section{My section}
+\label{sec-my-section}
+
+My section~\ref{sec-my-section}
+#+end_src
+
+is
+
+#+begin_example
+,* My section
+:PROPERTIES:
+:CUSTOM_ID: sec-my-section
+:END:
+
+My section [[#sec-my-section]]
+# or using org-ref's syntax
+My section [[ref:sec-my-section]]
+#+end_example
+
+
+Checkout some other example in the
+[[https://orgmode.org/guide/Hyperlinks.html#Hyperlinks][Hyperlinks (Org Mode Compact Guide)]] page.
+
+Some important examples for us are
+
+#+begin_example
+[[file:algorithms/CoupledCluster/CoupledCluster.org::#maxiterations][maxIterations keyword]]
+#+end_example
+
+which links the heading =maxiterations= in the file =CoupledCluster/CoupledCluster.org=
+and gets rendered as [[file:algorithms/CoupledCluster/CoupledCluster.org::#maxiterations][maxIterations keyword]].
+
+
+
 
 ** Bibliography
 
