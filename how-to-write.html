@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-20 Mon 20:22 -->
+<!-- 2021-12-20 Mon 22:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How To Write</title>
@@ -296,38 +296,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4e539cf">1. Engine</a>
+<li><a href="#org1b9f6b8">1. Engine</a>
 <ul>
-<li><a href="#org9e41bc3">1.1. Introduction</a>
+<li><a href="#org42229e3">1.1. Introduction</a>
 <ul>
-<li><a href="#org32b798d">1.1.1. Installing a minimal emacs version locally</a></li>
+<li><a href="#org658a09b">1.1.1. Installing a minimal emacs version locally</a></li>
 </ul>
 </li>
-<li><a href="#org05d6f51">1.2. Math</a></li>
-<li><a href="#org00459ad">1.3. Bibliography</a>
+<li><a href="#orgf5c3288">1.2. Math</a></li>
+<li><a href="#org1c870c9">1.3. Links</a></li>
+<li><a href="#orgf82f488">1.4. Bibliography</a>
 <ul>
-<li><a href="#org5f705d3">1.3.1. Literature</a></li>
-<li><a href="#org2783975">1.3.2. More information</a></li>
+<li><a href="#org64ce8b1">1.4.1. Literature</a></li>
+<li><a href="#org42690a7">1.4.2. More information</a></li>
 </ul>
 </li>
-<li><a href="#org5988420">1.4. Src blocks</a></li>
+<li><a href="#org38600a8">1.5. Src blocks</a></li>
 </ul>
 </li>
-<li><a href="#orge237673">2. Test locally</a></li>
+<li><a href="#orgaace15b">2. Test locally</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4e539cf" class="outline-2">
-<h2 id="org4e539cf"><span class="section-number-2">1</span> <a href="#org4e539cf">Engine</a></h2>
+<div id="outline-container-org1b9f6b8" class="outline-2">
+<h2 id="org1b9f6b8"><span class="section-number-2">1</span> <a href="#org1b9f6b8">Engine</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org9e41bc3" class="outline-3">
-<h3 id="org9e41bc3"><span class="section-number-3">1.1</span> <a href="#org9e41bc3">Introduction</a></h3>
+<div id="outline-container-org42229e3" class="outline-3">
+<h3 id="org42229e3"><span class="section-number-3">1.1</span> <a href="#org42229e3">Introduction</a></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-This manual is written using the
-<a href="https://orgmode.org"><code>org-mode</code> markup language</a>.
+This manual is written using the <a href="https://orgmode.org"><code>org-mode</code> markup language</a>.
 </p>
 
 <p>
@@ -339,6 +339,11 @@ You can find some cheatsheets for org's markup you can checkout
 </ul>
 
 <p>
+Additionally, org-mode's manual is found <a href="https://orgmode.org/manual/">here</a>
+and a <b>compact guide</b> is found <a href="https://orgmode.org/guide/index.html">here</a>.
+</p>
+
+<p>
 Please notice that for this manual to build you will need
 a recent version of emacs, at least newer than <b>Emacs 27</b>.
 You probably can install it from <a href="https://snapcraft.io/emacs">the snapstore</a> if you are using
@@ -346,8 +351,8 @@ a supported distribution.
 </p>
 </div>
 
-<div id="outline-container-org32b798d" class="outline-4">
-<h4 id="org32b798d"><span class="section-number-4">1.1.1</span> <a href="#org32b798d">Installing a minimal emacs version locally</a></h4>
+<div id="outline-container-org658a09b" class="outline-4">
+<h4 id="org658a09b"><span class="section-number-4">1.1.1</span> <a href="#org658a09b">Installing a minimal emacs version locally</a></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 In case you are having some problems installing emacs
@@ -401,8 +406,8 @@ You can use this emacs binary by writing a <code>config.mk</code> file with the 
 
 
 
-<div id="outline-container-org05d6f51" class="outline-3">
-<h3 id="org05d6f51"><span class="section-number-3">1.2</span> <a href="#org05d6f51">Math</a></h3>
+<div id="outline-container-orgf5c3288" class="outline-3">
+<h3 id="orgf5c3288"><span class="section-number-3">1.2</span> <a href="#orgf5c3288">Math</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Just use latex as if you were in latex
@@ -420,9 +425,66 @@ and references work too \ref{eqseq}.
 </div>
 </div>
 
-<div id="outline-container-org00459ad" class="outline-3">
-<h3 id="org00459ad"><span class="section-number-3">1.3</span> <a href="#org00459ad">Bibliography</a></h3>
+<div id="outline-container-org1c870c9" class="outline-3">
+<h3 id="org1c870c9"><span class="section-number-3">1.3</span> <a href="#org1c870c9">Links</a></h3>
 <div class="outline-text-3" id="text-1-3">
+<p>
+org-mode has several types of links.
+</p>
+
+<p>
+The equivalent to tex's
+</p>
+<div class="org-src-container">
+<pre class="src src-tex"><span style="color: #a626a4;">\section</span>{<span style="color: #0184bc;">My section</span>}
+<span style="color: #a626a4;">\label</span>{<span style="font-weight: bold; text-decoration: underline;">sec-my-section</span>}
+
+My section~<span style="color: #a626a4;">\ref</span>{<span style="font-weight: bold; text-decoration: underline;">sec-my-section</span>}
+</pre>
+</div>
+
+<p>
+is
+</p>
+
+<pre class="example" id="org6d84e87">
+* My section
+:PROPERTIES:
+:CUSTOM_ID: sec-my-section
+:END:
+
+My section [[#sec-my-section]]
+# or using org-ref's syntax
+My section [[ref:sec-my-section]]
+</pre>
+
+
+<p>
+Checkout some other example in the
+<a href="https://orgmode.org/guide/Hyperlinks.html#Hyperlinks">Hyperlinks (Org Mode Compact Guide)</a> page.
+</p>
+
+<p>
+Some important examples for us are
+</p>
+
+<pre class="example" id="org10a2a5e">
+[[file:algorithms/CoupledCluster/CoupledCluster.org::#maxiterations][maxIterations keyword]]
+</pre>
+
+<p>
+which links the heading <code>maxiterations</code> in the file <code>CoupledCluster/CoupledCluster.org</code>
+and gets rendered as <a href="algorithms/CoupledCluster/CoupledCluster.html#maxiterations">maxIterations keyword</a>.
+</p>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgf82f488" class="outline-3">
+<h3 id="orgf82f488"><span class="section-number-3">1.4</span> <a href="#orgf82f488">Bibliography</a></h3>
+<div class="outline-text-3" id="text-1-4">
 <p>
 In order to use a bibtex file in a page,
 you have to add it with the
@@ -444,9 +506,9 @@ and add citations like <code>cite:&amp;yourcite</code>, for instance
 Here an example of the rendered bibliography of the citations made up here.
 </p>
 </div>
-<div id="outline-container-org5f705d3" class="outline-4">
-<h4 id="org5f705d3"><span class="section-number-4">1.3.1</span> <a href="#org5f705d3">Literature</a></h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-org64ce8b1" class="outline-4">
+<h4 id="org64ce8b1"><span class="section-number-4">1.4.1</span> <a href="#org64ce8b1">Literature</a></h4>
+<div class="outline-text-4" id="text-1-4-1">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Al-Hamdani, Yasmine S, Mariana Rossi, Dario Alfe, Theodoros Tsatsoulis, Benjamin Ramberger, J Gerit Brandenburg, Andrea Zen, et al. 2017. “Properties of the Water to Boron Nitride Interaction: From Zero to Two Dimensions with Benchmark Accuracy.” <i>The Journal of Chemical Physics</i> 147 (4): 044710. <a href="http://doi.org/10.1063/1.4985878">http://doi.org/10.1063/1.4985878</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Grüneis, Andreas, So Hirata, Yu-ya Ohnishi, and Seiichiro Ten-no. 2017. “Perspective: Explicitly Correlated Electronic Structure Theory for Complex Systems.” <i>The Journal of Chemical Physics</i> 146 (8). AIP Publishing: 080901. <a href="http://doi.org/10.1063/1.4976974">http://doi.org/10.1063/1.4976974</a>.</div>
@@ -454,9 +516,9 @@ Here an example of the rendered bibliography of the citations made up here.
 </div>
 </div>
 
-<div id="outline-container-org2783975" class="outline-4">
-<h4 id="org2783975"><span class="section-number-4">1.3.2</span> <a href="#org2783975">More information</a></h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-org42690a7" class="outline-4">
+<h4 id="org42690a7"><span class="section-number-4">1.4.2</span> <a href="#org42690a7">More information</a></h4>
+<div class="outline-text-4" id="text-1-4-2">
 <p>
 You can find more information in videos like <a href="https://www.youtube.com/watch?v=3u6eTSzHT6s">this</a> by the
 <a href="https://github.com/jkitchin/org-ref">org-ref</a> author.
@@ -466,9 +528,9 @@ You can find more information in videos like <a href="https://www.youtube.com/wa
 </div>
 
 
-<div id="outline-container-org5988420" class="outline-3">
-<h3 id="org5988420"><span class="section-number-3">1.4</span> <a href="#org5988420">Src blocks</a></h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org38600a8" class="outline-3">
+<h3 id="org38600a8"><span class="section-number-3">1.5</span> <a href="#org38600a8">Src blocks</a></h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 If you want to write some code blocks, the equivalent of markdown's
 </p>
@@ -504,8 +566,8 @@ and it renders like:
 </div>
 
 
-<div id="outline-container-orge237673" class="outline-2">
-<h2 id="orge237673"><span class="section-number-2">2</span> <a href="#orge237673">Test locally</a></h2>
+<div id="outline-container-orgaace15b" class="outline-2">
+<h2 id="orgaace15b"><span class="section-number-2">2</span> <a href="#orgaace15b">Test locally</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 To build locally just make
@@ -541,7 +603,7 @@ periodically and refreshing your browser.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-20 Mon 20:22</p>
+<p class="date">Created: 2021-12-20 Mon 22:23</p>
 </div>
 </body>
 </html>
