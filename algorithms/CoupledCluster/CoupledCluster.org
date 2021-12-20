@@ -135,7 +135,6 @@ The =LinearMixer= exhibits the smallest possible memory footprint from all curre
 keeping two sets of amplitudes in memory at once only.
 We recommend to set =mixer: ratio: 1.0=. Smaller ratios result in a slower but perhaps more stable convergence.
 
-
 ** Output
 
 #+caption: Output keywords for CoupledCluster
@@ -176,8 +175,6 @@ Ccsd correlation energy:          -151.9981733061
 realtime 3463.773373
 #+end_src
 
-
-
 ** Computational Complexity and memory footprint
 
 *** =Ccsd method=
@@ -193,5 +190,8 @@ the =integralsSliceSize= keyword.
 This algorithm solves the coupled-cluster amplitude equations.
 TODO: add short description and refs
 
+An example of a citation cite:&gruneis2013explicitly
+** Literature
+bibliography:../../group.bib
 
 

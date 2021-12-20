@@ -51,6 +51,9 @@
 (use-package org
     :ensure t
     :config
+    (setq org-src-fontify-natively t
+          org-src-preserve-indentation t
+          org-src-tab-acts-natively t)
     (setq org-confirm-babel-evaluate nil))
 (require 'org)
 
@@ -75,14 +78,10 @@
   :defer t
   :ensure t)
 
-(cc4s-log "up org-contrib")
+(cc4s-log "maybe org-contrib")
 (use-package org-plus-contrib
   :defer t
-  :ensure t
-  :config
-  (setq org-src-fontify-natively t
-        org-src-preserve-indentation t
-        org-src-tab-acts-natively t))
+  :ensure nil)
 
 (cc4s-log "loading theme..")
 (load-theme 'tsdh-light)
