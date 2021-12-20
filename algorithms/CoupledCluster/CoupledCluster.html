@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-20 Mon 15:49 -->
+<!-- 2021-12-20 Mon 15:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoupledCluster</title>
@@ -296,24 +296,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4b7b9f8">1. CoupledCluster algorithm</a>
+<li><a href="#org399617a">1. CoupledCluster algorithm</a>
 <ul>
-<li><a href="#org09d5bb6">1.1. Input</a>
+<li><a href="#org176af13">1.1. Input</a>
 <ul>
 <li><a href="#coupled-cluster-type">1.1.1. Type</a></li>
-<li><a href="#orgfeb48a5">1.1.2. slicedEigenEnergies</a></li>
+<li><a href="#orgc8e0970">1.1.2. slicedEigenEnergies</a></li>
 </ul>
 </li>
-<li><a href="#org23e3bf9">1.2. Theory</a></li>
-<li><a href="#orgdd4c3be">1.3. Computational Complexity and memory footprint</a>
+<li><a href="#orgd9cc3c9">1.2. Theory</a></li>
+<li><a href="#org280db9c">1.3. Computational Complexity and memory footprint</a>
 <ul>
-<li><a href="#org7c2b44e">1.3.1. <code>method: type: Ccsd</code></a></li>
+<li><a href="#org3057770">1.3.1. <code>method: type: Ccsd</code></a></li>
 </ul>
 </li>
-<li><a href="#org116ecb6">1.4. Example</a>
+<li><a href="#orga6a1f87">1.4. Example</a>
 <ul>
-<li><a href="#orgf36ca6d">1.4.1. Input</a></li>
-<li><a href="#orgf5ef4f3">1.4.2. Output</a></li>
+<li><a href="#org21656d7">1.4.1. Input</a></li>
+<li><a href="#orgeb84dfb">1.4.2. Output</a></li>
 </ul>
 </li>
 </ul>
@@ -322,14 +322,14 @@
 </div>
 </div>
 
-<div id="outline-container-org4b7b9f8" class="outline-2">
-<h2 id="org4b7b9f8"><span class="section-number-2">1</span> <a href="#org4b7b9f8">CoupledCluster algorithm</a></h2>
+<div id="outline-container-org399617a" class="outline-2">
+<h2 id="org399617a"><span class="section-number-2">1</span> <a href="#org399617a">CoupledCluster algorithm</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org09d5bb6" class="outline-3">
-<h3 id="org09d5bb6"><span class="section-number-3">1.1</span> <a href="#org09d5bb6">Input</a></h3>
+<div id="outline-container-org176af13" class="outline-3">
+<h3 id="org176af13"><span class="section-number-3">1.1</span> <a href="#org176af13">Input</a></h3>
 <div class="outline-text-3" id="text-1-1">
-<table id="org28ec0a7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org45106f7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input and Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -348,68 +348,68 @@
 </thead>
 <tbody>
 <tr>
-<td class="org-left">in.method.type  Ccsd</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left"><code>in.method.type</code></td>
+<td class="org-left"><b>Ccsd</b></td>
 <td class="org-left">Coupled cluster algorithm <a href="#coupled-cluster-type">Further information.</a></td>
 </tr>
 
 <tr>
-<td class="org-left">in.slicedEigenEnergies</td>
+<td class="org-left"><code>in.slicedEigenEnergies</code></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">in.coulombIntegrals</td>
+<td class="org-left"><code>in.coulombIntegrals</code></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">in.slicedCoulombVertex</td>
+<td class="org-left"><code>in.slicedCoulombVertex</code></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">in.integralsSliceSize</td>
+<td class="org-left"><code>in.integralsSliceSize</code></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">in.maxIterations</td>
+<td class="org-left"><code>in.maxIterations</code></td>
+<td class="org-left">20</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>in.energyConvergence</code></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">in.energyConvergence</td>
+<td class="org-left"><code>in.amplitudesConvergence</code></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">in.amplitudesConvergence</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">in.mixer.type</td>
-<td class="org-left">DiisMixer</td>
+<td class="org-left"><code>in.mixer.type</code></td>
+<td class="org-left"><b>DiisMixer</b></td>
 <td class="org-left">Link to mixers&#x2026;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">out.energy</td>
+<td class="org-left"><code>out.energy</code></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">out.amplitudes</td>
+<td class="org-left"><code>out.amplitudes</code></td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 </tr>
@@ -428,8 +428,8 @@ The <code>Ccsd</code> or <code>Drccd</code> approximation are currently avaible.
 </div>
 </div>
 
-<div id="outline-container-orgfeb48a5" class="outline-4">
-<h4 id="orgfeb48a5"><span class="section-number-4">1.1.2</span> <a href="#orgfeb48a5">slicedEigenEnergies</a></h4>
+<div id="outline-container-orgc8e0970" class="outline-4">
+<h4 id="orgc8e0970"><span class="section-number-4">1.1.2</span> <a href="#orgc8e0970">slicedEigenEnergies</a></h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 <code>slicedEigenEnergies</code>, <code>coulombIntegrals</code> and <code>slicedCoulombVertex</code> require input tensors
@@ -488,8 +488,8 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 </div>
 </div>
 
-<div id="outline-container-org23e3bf9" class="outline-3">
-<h3 id="org23e3bf9"><span class="section-number-3">1.2</span> <a href="#org23e3bf9">Theory</a></h3>
+<div id="outline-container-orgd9cc3c9" class="outline-3">
+<h3 id="orgd9cc3c9"><span class="section-number-3">1.2</span> <a href="#orgd9cc3c9">Theory</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 This algorithm solves the coupled-cluster amplitude equations.
@@ -498,12 +498,12 @@ TODO: add short description and refs
 </div>
 </div>
 
-<div id="outline-container-orgdd4c3be" class="outline-3">
-<h3 id="orgdd4c3be"><span class="section-number-3">1.3</span> <a href="#orgdd4c3be">Computational Complexity and memory footprint</a></h3>
+<div id="outline-container-org280db9c" class="outline-3">
+<h3 id="org280db9c"><span class="section-number-3">1.3</span> <a href="#org280db9c">Computational Complexity and memory footprint</a></h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org7c2b44e" class="outline-4">
-<h4 id="org7c2b44e"><span class="section-number-4">1.3.1</span> <a href="#org7c2b44e"><code>method: type: Ccsd</code></a></h4>
+<div id="outline-container-org3057770" class="outline-4">
+<h4 id="org3057770"><span class="section-number-4">1.3.1</span> <a href="#org3057770"><code>method: type: Ccsd</code></a></h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 The computational bottle neck of the <code>Ccsd</code> algorithm originates in most calculations from the following expression, which is
@@ -518,12 +518,12 @@ the <code>integralsSliceSize</code> keyword.
 </div>
 
 
-<div id="outline-container-org116ecb6" class="outline-3">
-<h3 id="org116ecb6"><span class="section-number-3">1.4</span> <a href="#org116ecb6">Example</a></h3>
+<div id="outline-container-orga6a1f87" class="outline-3">
+<h3 id="orga6a1f87"><span class="section-number-3">1.4</span> <a href="#orga6a1f87">Example</a></h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-orgf36ca6d" class="outline-4">
-<h4 id="orgf36ca6d"><span class="section-number-4">1.4.1</span> <a href="#orgf36ca6d">Input</a></h4>
+<div id="outline-container-org21656d7" class="outline-4">
+<h4 id="org21656d7"><span class="section-number-4">1.4.1</span> <a href="#org21656d7">Input</a></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 A typical input to call the CoupledCluster algorithm is given below.
@@ -552,8 +552,8 @@ A typical input to call the CoupledCluster algorithm is given below.
 </div>
 </div>
 
-<div id="outline-container-orgf5ef4f3" class="outline-4">
-<h4 id="orgf5ef4f3"><span class="section-number-4">1.4.2</span> <a href="#orgf5ef4f3">Output</a></h4>
+<div id="outline-container-orgeb84dfb" class="outline-4">
+<h4 id="orgeb84dfb"><span class="section-number-4">1.4.2</span> <a href="#orgeb84dfb">Output</a></h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 The output of the CoupledCluster algorithm includes <code>energy:</code> and <code>amplitudes:</code> . The <code>amplitudes</code> output contains
@@ -595,7 +595,7 @@ realtime 3463.773373
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-20 Mon 15:49</p>
+<p class="date">Created: 2021-12-20 Mon 15:55</p>
 </div>
 </body>
 </html>
