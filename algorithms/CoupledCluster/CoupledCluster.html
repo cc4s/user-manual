@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-20 Mon 16:12 -->
+<!-- 2021-12-20 Mon 17:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoupledCluster</title>
@@ -296,40 +296,41 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4b932c0">1. CoupledCluster algorithm</a>
+<li><a href="#orgaed776c">1. CoupledCluster algorithm</a>
 <ul>
-<li><a href="#org2eb121d">1.1. Input</a>
+<li><a href="#org9dc43f8">1.1. Input description</a>
 <ul>
 <li><a href="#coupled-cluster-type">1.1.1. Type</a></li>
-<li><a href="#org5f805a7">1.1.2. slicedEigenEnergies</a></li>
+<li><a href="#org65a1a79">1.1.2. slicedEigenEnergies</a></li>
 </ul>
 </li>
-<li><a href="#orgf6c5113">1.2. Theory</a></li>
-<li><a href="#org6118f0e">1.3. Computational Complexity and memory footprint</a>
+<li><a href="#org8462101">1.2. Theory</a></li>
+<li><a href="#orgcc17510">1.3. Computational Complexity and memory footprint</a>
 <ul>
-<li><a href="#orgd736399">1.3.1. <code>method: type: Ccsd</code></a></li>
+<li><a href="#orgad0f153">1.3.1. <code>method: type: Ccsd</code></a></li>
 </ul>
 </li>
-<li><a href="#org3217a66">1.4. Example</a>
+<li><a href="#org07702c2">1.4. Example</a>
 <ul>
-<li><a href="#org0c3ad97">1.4.1. Input</a></li>
-<li><a href="#org6a5c0a7">1.4.2. Output</a></li>
+<li><a href="#org00cbd98">1.4.1. Input</a></li>
+<li><a href="#org2770267">1.4.2. Output</a></li>
 </ul>
 </li>
+<li><a href="#orgafcae75">1.5. Literature</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4b932c0" class="outline-2">
-<h2 id="org4b932c0"><span class="section-number-2">1</span> <a href="#org4b932c0">CoupledCluster algorithm</a></h2>
+<div id="outline-container-orgaed776c" class="outline-2">
+<h2 id="orgaed776c"><span class="section-number-2">1</span> <a href="#orgaed776c">CoupledCluster algorithm</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org2eb121d" class="outline-3">
-<h3 id="org2eb121d"><span class="section-number-3">1.1</span> <a href="#org2eb121d">Input</a></h3>
+<div id="outline-container-org9dc43f8" class="outline-3">
+<h3 id="org9dc43f8"><span class="section-number-3">1.1</span> <a href="#org9dc43f8">Input description</a></h3>
 <div class="outline-text-3" id="text-1-1">
-<table id="org86e1abb" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org74e8e53" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input and Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -349,7 +350,7 @@
 <tbody>
 <tr>
 <td class="org-left"><code>method.type</code></td>
-<td class="org-left"><b>Ccsd</b></td>
+<td class="org-left"><code>Ccsd</code></td>
 <td class="org-left">Coupled cluster algorithm <a href="#coupled-cluster-type">Further information.</a></td>
 </tr>
 
@@ -397,15 +398,15 @@
 
 <tr>
 <td class="org-left"><code>mixer.type</code></td>
-<td class="org-left"><b>DiisMixer</b></td>
+<td class="org-left"><code>DiisMixer</code></td>
 <td class="org-left">Link to mixers&#x2026;</td>
 </tr>
 </tbody>
 <tbody>
 <tr>
-<td class="org-left">Output Key</td>
-<td class="org-left">Default</td>
-<td class="org-left">Description</td>
+<td class="org-left"><b>Output Key</b></td>
+<td class="org-left"><b>Default</b></td>
+<td class="org-left"><b>Description</b></td>
 </tr>
 </tbody>
 <tbody>
@@ -435,8 +436,8 @@ The <code>Ccsd</code> or <code>Drccd</code> approximation are currently avaible.
 </div>
 </div>
 
-<div id="outline-container-org5f805a7" class="outline-4">
-<h4 id="org5f805a7"><span class="section-number-4">1.1.2</span> <a href="#org5f805a7">slicedEigenEnergies</a></h4>
+<div id="outline-container-org65a1a79" class="outline-4">
+<h4 id="org65a1a79"><span class="section-number-4">1.1.2</span> <a href="#org65a1a79">slicedEigenEnergies</a></h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 <code>slicedEigenEnergies</code>, <code>coulombIntegrals</code> and <code>slicedCoulombVertex</code> require input tensors
@@ -495,22 +496,27 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 </div>
 </div>
 
-<div id="outline-container-orgf6c5113" class="outline-3">
-<h3 id="orgf6c5113"><span class="section-number-3">1.2</span> <a href="#orgf6c5113">Theory</a></h3>
+<div id="outline-container-org8462101" class="outline-3">
+<h3 id="org8462101"><span class="section-number-3">1.2</span> <a href="#org8462101">Theory</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 This algorithm solves the coupled-cluster amplitude equations.
-TODO: add short description and refs
+TODO: add short description and refs.
+</p>
+
+<p>
+An example of a citation (<a href="#citeproc_bib_item_1">Grüneis et al. 2013</a>)
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6118f0e" class="outline-3">
-<h3 id="org6118f0e"><span class="section-number-3">1.3</span> <a href="#org6118f0e">Computational Complexity and memory footprint</a></h3>
+
+<div id="outline-container-orgcc17510" class="outline-3">
+<h3 id="orgcc17510"><span class="section-number-3">1.3</span> <a href="#orgcc17510">Computational Complexity and memory footprint</a></h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-orgd736399" class="outline-4">
-<h4 id="orgd736399"><span class="section-number-4">1.3.1</span> <a href="#orgd736399"><code>method: type: Ccsd</code></a></h4>
+<div id="outline-container-orgad0f153" class="outline-4">
+<h4 id="orgad0f153"><span class="section-number-4">1.3.1</span> <a href="#orgad0f153"><code>method: type: Ccsd</code></a></h4>
 <div class="outline-text-4" id="text-1-3-1">
 <p>
 The computational bottle neck of the <code>Ccsd</code> algorithm originates in most calculations from the following expression, which is
@@ -525,12 +531,12 @@ the <code>integralsSliceSize</code> keyword.
 </div>
 
 
-<div id="outline-container-org3217a66" class="outline-3">
-<h3 id="org3217a66"><span class="section-number-3">1.4</span> <a href="#org3217a66">Example</a></h3>
+<div id="outline-container-org07702c2" class="outline-3">
+<h3 id="org07702c2"><span class="section-number-3">1.4</span> <a href="#org07702c2">Example</a></h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org0c3ad97" class="outline-4">
-<h4 id="org0c3ad97"><span class="section-number-4">1.4.1</span> <a href="#org0c3ad97">Input</a></h4>
+<div id="outline-container-org00cbd98" class="outline-4">
+<h4 id="org00cbd98"><span class="section-number-4">1.4.1</span> <a href="#org00cbd98">Input</a></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 A typical input to call the CoupledCluster algorithm is given below.
@@ -559,8 +565,8 @@ A typical input to call the CoupledCluster algorithm is given below.
 </div>
 </div>
 
-<div id="outline-container-org6a5c0a7" class="outline-4">
-<h4 id="org6a5c0a7"><span class="section-number-4">1.4.2</span> <a href="#org6a5c0a7">Output</a></h4>
+<div id="outline-container-org2770267" class="outline-4">
+<h4 id="org2770267"><span class="section-number-4">1.4.2</span> <a href="#org2770267">Output</a></h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 The output of the CoupledCluster algorithm includes <code>energy:</code> and <code>amplitudes:</code> . The <code>amplitudes</code> output contains
@@ -599,10 +605,19 @@ realtime 3463.773373
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgafcae75" class="outline-3">
+<h3 id="orgafcae75"><span class="section-number-3">1.5</span> <a href="#orgafcae75">Literature</a></h3>
+<div class="outline-text-3" id="text-1-5">
+<div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Grüneis, Andreas, James J Shepherd, Ali Alavi, David P Tew, and George H Booth. 2013. “Explicitly Correlated Plane Waves: Accelerating Convergence in Periodic Wavefunction Expansions.” <i>The Journal of Chemical Physics</i> 139 (8). AIP Publishing: 084112. <a href="http://doi.org/10.1063/1.4818753">http://doi.org/10.1063/1.4818753</a>.</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-20 Mon 16:12</p>
+<p class="date">Created: 2021-12-20 Mon 17:02</p>
 </div>
 </body>
 </html>
