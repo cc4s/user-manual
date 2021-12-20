@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-18 Sat 11:28 -->
+<!-- 2021-12-20 Mon 15:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoupledCluster</title>
@@ -296,15 +296,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc8ced6f">1. CoupledCluster algorithm</a>
+<li><a href="#org3e9a9a7">1. CoupledCluster algorithm</a>
 <ul>
-<li><a href="#org69d6fae">1.1. Input</a></li>
-<li><a href="#orgf5699d3">1.2. Output</a></li>
-<li><a href="#orgf7a498d">1.3. Theory</a></li>
-<li><a href="#org4aca5cd">1.4. Computational Complexity and memory footprint</a>
+<li><a href="#org4209bcb">1.1. Input</a></li>
+<li><a href="#orgef662d9">1.2. Output</a></li>
+<li><a href="#org55a8aea">1.3. Theory</a></li>
+<li><a href="#orgfddb64f">1.4. Computational Complexity and memory footprint</a>
 <ul>
-<li><a href="#orgcab2b18">1.4.1. <code>method: type: Ccsd</code> algorithm</a></li>
-<li><a href="#org890f9d8">1.4.2. <code>method: type: Drccd</code> algorithm</a></li>
+<li><a href="#org0fd7a7f">1.4.1. <code>method: type: Ccsd</code></a></li>
 </ul>
 </li>
 </ul>
@@ -314,12 +313,12 @@
 </div>
 
 
-<div id="outline-container-orgc8ced6f" class="outline-2">
-<h2 id="orgc8ced6f"><span class="section-number-2">1</span> <a href="#orgc8ced6f">CoupledCluster algorithm</a></h2>
+<div id="outline-container-org3e9a9a7" class="outline-2">
+<h2 id="org3e9a9a7"><span class="section-number-2">1</span> <a href="#org3e9a9a7">CoupledCluster algorithm</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org69d6fae" class="outline-3">
-<h3 id="org69d6fae"><span class="section-number-3">1.1</span> <a href="#org69d6fae">Input</a></h3>
+<div id="outline-container-org4209bcb" class="outline-3">
+<h3 id="org4209bcb"><span class="section-number-3">1.1</span> <a href="#org4209bcb">Input</a></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 A typical input to call the CoupledCluster algorithm is given below.
@@ -407,8 +406,8 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 </div>
 </div>
 
-<div id="outline-container-orgf5699d3" class="outline-3">
-<h3 id="orgf5699d3"><span class="section-number-3">1.2</span> <a href="#orgf5699d3">Output</a></h3>
+<div id="outline-container-orgef662d9" class="outline-3">
+<h3 id="orgef662d9"><span class="section-number-3">1.2</span> <a href="#orgef662d9">Output</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The output of the CoupledCluster algorithm includes <code>energy:</code> and <code>amplitudes:</code> . The <code>amplitudes</code> output contains
@@ -416,11 +415,39 @@ the converged singles and doubles amplitude tensors. The amplitudes can be used 
 that estimate the finite simulation cell size error (<code>TransitionStructureFactorFiniteSizeCorrection</code>)
 and the basis set incompleteness errors (<code>CcsdFocalPointBasisSetCorrection</code>).
 </p>
+
+<p>
+Below an example standard output stream is shown for a successful CoupledCluster algorithm run.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">step: 9, CoupledCluster
+Using method Ccsd. integralsSliceSize: 96
+Using mixer DiisMixer. maxResidua: 5
+Maximum number of iterations: 30
+Unless reaching energy convergence dE: 0.0001
+and amplitudes convergence dR: 0.0001
+Iter         Energy         dE           dR         time   GF/s/core
+   1  -1.51995933e+02  -1.5200e+02   1.0108e+00     32.6    5.6
+   2  -1.48908010e+02   3.0879e+00   1.8077e-01    381.6    9.3
+   3  -1.51620340e+02  -2.7123e+00   3.8331e-02    381.7    9.3
+   4  -1.52039881e+02  -4.1954e-01   1.2254e-02    380.1    9.3
+   5  -1.52001191e+02   3.8690e-02   2.6566e-03    381.7    9.3
+   6  -1.51996162e+02   5.0293e-03   9.0534e-04    381.3    9.3
+   7  -1.51998504e+02  -2.3416e-03   2.6783e-04    382.1    9.3
+   8  -1.51997751e+02   7.5305e-04   8.5906e-05    383.2    9.2
+   9  -1.51998116e+02  -3.6568e-04   2.4672e-05    380.0    9.3
+  10  -1.51998173e+02  -5.7065e-05   9.5722e-06    376.6    9.4
+
+Ccsd correlation energy:          -151.9981733061
+2nd-order correlation energy:     -151.9959332292
+realtime 3463.773373
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgf7a498d" class="outline-3">
-<h3 id="orgf7a498d"><span class="section-number-3">1.3</span> <a href="#orgf7a498d">Theory</a></h3>
+<div id="outline-container-org55a8aea" class="outline-3">
+<h3 id="org55a8aea"><span class="section-number-3">1.3</span> <a href="#org55a8aea">Theory</a></h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 This algorithm solves the coupled-cluster amplitude equations.
@@ -429,12 +456,12 @@ TODO: add short description and refs
 </div>
 </div>
 
-<div id="outline-container-org4aca5cd" class="outline-3">
-<h3 id="org4aca5cd"><span class="section-number-3">1.4</span> <a href="#org4aca5cd">Computational Complexity and memory footprint</a></h3>
+<div id="outline-container-orgfddb64f" class="outline-3">
+<h3 id="orgfddb64f"><span class="section-number-3">1.4</span> <a href="#orgfddb64f">Computational Complexity and memory footprint</a></h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-orgcab2b18" class="outline-4">
-<h4 id="orgcab2b18"><span class="section-number-4">1.4.1</span> <a href="#orgcab2b18"><code>method: type: Ccsd</code> algorithm</a></h4>
+<div id="outline-container-org0fd7a7f" class="outline-4">
+<h4 id="org0fd7a7f"><span class="section-number-4">1.4.1</span> <a href="#org0fd7a7f"><code>method: type: Ccsd</code></a></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 The computational bottle neck of the <code>Ccsd</code> algorithm originates in most calculations from the following expression, which is
@@ -446,20 +473,11 @@ the <code>integralsSliceSize</code> keyword.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org890f9d8" class="outline-4">
-<h4 id="org890f9d8"><span class="section-number-4">1.4.2</span> <a href="#org890f9d8"><code>method: type: Drccd</code> algorithm</a></h4>
-<div class="outline-text-4" id="text-1-4-2">
-<p>
-TODO: add short info about Drccd
-</p>
-</div>
-</div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-18 Sat 11:28</p>
+<p class="date">Created: 2021-12-20 Mon 15:11</p>
 </div>
 </body>
 </html>
