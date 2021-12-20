@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-20 Mon 15:57 -->
+<!-- 2021-12-20 Mon 16:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick Start</title>
@@ -274,32 +274,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org185af3d">1. Download the code</a></li>
-<li><a href="#orgf60b643">2. Compilation</a></li>
-<li><a href="#org16603fb">3. Running tests</a>
+<li><a href="#orge48ee2c">1. Download the code</a></li>
+<li><a href="#orgca34ae2">2. Compilation</a></li>
+<li><a href="#org7836cdf">3. Running tests</a>
 <ul>
-<li><a href="#orgd9555ef">3.1. Quick start</a>
+<li><a href="#orgf4063fe">3.1. Quick start</a>
 <ul>
-<li><a href="#org8f1810d">3.1.1. Python Dependencies</a></li>
+<li><a href="#orgf8f3b05">3.1.1. Python Dependencies</a></li>
 </ul>
 </li>
-<li><a href="#org38ca082">3.2. Test failed, what now?</a></li>
-<li><a href="#org8a70908">3.3. Running additional tests</a></li>
-<li><a href="#org81d28e9">3.4. Fetching data in network-constrained environments</a></li>
+<li><a href="#org1c93fce">3.2. Test failed, what now?</a></li>
+<li><a href="#org970827b">3.3. Running additional tests</a></li>
+<li><a href="#org933a80c">3.4. Fetching data in network-constrained environments</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org185af3d" class="outline-2">
-<h2 id="org185af3d"><span class="section-number-2">1</span> <a href="#org185af3d">Download the code</a></h2>
+<div id="outline-container-orge48ee2c" class="outline-2">
+<h2 id="orge48ee2c"><span class="section-number-2">1</span> <a href="#orge48ee2c">Download the code</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 You can download the CC4S code by typing
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">git clone git@gitlab.cc4s.org:cqc/cc4s.git
+<pre class="src src-sh">  git clone git@gitlab.cc4s.org:cqc/cc4s.git
 </pre>
 </div>
 
@@ -309,8 +309,8 @@ This will create a new folder named ./cc4s/ where the complete source code will 
 </div>
 </div>
 
-<div id="outline-container-orgf60b643" class="outline-2">
-<h2 id="orgf60b643"><span class="section-number-2">2</span> <a href="#orgf60b643">Compilation</a></h2>
+<div id="outline-container-orgca34ae2" class="outline-2">
+<h2 id="orgca34ae2"><span class="section-number-2">2</span> <a href="#orgca34ae2">Compilation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Building the CC4S binary is done in two steps.
@@ -321,7 +321,7 @@ In the first step, the external libraries employed by CC4S need to be built.
 This is done by typing
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">make <span style="color: #8b4513;">CONFIG</span>=&lt;config&gt; extern
+<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=&lt;config&gt; extern
 </pre>
 </div>
 <p>
@@ -333,7 +333,7 @@ In the second step, the CC4S code is built.
 This is done by typing
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">make <span style="color: #8b4513;">CONFIG</span>=&lt;config&gt;
+<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=&lt;config&gt;
 </pre>
 </div>
 <p>
@@ -349,8 +349,8 @@ folder.
 Building the code using the Intel compiler and Intel MPI library is done by typing
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi extern
-make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi
+<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi extern
+  make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi
 </pre>
 </div>
 <p>
@@ -360,12 +360,12 @@ in the main directory.
 </div>
 
 
-<div id="outline-container-org16603fb" class="outline-2">
-<h2 id="org16603fb"><span class="section-number-2">3</span> <a href="#org16603fb">Running tests</a></h2>
+<div id="outline-container-org7836cdf" class="outline-2">
+<h2 id="org7836cdf"><span class="section-number-2">3</span> <a href="#org7836cdf">Running tests</a></h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgd9555ef" class="outline-3">
-<h3 id="orgd9555ef"><span class="section-number-3">3.1</span> <a href="#orgd9555ef">Quick start</a></h3>
+<div id="outline-container-orgf4063fe" class="outline-3">
+<h3 id="orgf4063fe"><span class="section-number-3">3.1</span> <a href="#orgf4063fe">Quick start</a></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 You can test your CC4S binary for a set of test systems.
@@ -394,8 +394,8 @@ by doing
 </div>
 </div>
 
-<div id="outline-container-org8f1810d" class="outline-4">
-<h4 id="org8f1810d"><span class="section-number-4">3.1.1</span> <a href="#org8f1810d">Python Dependencies</a></h4>
+<div id="outline-container-orgf8f3b05" class="outline-4">
+<h4 id="orgf8f3b05"><span class="section-number-4">3.1.1</span> <a href="#orgf8f3b05">Python Dependencies</a></h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Please note that <code>testis.py</code> depends on <code>python3.3</code> or newer.
@@ -426,8 +426,8 @@ your system administrator.
 </div>
 </div>
 
-<div id="outline-container-org38ca082" class="outline-3">
-<h3 id="org38ca082"><span class="section-number-3">3.2</span> <a href="#org38ca082">Test failed, what now?</a></h3>
+<div id="outline-container-org1c93fce" class="outline-3">
+<h3 id="org1c93fce"><span class="section-number-3">3.2</span> <a href="#org1c93fce">Test failed, what now?</a></h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 If a test failed, you can go to the directory
@@ -451,8 +451,8 @@ the test with
 </div>
 </div>
 
-<div id="outline-container-org8a70908" class="outline-3">
-<h3 id="org8a70908"><span class="section-number-3">3.3</span> <a href="#org8a70908">Running additional tests</a></h3>
+<div id="outline-container-org970827b" class="outline-3">
+<h3 id="org970827b"><span class="section-number-3">3.3</span> <a href="#org970827b">Running additional tests</a></h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Every test in <code>cc4s</code> has some tags assigned to it.
@@ -475,8 +475,8 @@ the following command
 </div>
 
 
-<div id="outline-container-org81d28e9" class="outline-3">
-<h3 id="org81d28e9"><span class="section-number-3">3.4</span> <a href="#org81d28e9">Fetching data in network-constrained environments</a></h3>
+<div id="outline-container-org933a80c" class="outline-3">
+<h3 id="org933a80c"><span class="section-number-3">3.4</span> <a href="#org933a80c">Fetching data in network-constrained environments</a></h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Some tests depend on dependencies such as coulomb integrals
@@ -514,7 +514,7 @@ You can then copy this folder to the required computer
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-20 Mon 15:57</p>
+<p class="date">Created: 2021-12-20 Mon 16:09</p>
 </div>
 </body>
 </html>
