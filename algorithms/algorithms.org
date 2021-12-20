@@ -6,10 +6,10 @@
 The most important CC4S algorithms are listed below.
 
 - SecondOrderPerturbationTheory
-- CoupledCluster [[file:CoupledCluster/CoupledCluster.org][CoupledCluster]]
+- [[file:CoupledCluster/CoupledCluster.org][CoupledCluster]]
+- [[file:TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][TransitionStructureFiniteSizeCorrection]]
 - PerturbativeTriples
 - FocalPointBasisSetCorrection
-- FiniteSizeCorrection
 - CcsdReference
 
 Each algorithm should be briefly described by the following subsection:
