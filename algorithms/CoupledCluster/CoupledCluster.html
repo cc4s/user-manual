@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-20 Mon 20:19 -->
+<!-- 2021-12-20 Mon 20:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoupledCluster</title>
@@ -296,10 +296,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org14d74b7">1. CoupledCluster algorithm</a>
+<li><a href="#orgbf15e8d">1. CoupledCluster algorithm</a>
 <ul>
-<li><a href="#orge5d2aaf">1.1. Example yaml input</a></li>
-<li><a href="#org2fec2f0">1.2. Input description</a>
+<li><a href="#org378861b">1.1. Example yaml input</a></li>
+<li><a href="#orgb68b7fc">1.2. Input description</a>
 <ul>
 <li><a href="#coupled-cluster-type">1.2.1. type</a></li>
 <li><a href="#integralsslicesize">1.2.2. integralsSliceSize</a></li>
@@ -312,26 +312,26 @@
 <li><a href="#mixer">1.2.9. mixer</a></li>
 </ul>
 </li>
-<li><a href="#org8e7b08c">1.3. Output</a></li>
-<li><a href="#org2d30d81">1.4. Computational Complexity and memory footprint</a>
+<li><a href="#org3d7680b">1.3. Output</a></li>
+<li><a href="#org3e47cc6">1.4. Computational Complexity and memory footprint</a>
 <ul>
-<li><a href="#orgc72a4cc">1.4.1. <code>Ccsd method</code></a></li>
+<li><a href="#orgaf52f7d">1.4.1. <code>Ccsd method</code></a></li>
 </ul>
 </li>
-<li><a href="#orge7384cf">1.5. Theory</a></li>
-<li><a href="#org489693b">1.6. Literature</a></li>
+<li><a href="#org4ca6329">1.5. Theory</a></li>
+<li><a href="#orga1d74ae">1.6. Literature</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org14d74b7" class="outline-2">
-<h2 id="org14d74b7"><span class="section-number-2">1</span> <a href="#org14d74b7">CoupledCluster algorithm</a></h2>
+<div id="outline-container-orgbf15e8d" class="outline-2">
+<h2 id="orgbf15e8d"><span class="section-number-2">1</span> <a href="#orgbf15e8d">CoupledCluster algorithm</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orge5d2aaf" class="outline-3">
-<h3 id="orge5d2aaf"><span class="section-number-3">1.1</span> <a href="#orge5d2aaf">Example yaml input</a></h3>
+<div id="outline-container-org378861b" class="outline-3">
+<h3 id="org378861b"><span class="section-number-3">1.1</span> <a href="#org378861b">Example yaml input</a></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledCluster</b> algorithm is given below.
@@ -359,10 +359,10 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledClus
 </div>
 </div>
 
-<div id="outline-container-org2fec2f0" class="outline-3">
-<h3 id="org2fec2f0"><span class="section-number-3">1.2</span> <a href="#org2fec2f0">Input description</a></h3>
+<div id="outline-container-orgb68b7fc" class="outline-3">
+<h3 id="orgb68b7fc"><span class="section-number-3">1.2</span> <a href="#orgb68b7fc">Input description</a></h3>
 <div class="outline-text-3" id="text-1-2">
-<table id="orgbc3467d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgf631542" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -381,55 +381,55 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledClus
 </thead>
 <tbody>
 <tr>
-<td class="org-left">method: type:</td>
+<td class="org-left"><code>method: type:</code></td>
 <td class="org-left"><a href="#coupled-cluster-type">Type of coupled cluster algorithm</a></td>
 <td class="org-left">Ccsd</td>
 </tr>
 
 <tr>
-<td class="org-left">method: integralsSliceSize:</td>
+<td class="org-left"><code>method: integralsSliceSize:</code></td>
 <td class="org-left"><a href="#integralsslicesize">Integral slice size</a></td>
 <td class="org-left">Number of occupied orbitals</td>
 </tr>
 
 <tr>
-<td class="org-left">slicedEigenEnergies:</td>
+<td class="org-left"><code>slicedEigenEnergies:</code></td>
 <td class="org-left"><a href="#slicedeigenenergies">Sliced one-electron energies</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">coulombIntegrals:</td>
+<td class="org-left"><code>coulombIntegrals:</code></td>
 <td class="org-left"><a href="#coulombintegrals">Coulomb Integrals</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">slicedCoulombVertex:</td>
+<td class="org-left"><code>slicedCoulombVertex:</code></td>
 <td class="org-left"><a href="#slicedcoulombvertex">Sliced Coulomb vertex</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">maxIterations:</td>
+<td class="org-left"><code>maxIterations:</code></td>
 <td class="org-left"><a href="#maxiterations">Maximum number of iterations</a></td>
 <td class="org-left">20</td>
 </tr>
 
 <tr>
-<td class="org-left">energyConvergence:</td>
+<td class="org-left"><code>energyConvergence:</code></td>
 <td class="org-left"><a href="#energyconvergence">Energy convergence threshold</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">amplitudesConvergence:</td>
+<td class="org-left"><code>amplitudesConvergence:</code></td>
 <td class="org-left"><a href="#amplitudesconvergence">Amplitude convergence threshold</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">mixer: type:</td>
+<td class="org-left"><code>mixer: type:</code></td>
 <td class="org-left"><a href="#mixer">Mixer type</a></td>
 <td class="org-left">DiisMixer</td>
 </tr>
@@ -554,10 +554,10 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 </div>
 </div>
 
-<div id="outline-container-org8e7b08c" class="outline-3">
-<h3 id="org8e7b08c"><span class="section-number-3">1.3</span> <a href="#org8e7b08c">Output</a></h3>
+<div id="outline-container-org3d7680b" class="outline-3">
+<h3 id="org3d7680b"><span class="section-number-3">1.3</span> <a href="#org3d7680b">Output</a></h3>
 <div class="outline-text-3" id="text-1-3">
-<table id="org4760188" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org1423280" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -621,12 +621,12 @@ realtime 3463.773373
 </div>
 </div>
 
-<div id="outline-container-org2d30d81" class="outline-3">
-<h3 id="org2d30d81"><span class="section-number-3">1.4</span> <a href="#org2d30d81">Computational Complexity and memory footprint</a></h3>
+<div id="outline-container-org3e47cc6" class="outline-3">
+<h3 id="org3e47cc6"><span class="section-number-3">1.4</span> <a href="#org3e47cc6">Computational Complexity and memory footprint</a></h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-orgc72a4cc" class="outline-4">
-<h4 id="orgc72a4cc"><span class="section-number-4">1.4.1</span> <a href="#orgc72a4cc"><code>Ccsd method</code></a></h4>
+<div id="outline-container-orgaf52f7d" class="outline-4">
+<h4 id="orgaf52f7d"><span class="section-number-4">1.4.1</span> <a href="#orgaf52f7d"><code>Ccsd method</code></a></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 The computational bottle neck of a typical Ccsd calculation originates from the following contraction, which is
@@ -646,8 +646,8 @@ type of mixer and its parameters carefully to reduce the memory fottprint if nec
 </div>
 </div>
 
-<div id="outline-container-orge7384cf" class="outline-3">
-<h3 id="orge7384cf"><span class="section-number-3">1.5</span> <a href="#orge7384cf">Theory</a></h3>
+<div id="outline-container-org4ca6329" class="outline-3">
+<h3 id="org4ca6329"><span class="section-number-3">1.5</span> <a href="#org4ca6329">Theory</a></h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 We recommend the following review article and references therein to get started with coupled-cluster theory (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>) .
@@ -655,8 +655,8 @@ We recommend the following review article and references therein to get started 
 </div>
 </div>
 
-<div id="outline-container-org489693b" class="outline-3">
-<h3 id="org489693b"><span class="section-number-3">1.6</span> <a href="#org489693b">Literature</a></h3>
+<div id="outline-container-orga1d74ae" class="outline-3">
+<h3 id="orga1d74ae"><span class="section-number-3">1.6</span> <a href="#orga1d74ae">Literature</a></h3>
 <div class="outline-text-3" id="text-1-6">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bartlett, R.J., and Monika Musiał. 2007. “Coupled-cluster theory in quantum chemistry.” <i>Rev. Mod. Phys.</i> 79 (1). American Physical Society: 291–352. doi:<a href="https://doi.org/10.1103/RevModPhys.79.291">10.1103/RevModPhys.79.291</a>.</div>
@@ -666,7 +666,7 @@ We recommend the following review article and references therein to get started 
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-20 Mon 20:19</p>
+<p class="date">Created: 2021-12-20 Mon 20:22</p>
 </div>
 </body>
 </html>
