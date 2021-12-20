@@ -7,7 +7,7 @@
   - CoupledCluster
     - [[file:algorithms/CoupledCluster/CoupledCluster.org][CoupledCluster]]
   - TransitionStructureFiniteSizeCorrection
-    - [[file:algorithms/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][CoupledCluster]]
+    - [[file:algorithms/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][TransitionStructureFactorFiniteSizeCorrection]]
 - gettingstarted
   - [[file:gettingstarted/gettingstarted.org][Quick Start]]
 - input

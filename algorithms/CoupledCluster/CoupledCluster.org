@@ -29,18 +29,18 @@ A typical input file snippet of =cc4s.in=  to call the *CoupledCluster* algorith
 
 #+caption: Input keywords for CoupledCluster
 #+name: ccsd-input-table
-| Input Keyword              | Description                                                                  | Default                          |
-|-----------------------------+------------------------------------------------------------------------------+----------------------------------|
-| method: type:               | [[#coupled-cluster-type][Type of coupled cluster algorithm]]    | Ccsd                             |
-| method: integralsSliceSize: | [[#integralsslicesize][Integral slice size]]            | Number of occupied orbitals      |
-| slicedEigenEnergies:        | [[#slicedeigenenergies][Sliced one-electron energies]]  |                                  |
-| coulombIntegrals:           | [[#coulombintegrals][Coulomb Integrals]]                |                                  |
-| slicedCoulombVertex:        | [[#slicedcoulombvertex][Sliced Coulomb vertex]]         |                                  |
-| maxIterations:              | [[#maxiterations][Maximum number of iterations]]        | 20                               |
-| energyConvergence:          | [[#energyconvergence][Energy convergence threshold]]   |                                  |
-| amplitudesConvergence:      | [[#amplitudesconvergence][Amplitude convergence threshold]]  |                              |
-| mixer: type:                | [[#mixer][Mixer type]]                    | DiisMixer                        |
-|----------------------------+-------------------------------------------------------------------------------+----------------------------------|
+| Input Keyword                 | Description                       | Default                     |
+|-------------------------------+-----------------------------------+-----------------------------|
+| =method: type:=               | [[#coupled-cluster-type][Type of coupled cluster algorithm]] | Ccsd                        |
+| =method: integralsSliceSize:= | [[#integralsslicesize][Integral slice size]]               | Number of occupied orbitals |
+| =slicedEigenEnergies:=        | [[#slicedeigenenergies][Sliced one-electron energies]]      |                             |
+| =coulombIntegrals:=           | [[#coulombintegrals][Coulomb Integrals]]                 |                             |
+| =slicedCoulombVertex:=        | [[#slicedcoulombvertex][Sliced Coulomb vertex]]             |                             |
+| =maxIterations:=              | [[#maxiterations][Maximum number of iterations]]      | 20                          |
+| =energyConvergence:=          | [[#energyconvergence][Energy convergence threshold]]      |                             |
+| =amplitudesConvergence:=      | [[#amplitudesconvergence][Amplitude convergence threshold]]   |                             |
+| =mixer: type:=                | [[#mixer][Mixer type]]                        | DiisMixer                   |
+|-------------------------------+-----------------------------------+-----------------------------|
 
 *** type
 :PROPERTIES:
