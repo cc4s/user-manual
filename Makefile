@@ -23,9 +23,14 @@ refresh:
 	$(EMACS) --load config/site.el $(INDEX) -f package-refresh-contents
 
 clean:
-	rm -r .emacs/ $(BUILD_DIR)
+	rm -r $(BUILD_DIR)
+
+clean-emacs:
+	rm -r .emacs
+
+clean-all: clean clean-emacs
 
 serve:
 	python3 -m http.server $(PORT)
 
-.PHONY: init serve publish tangle refresh
+.PHONY: init serve publish tangle refresh clean clean-emacs clean-all
