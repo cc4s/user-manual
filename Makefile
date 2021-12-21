@@ -29,7 +29,7 @@ refresh:
 	$(EMACS) --load config/site.el $(INDEX) -f package-refresh-contents
 
 clean:
-	rm -r $(BUILD_DIR)
+	rm -r $(BUILD_DIR) $(ID_LOCATION_FILE) sitemap.org .emacs/org-timestamps*
 
 clean-emacs:
 	rm -r .emacs
