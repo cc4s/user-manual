@@ -17,3 +17,9 @@
 
 
 * Input Description
+
+#+caption: Input keywords for PerturbativeTriples
+| Input Keyword      | Description                    | Default |
+|--------------------+--------------------------------+---------|
+| =amplitudes=       | [[../common-inputs.org::#amplitudes][Singles and doubles amplitudes]] |         |
+| =coulombIntegrals= | [[../common-inputs.org::#coulombintegrals][Coulomb Integrals]]              |         |
