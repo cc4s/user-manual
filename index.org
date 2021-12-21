@@ -1,35 +1,37 @@
 #+title: Cc4s User Documentation
-#+options: toc:nil
+#+OPTIONS: toc:nil
 
 * Cc4s User Documentation
   :PROPERTIES:
   :CUSTOM_ID: cc4s-user-documentation
   :END:
 
-** Getting started 
-The 
-section explains everything you need to know about
-downloading the code, compiling it and running a few tests.
-- [[file:./gettingstarted/gettingstarted.org][Quickstart]]
+Welcome to the =Cc4s= user manual. The following sections explain everything from
+downloading the code to running calculations.
+
+** How to get started?
+- [[file:./gettingstarted/gettingstarted.org][Download, compile and run tests]]
 
 ** How to run Cc4s calculations?
 
-Cc4s calculations are controlled by a YAML input file (e.g. =cc4s.in=).
-This input file calls a sequence of
-algorithms specified by the user.
-The algorithms require various input arguments and generate output objects.
-A more detailed description is given by the link below
-- [[file:input/input.org][YAML input file]].
+We provide the following examples that teach you how to perform =Cc4s= calculations
+- r-BN CCSD(T) calculations
+- Water examples
+
+** Interfaces to Cc4s
+Currently avaible interfaces to =Cc4s= are described below.
+- [[file:interfaces/vasp.org][VASP]]
+- [[file:interfaces/fhi-aims.org][FHI-AIMS]]
 
 ** Algorithms in Cc4s
 The most important Cc4s algorithms are listed below.
 
 - SecondOrderPerturbationTheory
+- CcsdReference
 - [[file:algorithms/CoupledCluster/CoupledCluster.org][CoupledCluster]]
 - [[file:algorithms/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][TransitionStructureFiniteSizeCorrection]]
+- [[file:algorithms/CcsdFocalPointBasisSetCorrection/CcsdFocalPointBasisSetCorrection.org][CcsdFocalPointBasisSetCorrection]]
 - [[file:algorithms/PerturbativeTriples/PerturbativeTriples.org][PerturbativeTriples]]
-- FocalPointBasisSetCorrection
-- CcsdReference
 
 The [[file:algorithms/algorithms.org][Algorithms]] section summarizes and explains the most important algorithms available in CC4S. 
 
@@ -39,26 +41,9 @@ The most important objects used by algorithms are listed below.
 - [[file:objects/CoulombIntegrals.org][CoulombIntegrals]]
 - TODO
 
-** Interfaces to Cc4s
-Currently avaible interfaces to =Cc4s= are described below.
-- [[file:interfaces/vasp.org][VASP]]
-- [[file:interfaces/fhi-aims.org][FHI-AIMS]]
-
-** Tutorials and examples
-
-To learn how to run CC4S calculations and interpret its output, we provide the following tutorials
-- r-BN CCSD(T) calculations
-- Water adsorption energy on a LiH surface on the level of CCSD(T)
-
-In order to get started using =cc4s=
-you can start reading
-the [[file:tutorials/quick-start-lithium-fluoride.org][quick start tutorial]].
-
 ** Contributors and Acknowledgements
 
 ** Documentation guide
 If you are writing documentation for =cc4s=, read the
 [[file:how-to-write.org][documentation writing manual]].
 
-* Sitemap
-#+include: sitemap.org :only-contents t
