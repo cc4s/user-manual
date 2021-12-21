@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 14:55 -->
+<!-- 2021-12-21 Tue 15:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CcsdFocalPointBasisSetCorrection</title>
@@ -296,15 +296,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9d4a4aa">1. CcsdFocalPointBasisSetCorrection algorithm</a>
+<li><a href="#org6cd000c">1. CcsdFocalPointBasisSetCorrection algorithm</a>
 <ul>
-<li><a href="#org6acb8b7">1.1. CrazyTable</a></li>
-<li><a href="#orgc86e27f">1.2. Theory</a></li>
-<li><a href="#org6271f08">1.3. Computational Complexity and memory footprint</a></li>
-<li><a href="#org0b93c6c">1.4. Example</a>
+<li><a href="#orge00b12e">1.1. CrazyTable</a></li>
+<li><a href="#org5c681ed">1.2. Theory</a></li>
+<li><a href="#orga5b4507">1.3. Computational Complexity and memory footprint</a></li>
+<li><a href="#org540474f">1.4. Example</a>
 <ul>
-<li><a href="#org30b9421">1.4.1. Input</a></li>
-<li><a href="#orgdad3cae">1.4.2. Output</a></li>
+<li><a href="#org090453f">1.4.1. Input</a></li>
+<li><a href="#orgf067d25">1.4.2. Output</a></li>
 </ul>
 </li>
 </ul>
@@ -313,8 +313,8 @@
 </div>
 </div>
 
-<div id="outline-container-org9d4a4aa" class="outline-2">
-<h2 id="org9d4a4aa"><span class="section-number-2">1</span> <a href="#org9d4a4aa">CcsdFocalPointBasisSetCorrection algorithm</a></h2>
+<div id="outline-container-org6cd000c" class="outline-2">
+<h2 id="org6cd000c"><span class="section-number-2">1</span> <a href="#org6cd000c">CcsdFocalPointBasisSetCorrection algorithm</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm evaluates the correction of the basis-set-incompleteness error 
@@ -324,10 +324,10 @@ the MP2-pair-energies is needed. (see theory).
 </p>
 </div>
 
-<div id="outline-container-org6acb8b7" class="outline-3">
-<h3 id="org6acb8b7"><span class="section-number-3">1.1</span> <a href="#org6acb8b7">CrazyTable</a></h3>
+<div id="outline-container-orge00b12e" class="outline-3">
+<h3 id="orge00b12e"><span class="section-number-3">1.1</span> <a href="#orge00b12e">CrazyTable</a></h3>
 <div class="outline-text-3" id="text-1-1">
-<table id="orgd5f4959" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org6d3dfdd" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input and Output keywords</caption>
 
 <colgroup>
@@ -395,8 +395,8 @@ the MP2-pair-energies is needed. (see theory).
 
 
 
-<div id="outline-container-orgc86e27f" class="outline-3">
-<h3 id="orgc86e27f"><span class="section-number-3">1.2</span> <a href="#orgc86e27f">Theory</a></h3>
+<div id="outline-container-org5c681ed" class="outline-3">
+<h3 id="org5c681ed"><span class="section-number-3">1.2</span> <a href="#org5c681ed">Theory</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 The implementation fis given in the on and only publication.
@@ -425,8 +425,8 @@ with the Dirac delta function \(\delta(\mathbf{r})\) and the interelectronic dis
 </div>
 </div>
 
-<div id="outline-container-org6271f08" class="outline-3">
-<h3 id="org6271f08"><span class="section-number-3">1.3</span> <a href="#org6271f08">Computational Complexity and memory footprint</a></h3>
+<div id="outline-container-orga5b4507" class="outline-3">
+<h3 id="orga5b4507"><span class="section-number-3">1.3</span> <a href="#orga5b4507">Computational Complexity and memory footprint</a></h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 This algorithm is basically a post-processing algorithm. However, the 2nd-order
@@ -438,12 +438,12 @@ energy calculation.
 </div>
 
 
-<div id="outline-container-org0b93c6c" class="outline-3">
-<h3 id="org0b93c6c"><span class="section-number-3">1.4</span> <a href="#org0b93c6c">Example</a></h3>
+<div id="outline-container-org540474f" class="outline-3">
+<h3 id="org540474f"><span class="section-number-3">1.4</span> <a href="#org540474f">Example</a></h3>
 <div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org30b9421" class="outline-4">
-<h4 id="org30b9421"><span class="section-number-4">1.4.1</span> <a href="#org30b9421">Input</a></h4>
+<div id="outline-container-org090453f" class="outline-4">
+<h4 id="org090453f"><span class="section-number-4">1.4.1</span> <a href="#org090453f">Input</a></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <p>
 The input to call the CcsdFocalPointBasisSetCorrection algorithm is given below.
@@ -465,8 +465,8 @@ The input to call the CcsdFocalPointBasisSetCorrection algorithm is given below.
 </div>
 </div>
 
-<div id="outline-container-orgdad3cae" class="outline-4">
-<h4 id="orgdad3cae"><span class="section-number-4">1.4.2</span> <a href="#orgdad3cae">Output</a></h4>
+<div id="outline-container-orgf067d25" class="outline-4">
+<h4 id="orgf067d25"><span class="section-number-4">1.4.2</span> <a href="#orgf067d25">Output</a></h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 The output of the algorithm is the CCSD-BSIE-energy-correction, as well as the
@@ -488,7 +488,7 @@ CCSD-BSIE energy correction:      -0.0165423958
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 14:55</p>
+<p class="date">Created: 2021-12-21 Tue 15:14</p>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 14:55 -->
+<!-- 2021-12-21 Tue 15:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>CoulombVertex</code></title>
@@ -296,14 +296,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge6e8b05">1. Definition</a></li>
-<li><a href="#org1e408ed">2. Literature</a></li>
+<li><a href="#org92dec2d">1. Definition</a></li>
+<li><a href="#org63dd1ad">2. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge6e8b05" class="outline-2">
-<h2 id="orge6e8b05"><span class="section-number-2">1</span> <a href="#orge6e8b05">Definition</a></h2>
+<div id="outline-container-org92dec2d" class="outline-2">
+<h2 id="org92dec2d"><span class="section-number-2">1</span> <a href="#org92dec2d">Definition</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 \[ \tilde{\Gamma}^q_r({\bf G}) :=  \sqrt{\frac{4\pi}{{\bf G}^2}}   \int{\rm d}{\bf x}\,   {\rm e}^{-{\rm i}{\bf G}\cdot{\bf r}}\,   {\psi^\ast}^q({\bf x}) \psi_r({\bf x})\
@@ -311,13 +311,13 @@
 </p>
 
 <p>
-The <code>CoulombVertex</code> $ ~{&Gamma;}<sup>q</sup><sub>r</sub>({\bf G}) $ is computed from the co-density of an orbital pair
+The <code>CoulombVertex</code> \(\tilde{\Gamma}^q_r({\bf G})\) is computed from the co-density of an orbital pair
 \({\psi^\ast}^q({\bf x})\) and \(\psi_r({\bf x})\), and the square-root of the Coulomb potential
 \(\sqrt{\frac{4\pi}{{\bf G}^2}}\).
 Different representations of the <code>CoulombVertex</code> are possible using; for example,
 singular-value-decomposition techniques as discussed in (<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
 The transformation of the <code>CoulombVertex</code> into a truncated auxilliary field representation
-reduces the memory footprint and is achieved using the <code>CoulombVertexSingularVectors</code> ($ {U<sup>*</sup>}<sup>G</sup><sub>F</sub>$) :
+reduces the memory footprint and is achieved using the <code>CoulombVertexSingularVectors</code> (\({U^*}^G_F\)) :
 \[ \Gamma^q_r({F}) := {U^*}^{\bf G}_F \tilde{\Gamma}^q_r({\bf G})  \]
 </p>
 
@@ -340,8 +340,7 @@ An example CoulombVertex.yaml file is given below
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #8b4513;">binary</span>: 1
-<span style="color: #8b4513;">version</span>: v1.0
+<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: v1.0
 <span style="color: #8b4513;">scalarType</span>: complex64
 <span style="color: #8b4513;">indices</span>:
   <span style="color: #8b4513;">momentum</span>:
@@ -363,8 +362,8 @@ An example CoulombVertex.yaml file is given below
 </div>
 </div>
 
-<div id="outline-container-org1e408ed" class="outline-2">
-<h2 id="org1e408ed"><span class="section-number-2">2</span> <a href="#org1e408ed">Literature</a></h2>
+<div id="outline-container-org63dd1ad" class="outline-2">
+<h2 id="org63dd1ad"><span class="section-number-2">2</span> <a href="#org63dd1ad">Literature</a></h2>
 <div class="outline-text-2" id="text-2">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
@@ -373,7 +372,7 @@ An example CoulombVertex.yaml file is given below
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 14:55</p>
+<p class="date">Created: 2021-12-21 Tue 15:14</p>
 </div>
 </body>
 </html>
