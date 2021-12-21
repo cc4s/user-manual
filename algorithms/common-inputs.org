@@ -13,7 +13,7 @@ consistently in the same way in several algorithms in =cc4s=.
 :END:
 
 The =amplitudes= keyword requires the singles and doubles amplitudes as input.
-These amplitudes can be obtained using the [[file:CoupledCluster/CoupledCluster.org][*CoupledCluster*]] algorithm.
+These amplitudes can be obtained using the [[id:CoupledCluster][*CoupledCluster*]] algorithm.
 
 ** TODO coulombIntegrals
 :PROPERTIES:

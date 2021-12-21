@@ -27,10 +27,10 @@ A typical input file snippet to call the =PerturbativeTriples= algorithm is give
 #+caption: Input keywords for PerturbativeTriples
 | Input Keyword         | Description                    | Default |
 |-----------------------+--------------------------------+---------|
-| =amplitudes=          | [[file:../objects/Amplitudes.org][Singles and doubles amplitudes]] |         |
-| =coulombIntegrals=    | [[file:../objects/CoulombIntegrals.org][Coulomb Integrals]]              |         |
-| =slicedEigenEnergies= | [[file:../objects/SlicedEigenEnergies.org][Sliced one-electron energies]]   |         |
-| =mp2PairEnergies=     | [[file:../objects/Mp2PairEnergies.org][MP2 pair energies matrix]]       |         |
+| =amplitudes=          | [[id:Amplitudes][Singles and doubles amplitudes]] |         |
+| =coulombIntegrals=    | [[id:CoulombIntegrals][Coulomb Integrals]]              |         |
+| =slicedEigenEnergies= | [[id:SlicedEigenEnergies][Sliced one-electron energies]]   |         |
+| =mp2PairEnergies=     | [[id:Mp2PairEnergies][MP2 pair energies matrix]]       |         |
 
 
 * Output

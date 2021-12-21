@@ -27,11 +27,11 @@ A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCor
 #+name: ccsd-input-table
 | Input Keyword                  | Description                    | Default |
 |--------------------------------+--------------------------------+---------|
-| =slicedCoulombVertex=          | [[file:../objects/SlicedCoulombVertex.org][Sliced Coulomb vertex]]          |         |
-| =amplitudes=                   | [[file:../objects/Amplitudes.org][Singles and doubles amplitudes]] |         |
-| =coulombVertexSingularVectors= | [[file:../objects/CoulombVertexSingularVectors.org][coulombVertexSingularVectors]]   |         |
-| =coulombPotential=             | [[file:../objects/CoulombPotential.org][Coulomb potential]]              |         |
-| =gridVectors=                  | [[file:../objects/GridVectors.org][Grid Vectors]]                   |         |
+| =slicedCoulombVertex=          | [[id:SlicedCoulombVertex][Sliced Coulomb vertex]]          |         |
+| =amplitudes=                   | [[id:Amplitudes][Singles and doubles amplitudes]] |         |
+| =coulombVertexSingularVectors= | [[id:CoulombVertexSingularVectors][coulombVertexSingularVectors]]   |         |
+| =coulombPotential=             | [[id:CoulombPotential][Coulomb potential]]              |         |
+| =gridVectors=                  | [[id:GridVectors][Grid Vectors]]                   |         |
 | =interpolationGridSize=        | [[#interpolationgridsize][Interpolation grid size]]        |      20 |
 |--------------------------------+--------------------------------+---------|
 

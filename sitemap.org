@@ -3,9 +3,9 @@
 - [[file:index.org][Cc4s User Documentation]]
 - [[file:how-to-write.org][How To Write]]
 - algorithms
-  - [[file:algorithms/CoupledCluster.org][=CoupledCluster= algorithm]]
-  - [[file:algorithms/PerturbativeTriples.org][=PerturbativeTriples= algorithm]]
-  - [[file:algorithms/TransitionStructureFiniteSizeCorrection.org][=TransitionStructureFactorFiniteSizeCorrection= Algorithm]]
+  - [[file:algorithms/CoupledCluster.org][=CoupledCluster=]]
+  - [[file:algorithms/PerturbativeTriples.org][=PerturbativeTriples=]]
+  - [[file:algorithms/TransitionStructureFiniteSizeCorrection.org][=TransitionStructureFactorFiniteSizeCorrection=]]
   - [[file:algorithms/CcsdFocalPointBasisSetCorrection.org][CcsdFocalPointBasisSetCorrection]]
   - [[file:algorithms/common-inputs.org][Common inputs for =cc4s= algorithms]]
 - gettingstarted
@@ -15,14 +15,14 @@
 - interfaces
   - [[file:interfaces/vasp.org][Description of VASP interface to CC4S]]
 - objects
-  - [[file:objects/GridVectors.org][=CoulombIntegrals=]]
+  - [[file:objects/Amplitudes.org][=Amplitudes=]]
   - [[file:objects/CoulombIntegrals.org][=CoulombIntegrals=]]
-  - [[file:objects/Amplitudes.org][=CoulombIntegrals=]]
-  - [[file:objects/CoulombPotential.org][=CoulombIntegrals=]]
-  - [[file:objects/Mp2PairEnergies.org][=CoulombIntegrals=]]
+  - [[file:objects/CoulombPotential.org][=CoulombPotential=]]
   - [[file:objects/CoulombVertex.org][=CoulombVertex=]]
-  - [[file:objects/CoulombVertexSingularVectors.org][=CoulombVertex=]]
-  - [[file:objects/SlicedCoulombVertex.org][=CoulombVertex=]]
-  - [[file:objects/SlicedEigenEnergies.org][=CoupledCluster= algorithm]]
+  - [[file:objects/CoulombVertexSingularVectors.org][=CoulombVertexSingularVectors=]]
+  - [[file:objects/GridVectors.org][=GridVectors=]]
+  - [[file:objects/Mp2PairEnergies.org][=Mp2PairEnergies=]]
+  - [[file:objects/SlicedEigenEnergies.org][=SlicedEigenEnergies=]]
+  - [[file:objects/SlicedCoulombVertex.org][=slicedCoulombVertex=]]
 - tutorials
   - [[file:tutorials/quick-start-lithium-fluoride.org][Quick Start: Periodic LiH calculation using VASP]]
