@@ -1,0 +1,34 @@
+#+title: =PerturbativeTriples= algorithm
+#+options: toc:t
+
+#+name: input-example
+#+caption: Example input for Perturbative
+#+begin_src yaml
+- name: PerturbativeTriples
+  in:
+    coulombIntegrals: CoulombIntegrals
+    amplitudes: Amplitudes
+    slicedEigenEnergies: EigenEnergies
+    mp2PairEnergies: Mp2PairEnergies
+  out:
+    energy:
+      triples: triplesEnergy
+      triples*: triplesEnergyStar
+#+end_src
+
+
+* Input Description
+
+#+caption: Input keywords for PerturbativeTriples
+| Input Keyword          | Description                    | Default |
+|------------------------+--------------------------------+---------|
+| =amplitudes=           | [[../common-inputs.org::#amplitudes][Singles and doubles amplitudes]] |         |
+| =coulombIntegrals=     | [[../common-inputs.org::#coulombintegrals][Coulomb Integrals]]              |         |
+| =slicedEigenEnergies:= | [[../common-inputs.org::#slicedeigenenergies][Sliced one-electron energies]]   |         |
+
+* Reference implementation
+
+In addition to the =PerturbativeTriples= algorithm, there is also a slower
+but reference implementation called =PerturbativeTriplesReference= which
+is used in the same way as =PerturbativeTriples=.
+To use it, you should just change the name =PerturbativeTriples= by =PerturbativeTriplesReference=.

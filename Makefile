@@ -20,6 +20,10 @@ publish: $(ORGFILES) tangle
 
 tangle: $(TANGLING_FILES_CACHE)
 
+force:
+	touch $(ORGFILES)
+	$(MAKE) publish
+
 refresh:
 	$(EMACS) --load config/site.el $(INDEX) -f package-refresh-contents
 
@@ -34,4 +38,12 @@ clean-all: clean clean-emacs
 serve:
 	python3 -m http.server $(PORT)
 
-.PHONY: init serve publish tangle refresh clean clean-emacs clean-all
+vim:
+	mkdir -p ~/.vim/ftdetect
+	mkdir -p ~/.vim/syntax
+	wget https://raw.githubusercontent.com/alejandrogallo/org-syntax.vim/main/ftdetect/org.vim \
+				-O ~/.vim/ftdetect/org.vim
+	wget https://raw.githubusercontent.com/alejandrogallo/org-syntax.vim/main/syntax/org.vim \
+				-O ~/.vim/syntax/org.vim
+
+.PHONY: init serve publish tangle refresh clean clean-emacs clean-all force vim

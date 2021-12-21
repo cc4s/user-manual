@@ -4,8 +4,11 @@
 - [[file:how-to-write.org][How To Write]]
 - algorithms
   - [[file:algorithms/algorithms.org][Algorithms in CC4S]]
+  - [[file:algorithms/common-inputs.org][Common inputs for =cc4s= algorithms]]
   - CoupledCluster
     - [[file:algorithms/CoupledCluster/CoupledCluster.org][CoupledCluster]]
+  - PerturbativeTriples
+    - [[file:algorithms/PerturbativeTriples/PerturbativeTriples.org][PerturbativeTriples]]
   - TransitionStructureFiniteSizeCorrection
     - [[file:algorithms/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][CoupledCluster]]
 - gettingstarted

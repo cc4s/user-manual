@@ -1,14 +1,12 @@
 #+title: Algorithms in CC4S
 
-* Algorithms in CC4S
-
 
 The most important CC4S algorithms are listed below.
 
 - SecondOrderPerturbationTheory
 - [[file:CoupledCluster/CoupledCluster.org][CoupledCluster]]
 - [[file:TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][TransitionStructureFiniteSizeCorrection]]
-- PerturbativeTriples
+- [[file:PerturbativeTriples/PerturbativeTriples.org][PerturbativeTriples]]
 - FocalPointBasisSetCorrection
 - CcsdReference
 
@@ -17,5 +15,7 @@ Each algorithm should be briefly described by the following subsection:
 - Theory
 - Computational Complexity
 
+#+begin_todo
 !TODO: we need nomenclature for algorithms and input/output objects.
+#+end_todo
 
