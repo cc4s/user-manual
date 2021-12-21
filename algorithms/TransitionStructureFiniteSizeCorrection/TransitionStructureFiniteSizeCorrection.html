@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 12:17 -->
+<!-- 2021-12-21 Tue 12:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TransitionStructureFactorFiniteSizeCorrection</title>
+<title><code>TransitionStructureFactorFiniteSizeCorrection</code> Algorithm</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -291,41 +291,33 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title">TransitionStructureFactorFiniteSizeCorrection</h1>
+<h1 class="title"><code>TransitionStructureFactorFiniteSizeCorrection</code> Algorithm</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf9ab256">1. TransitionStructureFactorFiniteSizeCorrection algorithm</a>
+<li><a href="#org64743e6">1. Example yaml input</a></li>
+<li><a href="#org8a31268">2. Input description</a>
 <ul>
-<li><a href="#org73d65bf">1.1. Example yaml input</a></li>
-<li><a href="#org41a7a9d">1.2. Input description</a>
-<ul>
-<li><a href="#slicedcoulombvertex">1.2.1. slicedCoulombVertex</a></li>
-<li><a href="#amplitudes">1.2.2. <span class="todo TODO">TODO</span> amplitudes</a></li>
-<li><a href="#coulombvertexsingularvectors">1.2.3. coulombVertexSingularVectors</a></li>
-<li><a href="#coulombpotential">1.2.4. coulombPotential</a></li>
-<li><a href="#gridvectors">1.2.5. gridVectors</a></li>
-<li><a href="#interpolationgridsize">1.2.6. interpolationGridSize</a></li>
+<li><a href="#slicedcoulombvertex">2.1. slicedCoulombVertex</a></li>
+<li><a href="#amplitudes">2.2. <span class="todo TODO">TODO</span> amplitudes</a></li>
+<li><a href="#coulombvertexsingularvectors">2.3. coulombVertexSingularVectors</a></li>
+<li><a href="#coulombpotential">2.4. coulombPotential</a></li>
+<li><a href="#gridvectors">2.5. gridVectors</a></li>
+<li><a href="#interpolationgridsize">2.6. interpolationGridSize</a></li>
 </ul>
 </li>
-<li><a href="#orgebc27ea">1.3. Output</a></li>
-<li><a href="#orge5a2344">1.4. Computational Complexity and memory footprint</a></li>
-<li><a href="#org05bd688">1.5. Theory</a></li>
-<li><a href="#orgee9e198">1.6. Literature</a></li>
-</ul>
-</li>
+<li><a href="#org3a5f4eb">3. Output</a></li>
+<li><a href="#orga685f6a">4. Computational Complexity and memory footprint</a></li>
+<li><a href="#org7238ab6">5. Theory</a></li>
+<li><a href="#org8b7175a">6. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf9ab256" class="outline-2">
-<h2 id="orgf9ab256"><span class="section-number-2">1</span> <a href="#orgf9ab256">TransitionStructureFactorFiniteSizeCorrection algorithm</a></h2>
+<div id="outline-container-org64743e6" class="outline-2">
+<h2 id="org64743e6"><span class="section-number-2">1</span> <a href="#org64743e6">Example yaml input</a></h2>
 <div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-org73d65bf" class="outline-3">
-<h3 id="org73d65bf"><span class="section-number-3">1.1</span> <a href="#org73d65bf">Example yaml input</a></h3>
-<div class="outline-text-3" id="text-1-1">
 <p>
 A typical input file snippet of <code>cc4s.in</code>  to call the <b>TransitionStructureFiniteSizeCorrection</b> algorithm is given below.
 </p>
@@ -346,10 +338,10 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>TransitionS
 </div>
 </div>
 
-<div id="outline-container-org41a7a9d" class="outline-3">
-<h3 id="org41a7a9d"><span class="section-number-3">1.2</span> <a href="#org41a7a9d">Input description</a></h3>
-<div class="outline-text-3" id="text-1-2">
-<table id="org8b4294d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<div id="outline-container-org8a31268" class="outline-2">
+<h2 id="org8a31268"><span class="section-number-2">2</span> <a href="#org8a31268">Input description</a></h2>
+<div class="outline-text-2" id="text-2">
+<table id="org823036f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -368,37 +360,37 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>TransitionS
 </thead>
 <tbody>
 <tr>
-<td class="org-left">slicedCoulombVertex:</td>
+<td class="org-left"><code>slicedCoulombVertex</code></td>
 <td class="org-left"><a href="#slicedcoulombvertex">Sliced Coulomb vertex</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">amplitudes:</td>
+<td class="org-left"><code>amplitudes</code></td>
 <td class="org-left"><a href="../common-inputs.html#amplitudes">Singles and doubles amplitudes</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">coulombVertexSingularVectors:</td>
+<td class="org-left"><code>coulombVertexSingularVectors</code></td>
 <td class="org-left"><a href="#coulombvertexsingularvectors">coulombVertexSingularVectors</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">coulombPotential:</td>
+<td class="org-left"><code>coulombPotential</code></td>
 <td class="org-left"><a href="#coulombpotential">Coulomb potential</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">gridVectors:</td>
+<td class="org-left"><code>gridVectors</code></td>
 <td class="org-left"><a href="#gridvectors">Grid Vectors</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left">interpolationGridSize:</td>
+<td class="org-left"><code>interpolationGridSize</code></td>
 <td class="org-left"><a href="#interpolationgridsize">Interpolation grid size</a></td>
 <td class="org-left">20</td>
 </tr>
@@ -406,9 +398,9 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>TransitionS
 </table>
 </div>
 
-<div id="outline-container-slicedcoulombvertex" class="outline-4">
-<h4 id="slicedcoulombvertex"><span class="section-number-4">1.2.1</span> <a href="#slicedcoulombvertex">slicedCoulombVertex</a></h4>
-<div class="outline-text-4" id="text-slicedcoulombvertex">
+<div id="outline-container-slicedcoulombvertex" class="outline-3">
+<h3 id="slicedcoulombvertex"><span class="section-number-3">2.1</span> <a href="#slicedcoulombvertex">slicedCoulombVertex</a></h3>
+<div class="outline-text-3" id="text-slicedcoulombvertex">
 <p>
 The <code>slicedCoulombVertex</code> keyword requires the Coulomb vertex \(\Gamma_{pG}^r\) as input.
 The Coulomb vertex is used to compute two-electron integrals \(V_{ij}^{ab}\) and can be
@@ -417,10 +409,10 @@ generated by the <b>SliceOperator</b> algorithm.
 </div>
 </div>
 
-<div id="outline-container-amplitudes" class="outline-4">
-<h4 id="amplitudes"><span class="section-number-4">1.2.2</span> <a href="#amplitudes"><span class="todo TODO">TODO</span> amplitudes</a></h4>
-<div class="outline-text-4" id="text-amplitudes">
-<div class="todo" id="org6af7019">
+<div id="outline-container-amplitudes" class="outline-3">
+<h3 id="amplitudes"><span class="section-number-3">2.2</span> <a href="#amplitudes"><span class="todo TODO">TODO</span> amplitudes</a></h3>
+<div class="outline-text-3" id="text-amplitudes">
+<div class="todo" id="org26c74cb">
 <p>
 think about including or just referencing
 </p>
@@ -434,9 +426,9 @@ These amplitudes can be obtained using the <a href="../CoupledCluster/CoupledClu
 </div>
 </div>
 
-<div id="outline-container-coulombvertexsingularvectors" class="outline-4">
-<h4 id="coulombvertexsingularvectors"><span class="section-number-4">1.2.3</span> <a href="#coulombvertexsingularvectors">coulombVertexSingularVectors</a></h4>
-<div class="outline-text-4" id="text-coulombvertexsingularvectors">
+<div id="outline-container-coulombvertexsingularvectors" class="outline-3">
+<h3 id="coulombvertexsingularvectors"><span class="section-number-3">2.3</span> <a href="#coulombvertexsingularvectors">coulombVertexSingularVectors</a></h3>
+<div class="outline-text-3" id="text-coulombvertexsingularvectors">
 <p>
 The <code>coulombVertexSingularVectors</code> keyword requires the transformation from the auxiliary-field basis to the plane-wave basis \(U_{G}^{F}\) as input.
 This transformation matrix should be read in from an external file using the <b>TensorReader</b> algorithm.
@@ -444,9 +436,9 @@ This transformation matrix should be read in from an external file using the <b>
 </div>
 </div>
 
-<div id="outline-container-coulombpotential" class="outline-4">
-<h4 id="coulombpotential"><span class="section-number-4">1.2.4</span> <a href="#coulombpotential">coulombPotential</a></h4>
-<div class="outline-text-4" id="text-coulombpotential">
+<div id="outline-container-coulombpotential" class="outline-3">
+<h3 id="coulombpotential"><span class="section-number-3">2.4</span> <a href="#coulombpotential">coulombPotential</a></h3>
+<div class="outline-text-3" id="text-coulombpotential">
 <p>
 The <code>coulombPotential</code> keyword requires the Coulomb potential in a plane-wave basis set representation \(\tilde{v}(G)\) as input.
 The Coulomb potential has to agree with the one employed for the calculation of the Coulomb vertex.
@@ -455,9 +447,9 @@ The Coulomb potential should be read in from an external file using the <b>Tenso
 </div>
 </div>
 
-<div id="outline-container-gridvectors" class="outline-4">
-<h4 id="gridvectors"><span class="section-number-4">1.2.5</span> <a href="#gridvectors">gridVectors</a></h4>
-<div class="outline-text-4" id="text-gridvectors">
+<div id="outline-container-gridvectors" class="outline-3">
+<h3 id="gridvectors"><span class="section-number-3">2.5</span> <a href="#gridvectors">gridVectors</a></h3>
+<div class="outline-text-3" id="text-gridvectors">
 <p>
 The <code>gridVectors</code> keyword requires the grid vectors of the emplyoed plane-wave basis \(\{ G_1, ...,G_n \}\) as input.
 The set of grid vectors should be read in from an external file using the <b>TensorReader</b> algorithm.
@@ -465,9 +457,9 @@ The set of grid vectors should be read in from an external file using the <b>Ten
 </div>
 </div>
 
-<div id="outline-container-interpolationgridsize" class="outline-4">
-<h4 id="interpolationgridsize"><span class="section-number-4">1.2.6</span> <a href="#interpolationgridsize">interpolationGridSize</a></h4>
-<div class="outline-text-4" id="text-interpolationgridsize">
+<div id="outline-container-interpolationgridsize" class="outline-3">
+<h3 id="interpolationgridsize"><span class="section-number-3">2.6</span> <a href="#interpolationgridsize">interpolationGridSize</a></h3>
+<div class="outline-text-3" id="text-interpolationgridsize">
 <p>
 The <code>interpolationGridSize</code> keyword can be used to control the finesness of the grid used to interpolate the
 electronic transition structure factor in each spatial direction.
@@ -478,10 +470,10 @@ A value of \(N\) for the <code>interpolationGridSize</code> means that \(2 N\) s
 </div>
 
 
-<div id="outline-container-orgebc27ea" class="outline-3">
-<h3 id="orgebc27ea"><span class="section-number-3">1.3</span> <a href="#orgebc27ea">Output</a></h3>
-<div class="outline-text-3" id="text-1-3">
-<table id="org428788c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<div id="outline-container-org3a5f4eb" class="outline-2">
+<h2 id="org3a5f4eb"><span class="section-number-2">3</span> <a href="#org3a5f4eb">Output</a></h2>
+<div class="outline-text-2" id="text-3">
+<table id="orga4ae6fe" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -497,12 +489,12 @@ A value of \(N\) for the <code>interpolationGridSize</code> means that \(2 N\) s
 </thead>
 <tbody>
 <tr>
-<td class="org-left">transitionStructureFactor:</td>
+<td class="org-left"><code>transitionStructureFactor</code></td>
 <td class="org-left">Transition Structure factor</td>
 </tr>
 
 <tr>
-<td class="org-left">energy:</td>
+<td class="org-left"><code>energy</code></td>
 <td class="org-left">finite size corrected energy</td>
 </tr>
 </tbody>
@@ -527,18 +519,18 @@ realtime 68.117389991 s
 </div>
 </div>
 
-<div id="outline-container-orge5a2344" class="outline-3">
-<h3 id="orge5a2344"><span class="section-number-3">1.4</span> <a href="#orge5a2344">Computational Complexity and memory footprint</a></h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orga685f6a" class="outline-2">
+<h2 id="orga685f6a"><span class="section-number-2">4</span> <a href="#orga685f6a">Computational Complexity and memory footprint</a></h2>
+<div class="outline-text-2" id="text-4">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared. 
 </p>
 </div>
 </div>
 
-<div id="outline-container-org05bd688" class="outline-3">
-<h3 id="org05bd688"><span class="section-number-3">1.5</span> <a href="#org05bd688">Theory</a></h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-org7238ab6" class="outline-2">
+<h2 id="org7238ab6"><span class="section-number-2">5</span> <a href="#org7238ab6">Theory</a></h2>
+<div class="outline-text-2" id="text-5">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
 We employ a tricubic interpolation technique to reduce
@@ -558,9 +550,9 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-orgee9e198" class="outline-3">
-<h3 id="orgee9e198"><span class="section-number-3">1.6</span> <a href="#orgee9e198">Literature</a></h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org8b7175a" class="outline-2">
+<h2 id="org8b7175a"><span class="section-number-2">6</span> <a href="#org8b7175a">Literature</a></h2>
+<div class="outline-text-2" id="text-6">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Liao, Ke, and Andreas Grüneis. 2016. “Communication: Finite Size Correction in Periodic Coupled Cluster Theory Calculations of Solids.” <i>The Journal of Chemical Physics</i> 145 (14). AIP Publishing: 141102. <a href="http://doi.org/10.1063/1.4964307">http://doi.org/10.1063/1.4964307</a>.</div>
@@ -568,9 +560,8 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 </div>
-</div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 12:17</p>
+<p class="date">Created: 2021-12-21 Tue 12:20</p>
 </div>
 </body>
 </html>
