@@ -3,16 +3,25 @@
 
 * Definition
 
-The =GridVectors= object contains the grid vectors of the emplyoed plane-wave basis $\{ G_1, ...,G_n \}$.
-The set of grid vectors should be read in from an external file using the *TensorReader* algorithm.
+algo:CoupledCluster
+The =mp2PairEnergies= matrix is a matrix \( M_{ij} \)
+of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that
+an MP2 energy is given by its full contraction, i.e.
+\begin{equation}
+\epsilon^{\mathrm{MP2}} = \sum_{ij} M_{ij}.
+\end{equation}
+This matrix is used in the context of the theory
+CCSD(T*) [[cite:&FocalPointAppIrmler2021]],
+where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
+When the =mp2PairEnergies= matrix is given as an input, the algorithm also computes the MP2 energy
+from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
+\( V^{ab}_{ij} \) within =slicedEigenEnergies= and =coulombIntegrals= respectively.
+Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
+\( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
+and computed CCSD(T) energy, the approximation
+the CCSD(T*) is computed.
 
-#+begin_src yaml
-- name: TensorReader
-  in:
-    fileName: "Mp2PairEnergies.yaml"
-  out:
-    tensor: Mp2PairEnergies
-#+end_src
+
 
 * Literature
 bibliography:../group.bib

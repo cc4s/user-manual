@@ -26,7 +26,7 @@ and can be read into =Cc4s= using the *TensorReader* algorithm.
     tensor: CoulombVertex
 #+end_src
 
-An example CoulombVertex.yaml file is given below
+An example =CoulombVertex.yaml= file is given below
 
 #+begin_src yaml
 version: v1.0
