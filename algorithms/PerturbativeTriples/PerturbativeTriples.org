@@ -1,0 +1,19 @@
+#+title: Ccsd Perturbative Triples algorithm
+
+#+name: input-example
+#+caption: Example input for Perturbative
+#+begin_src yaml
+- name: PerturbativeTriples
+  in:
+    coulombIntegrals: CoulombIntegrals
+    amplitudes: Amplitudes
+    slicedEigenEnergies: EigenEnergies
+    mp2PairEnergies: Mp2PairEnergies
+  out:
+    energy:
+      triples: triplesEnergy
+      triples*: triplesEnergyStar
+#+end_src
+
+
+* Input Description

@@ -1,0 +1,13 @@
+#+title: Common inputs for =cc4s= algorithms
+
+This page describes common input variables used
+consistently in the same way in several algorithms in =cc4s=.
+
+* Inputs
+** amplitudes
+:PROPERTIES:
+:CUSTOM_ID: amplitudes
+:END:
+
+The =amplitudes= keyword requires the singles and doubles amplitudes as input.
+These amplitudes can be obtained using the [[file:CoupledCluster/CoupledCluster.org][*CoupledCluster*]] algorithm.
