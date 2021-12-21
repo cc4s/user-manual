@@ -1,0 +1,54 @@
+#+title: =CoulombVertex=
+
+* Definition
+
+$$ \tilde{\Gamma}^q_r({\bf G}) :=  \sqrt{\frac{4\pi}{{\bf G}^2}}   \int{\rm d}{\bf x}\,   {\rm e}^{-{\rm i}{\bf G}\cdot{\bf r}}\,   {\psi^\ast}^q({\bf x}) \psi_r({\bf x})\
+$$
+
+The =CoulombVertex= $ \tilde{\Gamma}^q_r({\bf G}) $ is computed from the co-density of an orbital pair
+${\psi^\ast}^q({\bf x})$ and $\psi_r({\bf x})$, and the square-root of the Coulomb potential
+$\sqrt{\frac{4\pi}{{\bf G}^2}}$.
+Different representations of the =CoulombVertex= are possible using; for example,
+singular-value-decomposition techniques as discussed in cite:&hummel2017low.
+The transformation of the =CoulombVertex= into a truncated auxilliary field representation
+reduces the memory footprint and is achieved using the =CoulombVertexSingularVectors= ($ {U^*}^G_F$) :
+$$ \Gamma^q_r({F}) := {U^*}^{\bf G}_F \tilde{\Gamma}^q_r({\bf G})  $$
+
+The =CoulombVertex= needs to be provided by an interfaced electronic structure theory package
+and can be read into =Cc4s= using the *TensorReader* algorithm.
+
+#+begin_src yaml
+- name: TensorReader
+  in:
+    fileName: "CoulombVertex.yaml"
+  out:
+    tensor: CoulombVertex
+#+end_src
+
+An example CoulombVertex.yaml file is given below
+
+#+begin_src yaml
+binary: 1
+version: v1.0
+scalarType: complex64
+indices:
+  momentum:
+    type: halfGrid
+  orbital:
+    type: spatial
+dimensions:
+  - length:   1620
+    type: momentum
+  - length:    704
+    type: orbital
+  - length:    704
+    type: orbital
+data: CoulombVertex.dat    # path to raw data
+binary: 1
+unit: 0.1917011272153577       # = sqrt(Eh/eV)
+#+end_src
+
+* Literature
+bibliography:../group.bib
+
+

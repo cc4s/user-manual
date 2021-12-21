@@ -1,0 +1,32 @@
+#+title: =CoulombIntegrals=
+
+* Definition
+
+$$ V^{pq}_{sr} := {\Gamma^\ast}^{pG}_s \Gamma^q_{rF}$ $$
+
+The =CoulombIntegrals= $ are computed from the =CoulombVertex=, which can
+be respresented in an arbitrary basis set depending on the employed interface
+cite:&hummel2017low.
+
+The =CoulombIntegrals= are computed from the =CoulombVertex= using the
+*VertexCoulombIntegrals* algorithm using; for example, the following
+yaml input file
+
+#+begin_src yaml
+- name: VertexCoulombIntegrals
+  in:
+    slicedCoulombVertex: CoulombVertex
+  out:
+    coulombIntegrals: CoulombIntegrals
+#+end_src
+
+We note that the *VertexCoulombIntegrals* algorithm of =Cc4s= only prepares
+a recipe for the actual computation of the various =CoulombIntegrals=.
+The computation is performed only once the factual tensors are needed by
+a subsequent algorithm which needs the =CoulombIntegrals= as an input argument.
+
+
+* Literature
+bibliography:../group.bib
+
+
