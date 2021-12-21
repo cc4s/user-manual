@@ -208,4 +208,6 @@
     (cc4s-log "build directory %s" publish-directory)
     (cc4s/handle-id-links)
     (org-publish-all)
-    (!!done)))
+    (!!done)
+    (cc4s-log "aGa: If you have problems with id:links erase \n\t%s"
+              org-id-locations-file)))
