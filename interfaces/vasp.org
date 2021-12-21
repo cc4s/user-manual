@@ -3,7 +3,6 @@
 * Interface to VASP
 
 
-
 <cc4s-incar>=
 #+name: cc4s-incar
 #+begin_src sh

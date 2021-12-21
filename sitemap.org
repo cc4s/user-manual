@@ -8,7 +8,7 @@
   - CoupledCluster
     - [[file:algorithms/CoupledCluster/CoupledCluster.org][CoupledCluster]]
   - PerturbativeTriples
-    - [[file:algorithms/PerturbativeTriples/PerturbativeTriples.org][PerturbativeTriples]]
+    - [[file:algorithms/PerturbativeTriples/PerturbativeTriples.org][=PerturbativeTriples= algorithm]]
   - TransitionStructureFiniteSizeCorrection
     - [[file:algorithms/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][CoupledCluster]]
 - gettingstarted
@@ -17,5 +17,9 @@
   - [[file:input/input.org][Input to CC4S]]
 - interfaces
   - [[file:interfaces/vasp.org][Description of VASP interface to CC4S]]
+- objects
+  - [[file:objects/CoulombIntegrals.org][=CoulombIntegrals=]]
+  - [[file:objects/CoulombVertex.org][=CoulombVertex=]]
+  - [[file:objects/SlicedEigenEnergies.org][=CoupledCluster= algorithm]]
 - tutorials
   - [[file:tutorials/quick-start-lithium-fluoride.org][Quick Start: Periodic LiH calculation using VASP]]
