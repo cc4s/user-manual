@@ -3,7 +3,6 @@
 
 * Definition
 
-algo:CoupledCluster
 The =mp2PairEnergies= matrix is a matrix \( M_{ij} \)
 of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that
 an MP2 energy is given by its full contraction, i.e.
