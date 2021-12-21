@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 17:12 -->
+<!-- 2021-12-21 Tue 17:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>GridVectors</code></title>
@@ -293,18 +293,57 @@
 <div id="content">
 <h1 class="title"><code>GridVectors</code></h1>
 
-<div id="outline-container-orge878aec" class="outline-2">
-<h2 id="orge878aec"><span class="section-number-2">1</span> <a href="#orge878aec">Definition</a></h2>
+<div id="outline-container-org82c3ccc" class="outline-2">
+<h2 id="org82c3ccc"><span class="section-number-2">1</span> <a href="#org82c3ccc">Definition</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-The <code>gridVectors</code> keyword requires the grid vectors of the emplyoed plane-wave basis \(\{ G_1, ...,G_n \}\) as input.
+The <code>GridVectors</code> object contains the grid vectors of the emplyoed plane-wave basis \(\{ G_1, ...,G_n \}\).
 The set of grid vectors should be read in from an external file using the <b>TensorReader</b> algorithm.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"GridVectors.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">tensor</span>: GridVectors
+</pre>
+</div>
+
+<p>
+An example GridVectors.yaml file is given below
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: v1.0
+<span style="color: #8b4513;">scalarType</span>: real64
+<span style="color: #8b4513;">indices</span>:
+  <span style="color: #8b4513;">vector</span>:
+    <span style="color: #8b4513;">type</span>: cartesian
+  <span style="color: #8b4513;">momentum</span>:
+    <span style="color: #8b4513;">type</span>: fullGrid
+<span style="color: #8b4513;">dimensions</span>:
+  - <span style="color: #8b4513;">length</span>:      3
+    <span style="color: #8b4513;">type</span>: vector
+  - <span style="color: #8b4513;">length</span>:   9511
+    <span style="color: #8b4513;">type</span>: momentum
+<span style="color: #8b4513;">data</span>: GridVectors.dat    <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">path to raw data</span>
+<span style="color: #8b4513;">unit</span>: 0.529177249       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">=(Bohr^-1/Angstrom^-1)</span>
+<span style="color: #8b4513;">Gi</span>: [ 0.526962350567279E+00, 0.451407472722934E-05, 0.427322112424627E+00]
+<span style="color: #8b4513;">Gj</span>: [-0.263486852553329E+00, 0.456369723460547E+00, 0.427306695377370E+00]
+<span style="color: #8b4513;">Gk</span>: [-0.263495162680460E+00,-0.456375083174006E+00, 0.427310866668647E+00]
+</pre>
+</div>
+
+<p>
+The last three lines correspond to the reciprocal lattice vectors (including the factor \(2\pi\)).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org88e3bd5" class="outline-2">
-<h2 id="org88e3bd5"><span class="section-number-2">2</span> <a href="#org88e3bd5">Literature</a></h2>
+<div id="outline-container-org9fdede1" class="outline-2">
+<h2 id="org9fdede1"><span class="section-number-2">2</span> <a href="#org9fdede1">Literature</a></h2>
 <div class="outline-text-2" id="text-2">
 <div class="csl-bib-body">
 </div>
@@ -312,7 +351,7 @@ The set of grid vectors should be read in from an external file using the <b>Ten
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 17:12</p>
+<p class="date">Created: 2021-12-21 Tue 17:30</p>
 </div>
 </body>
 </html>

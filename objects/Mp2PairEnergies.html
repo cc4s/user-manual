@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 17:12 -->
+<!-- 2021-12-21 Tue 17:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoulombIntegrals</code></title>
+<title><code>Mp2PairEnergies</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -291,57 +291,37 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoulombIntegrals</code></h1>
+<h1 class="title"><code>Mp2PairEnergies</code></h1>
 
-<div id="outline-container-orgfd0e404" class="outline-2">
-<h2 id="orgfd0e404"><span class="section-number-2">1</span> <a href="#orgfd0e404">Definition</a></h2>
+<div id="outline-container-orgfad3950" class="outline-2">
+<h2 id="orgfad3950"><span class="section-number-2">1</span> <a href="#orgfad3950">Definition</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-\[ V^{pq}_{sr} := {\Gamma^\ast}^{pG}_s \Gamma^q_{rF}$ \]
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> $ are computed from the <code>CoulombVertex</code>, which can
-be respresented in an arbitrary basis set depending on the employed interface
-(<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> are computed from the <code>CoulombVertex</code> using the
-<b>VertexCoulombIntegrals</b> algorithm using; for example, the following
-yaml input file
+The <code>GridVectors</code> object contains the grid vectors of the emplyoed plane-wave basis \(\{ G_1, ...,G_n \}\).
+The set of grid vectors should be read in from an external file using the <b>TensorReader</b> algorithm.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: VertexCoulombIntegrals
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
   <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"Mp2PairEnergies.yaml"</span>
   <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">tensor</span>: Mp2PairEnergies
 </pre>
 </div>
-
-<p>
-We note that the <b>VertexCoulombIntegrals</b> algorithm of <code>Cc4s</code> only prepares
-a recipe for the computation of the various <code>CoulombIntegrals</code>.
-The computation is performed only once the numerical values of the tensors are needed by
-a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an input argument.
-</p>
 </div>
 </div>
 
-
-<div id="outline-container-orgddaaaf2" class="outline-2">
-<h2 id="orgddaaaf2"><span class="section-number-2">2</span> <a href="#orgddaaaf2">Literature</a></h2>
+<div id="outline-container-org6b9044c" class="outline-2">
+<h2 id="org6b9044c"><span class="section-number-2">2</span> <a href="#org6b9044c">Literature</a></h2>
 <div class="outline-text-2" id="text-2">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 17:12</p>
+<p class="date">Created: 2021-12-21 Tue 17:30</p>
 </div>
 </body>
 </html>
