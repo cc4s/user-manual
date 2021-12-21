@@ -15,7 +15,7 @@ downloading the code to running calculations.
 ** How to run Cc4s calculations?
 
 We provide the following examples that teach you how to perform =Cc4s= calculations
-- r-BN CCSD(T) calculations
+- [[file:tutorials/Rbn_tutorial.org][r-BN CCSD(T) calculations]]
 - Water examples
 
 ** Interfaces to Cc4s
