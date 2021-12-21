@@ -1,7 +1,7 @@
 #+title: Cc4s User Documentation
 #+options: toc:nil
 
-* CC4S User Documentation
+* Cc4s User Documentation
   :PROPERTIES:
   :CUSTOM_ID: cc4s-user-documentation
   :END:
@@ -9,15 +9,41 @@ Welcome to the user documentation of the
 [[https://gitlab.cc4s.org/][=cc4s=]] code.
 
 ** Getting started 
-The [[file:./gettingstarted/gettingstarted.org][Quickstart]] section explains everything you need to know about
+The 
+section explains everything you need to know about
 downloading the code, compiling it and running a few tests.
+- [[file:./gettingstarted/gettingstarted.org][Quickstart]]
 
-** How to control input for CC4S?
-This [[file:input/input.org][Input]] section describes how YAML files are used to control CC4S calculations.
+** How to run Cc4s calculations?
 
-** Algorithms in CC4S
-The [[file:algorithms/algorithms.org][Algorithms]] section summarizes and explains the most important algorithms
-available in CC4S. 
+Cc4s calculations are controlled using a YAML input file. This input file calls a sequence of
+algorithms specified by the user. The algorithms require various input and generate output objects.
+A more detailed description of the YAML input file and how it works can be found
+[[file:input/input.org][here]].
+
+** Important input/output objects in Cc4s
+The most important objects used by algorithms are listed below.
+- Th
+
+** Algorithms in Cc4s
+The most important CC4S algorithms are listed below.
+
+- SecondOrderPerturbationTheory
+- [[file:algorthims/CoupledCluster/CoupledCluster.org][CoupledCluster]]
+- [[file:algorthims/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][TransitionStructureFiniteSizeCorrection]]
+- PerturbativeTriples
+- FocalPointBasisSetCorrection
+- CcsdReference
+
+Each algorithm should be briefly described by the following subsection:
+- Input/Output
+- Theory
+- Computational Complexity
+
+This is outdated:
+The [[file:algorithms/algorithms.org][Algorithms]] section summarizes and explains the most important algorithms available in CC4S. 
+
+
 
 ** Interfaces to CC4S
 This section describes the available interfaces between electronic structure theory codes and CC4S.
