@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 17:30 -->
+<!-- 2021-12-21 Tue 18:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>PerturbativeTriples</code></title>
@@ -232,28 +232,6 @@
     /*]]>*///-->
 // @license-end
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -293,8 +271,8 @@
 <div id="content">
 <h1 class="title"><code>PerturbativeTriples</code></h1>
 
-<div id="outline-container-org6b1d29f" class="outline-2">
-<h2 id="org6b1d29f"><span class="section-number-2">1</span> <a href="#org6b1d29f">Example <code>Cc4s</code> input</a></h2>
+<div id="outline-container-org9647819" class="outline-2">
+<h2 id="org9647819"><span class="section-number-2">1</span> <a href="#org9647819">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A typical input file snippet to call the <code>PerturbativeTriples</code> algorithm is given below.
@@ -317,8 +295,8 @@ A typical input file snippet to call the <code>PerturbativeTriples</code> algori
 </div>
 
 
-<div id="outline-container-orgea0f057" class="outline-2">
-<h2 id="orgea0f057"><span class="section-number-2">2</span> <a href="#orgea0f057">Input Description</a></h2>
+<div id="outline-container-orga27c5c0" class="outline-2">
+<h2 id="orga27c5c0"><span class="section-number-2">2</span> <a href="#orga27c5c0">Input Description</a></h2>
 <div class="outline-text-2" id="text-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for PerturbativeTriples</caption>
@@ -364,47 +342,22 @@ A typical input file snippet to call the <code>PerturbativeTriples</code> algori
 </tbody>
 </table>
 </div>
-
-
-<div id="outline-container-mp2pairenergies" class="outline-3">
-<h3 id="mp2pairenergies"><span class="section-number-3">2.1</span> <a href="#mp2pairenergies">mp2PairEnergies</a></h3>
-<div class="outline-text-3" id="text-mp2pairenergies">
-<p>
-The <code>mp2PairEnergies</code> matrix is a matrix \( M_{ij} \)
-of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that
-an MP2 energy is given by its full contraction, i.e.
-</p>
-\begin{equation}
-\epsilon^{\mathrm{MP2}} = \sum_{ij} M_{ij}.
-\end{equation}
-<p>
-This matrix is used in the context of the theory
-CCSD(T*) (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>),
-where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
-When the <code>mp2PairEnergies</code> matrix is given as an input, the algorithm also computes the MP2 energy
-from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
-\( V^{ab}_{ij} \) within <code>slicedEigenEnergies</code> and <code>coulombIntegrals</code> respectively.
-Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
-\( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
-and computed CCSD(T) energy, the approximation
-the CCSD(T*) is computed.
-</p>
-</div>
-</div>
 </div>
 
 
-<div id="outline-container-org5b80767" class="outline-2">
-<h2 id="org5b80767"><span class="section-number-2">3</span> <a href="#org5b80767">Output</a></h2>
+<div id="outline-container-orgd67596c" class="outline-2">
+<h2 id="orgd67596c"><span class="section-number-2">3</span> <a href="#orgd67596c">Output</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
-Below an example standard output stream is shown for a successful <code>PerturbativeTriples</code> algorithm run.
+Below an example standard output stream is shown for a successful <code>PerturbativeTriples</code> algorithm run
+given a <code>mp2pairenergies</code> and thus printing the CCSD(T*) energy.
 </p>
 
 
 <div class="org-src-container">
 <pre class="src src-sh">step: 15, PerturbativeTriples
 <span style="color: #0184bc;">Progress</span>(%)  <span style="color: #a626a4;">time</span>(s)   GFLOP/s      
+1            334       6.027        
 10           2334      6.327        
 20           2323      6.342        
 30           2330      6.341        
@@ -416,22 +369,18 @@ Below an example standard output stream is shown for a successful <code>Perturba
 90           2324      6.415        
 100          2329      6.408        
 (T) correlation energy:      -4.822365952756229
-(T*) correlation energy:      -0.000000000000000
+(T*) correlation energy:      -4.965491965438498
 realtime 23297.807220394 s
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org57ec93e" class="outline-2">
-<h2 id="org57ec93e"><span class="section-number-2">4</span> <a href="#org57ec93e">Computational Complexity and memory footprint</a></h2>
+<div id="outline-container-org10454e3" class="outline-2">
+<h2 id="org10454e3"><span class="section-number-2">4</span> <a href="#org10454e3">Computational Complexity and memory footprint</a></h2>
 </div>
-
-
-
-
-<div id="outline-container-org2f5bb19" class="outline-2">
-<h2 id="org2f5bb19"><span class="section-number-2">5</span> <a href="#org2f5bb19">Reference implementation</a></h2>
+<div id="outline-container-org7be8c2d" class="outline-2">
+<h2 id="org7be8c2d"><span class="section-number-2">5</span> <a href="#org7be8c2d">Reference implementation</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 In addition to the <code>PerturbativeTriples</code> algorithm, there is also a slower
@@ -443,17 +392,16 @@ To use it, you should just change the name <code>PerturbativeTriples</code> by <
 </div>
 
 
-<div id="outline-container-org4a19e2e" class="outline-2">
-<h2 id="org4a19e2e"><span class="section-number-2">6</span> <a href="#org4a19e2e">Literature</a></h2>
+<div id="outline-container-org834d503" class="outline-2">
+<h2 id="org834d503"><span class="section-number-2">6</span> <a href="#org834d503">Literature</a></h2>
 <div class="outline-text-2" id="text-6">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 17:30</p>
+<p class="date">Created: 2021-12-21 Tue 18:16</p>
 </div>
 </body>
 </html>
