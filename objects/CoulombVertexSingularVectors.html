@@ -6,7 +6,7 @@
 <!-- 2021-12-21 Tue 17:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoulombIntegrals</code></title>
+<title><code>CoulombVertexSingularVectors</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -291,52 +291,32 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoulombIntegrals</code></h1>
+<h1 class="title"><code>CoulombVertexSingularVectors</code></h1>
 
-
-<div id="outline-container-org0430c9a" class="outline-2">
-<h2 id="org0430c9a"><span class="section-number-2">1</span> <a href="#org0430c9a">Definition</a></h2>
+<div id="outline-container-org648af9c" class="outline-2">
+<h2 id="org648af9c"><span class="section-number-2">1</span> <a href="#org648af9c">Definition</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-\[ V^{pq}_{sr} := {\Gamma^\ast}^{pG}_s \Gamma^q_{rF}$ \]
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> $ are computed from the <code>CoulombVertex</code>, which can
-be respresented in an arbitrary basis set depending on the employed interface
-(<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> are computed from the <code>CoulombVertex</code> using the
-<b>VertexCoulombIntegrals</b> algorithm using; for example, the following
-yaml input file
+The <code>coulombVertexSingularVectors</code> object is the transformation from the auxiliary-field basis to the
+plane-wave basis \(U_{G}^{F}\) as input.
+This transformation matrix should be read in from an external file using the <b>TensorReader</b> algorithm.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: VertexCoulombIntegrals
-  <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
-  <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+<pre class="src src-sh">- name: TensorReader
+  <span style="color: #a626a4;">in</span>:
+    fileName: <span style="color: #50a14f;">"CoulombVertexSingularVectors.yaml"</span>
+  out:
+    tensor: CoulombVertexSingularVectors
 </pre>
 </div>
-
-<p>
-We note that the <b>VertexCoulombIntegrals</b> algorithm of <code>Cc4s</code> only prepares
-a recipe for the computation of the various <code>CoulombIntegrals</code>.
-The computation is performed only once the numerical values of the tensors are needed by
-a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an input argument.
-</p>
 </div>
 </div>
 
-
-<div id="outline-container-orgd921070" class="outline-2">
-<h2 id="orgd921070"><span class="section-number-2">2</span> <a href="#orgd921070">Literature</a></h2>
+<div id="outline-container-org37ac847" class="outline-2">
+<h2 id="org37ac847"><span class="section-number-2">2</span> <a href="#org37ac847">Literature</a></h2>
 <div class="outline-text-2" id="text-2">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
 </div>
 </div>
 </div>

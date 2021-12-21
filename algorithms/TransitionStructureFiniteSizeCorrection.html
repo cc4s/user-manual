@@ -6,7 +6,7 @@
 <!-- 2021-12-21 Tue 17:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoulombIntegrals</code></title>
+<title><code>TransitionStructureFactorFiniteSizeCorrection</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -291,52 +291,190 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoulombIntegrals</code></h1>
+<h1 class="title"><code>TransitionStructureFactorFiniteSizeCorrection</code></h1>
 
-
-<div id="outline-container-org0430c9a" class="outline-2">
-<h2 id="org0430c9a"><span class="section-number-2">1</span> <a href="#org0430c9a">Definition</a></h2>
+<div id="outline-container-org5532adb" class="outline-2">
+<h2 id="org5532adb"><span class="section-number-2">1</span> <a href="#org5532adb">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-\[ V^{pq}_{sr} := {\Gamma^\ast}^{pG}_s \Gamma^q_{rF}$ \]
+A typical input file snippet to call the <code>TransitionStructureFactorFiniteSizeCorrection</code> algorithm is given below.
 </p>
-
-<p>
-The <code>CoulombIntegrals</code> $ are computed from the <code>CoulombVertex</code>, which can
-be respresented in an arbitrary basis set depending on the employed interface
-(<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> are computed from the <code>CoulombVertex</code> using the
-<b>VertexCoulombIntegrals</b> algorithm using; for example, the following
-yaml input file
-</p>
-
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: VertexCoulombIntegrals
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TransitionStructureFactorFiniteSizeCorrection
   <span style="color: #8b4513;">in</span>:
     <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
+    <span style="color: #8b4513;">coulombVertexSingularVectors</span>: CoulombVertexSingularVectors
+    <span style="color: #8b4513;">coulombPotential</span>: CoulombPotential
+    <span style="color: #8b4513;">gridVectors</span>: GridVectors
   <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">transitionStructureFactor</span>: SF
+    <span style="color: #8b4513;">corrected</span>: Corrected
+    <span style="color: #8b4513;">uncorrected</span>: Uncorrected
 </pre>
 </div>
+</div>
+</div>
+
+<div id="outline-container-orga65d4d1" class="outline-2">
+<h2 id="orga65d4d1"><span class="section-number-2">2</span> <a href="#orga65d4d1">Input description</a></h2>
+<div class="outline-text-2" id="text-2">
+<table id="orgf8a5383" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Input Keyword</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>slicedCoulombVertex</code></td>
+<td class="org-left"><a href="../objects/SlicedCoulombVertex.html">Sliced Coulomb vertex</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>amplitudes</code></td>
+<td class="org-left"><a href="../objects/Amplitudes.html">Singles and doubles amplitudes</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>coulombVertexSingularVectors</code></td>
+<td class="org-left"><a href="../objects/CoulombVertexSingularVectors.html">coulombVertexSingularVectors</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>coulombPotential</code></td>
+<td class="org-left"><a href="../objects/CoulombPotential.html">Coulomb potential</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gridVectors</code></td>
+<td class="org-left"><a href="../objects/GridVectors.html">Grid Vectors</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>interpolationGridSize</code></td>
+<td class="org-left"><a href="#interpolationgridsize">Interpolation grid size</a></td>
+<td class="org-left">20</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-interpolationgridsize" class="outline-3">
+<h3 id="interpolationgridsize"><span class="section-number-3">2.1</span> <a href="#interpolationgridsize">interpolationGridSize</a></h3>
+<div class="outline-text-3" id="text-interpolationgridsize">
+<p>
+The <code>interpolationGridSize</code> keyword can be used to control the finesness of the grid used to interpolate the
+electronic transition structure factor in each spatial direction.
+A value of \(N\) for the <code>interpolationGridSize</code> means that \(2 N\) sampling points are used to sample the interpolated structure factor in each direction.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf501c19" class="outline-2">
+<h2 id="orgf501c19"><span class="section-number-2">3</span> <a href="#orgf501c19">Output</a></h2>
+<div class="outline-text-2" id="text-3">
+<table id="orgfaf1564" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Output Keyword</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>transitionStructureFactor</code></td>
+<td class="org-left">Transition Structure factor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>energy</code></td>
+<td class="org-left">finite size corrected energy</td>
+</tr>
+</tbody>
+</table>
 
 <p>
-We note that the <b>VertexCoulombIntegrals</b> algorithm of <code>Cc4s</code> only prepares
-a recipe for the computation of the various <code>CoulombIntegrals</code>.
-The computation is performed only once the numerical values of the tensors are needed by
-a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an input argument.
+The output of the <b>TransitionStructureFactorFiniteSizeCorrection</b> algorithm includes transition structure factor \(S(G)\) and
+an estimate of the finitie size error correction to the correlation energy. The finite size error is estimated using a tricubic interpolation
+algorithm of the electronic transition structure factor.
+</p>
+
+<p>
+Below an example standard output stream is shown for a successful <b>TransitionStructureFactorFiniteSizeCorrection</b> algorithm run.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">step: 10, TransitionStructureFactorFiniteSizeCorrection
+Uncorrected correlation energy:   -171.7706873818
+Finite-size energy correction:    -0.8222012413
+realtime 68.117389991 s
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcaccae4" class="outline-2">
+<h2 id="orgcaccae4"><span class="section-number-2">4</span> <a href="#orgcaccae4">Computational Complexity and memory footprint</a></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared. 
 </p>
 </div>
 </div>
 
+<div id="outline-container-org313ea54" class="outline-2">
+<h2 id="org313ea54"><span class="section-number-2">5</span> <a href="#org313ea54">Theory</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
+We employ a tricubic interpolation technique to reduce
+quadrature errors in the numerical expression of the electronic correlation energy: \(\sum_{ G}S({ G}){\tilde{v}}({ G})\).
+In particular, the quadrature errors around \({G}=0\) are large and result in significant finite-size errors for small simulation cells.
+In order to obtain a more accurate estimate of the correlation energy in the thermodynamic limit,
+we proceed as follows.
+We introduce additional sampling points at an arbitrarily dense
+grid, which we choose to be \(2N\times 2N \times 2N\) times denser than the original one.
+The interpolated transition structure factor and the analytic expression of the Coulomb kernel can be used
+to calculate the correlation energy with the usual expression given above.
+The difference between the correlation energies computed with the interpolated and non-interpolated structure factor
+yields an estimate of the finite correction to the electronic correlation energy that is returned by this algorithm.
+We find that \(N=20\) yields well converged correlation energies for sufficiently large unit cells.
+However, we recommend to check convergence with respect to this parameter for each system separetely.
+</p>
+</div>
+</div>
 
-<div id="outline-container-orgd921070" class="outline-2">
-<h2 id="orgd921070"><span class="section-number-2">2</span> <a href="#orgd921070">Literature</a></h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org556baa4" class="outline-2">
+<h2 id="org556baa4"><span class="section-number-2">6</span> <a href="#org556baa4">Literature</a></h2>
+<div class="outline-text-2" id="text-6">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Liao, Ke, and Andreas Grüneis. 2016. “Communication: Finite Size Correction in Periodic Coupled Cluster Theory Calculations of Solids.” <i>The Journal of Chemical Physics</i> 145 (14). AIP Publishing: 141102. <a href="http://doi.org/10.1063/1.4964307">http://doi.org/10.1063/1.4964307</a>.</div>
 </div>
 </div>
 </div>

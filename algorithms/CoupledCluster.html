@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-12-21 Tue 17:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title><code>CoupledCluster</code></title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+
+    <meta charset='UTF-8'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link
+      href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css'
+      rel='stylesheet'
+      integrity='sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU'
+      crossorigin='anonymous'>
+    <script
+      src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js'
+      integrity='sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ'
+      crossorigin='anonymous'></script>
+    <style>
+       #content {
+          padding: 5%;
+       }
+    </style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+
+  <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+    <div class='container-fluid'>
+      <a class='navbar-brand' href='#'>
+        Cc4s
+      </a>
+      <button class='navbar-toggler' type='button'
+              data-bs-toggle='collapse'
+              data-bs-target='#navbarSupportedContent'
+              aria-controls='navbarSupportedContent'
+              aria-expanded='false'
+              aria-label='Toggle navigation'>
+        <span class='navbar-toggler-icon'></span>
+      </button>
+      <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+        <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+          <li class='nav-item'>
+            <a class='nav-link' aria-current='page' href='/user-manual/index.html'>
+              <i class='fa fa-home'></i>
+              Home
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='/user-manual/sitemap.html'>
+              <i class='fa fa-sign-out'></i>
+              Sitemap
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<div id="content">
+<h1 class="title"><code>CoupledCluster</code></h1>
+
+<div id="outline-container-org1dcc703" class="outline-2">
+<h2 id="org1dcc703"><span class="section-number-2">1</span> <a href="#org1dcc703">Example <code>Cc4s</code> input</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A typical input file snippet to call the <code>CoupledCluster</code> algorithm is given below.
+</p>
+<div class="org-src-container">
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: CoupledCluster
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">method</span>:
+      <span style="color: #8b4513;">type</span>: Ccsd
+      <span style="color: #8b4513;">integralsSliceSize</span>: 100
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
+    <span style="color: #8b4513;">maxIterations</span>: 20
+    <span style="color: #8b4513;">energyConvergence</span>: 1.0E-4
+    <span style="color: #8b4513;">amplitudesConvergence</span>: 1.0E-4
+    <span style="color: #8b4513;">mixer</span>:
+      <span style="color: #8b4513;">type</span>: DiisMixer
+      <span style="color: #8b4513;">maxResidua</span>: 5
+    <span style="color: #a0a1a7; font-weight: bold;">#</span><span style="color: #a0a1a7;">or for instance a linear mixer</span>
+    <span style="color: #a0a1a7; font-weight: bold;">#</span><span style="color: #a0a1a7;">mixer:</span>
+    <span style="color: #a0a1a7; font-weight: bold;">#  </span><span style="color: #a0a1a7;">type: LinearMixer</span>
+    <span style="color: #a0a1a7; font-weight: bold;">#  </span><span style="color: #a0a1a7;">ratio: 1.0</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">energy</span>: CcsdEnergy
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge53bdb0" class="outline-2">
+<h2 id="orge53bdb0"><span class="section-number-2">2</span> <a href="#orge53bdb0">Input description</a></h2>
+<div class="outline-text-2" id="text-2">
+<table id="org616f64d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Input Keyword</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>method: type</code></td>
+<td class="org-left"><a href="#method-type">Type of coupled cluster algorithm</a></td>
+<td class="org-left">Ccsd</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>method: integralsSliceSize</code></td>
+<td class="org-left"><a href="#integralsslicesize">Integral slice size</a></td>
+<td class="org-left">Number of occupied orbitals</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>slicedEigenEnergies</code></td>
+<td class="org-left"><a href="../objects/SlicedEigenEnergies">Sliced one-electron energies</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>coulombIntegrals</code></td>
+<td class="org-left"><a href="../objects/CoulombIntegrals.html">Coulomb Integrals</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>slicedCoulombVertex</code></td>
+<td class="org-left"><a href="../objects/SlicedCoulombVertex.html">Sliced Coulomb vertex</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>maxIterations</code></td>
+<td class="org-left"><a href="#maxiterations">Maximum number of iterations</a></td>
+<td class="org-left">20</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>energyConvergence</code></td>
+<td class="org-left"><a href="#energyconvergence">Energy convergence threshold</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>amplitudesConvergence</code></td>
+<td class="org-left"><a href="#amplitudesconvergence">Amplitude convergence threshold</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mixer: type</code></td>
+<td class="org-left"><a href="#mixer">Mixer type</a></td>
+<td class="org-left">DiisMixer</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-method-type" class="outline-3">
+<h3 id="method-type"><span class="section-number-3">2.1</span> <a href="#method-type">type</a></h3>
+<div class="outline-text-3" id="text-method-type">
+<p>
+<code>method: type</code> specifies the  coupled-cluster approximation for the amplitudes to be used.
+The currently available approximations are:
+</p>
+<dl class="org-dl">
+<dt><code>Ccsd</code></dt><dd>Coupled Cluster singles and doubles (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>).</dd>
+<dt><code>CcsdReference</code></dt><dd>Canonical and unoptimized version of the <code>Ccsd</code> algorithm.
+This algorithm has the same inputs as <code>Ccsd</code> with the exception of the
+<a href="#integralsslicesize">integralSliceSize</a> input argument.</dd>
+<dt><code>Drccsd</code></dt><dd>Direct-Ring Coupled Cluster singles and doubles (<a href="#citeproc_bib_item_2">Paier et al. 2012</a>).</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-integralsslicesize" class="outline-3">
+<h3 id="integralsslicesize"><span class="section-number-3">2.2</span> <a href="#integralsslicesize">integralsSliceSize</a></h3>
+<div class="outline-text-3" id="text-integralsslicesize">
+<p>
+<code>integralsSliceSize</code> controls the slice size of the \(V_{cd}^{ab}\) integrals, which are computed on-the-fly to
+reduce the memory footprint. The integer value specified for <code>integralsSliceSize</code>  refers to the dimension size
+used for the \(a\) and \(b\) index. We recommend setting <code>integralsSliceSize: 100</code> to balance
+computational efficency with memory usage. Smaller/larger values reduce/increase the memory footprint.
+</p>
+</div>
+</div>
+
+<div id="outline-container-maxiterations" class="outline-3">
+<h3 id="maxiterations"><span class="section-number-3">2.3</span> <a href="#maxiterations">maxIterations</a></h3>
+<div class="outline-text-3" id="text-maxiterations">
+<p>
+<code>maxIterations</code> controls the maximum number of iterations allowed to solve the  \(t_{ij}^{ab}\) and \(t_i^a\) amplitude equations.
+If convergence of the energy and residual vectors within the specified thresholds is achieved using fewer iterations
+than <code>maxIterations</code>, the algorithm was successfull and will stop.
+If <code>maxIterations</code> is reached without achieving <code>energyConvergence</code> and <code>amplitudesConvergence</code> , the algorithm was not
+successful and will stop. We recommend to set <code>maxIterations: 20</code>, which is ususally enough to achieve reasonable convergence
+thresholds.
+</p>
+</div>
+</div>
+
+<div id="outline-container-energyconvergence" class="outline-3">
+<h3 id="energyconvergence"><span class="section-number-3">2.4</span> <a href="#energyconvergence">energyConvergence</a></h3>
+<div class="outline-text-3" id="text-energyconvergence">
+<p>
+<code>energyConvergence</code> specifies the convergence threshold for the correlation energy.
+If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achieved, the iterative solution was successful and the algorithm will stop.
+</p>
+</div>
+</div>
+
+<div id="outline-container-amplitudesconvergence" class="outline-3">
+<h3 id="amplitudesconvergence"><span class="section-number-3">2.5</span> <a href="#amplitudesconvergence">amplitudesConvergence</a></h3>
+<div class="outline-text-3" id="text-amplitudesconvergence">
+<p>
+<code>amplitudesConvergence</code> specifies the convergence threshold for the residual vector of the singles and doubles amplitude equations.
+If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achieved, the iterative solution was successful and the algorithm will stop.
+</p>
+</div>
+</div>
+
+<div id="outline-container-mixer" class="outline-3">
+<h3 id="mixer"><span class="section-number-3">2.6</span> <a href="#mixer">mixer</a></h3>
+<div class="outline-text-3" id="text-mixer">
+<p>
+<code>mixer</code> specifies mixer-specific parameters used to solve the amplitude equations iteratively.
+The direct inversion iterative subspace (Diis) algorithm is the default algorithm used to mix amplitude guesses from previous
+iterations to improve the guess for the next iteration.
+<code>mixer: type</code> can currently be set to <code>*DiisMixer</code> or <code>*LinearMixer</code>.
+</p>
+</div>
+
+<div id="outline-container-org17265b1" class="outline-4">
+<h4 id="org17265b1"><span class="section-number-4">2.6.1</span> <a href="#org17265b1">DiisMixer</a></h4>
+<div class="outline-text-4" id="text-2-6-1">
+<p>
+For <code>mixer: type: DissMixer</code>, it is possible to specify <code>mixer: maxResidua</code>, which controls the number of residual
+vectors used by the Diis mixer.
+We recommend to set the maximum number of residual vectors used in the <code>DiisMixer</code> to <code>5</code>.
+More residual vectors result in a larger memory footprint.
+</p>
+
+<dl class="org-dl">
+<dt>Example</dt><dd></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #8b4513;">mixer</span>:
+  <span style="color: #8b4513;">type</span>: DiisMixer
+  <span style="color: #8b4513;">maxResidua</span>: 5
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orga822a5c" class="outline-4">
+<h4 id="orga822a5c"><span class="section-number-4">2.6.2</span> <a href="#orga822a5c">LinearMixer</a></h4>
+<div class="outline-text-4" id="text-2-6-2">
+<p>
+For <code>mixer: type: LinearMixer</code> it is possible to specify <code>mixer: ratio</code>, which controls the mixing ratio used
+to update the new guess of the amplitudes based on estimates from the previous and current iteration.
+The <code>LinearMixer</code> exhibits the smallest possible memory footprint from all currently available mixers,
+keeping two sets of amplitudes in memory at once only.
+We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a slower but perhaps more stable convergence.
+</p>
+
+<dl class="org-dl">
+<dt>Example</dt><dd></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-yaml" id="org2a337a5"><span style="color: #8b4513;">mixer</span>:
+  <span style="color: #8b4513;">type</span>: LinearMixer
+  <span style="color: #8b4513;">ratio</span>: 1.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8dae04c" class="outline-2">
+<h2 id="org8dae04c"><span class="section-number-2">3</span> <a href="#org8dae04c">Output</a></h2>
+<div class="outline-text-2" id="text-3">
+<table id="org0334cd8" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Output Keyword</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>energy</code></td>
+<td class="org-left">Second-order and coupled cluster correlation energies</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>amplitudes</code></td>
+<td class="org-left">Amplitudes</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The output of the <b>CoupledCluster</b> algorithm includes <code>energy</code> and <code>amplitudes</code> . The <code>amplitudes</code> output contains
+the converged singles and doubles amplitude tensors. The amplitudes can be used as input for algorithms
+that estimate the finite simulation cell size error (<b>TransitionStructureFactorFiniteSizeCorrection</b>)
+and the basis set incompleteness errors (<b>CcsdFocalPointBasisSetCorrection</b>).
+</p>
+
+<p>
+Below an example standard output stream is shown for a successful <b>CoupledCluster</b> algorithm run.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">step: 9, CoupledCluster
+Using method Ccsd. integralsSliceSize: 96
+Using mixer DiisMixer. maxResidua: 5
+Maximum number of iterations: 30
+Unless reaching energy convergence dE: 0.0001
+and amplitudes convergence dR: 0.0001
+Iter         Energy         dE           dR         time   GF/s/core
+   1  -1.51995933e+02  -1.5200e+02   1.0108e+00     32.6    5.6
+   2  -1.48908010e+02   3.0879e+00   1.8077e-01    381.6    9.3
+   3  -1.51620340e+02  -2.7123e+00   3.8331e-02    381.7    9.3
+   4  -1.52039881e+02  -4.1954e-01   1.2254e-02    380.1    9.3
+   5  -1.52001191e+02   3.8690e-02   2.6566e-03    381.7    9.3
+   6  -1.51996162e+02   5.0293e-03   9.0534e-04    381.3    9.3
+   7  -1.51998504e+02  -2.3416e-03   2.6783e-04    382.1    9.3
+   8  -1.51997751e+02   7.5305e-04   8.5906e-05    383.2    9.2
+   9  -1.51998116e+02  -3.6568e-04   2.4672e-05    380.0    9.3
+  10  -1.51998173e+02  -5.7065e-05   9.5722e-06    376.6    9.4
+
+Ccsd correlation energy:          -151.9981733061
+2nd-order correlation energy:     -151.9959332292
+realtime 3463.773373
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd254ba7" class="outline-2">
+<h2 id="orgd254ba7"><span class="section-number-2">4</span> <a href="#orgd254ba7">Computational Complexity and memory footprint</a></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+This section contains computational or memory footprints
+for the various methods implemented in <b>CoupledCluster</b>
+<a href="#method-type">(see type)</a>.
+</p>
+</div>
+
+<div id="outline-container-org40b10a3" class="outline-3">
+<h3 id="org40b10a3"><span class="section-number-3">4.1</span> <a href="#org40b10a3"><code>Ccsd method</code></a></h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The computational bottle neck of a typical Ccsd calculation originates from the following contraction, which is
+part of the doubles amplitude equations: \(V_{cd}^{ab} t_{ij}^{cd}\). The computational cost for evaluating this expression scales
+as \(\mathcal{O}(N_{\rm o}^2 N_{\rm v}^4)\). To avoid a memory footprint of \(\mathcal{O}(N_{\rm v}^4)\) in storing
+\(V_{cd}^{ab}\), slices \(V_{cd}^{xy}\) are computed on-the-fly and used in the contraction, reducing
+the corresponding memory footprint to \(\mathcal{O}(N_{\rm v}^2 N_{\rm s}^2)\), where \(N_{\rm s}\) is controlled using 
+the <code>integralsSliceSize</code> keyword.
+</p>
+
+<p>
+We note that required storage of a set of doubles amplitudes adds substantially to the memory footprint in Ccsd calculations.
+The Diis algorithm requires the storage of both doubles residua and amplitudes <code>maxResidua</code> times. We recommend to choose the
+type of mixer and its parameters carefully to reduce the memory fottprint if necessary.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge18657b" class="outline-3">
+<h3 id="orge18657b"><span class="section-number-3">4.2</span> <a href="#orge18657b"><span class="todo TODO">TODO</span> <code>Drccd method</code></a></h3>
+</div>
+</div>
+
+<div id="outline-container-org9bd6926" class="outline-2">
+<h2 id="org9bd6926"><span class="section-number-2">5</span> <a href="#org9bd6926">Theory</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+We recommend the following review article and references therein to get started with coupled-cluster theory (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>) .
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6ff12be" class="outline-2">
+<h2 id="org6ff12be"><span class="section-number-2">6</span> <a href="#org6ff12be">Literature</a></h2>
+<div class="outline-text-2" id="text-6">
+<div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bartlett, R.J., and Monika Musiał. 2007. “Coupled-cluster theory in quantum chemistry.” <i>Rev. Mod. Phys.</i> 79 (1). American Physical Society: 291–352. doi:<a href="https://doi.org/10.1103/RevModPhys.79.291">10.1103/RevModPhys.79.291</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Paier, Joachim, Xinguo Ren, Patrick Rinke, Gustavo E Scuseria, Andreas Grüneis, Georg Kresse, and Matthias Scheffler. 2012. “Assessment of Correlation Energies Based on the Random-Phase Approximation.” <i>New Journal of Physics</i> 14 (4). IOP Publishing: 043002. <a href="http://doi.org/10.1088/1367-2630/14/4/043002">http://doi.org/10.1088/1367-2630/14/4/043002</a>.</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2021-12-21 Tue 17:12</p>
+</div>
+</body>
+</html>

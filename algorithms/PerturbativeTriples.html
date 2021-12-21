@@ -6,7 +6,7 @@
 <!-- 2021-12-21 Tue 17:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoulombIntegrals</code></title>
+<title><code>PerturbativeTriples</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -291,52 +291,163 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoulombIntegrals</code></h1>
+<h1 class="title"><code>PerturbativeTriples</code></h1>
 
-
-<div id="outline-container-org0430c9a" class="outline-2">
-<h2 id="org0430c9a"><span class="section-number-2">1</span> <a href="#org0430c9a">Definition</a></h2>
+<div id="outline-container-orgd5eedb3" class="outline-2">
+<h2 id="orgd5eedb3"><span class="section-number-2">1</span> <a href="#orgd5eedb3">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-\[ V^{pq}_{sr} := {\Gamma^\ast}^{pG}_s \Gamma^q_{rF}$ \]
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> $ are computed from the <code>CoulombVertex</code>, which can
-be respresented in an arbitrary basis set depending on the employed interface
-(<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> are computed from the <code>CoulombVertex</code> using the
-<b>VertexCoulombIntegrals</b> algorithm using; for example, the following
-yaml input file
+A typical input file snippet to call the <code>PerturbativeTriples</code> algorithm is given below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: VertexCoulombIntegrals
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: PerturbativeTriples
   <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
-  <span style="color: #8b4513;">out</span>:
     <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">mp2PairEnergies</span>: Mp2PairEnergies
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">energy</span>:
+      <span style="color: #8b4513;">triples</span>: triplesEnergy
+      <span style="color: #8b4513;">triples*</span>: triplesEnergyStar
 </pre>
 </div>
+</div>
+</div>
 
+
+<div id="outline-container-org9427812" class="outline-2">
+<h2 id="org9427812"><span class="section-number-2">2</span> <a href="#org9427812">Input Description</a></h2>
+<div class="outline-text-2" id="text-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for PerturbativeTriples</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Input Keyword</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>amplitudes</code></td>
+<td class="org-left"><a href="../objects/Amplitudes.html">Singles and doubles amplitudes</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>coulombIntegrals</code></td>
+<td class="org-left"><a href="../objects/CoulombIntegrals.html">Coulomb Integrals</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>slicedEigenEnergies</code></td>
+<td class="org-left"><a href="../objects/SlicedEigenEnergies.html">Sliced one-electron energies</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mp2PairEnergies</code></td>
+<td class="org-left"><a href="../objects/Mp2PairEnergies.html">MP2 pair energies matrix</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-mp2pairenergies" class="outline-3">
+<h3 id="mp2pairenergies"><span class="section-number-3">2.1</span> <a href="#mp2pairenergies">mp2PairEnergies</a></h3>
+<div class="outline-text-3" id="text-mp2pairenergies">
 <p>
-We note that the <b>VertexCoulombIntegrals</b> algorithm of <code>Cc4s</code> only prepares
-a recipe for the computation of the various <code>CoulombIntegrals</code>.
-The computation is performed only once the numerical values of the tensors are needed by
-a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an input argument.
+The <code>mp2PairEnergies</code> matrix is a matrix \( M_{ij} \)
+of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that
+an MP2 energy is given by its full contraction, i.e.
+</p>
+\begin{equation}
+\epsilon^{\mathrm{MP2}} = \sum_{ij} M_{ij}.
+\end{equation}
+<p>
+This matrix is used in the context of the theory
+CCSD(T*) (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>),
+where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
+When the <code>mp2PairEnergies</code> matrix is given as an input, the algorithm also computes the MP2 energy
+from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
+\( V^{ab}_{ij} \) within <code>slicedEigenEnergies</code> and <code>coulombIntegrals</code> respectively.
+Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
+\( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
+and computed CCSD(T) energy, the approximation
+the CCSD(T*) is computed.
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org2b040fc" class="outline-2">
+<h2 id="org2b040fc"><span class="section-number-2">3</span> <a href="#org2b040fc">Output</a></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Below an example standard output stream is shown for a successful <code>PerturbativeTriples</code> algorithm run.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-sh">step: 15, PerturbativeTriples
+<span style="color: #0184bc;">Progress</span>(%)  <span style="color: #a626a4;">time</span>(s)   GFLOP/s      
+10           2334      6.327        
+20           2323      6.342        
+30           2330      6.341        
+40           2282      6.373        
+50           2286      6.390        
+60           2282      6.404        
+70           2279      6.415        
+80           2279      6.423        
+90           2324      6.415        
+100          2329      6.408        
+(T) correlation energy:      -4.822365952756229
+(T*) correlation energy:      -0.000000000000000
+realtime 23297.807220394 s
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4387139" class="outline-2">
+<h2 id="org4387139"><span class="section-number-2">4</span> <a href="#org4387139">Computational Complexity and memory footprint</a></h2>
+</div>
+
+
+
+
+<div id="outline-container-org6062a9b" class="outline-2">
+<h2 id="org6062a9b"><span class="section-number-2">5</span> <a href="#org6062a9b">Reference implementation</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+In addition to the <code>PerturbativeTriples</code> algorithm, there is also a slower
+but reference implementation called <code>PerturbativeTriplesReference</code> which
+is used in the same way as <code>PerturbativeTriples</code>.
+To use it, you should just change the name <code>PerturbativeTriples</code> by <code>PerturbativeTriplesReference</code>.
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-orgd921070" class="outline-2">
-<h2 id="orgd921070"><span class="section-number-2">2</span> <a href="#orgd921070">Literature</a></h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgddc0327" class="outline-2">
+<h2 id="orgddc0327"><span class="section-number-2">6</span> <a href="#orgddc0327">Literature</a></h2>
+<div class="outline-text-2" id="text-6">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
 </div>
 </div>
 </div>

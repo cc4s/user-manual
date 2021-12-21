@@ -6,7 +6,7 @@
 <!-- 2021-12-21 Tue 17:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoulombIntegrals</code></title>
+<title>CcsdFocalPointBasisSetCorrection</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -291,52 +291,171 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoulombIntegrals</code></h1>
+<h1 class="title">CcsdFocalPointBasisSetCorrection</h1>
 
-
-<div id="outline-container-org0430c9a" class="outline-2">
-<h2 id="org0430c9a"><span class="section-number-2">1</span> <a href="#org0430c9a">Definition</a></h2>
+<div id="outline-container-orga5f68be" class="outline-2">
+<h2 id="orga5f68be"><span class="section-number-2">1</span> <a href="#orga5f68be">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-\[ V^{pq}_{sr} := {\Gamma^\ast}^{pG}_s \Gamma^q_{rF}$ \]
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> $ are computed from the <code>CoulombVertex</code>, which can
-be respresented in an arbitrary basis set depending on the employed interface
-(<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
-</p>
-
-<p>
-The <code>CoulombIntegrals</code> are computed from the <code>CoulombVertex</code> using the
-<b>VertexCoulombIntegrals</b> algorithm using; for example, the following
-yaml input file
+A typical input file snippet to call the <code>CcsdFocalPointBasisSetCorrection</code> algorithm is given below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: VertexCoulombIntegrals
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: CcsdFocalPointBasisSetCorrection
   <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
-  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
     <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">mp2PairEnergies</span>: Mp2PairEnergies
+    <span style="color: #8b4513;">deltaIntegralsHH</span>: DeltaIntegralsHH
+    <span style="color: #8b4513;">deltaIntegralsPPHH</span>: DeltaIntegralsPPHH
+  <span style="color: #8b4513;">out</span>:
+    {}
 </pre>
 </div>
+</div>
+</div>
+
+
+<div id="outline-container-org5bc8638" class="outline-2">
+<h2 id="org5bc8638"><span class="section-number-2">2</span> <a href="#org5bc8638">Input description</a></h2>
+<div class="outline-text-2" id="text-2">
+<table id="org5845790" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Input Key</th>
+<th scope="col" class="org-left">Default</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>amplitudes</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>deltaIntegralsPPHH</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>deltaIntegralsHH</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mp2PairEnergiese</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>coulombIntegrals</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>slicedEigenEnergies</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Output Key</td>
+<td class="org-left">Default</td>
+<td class="org-left">Description</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-orgeb395cd" class="outline-3">
+<h3 id="orgeb395cd"><span class="section-number-3">2.1</span> <a href="#orgeb395cd">Output</a></h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The output of the algorithm is the CCSD-BSIE-energy-correction, as well as the
+2nd-order energy correction. 
+</p>
 
 <p>
-We note that the <b>VertexCoulombIntegrals</b> algorithm of <code>Cc4s</code> only prepares
-a recipe for the computation of the various <code>CoulombIntegrals</code>.
-The computation is performed only once the numerical values of the tensors are needed by
-a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an input argument.
+Below an example standard output stream is shown for a successful run.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">step: 10, CcsdFocalPointBasisSetCorrection
+CCSD-BSIE energy correction:      -0.0165423958
+2nd-order energy correction:      -0.0229332012
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org8b67bc8" class="outline-3">
+<h3 id="org8b67bc8"><span class="section-number-3">2.2</span> <a href="#org8b67bc8">Computational Complexity and memory footprint</a></h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+This algorithm is basically a post-processing algorithm. However, the 2nd-order
+energy is re-evaluated on-the-fly and other operations of the same computational
+complexity are performed. Also the memory footprint is in the order of a 2nd-order
+energy calculation.
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-orgd921070" class="outline-2">
-<h2 id="orgd921070"><span class="section-number-2">2</span> <a href="#orgd921070">Literature</a></h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org4700719" class="outline-3">
+<h3 id="org4700719"><span class="section-number-3">2.3</span> <a href="#org4700719">Theory</a></h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+This algorithm evaluates the correction of the basis-set-incompleteness error 
+(BSIE) for CCSD as descibed in blablabla. The algorithm requires the converged
+CCSD amplitudes together with $&delta;$-integrals. Futhermore, an estimate for
+the MP2-pair-energies is needed. (see theory). 
+</p>
+
+<p>
+As discussed in the mentioned publication, the CCSD-BSIE in a finite basis-set
+calculation is primarily due to the 2nd-order term, and the so-called
+particle-particle ladder (ppl) term. There exists a variety of algorithms which allow
+a reliable CBS estimate for the 2nd-order term at modest computational costs 
+(compared to a the corresponding CCSD calculation for the same system). The
+missing ppl BSIE contribution is approximated using a pair-specific expression
+which requires the 2nd-order pair-energies, CCSD-amplitudes, as-well-as the
+&delta;-integrals which are defined by
+</p>
+
+\begin{equation}
+\langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
+\end{equation}
+
+<p>
+with the Dirac delta function \(\delta(\mathbf{r})\) and the interelectronic distance
+\(\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|\).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org30e380a" class="outline-2">
+<h2 id="org30e380a"><span class="section-number-2">3</span> <a href="#org30e380a">Literature</a></h2>
+<div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
 </div>
 </div>
 </div>
