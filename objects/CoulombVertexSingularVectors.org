@@ -3,9 +3,10 @@
 
 * Definition
 
-The =coulombVertexSingularVectors= object is the transformation from the auxiliary-field basis to the
+The =CoulombVertexSingularVectors= object contains the transformation from the auxiliary-field basis to the
 plane-wave basis $U_{G}^{F}$ as input.
-This transformation matrix should be read in from an external file using the *TensorReader* algorithm.
+This transformation matrix needs to be provided by the interfaced
+electronic structure code and should be read in from an external file using the *TensorReader* algorithm.
 
 #+begin_src sh
 - name: TensorReader
