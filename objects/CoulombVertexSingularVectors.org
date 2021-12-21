@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID: CoulombVertexSingularVectors
+:END:
 #+title: =CoulombVertexSingularVectors=
 #+OPTIONS: toc:nil
 

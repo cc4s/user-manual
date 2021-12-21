@@ -7,6 +7,7 @@ EMACS_BIN ?= emacs
 EMACS = $(EMACS_BIN) -Q --batch
 INDEX = index.org
 ORGFILES = $(shell find . -name '*.org')
+ID_LOCATION_FILE = id-locations
 
 TANGLING_FILES = $(shell find . -name '*.org' | xargs grep -H tangle | awk -F: '{print $$1}')
 TANGLING_FILES_DIR = .emacs/tangle

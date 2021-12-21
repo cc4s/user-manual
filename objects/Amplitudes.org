@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID: Amplitudes
+:END:
 #+title: =Amplitudes=
 #+OPTIONS: toc:nil
 

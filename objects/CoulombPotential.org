@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID: CoulombPotential
+:END:
 #+title: =CoulombPotential=
 #+OPTIONS: toc:nil
 

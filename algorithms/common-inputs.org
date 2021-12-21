@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID: common-inputs
+:END:
 #+title: Common inputs for =cc4s= algorithms
 
 This page describes common input variables used

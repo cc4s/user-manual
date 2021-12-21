@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID: SlicedEigenEnergies.org
+:END:
 #+title: =SlicedEigenEnergies=
 #+OPTIONS: toc:nil
 

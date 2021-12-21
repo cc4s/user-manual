@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID: PerturbativeTriples
+:END:
 #+title: =PerturbativeTriples=
 #+OPTIONS: toc:nil
 

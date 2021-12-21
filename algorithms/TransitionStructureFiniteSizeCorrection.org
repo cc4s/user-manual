@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID: TransitionStructureFiniteSizeCorrection
+:END:
 #+title: =TransitionStructureFactorFiniteSizeCorrection=
 #+OPTIONS: toc:nil
 

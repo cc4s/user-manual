@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID: CoulombIntegrals
+:END:
 #+title: =CoulombIntegrals=
 #+OPTIONS: toc:nil
 
