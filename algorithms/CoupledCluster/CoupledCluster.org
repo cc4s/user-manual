@@ -60,10 +60,14 @@ used for the $a$ and $b$ index. We recommend setting =integralsSliceSize: 100= t
 computational efficency with memory usage. Smaller/larger values reduce/increase the memory footprint.
 
 
-*** slicedEigenEnergies
+*** TODO slicedEigenEnergies
 :PROPERTIES:
 :CUSTOM_ID: slicedeigenenergies
 :END:
+
+#+begin_todo
+think to put it in common-inputs
+#+end_todo
 
 The =slicedEigenEnergies= keyword requires a sliced input tensor corresponding to one-electron Hartree--Fock energies $\epsilon_p$
 of hole ($\epsilon_p$) and particle ($\epsilon_a$) states as input.
