@@ -6,7 +6,7 @@
 <!-- 2021-12-21 Tue 11:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Algorithms in CC4S</title>
+<title>Ccsd Perturbative Triples algorithm</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -269,45 +269,32 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title">Algorithms in CC4S</h1>
+<h1 class="title">Ccsd Perturbative Triples algorithm</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8cdae84">1. Algorithms in CC4S</a></li>
+<li><a href="#org06371c6">1. Input Description</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8cdae84" class="outline-2">
-<h2 id="org8cdae84"><span class="section-number-2">1</span> <a href="#org8cdae84">Algorithms in CC4S</a></h2>
-<div class="outline-text-2" id="text-1">
-<p>
-The most important CC4S algorithms are listed below.
-</p>
-
-<ul class="org-ul">
-<li>SecondOrderPerturbationTheory</li>
-<li><a href="CoupledCluster/CoupledCluster.html">CoupledCluster</a></li>
-<li><a href="TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.html">TransitionStructureFiniteSizeCorrection</a></li>
-<li>PerturbativeTriples</li>
-<li>FocalPointBasisSetCorrection</li>
-<li>CcsdReference</li>
-</ul>
-
-<p>
-Each algorithm should be briefly described by the following subsection:
-</p>
-<ul class="org-ul">
-<li>Input/Output</li>
-<li>Theory</li>
-<li>Computational Complexity</li>
-</ul>
-
-<p>
-!TODO: we need nomenclature for algorithms and input/output objects.
-</p>
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>Example input for Perturbative</label><pre class="src src-yaml" id="org0aa9134">- <span style="color: #8b4513;">name</span>: PerturbativeTriples
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">mp2PairEnergies</span>: Mp2PairEnergies
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">energy</span>:
+      <span style="color: #8b4513;">triples</span>: triplesEnergy
+      <span style="color: #8b4513;">triples*</span>: triplesEnergyStar
+</pre>
 </div>
+
+
+<div id="outline-container-org06371c6" class="outline-2">
+<h2 id="org06371c6"><span class="section-number-2">1</span> <a href="#org06371c6">Input Description</a></h2>
 </div>
 </div>
 <div id="postamble" class="status">
