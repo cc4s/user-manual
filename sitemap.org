@@ -5,6 +5,8 @@
 - algorithms
   - [[file:algorithms/algorithms.org][Algorithms in CC4S]]
   - [[file:algorithms/common-inputs.org][Common inputs for =cc4s= algorithms]]
+  - CcsdFocalPointBasisSetCorrection
+    - [[file:algorithms/CcsdFocalPointBasisSetCorrection/CcsdFocalPointBasisSetCorrection.org][CcsdFocalPointBasisSetCorrection]]
   - CoupledCluster
     - [[file:algorithms/CoupledCluster/CoupledCluster.org][CoupledCluster]]
   - PerturbativeTriples
