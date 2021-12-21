@@ -20,6 +20,10 @@ publish: $(ORGFILES) tangle
 
 tangle: $(TANGLING_FILES_CACHE)
 
+force:
+	touch $(ORGFILES)
+	$(MAKE) publish
+
 refresh:
 	$(EMACS) --load config/site.el $(INDEX) -f package-refresh-contents
 
@@ -34,4 +38,4 @@ clean-all: clean clean-emacs
 serve:
 	python3 -m http.server $(PORT)
 
-.PHONY: init serve publish tangle refresh clean clean-emacs clean-all
+.PHONY: init serve publish tangle refresh clean clean-emacs clean-all force
