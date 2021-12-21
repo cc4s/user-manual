@@ -36,7 +36,7 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
 |-------------------------------+-----------------------------------+-----------------------------|
 | =method: type=               | [[#method-type][Type of coupled cluster algorithm]] | Ccsd                        |
 | =method: integralsSliceSize= | [[#integralsslicesize][Integral slice size]]               | Number of occupied orbitals |
-| =slicedEigenEnergies=        | [[file:../objects/SlicedEigenEnergies][Sliced one-electron energies]]      |                             |
+| =slicedEigenEnergies=        | [[file:../objects/SlicedEigenEnergies.org][Sliced one-electron energies]]      |                             |
 | =coulombIntegrals=           | [[file:../objects/CoulombIntegrals.org][Coulomb Integrals]]                 |                             |
 | =slicedCoulombVertex=        | [[file:../objects/SlicedCoulombVertex.org][Sliced Coulomb vertex]]   |                             |
 | =maxIterations=              | [[#maxiterations][Maximum number of iterations]]      | 20                          |

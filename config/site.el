@@ -174,15 +174,15 @@
              :with-author nil
              :section-numbers t
              :table-of-contents t
-                                        ;:publishing-function org-html-publish-to-html
+             ;; :publishing-function org-html-publish-to-html
              :publishing-function cc4s/publish-to-html
-             ;;:publishing-function org-html-export-to-html
+             ;; :publishing-function org-html-export-to-html
              :htmlized-source nil
              :html-validation-link nil
              :html-head-extra ,cc4s/html-head-libs
              :language en
-                                        ;:html-use-infojs nil
-                                        ;:html-link-home "sitemap.html"
+             ;; :html-use-infojs nil
+             ;; :html-link-home "sitemap.html"
              :auto-sitemap t
              :html-preamble ,cc4s/navigation-bar
              :html-self-link-headlines t
