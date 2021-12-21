@@ -3,6 +3,7 @@ build
 user-manual
 ltximg
 \#*
+id-locations
 
 config.mk
 emacs
