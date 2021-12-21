@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 12:20 -->
+<!-- 2021-12-21 Tue 12:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CoupledCluster</title>
+<title><code>CoupledCluster</code> algorithm</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -291,48 +291,45 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title">CoupledCluster</h1>
+<h1 class="title"><code>CoupledCluster</code> algorithm</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5808054">1. CoupledCluster algorithm</a>
+<li><a href="#org7d0e70e">1. Example yaml input</a></li>
+<li><a href="#org71999e3">2. Input description</a>
 <ul>
-<li><a href="#org2f95c0e">1.1. Example yaml input</a></li>
-<li><a href="#org769d14f">1.2. Input description</a>
+<li><a href="#coupled-cluster-type">2.1. type</a></li>
+<li><a href="#integralsslicesize">2.2. integralsSliceSize</a></li>
+<li><a href="#slicedeigenenergies">2.3. <span class="todo TODO">TODO</span> slicedEigenEnergies</a></li>
+<li><a href="#coulombintegrals">2.4. <span class="todo TODO">TODO</span> coulombIntegrals</a></li>
+<li><a href="#slicedcoulombvertex">2.5. slicedCoulombVertex</a></li>
+<li><a href="#maxiterations">2.6. maxIterations</a></li>
+<li><a href="#energyconvergence">2.7. energyConvergence</a></li>
+<li><a href="#amplitudesconvergence">2.8. amplitudesConvergence</a></li>
+<li><a href="#mixer">2.9. mixer</a>
 <ul>
-<li><a href="#coupled-cluster-type">1.2.1. type</a></li>
-<li><a href="#integralsslicesize">1.2.2. integralsSliceSize</a></li>
-<li><a href="#slicedeigenenergies">1.2.3. <span class="todo TODO">TODO</span> slicedEigenEnergies</a></li>
-<li><a href="#coulombintegrals">1.2.4. <span class="todo TODO">TODO</span> coulombIntegrals</a></li>
-<li><a href="#slicedcoulombvertex">1.2.5. slicedCoulombVertex</a></li>
-<li><a href="#maxiterations">1.2.6. maxIterations</a></li>
-<li><a href="#energyconvergence">1.2.7. energyConvergence</a></li>
-<li><a href="#amplitudesconvergence">1.2.8. amplitudesConvergence</a></li>
-<li><a href="#mixer">1.2.9. mixer</a></li>
+<li><a href="#org4e544e7">2.9.1. DiisMixer</a></li>
+<li><a href="#orgf09ac66">2.9.2. LinearMixer</a></li>
 </ul>
 </li>
-<li><a href="#org23a539b">1.3. Output</a></li>
-<li><a href="#org66bd1e8">1.4. Computational Complexity and memory footprint</a>
+</ul>
+</li>
+<li><a href="#orgd3b7324">3. Output</a></li>
+<li><a href="#org03de7bd">4. Computational Complexity and memory footprint</a>
 <ul>
-<li><a href="#orgda67c30">1.4.1. <code>Ccsd method</code></a></li>
+<li><a href="#org5eecdbf">4.1. <code>Ccsd method</code></a></li>
 </ul>
 </li>
-<li><a href="#orga7b8c74">1.5. Theory</a></li>
-<li><a href="#orgeb9a237">1.6. Literature</a></li>
-</ul>
-</li>
+<li><a href="#org03b2be6">5. Theory</a></li>
+<li><a href="#org9f85fdb">6. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5808054" class="outline-2">
-<h2 id="org5808054"><span class="section-number-2">1</span> <a href="#org5808054">CoupledCluster algorithm</a></h2>
+<div id="outline-container-org7d0e70e" class="outline-2">
+<h2 id="org7d0e70e"><span class="section-number-2">1</span> <a href="#org7d0e70e">Example yaml input</a></h2>
 <div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-org2f95c0e" class="outline-3">
-<h3 id="org2f95c0e"><span class="section-number-3">1.1</span> <a href="#org2f95c0e">Example yaml input</a></h3>
-<div class="outline-text-3" id="text-1-1">
 <p>
 A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledCluster</b> algorithm is given below.
 </p>
@@ -351,6 +348,10 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledClus
     <span style="color: #8b4513;">mixer</span>:
       <span style="color: #8b4513;">type</span>: DiisMixer
       <span style="color: #8b4513;">maxResidua</span>: 5
+    <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">or for instance a linear mixer</span>
+    <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">mixer:</span>
+    <span style="color: #a0a1a7; font-weight: bold;">#   </span><span style="color: #a0a1a7;">type: LinearMixer</span>
+    <span style="color: #a0a1a7; font-weight: bold;">#   </span><span style="color: #a0a1a7;">ratio: 1.0</span>
   <span style="color: #8b4513;">out</span>:
     <span style="color: #8b4513;">energy</span>: CcsdEnergy
     <span style="color: #8b4513;">amplitudes</span>: Amplitudes
@@ -359,10 +360,10 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledClus
 </div>
 </div>
 
-<div id="outline-container-org769d14f" class="outline-3">
-<h3 id="org769d14f"><span class="section-number-3">1.2</span> <a href="#org769d14f">Input description</a></h3>
-<div class="outline-text-3" id="text-1-2">
-<table id="org1ff6d71" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<div id="outline-container-org71999e3" class="outline-2">
+<h2 id="org71999e3"><span class="section-number-2">2</span> <a href="#org71999e3">Input description</a></h2>
+<div class="outline-text-2" id="text-2">
+<table id="orge7ef500" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -381,55 +382,55 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledClus
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>method: type:</code></td>
+<td class="org-left"><code>method: type</code></td>
 <td class="org-left"><a href="#coupled-cluster-type">Type of coupled cluster algorithm</a></td>
 <td class="org-left">Ccsd</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>method: integralsSliceSize:</code></td>
+<td class="org-left"><code>method: integralsSliceSize</code></td>
 <td class="org-left"><a href="#integralsslicesize">Integral slice size</a></td>
 <td class="org-left">Number of occupied orbitals</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>slicedEigenEnergies:</code></td>
+<td class="org-left"><code>slicedEigenEnergies</code></td>
 <td class="org-left"><a href="#slicedeigenenergies">Sliced one-electron energies</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>coulombIntegrals:</code></td>
+<td class="org-left"><code>coulombIntegrals</code></td>
 <td class="org-left"><a href="#coulombintegrals">Coulomb Integrals</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>slicedCoulombVertex:</code></td>
+<td class="org-left"><code>slicedCoulombVertex</code></td>
 <td class="org-left"><a href="#slicedcoulombvertex">Sliced Coulomb vertex</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>maxIterations:</code></td>
+<td class="org-left"><code>maxIterations</code></td>
 <td class="org-left"><a href="#maxiterations">Maximum number of iterations</a></td>
 <td class="org-left">20</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>energyConvergence:</code></td>
+<td class="org-left"><code>energyConvergence</code></td>
 <td class="org-left"><a href="#energyconvergence">Energy convergence threshold</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>amplitudesConvergence:</code></td>
+<td class="org-left"><code>amplitudesConvergence</code></td>
 <td class="org-left"><a href="#amplitudesconvergence">Amplitude convergence threshold</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mixer: type:</code></td>
+<td class="org-left"><code>mixer: type</code></td>
 <td class="org-left"><a href="#mixer">Mixer type</a></td>
 <td class="org-left">DiisMixer</td>
 </tr>
@@ -437,19 +438,23 @@ A typical input file snippet of <code>cc4s.in</code>  to call the <b>CoupledClus
 </table>
 </div>
 
-<div id="outline-container-coupled-cluster-type" class="outline-4">
-<h4 id="coupled-cluster-type"><span class="section-number-4">1.2.1</span> <a href="#coupled-cluster-type">type</a></h4>
-<div class="outline-text-4" id="text-coupled-cluster-type">
+<div id="outline-container-coupled-cluster-type" class="outline-3">
+<h3 id="coupled-cluster-type"><span class="section-number-3">2.1</span> <a href="#coupled-cluster-type">type</a></h3>
+<div class="outline-text-3" id="text-coupled-cluster-type">
 <p>
-<code>method: type:</code> specifies the  coupled-cluster approximation for the amplitudes to be used.
-The <code>Ccsd</code> or <code>Drccd</code> approximation are currently avaible. 
+<code>method: type</code> specifies the  coupled-cluster approximation for the amplitudes to be used.
+The currently available approximations are:
 </p>
+<dl class="org-dl">
+<dt><code>Ccsd</code></dt><dd>Coupled Cluster singles and doubles (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>).</dd>
+<dt><code>Drccsd</code></dt><dd>Direct-Ring Coupled Cluster singles and doubles (<a href="#citeproc_bib_item_2">Paier et al. 2012</a>).</dd>
+</dl>
 </div>
 </div>
 
-<div id="outline-container-integralsslicesize" class="outline-4">
-<h4 id="integralsslicesize"><span class="section-number-4">1.2.2</span> <a href="#integralsslicesize">integralsSliceSize</a></h4>
-<div class="outline-text-4" id="text-integralsslicesize">
+<div id="outline-container-integralsslicesize" class="outline-3">
+<h3 id="integralsslicesize"><span class="section-number-3">2.2</span> <a href="#integralsslicesize">integralsSliceSize</a></h3>
+<div class="outline-text-3" id="text-integralsslicesize">
 <p>
 <code>integralsSliceSize</code> controls the slice size of the \(V_{cd}^{ab}\) integrals, which are computed on-the-fly to
 reduce the memory footprint. The integer value specified for <code>integralsSliceSize</code>  refers to the dimension size
@@ -460,10 +465,10 @@ computational efficency with memory usage. Smaller/larger values reduce/increase
 </div>
 
 
-<div id="outline-container-slicedeigenenergies" class="outline-4">
-<h4 id="slicedeigenenergies"><span class="section-number-4">1.2.3</span> <a href="#slicedeigenenergies"><span class="todo TODO">TODO</span> slicedEigenEnergies</a></h4>
-<div class="outline-text-4" id="text-slicedeigenenergies">
-<div class="todo" id="org4ba205e">
+<div id="outline-container-slicedeigenenergies" class="outline-3">
+<h3 id="slicedeigenenergies"><span class="section-number-3">2.3</span> <a href="#slicedeigenenergies"><span class="todo TODO">TODO</span> slicedEigenEnergies</a></h3>
+<div class="outline-text-3" id="text-slicedeigenenergies">
+<div class="todo" id="org9f46dad">
 <p>
 think to put it in common-inputs
 </p>
@@ -478,10 +483,10 @@ The sliced input tensor is generated by the <b>DefineHolesAndParticles</b> algor
 </div>
 </div>
 
-<div id="outline-container-coulombintegrals" class="outline-4">
-<h4 id="coulombintegrals"><span class="section-number-4">1.2.4</span> <a href="#coulombintegrals"><span class="todo TODO">TODO</span> coulombIntegrals</a></h4>
-<div class="outline-text-4" id="text-coulombintegrals">
-<div class="todo" id="orgc5c48d8">
+<div id="outline-container-coulombintegrals" class="outline-3">
+<h3 id="coulombintegrals"><span class="section-number-3">2.4</span> <a href="#coulombintegrals"><span class="todo TODO">TODO</span> coulombIntegrals</a></h3>
+<div class="outline-text-3" id="text-coulombintegrals">
+<div class="todo" id="orgf3c6c5e">
 <p>
 think to put it in common-inputs
 </p>
@@ -495,9 +500,9 @@ The <code>coulombIntegrals</code>  keyword requires a set of two-electron integr
 </div>
 </div>
 
-<div id="outline-container-slicedcoulombvertex" class="outline-4">
-<h4 id="slicedcoulombvertex"><span class="section-number-4">1.2.5</span> <a href="#slicedcoulombvertex">slicedCoulombVertex</a></h4>
-<div class="outline-text-4" id="text-slicedcoulombvertex">
+<div id="outline-container-slicedcoulombvertex" class="outline-3">
+<h3 id="slicedcoulombvertex"><span class="section-number-3">2.5</span> <a href="#slicedcoulombvertex">slicedCoulombVertex</a></h3>
+<div class="outline-text-3" id="text-slicedcoulombvertex">
 <p>
 The <code>slicedCoulombVertex</code> requires the Coulomb vertex \(\Gamma_{pG}^r\) as input.
 The Coulomb vertex is used to compute two-electron integrals \(V_{cd}^{ab}\) on-the-fly.
@@ -506,9 +511,9 @@ The Coulomb vertex is used to compute two-electron integrals \(V_{cd}^{ab}\) on-
 </div>
 </div>
 
-<div id="outline-container-maxiterations" class="outline-4">
-<h4 id="maxiterations"><span class="section-number-4">1.2.6</span> <a href="#maxiterations">maxIterations</a></h4>
-<div class="outline-text-4" id="text-maxiterations">
+<div id="outline-container-maxiterations" class="outline-3">
+<h3 id="maxiterations"><span class="section-number-3">2.6</span> <a href="#maxiterations">maxIterations</a></h3>
+<div class="outline-text-3" id="text-maxiterations">
 <p>
 <code>maxIterations</code> controls the maximum number of iterations allowed to solve the  \(t_{ij}^{ab}\) and \(t_i^a\) amplitude equations.
 If convergence of the energy and residual vectors within the specified thresholds is achieved using fewer iterations
@@ -520,9 +525,9 @@ thresholds.
 </div>
 </div>
 
-<div id="outline-container-energyconvergence" class="outline-4">
-<h4 id="energyconvergence"><span class="section-number-4">1.2.7</span> <a href="#energyconvergence">energyConvergence</a></h4>
-<div class="outline-text-4" id="text-energyconvergence">
+<div id="outline-container-energyconvergence" class="outline-3">
+<h3 id="energyconvergence"><span class="section-number-3">2.7</span> <a href="#energyconvergence">energyConvergence</a></h3>
+<div class="outline-text-3" id="text-energyconvergence">
 <p>
 <code>energyConvergence</code> specifies the convergence threshold for the correlation energy.
 If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achieved, the iterative solution was successful and the algorithm will stop.
@@ -530,9 +535,9 @@ If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achi
 </div>
 </div>
 
-<div id="outline-container-amplitudesconvergence" class="outline-4">
-<h4 id="amplitudesconvergence"><span class="section-number-4">1.2.8</span> <a href="#amplitudesconvergence">amplitudesConvergence</a></h4>
-<div class="outline-text-4" id="text-amplitudesconvergence">
+<div id="outline-container-amplitudesconvergence" class="outline-3">
+<h3 id="amplitudesconvergence"><span class="section-number-3">2.8</span> <a href="#amplitudesconvergence">amplitudesConvergence</a></h3>
+<div class="outline-text-3" id="text-amplitudesconvergence">
 <p>
 <code>amplitudesConvergence</code> specifies the convergence threshold for the residual vector of the singles and doubles amplitude equations.
 If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achieved, the iterative solution was successful and the algorithm will stop.
@@ -540,38 +545,69 @@ If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achi
 </div>
 </div>
 
-<div id="outline-container-mixer" class="outline-4">
-<h4 id="mixer"><span class="section-number-4">1.2.9</span> <a href="#mixer">mixer</a></h4>
-<div class="outline-text-4" id="text-mixer">
+<div id="outline-container-mixer" class="outline-3">
+<h3 id="mixer"><span class="section-number-3">2.9</span> <a href="#mixer">mixer</a></h3>
+<div class="outline-text-3" id="text-mixer">
 <p>
-<code>mixer:</code> specifies mixer-specific parameters used to solve the amplitude equations iteratively.
+<code>mixer</code> specifies mixer-specific parameters used to solve the amplitude equations iteratively.
 The direct inversion iterative subspace (Diis) algorithm is the default algorithm used to mix amplitude guesses from previous
 iterations to improve the guess for the next iteration.
-<code>mixer: type:</code> can currently be set to <code>*DiisMixer</code> or <code>*LinearMixer</code>.
+<code>mixer: type</code> can currently be set to <code>*DiisMixer</code> or <code>*LinearMixer</code>.
 </p>
+</div>
 
+<div id="outline-container-org4e544e7" class="outline-4">
+<h4 id="org4e544e7"><span class="section-number-4">2.9.1</span> <a href="#org4e544e7">DiisMixer</a></h4>
+<div class="outline-text-4" id="text-2-9-1">
 <p>
-For <code>mixer: type: DissMixer</code>, it is possible to specify <code>mixer: maxResidua:</code>, which controls the number of residual
+For <code>mixer: type: DissMixer</code>, it is possible to specify <code>mixer: maxResidua</code>, which controls the number of residual
 vectors used by the Diis mixer.
 We recommend to set the maximum number of residual vectors used in the <code>DiisMixer</code> to <code>5</code>.
 More residual vectors result in a larger memory footprint.
 </p>
 
+<dl class="org-dl">
+<dt>Example</dt><dd></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-yaml" id="orgf65c038"><span style="color: #8b4513;">mixer</span>:
+  <span style="color: #8b4513;">type</span>: DiisMixer
+  <span style="color: #8b4513;">maxResidua</span>: 5
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf09ac66" class="outline-4">
+<h4 id="orgf09ac66"><span class="section-number-4">2.9.2</span> <a href="#orgf09ac66">LinearMixer</a></h4>
+<div class="outline-text-4" id="text-2-9-2">
 <p>
-For <code>mixer: type: LinearMixer</code> it is possible to specify <code>mixer: ratio:</code>, which controls the mixing ratio used
+For <code>mixer: type: LinearMixer</code> it is possible to specify <code>mixer: ratio</code>, which controls the mixing ratio used
 to update the new guess of the amplitudes based on estimates from the previous and current iteration.
 The <code>LinearMixer</code> exhibits the smallest possible memory footprint from all currently available mixers,
 keeping two sets of amplitudes in memory at once only.
 We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a slower but perhaps more stable convergence.
 </p>
+
+<dl class="org-dl">
+<dt>Example</dt><dd></dd>
+</dl>
+<div class="org-src-container">
+<pre class="src src-yaml" id="orgeae186b"><span style="color: #8b4513;">mixer</span>:
+  <span style="color: #8b4513;">type</span>: LinearMixer
+  <span style="color: #8b4513;">ratio</span>: 1.0
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org23a539b" class="outline-3">
-<h3 id="org23a539b"><span class="section-number-3">1.3</span> <a href="#org23a539b">Output</a></h3>
-<div class="outline-text-3" id="text-1-3">
-<table id="org82fa44c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<div id="outline-container-orgd3b7324" class="outline-2">
+<h2 id="orgd3b7324"><span class="section-number-2">3</span> <a href="#orgd3b7324">Output</a></h2>
+<div class="outline-text-2" id="text-3">
+<table id="orga95b32f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -587,19 +623,19 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 </thead>
 <tbody>
 <tr>
-<td class="org-left">energy:</td>
+<td class="org-left"><code>energy</code></td>
 <td class="org-left">Second-order and coupled cluster correlation energies</td>
 </tr>
 
 <tr>
-<td class="org-left">amplitudes:</td>
+<td class="org-left"><code>amplitudes</code></td>
 <td class="org-left">Amplitudes</td>
 </tr>
 </tbody>
 </table>
 
 <p>
-The output of the <b>CoupledCluster</b> algorithm includes <code>energy:</code> and <code>amplitudes:</code> . The <code>amplitudes</code> output contains
+The output of the <b>CoupledCluster</b> algorithm includes <code>energy</code> and <code>amplitudes</code> . The <code>amplitudes</code> output contains
 the converged singles and doubles amplitude tensors. The amplitudes can be used as input for algorithms
 that estimate the finite simulation cell size error (<b>TransitionStructureFactorFiniteSizeCorrection</b>)
 and the basis set incompleteness errors (<b>CcsdFocalPointBasisSetCorrection</b>).
@@ -635,13 +671,13 @@ realtime 3463.773373
 </div>
 </div>
 
-<div id="outline-container-org66bd1e8" class="outline-3">
-<h3 id="org66bd1e8"><span class="section-number-3">1.4</span> <a href="#org66bd1e8">Computational Complexity and memory footprint</a></h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-org03de7bd" class="outline-2">
+<h2 id="org03de7bd"><span class="section-number-2">4</span> <a href="#org03de7bd">Computational Complexity and memory footprint</a></h2>
+<div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgda67c30" class="outline-4">
-<h4 id="orgda67c30"><span class="section-number-4">1.4.1</span> <a href="#orgda67c30"><code>Ccsd method</code></a></h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-org5eecdbf" class="outline-3">
+<h3 id="org5eecdbf"><span class="section-number-3">4.1</span> <a href="#org5eecdbf"><code>Ccsd method</code></a></h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 The computational bottle neck of a typical Ccsd calculation originates from the following contraction, which is
 part of the doubles amplitude equations: \(V_{cd}^{ab} t_{ij}^{cd}\). The computational cost for evaluating this expression scales
@@ -660,27 +696,27 @@ type of mixer and its parameters carefully to reduce the memory fottprint if nec
 </div>
 </div>
 
-<div id="outline-container-orga7b8c74" class="outline-3">
-<h3 id="orga7b8c74"><span class="section-number-3">1.5</span> <a href="#orga7b8c74">Theory</a></h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-org03b2be6" class="outline-2">
+<h2 id="org03b2be6"><span class="section-number-2">5</span> <a href="#org03b2be6">Theory</a></h2>
+<div class="outline-text-2" id="text-5">
 <p>
 We recommend the following review article and references therein to get started with coupled-cluster theory (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>) .
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgeb9a237" class="outline-3">
-<h3 id="orgeb9a237"><span class="section-number-3">1.6</span> <a href="#orgeb9a237">Literature</a></h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-org9f85fdb" class="outline-2">
+<h2 id="org9f85fdb"><span class="section-number-2">6</span> <a href="#org9f85fdb">Literature</a></h2>
+<div class="outline-text-2" id="text-6">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bartlett, R.J., and Monika Musiał. 2007. “Coupled-cluster theory in quantum chemistry.” <i>Rev. Mod. Phys.</i> 79 (1). American Physical Society: 291–352. doi:<a href="https://doi.org/10.1103/RevModPhys.79.291">10.1103/RevModPhys.79.291</a>.</div>
-</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Paier, Joachim, Xinguo Ren, Patrick Rinke, Gustavo E Scuseria, Andreas Grüneis, Georg Kresse, and Matthias Scheffler. 2012. “Assessment of Correlation Energies Based on the Random-Phase Approximation.” <i>New Journal of Physics</i> 14 (4). IOP Publishing: 043002. <a href="http://doi.org/10.1088/1367-2630/14/4/043002">http://doi.org/10.1088/1367-2630/14/4/043002</a>.</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 12:20</p>
+<p class="date">Created: 2021-12-21 Tue 12:31</p>
 </div>
 </body>
 </html>
