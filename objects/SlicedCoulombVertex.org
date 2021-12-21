@@ -1,5 +1,5 @@
 :PROPERTIES:
-:ID: SlicedCoulombVertex.org
+:ID: SlicedCoulombVertex
 :END:
 #+title: =slicedCoulombVertex=
 #+OPTIONS: toc:nil
