@@ -29,7 +29,7 @@ A typical input file snippet of =cc4s.in=  to call the *CoupledCluster* algorith
 #+name: ccsd-input-table
 | Input Keyword                 | Description                       | Default                     |
 |-------------------------------+-----------------------------------+-----------------------------|
-| =method: type=               | [[#coupled-cluster-type][Type of coupled cluster algorithm]] | Ccsd                        |
+| =method: type=               | [[#method-type][Type of coupled cluster algorithm]] | Ccsd                        |
 | =method: integralsSliceSize= | [[#integralsslicesize][Integral slice size]]               | Number of occupied orbitals |
 | =slicedEigenEnergies=        | [[#slicedeigenenergies][Sliced one-electron energies]]      |                             |
 | =coulombIntegrals=           | [[#coulombintegrals][Coulomb Integrals]]                 |                             |
@@ -42,11 +42,14 @@ A typical input file snippet of =cc4s.in=  to call the *CoupledCluster* algorith
 
 ** type
 :PROPERTIES:
-:CUSTOM_ID: coupled-cluster-type
+:CUSTOM_ID: method-type
 :END:
 =method: type= specifies the  coupled-cluster approximation for the amplitudes to be used.
 The currently available approximations are:
   - =Ccsd= :: Coupled Cluster singles and doubles [[cite:&Bartlett2007-cm]].
+  - =CcsdReference= :: Canonical and unoptimized version of the =Ccsd= algorithm.
+    This algorithm has the same inputs as =Ccsd= with the exception of the
+    [[#integralsslicesize][integralSliceSize]] input argument.
   - =Drccsd= :: Direct-Ring Coupled Cluster singles and doubles [[cite:&paier2012assessment]].
 
 ** integralsSliceSize
@@ -205,6 +208,10 @@ realtime 3463.773373
 
 * Computational Complexity and memory footprint
 
+This section contains computational or memory footprints
+for the various methods implemented in *CoupledCluster*
+[[#method-type][(see type)]].
+
 ** =Ccsd method=
 The computational bottle neck of a typical Ccsd calculation originates from the following contraction, which is
 part of the doubles amplitude equations: $V_{cd}^{ab} t_{ij}^{cd}$. The computational cost for evaluating this expression scales
@@ -218,6 +225,7 @@ The Diis algorithm requires the storage of both doubles residua and amplitudes =
 type of mixer and its parameters carefully to reduce the memory fottprint if necessary.
 
 ** TODO =Drccd method=
+** TODO =CcsdReference method=
 
 * Theory
 
