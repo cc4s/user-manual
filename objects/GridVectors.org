@@ -1,0 +1,12 @@
+#+title: =GridVectors=
+#+OPTIONS: toc:nil
+
+* Definition
+
+The =gridVectors= keyword requires the grid vectors of the emplyoed plane-wave basis $\{ G_1, ...,G_n \}$ as input.
+The set of grid vectors should be read in from an external file using the *TensorReader* algorithm.
+
+* Literature
+bibliography:../group.bib
+
+

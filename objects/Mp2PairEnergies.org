@@ -1,7 +1,6 @@
 #+title: =CoulombIntegrals=
 #+OPTIONS: toc:nil
 
-
 * Definition
 
 $$ V^{pq}_{sr} := {\Gamma^\ast}^{pG}_s \Gamma^q_{rF}$ $$

@@ -1,0 +1,93 @@
+#+title: =PerturbativeTriples=
+#+OPTIONS: toc:nil
+
+* Example =Cc4s= input
+
+A typical input file snippet to call the =PerturbativeTriples= algorithm is given below.
+
+#+begin_src yaml
+- name: PerturbativeTriples
+  in:
+    coulombIntegrals: CoulombIntegrals
+    amplitudes: Amplitudes
+    slicedEigenEnergies: EigenEnergies
+    mp2PairEnergies: Mp2PairEnergies
+  out:
+    energy:
+      triples: triplesEnergy
+      triples*: triplesEnergyStar
+#+end_src
+
+
+* Input Description
+
+#+caption: Input keywords for PerturbativeTriples
+| Input Keyword         | Description                    | Default |
+|-----------------------+--------------------------------+---------|
+| =amplitudes=          | [[file:../objects/Amplitudes.org][Singles and doubles amplitudes]] |         |
+| =coulombIntegrals=    | [[file:../objects/CoulombIntegrals.org][Coulomb Integrals]]              |         |
+| =slicedEigenEnergies= | [[file:../objects/SlicedEigenEnergies.org][Sliced one-electron energies]]   |         |
+| =mp2PairEnergies=     | [[file:../objects/Mp2PairEnergies.org][MP2 pair energies matrix]]       |         |
+
+
+** mp2PairEnergies
+:PROPERTIES:
+:CUSTOM_ID: mp2pairenergies
+:END:
+
+The =mp2PairEnergies= matrix is a matrix \( M_{ij} \)
+of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that
+an MP2 energy is given by its full contraction, i.e.
+\begin{equation}
+\epsilon^{\mathrm{MP2}} = \sum_{ij} M_{ij}.
+\end{equation}
+This matrix is used in the context of the theory
+CCSD(T*) [[cite:&FocalPointAppIrmler2021]],
+where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
+When the =mp2PairEnergies= matrix is given as an input, the algorithm also computes the MP2 energy
+from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
+\( V^{ab}_{ij} \) within =slicedEigenEnergies= and =coulombIntegrals= respectively.
+Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
+\( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
+and computed CCSD(T) energy, the approximation
+the CCSD(T*) is computed.
+
+
+* Output
+
+Below an example standard output stream is shown for a successful =PerturbativeTriples= algorithm run.
+
+
+#+begin_src sh
+step: 15, PerturbativeTriples
+Progress(%)  time(s)   GFLOP/s      
+10           2334      6.327        
+20           2323      6.342        
+30           2330      6.341        
+40           2282      6.373        
+50           2286      6.390        
+60           2282      6.404        
+70           2279      6.415        
+80           2279      6.423        
+90           2324      6.415        
+100          2329      6.408        
+(T) correlation energy:      -4.822365952756229
+(T*) correlation energy:      -0.000000000000000
+realtime 23297.807220394 s
+#+end_src
+
+* Computational Complexity and memory footprint
+
+
+
+
+* Reference implementation
+
+In addition to the =PerturbativeTriples= algorithm, there is also a slower
+but reference implementation called =PerturbativeTriplesReference= which
+is used in the same way as =PerturbativeTriples=.
+To use it, you should just change the name =PerturbativeTriples= by =PerturbativeTriplesReference=.
+
+
+* Literature
+bibliography:../group.bib

@@ -1,0 +1,21 @@
+#+title: =CoulombVertexSingularVectors=
+#+OPTIONS: toc:nil
+
+* Definition
+
+The =coulombVertexSingularVectors= object is the transformation from the auxiliary-field basis to the
+plane-wave basis $U_{G}^{F}$ as input.
+This transformation matrix should be read in from an external file using the *TensorReader* algorithm.
+
+#+begin_src sh
+- name: TensorReader
+  in:
+    fileName: "CoulombVertexSingularVectors.yaml"
+  out:
+    tensor: CoulombVertexSingularVectors
+#+end_src
+
+* Literature
+bibliography:../group.bib
+
+

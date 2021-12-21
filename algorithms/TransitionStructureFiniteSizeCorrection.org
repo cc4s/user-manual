@@ -1,0 +1,91 @@
+#+title: =TransitionStructureFactorFiniteSizeCorrection=
+#+OPTIONS: toc:nil
+
+* Example =Cc4s= input
+
+A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCorrection= algorithm is given below.
+#+begin_src yaml
+- name: TransitionStructureFactorFiniteSizeCorrection
+  in:
+    slicedCoulombVertex: CoulombVertex
+    amplitudes: Amplitudes
+    coulombVertexSingularVectors: CoulombVertexSingularVectors
+    coulombPotential: CoulombPotential
+    gridVectors: GridVectors
+  out:
+    transitionStructureFactor: SF
+    corrected: Corrected
+    uncorrected: Uncorrected
+#+end_src
+
+* Input description
+
+#+caption: Input keywords for CoupledCluster
+#+name: ccsd-input-table
+| Input Keyword                  | Description                    | Default |
+|--------------------------------+--------------------------------+---------|
+| =slicedCoulombVertex=          | [[file:../objects/SlicedCoulombVertex.org][Sliced Coulomb vertex]]          |         |
+| =amplitudes=                   | [[file:../objects/Amplitudes.org][Singles and doubles amplitudes]] |         |
+| =coulombVertexSingularVectors= | [[file:../objects/CoulombVertexSingularVectors.org][coulombVertexSingularVectors]]   |         |
+| =coulombPotential=             | [[file:../objects/CoulombPotential.org][Coulomb potential]]              |         |
+| =gridVectors=                  | [[file:../objects/GridVectors.org][Grid Vectors]]                   |         |
+| =interpolationGridSize=        | [[#interpolationgridsize][Interpolation grid size]]        |      20 |
+|--------------------------------+--------------------------------+---------|
+
+** interpolationGridSize
+:PROPERTIES:
+:CUSTOM_ID: interpolationgridsize
+:END:
+
+The =interpolationGridSize= keyword can be used to control the finesness of the grid used to interpolate the
+electronic transition structure factor in each spatial direction.
+A value of $N$ for the =interpolationGridSize= means that $2 N$ sampling points are used to sample the interpolated structure factor in each direction.
+
+
+* Output
+
+#+caption: Output keywords for CoupledCluster
+#+name: ccsd-output-table
+| Output Keyword              | Description                  |
+|-----------------------------+------------------------------|
+| =transitionStructureFactor= | Transition Structure factor  |
+| =energy=                    | finite size corrected energy |
+|-----------------------------+------------------------------|
+
+The output of the *TransitionStructureFactorFiniteSizeCorrection* algorithm includes transition structure factor $S(G)$ and
+an estimate of the finitie size error correction to the correlation energy. The finite size error is estimated using a tricubic interpolation
+algorithm of the electronic transition structure factor.
+
+Below an example standard output stream is shown for a successful *TransitionStructureFactorFiniteSizeCorrection* algorithm run.
+#+begin_src sh
+step: 10, TransitionStructureFactorFiniteSizeCorrection
+Uncorrected correlation energy:   -171.7706873818
+Finite-size energy correction:    -0.8222012413
+realtime 68.117389991 s
+#+end_src
+
+* Computational Complexity and memory footprint
+
+No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared. 
+
+* Theory
+
+The methods employed in this algorithm are discussed in Refs. cite:&liao2016communication and cite:&gruber2018applying .
+We employ a tricubic interpolation technique to reduce
+quadrature errors in the numerical expression of the electronic correlation energy: $\sum_{ G}S({ G}){\tilde{v}}({ G})$.
+In particular, the quadrature errors around ${G}=0$ are large and result in significant finite-size errors for small simulation cells.
+In order to obtain a more accurate estimate of the correlation energy in the thermodynamic limit,
+we proceed as follows.
+We introduce additional sampling points at an arbitrarily dense
+grid, which we choose to be $2N\times 2N \times 2N$ times denser than the original one.
+The interpolated transition structure factor and the analytic expression of the Coulomb kernel can be used
+to calculate the correlation energy with the usual expression given above.
+The difference between the correlation energies computed with the interpolated and non-interpolated structure factor
+yields an estimate of the finite correction to the electronic correlation energy that is returned by this algorithm.
+We find that $N=20$ yields well converged correlation energies for sufficiently large unit cells.
+However, we recommend to check convergence with respect to this parameter for each system separetely.
+
+* Literature
+bibliography:../group.bib
+
+
