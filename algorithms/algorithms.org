@@ -7,7 +7,7 @@ The most important CC4S algorithms are listed below.
 - [[file:CoupledCluster/CoupledCluster.org][CoupledCluster]]
 - [[file:TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][TransitionStructureFiniteSizeCorrection]]
 - [[file:PerturbativeTriples/PerturbativeTriples.org][PerturbativeTriples]]
-- FocalPointBasisSetCorrection
+- [[file:CcsdFocalPointBasisSetCorrection/CcsdFocalPointBasisSetCorrection.org][CcsdFocalPointBasisSetCorrection]]
 - CcsdReference
 
 Each algorithm should be briefly described by the following subsection:
