@@ -59,7 +59,6 @@
     (setq org-confirm-babel-evaluate nil))
 (require 'org)
 
-
 (use-package! htmlize
   :defer t
   :ensure t)
@@ -151,6 +150,21 @@
                                           org-ref-refproc)))
     (org-html-publish-to-html plist filename pub-dir)))
 
+;; ORG-ID for id:links
+(setq-default org-id-locations-file
+              (concat cc4s-root-directory "id-locations"))
+(defun cc4s/handle-id-links ()
+  (require 'org-id)
+  (if (file-exists-p org-id-locations-file)
+      (progn (cc4s-log "loading id:links from %s" org-id-locations-file)
+             (org-id-locations-load)
+             (!!done))
+    (progn (cc4s-log "Updating id: links")
+           (org-id-update-id-locations
+            (directory-files-recursively cc4s-root-directory
+                                         ".org$"))
+           (!!done))))
+
 (defun cc4s/publish-site ()
   (interactive)
   (require 'cl-macs)
@@ -189,7 +203,9 @@
              :sitemap-title "Sitemap"
              :exclude "config/*"
              :recursive t))))
+
     (cc4s-log "Publishing cc4s user manual")
     (cc4s-log "build directory %s" publish-directory)
+    (cc4s/handle-id-links)
     (org-publish-all)
     (!!done)))
