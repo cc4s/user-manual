@@ -1,32 +1,25 @@
-#+title: Cc4s User Documentation
+#+title: CC4S User Documentation
 #+options: toc:nil
 
-* CC4S User Documentation
-  :PROPERTIES:
-  :CUSTOM_ID: cc4s-user-documentation
-  :END:
-Welcome to the user documentation of the
-[[https://gitlab.cc4s.org/][=cc4s=]] code.
-
-** Getting started 
+* Getting started 
 The [[file:./gettingstarted/gettingstarted.org][Quickstart]] section explains everything you need to know about
 downloading the code, compiling it and running a few tests.
 
-** How to control input for CC4S?
+* How to control input for CC4S?
 This [[file:input/input.org][Input]] section describes how YAML files are used to control CC4S calculations.
 
-** Algorithms in CC4S
+* Algorithms in CC4S
 The [[file:algorithms/algorithms.org][Algorithms]] section summarizes and explains the most important algorithms
 available in CC4S. 
 
-** Interfaces to CC4S
+* Interfaces to CC4S
 This section describes the available interfaces between electronic structure theory codes and CC4S.
 Interfaces to the following codes are currently available
 - The interface to the Vienna ab initio simulation package is described in the [[file:interfaces/vasp.org][VASP]] section.
 - The interface to the FHI-AIMS code is currently under work but will be described in the [[file:interfaces/fhi-aims.org][FHI-AIMS]] section soon.
 
 
-** Tutorials and examples
+* Tutorials and examples
 
 To learn how to run CC4S calculations and interpret its output, we provide the following tutorials
 - LiH solid using CCSD(T)
@@ -38,13 +31,13 @@ In order to get started using =cc4s=
 you can start reading
 the [[file:tutorials/quick-start-lithium-fluoride.org][quick start tutorial]].
 
-** Remarks and general notes
+* Remarks and general notes
 
-** Contributors and Acknowledgements
+* Contributors and Acknowledgements
 
-** Writing documentation
+* Documentation guide
 If you are writing documentation for =cc4s=, read the
 [[file:how-to-write.org][documentation writing manual]].
 
-** Sitemap
+* Sitemap
 #+include: sitemap.org :only-contents t
