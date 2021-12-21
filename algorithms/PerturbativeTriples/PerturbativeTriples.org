@@ -1,4 +1,4 @@
-#+title: Ccsd Perturbative Triples algorithm
+#+title: =PerturbativeTriples= algorithm
 #+options: toc:t
 
 #+name: input-example
