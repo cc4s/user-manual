@@ -28,12 +28,11 @@ The most important Cc4s algorithms are listed below.
 
 - SecondOrderPerturbationTheory
 - CcsdReference
-- [[file:algorithms/CoupledCluster/CoupledCluster.org][CoupledCluster]]
-- [[file:algorithms/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.org][TransitionStructureFiniteSizeCorrection]]
-- [[file:algorithms/CcsdFocalPointBasisSetCorrection/CcsdFocalPointBasisSetCorrection.org][CcsdFocalPointBasisSetCorrection]]
-- [[file:algorithms/PerturbativeTriples/PerturbativeTriples.org][PerturbativeTriples]]
+- [[file:algorithms/CoupledCluster.org][CoupledCluster]]
+- [[file:algorithms/TransitionStructureFiniteSizeCorrection.org][TransitionStructureFiniteSizeCorrection]]
+- [[file:algorithms/CcsdFocalPointBasisSetCorrection.org][CcsdFocalPointBasisSetCorrection]]
+- [[file:algorithms/PerturbativeTriples.org][PerturbativeTriples]]
 
-The [[file:algorithms/algorithms.org][Algorithms]] section summarizes and explains the most important algorithms available in CC4S. 
 
 ** Common input/output objects in Cc4s
 The most important objects used by algorithms are listed below.
@@ -47,3 +46,6 @@ The most important objects used by algorithms are listed below.
 If you are writing documentation for =cc4s=, read the
 [[file:how-to-write.org][documentation writing manual]].
 
+
+* Sitemap
+#+include: sitemap.org :only-contents t
