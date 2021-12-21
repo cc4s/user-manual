@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 15:14 -->
+<!-- 2021-12-21 Tue 15:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cc4s User Documentation Sitemap</title>
+<title>Cc4s User Documentation</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -269,57 +269,66 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title">Cc4s User Documentation Sitemap</h1>
+<h1 class="title">Cc4s User Documentation</h1>
 
 <div id="outline-container-cc4s-user-documentation" class="outline-2">
 <h2 id="cc4s-user-documentation"><span class="section-number-2">1</span> <a href="#cc4s-user-documentation">Cc4s User Documentation</a></h2>
 <div class="outline-text-2" id="text-cc4s-user-documentation">
+<p>
+Welcome to the <code>Cc4s</code> user manual. The following sections explain everything from
+downloading the code to running calculations.
+</p>
 </div>
 
-<div id="outline-container-orga517740" class="outline-3">
-<h3 id="orga517740"><span class="section-number-3">1.1</span> <a href="#orga517740">Getting started</a></h3>
+<div id="outline-container-orgc620638" class="outline-3">
+<h3 id="orgc620638"><span class="section-number-3">1.1</span> <a href="#orgc620638">How to get started?</a></h3>
 <div class="outline-text-3" id="text-1-1">
-<p>
-The 
-section explains everything you need to know about
-downloading the code, compiling it and running a few tests.
-</p>
 <ul class="org-ul">
-<li><a href="./gettingstarted/gettingstarted.html">Quickstart</a></li>
+<li><a href="./gettingstarted/gettingstarted.html">Download, compile and run tests</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org645ad95" class="outline-3">
-<h3 id="org645ad95"><span class="section-number-3">1.2</span> <a href="#org645ad95">How to run Cc4s calculations?</a></h3>
+<div id="outline-container-org2dad7d4" class="outline-3">
+<h3 id="org2dad7d4"><span class="section-number-3">1.2</span> <a href="#org2dad7d4">How to run Cc4s calculations?</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-Cc4s calculations are controlled by a YAML input file (e.g. <code>cc4s.in</code>).
-This input file calls a sequence of
-algorithms specified by the user.
-The algorithms require various input arguments and generate output objects.
-A more detailed description is given by the link below
+We provide the following examples that teach you how to perform <code>Cc4s</code> calculations
 </p>
 <ul class="org-ul">
-<li><a href="input/input.html">YAML input file</a>.</li>
+<li>r-BN CCSD(T) calculations</li>
+<li>Water examples</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc0ad24f" class="outline-3">
-<h3 id="orgc0ad24f"><span class="section-number-3">1.3</span> <a href="#orgc0ad24f">Algorithms in Cc4s</a></h3>
+<div id="outline-container-org954b695" class="outline-3">
+<h3 id="org954b695"><span class="section-number-3">1.3</span> <a href="#org954b695">Interfaces to Cc4s</a></h3>
 <div class="outline-text-3" id="text-1-3">
+<p>
+Currently avaible interfaces to <code>Cc4s</code> are described below.
+</p>
+<ul class="org-ul">
+<li><a href="interfaces/vasp.html">VASP</a></li>
+<li><a href="interfaces/fhi-aims.html">FHI-AIMS</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb2d5eed" class="outline-3">
+<h3 id="orgb2d5eed"><span class="section-number-3">1.4</span> <a href="#orgb2d5eed">Algorithms in Cc4s</a></h3>
+<div class="outline-text-3" id="text-1-4">
 <p>
 The most important Cc4s algorithms are listed below.
 </p>
 
 <ul class="org-ul">
 <li>SecondOrderPerturbationTheory</li>
+<li>CcsdReference</li>
 <li><a href="algorithms/CoupledCluster/CoupledCluster.html">CoupledCluster</a></li>
 <li><a href="algorithms/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.html">TransitionStructureFiniteSizeCorrection</a></li>
+<li><a href="algorithms/CcsdFocalPointBasisSetCorrection/CcsdFocalPointBasisSetCorrection.html">CcsdFocalPointBasisSetCorrection</a></li>
 <li><a href="algorithms/PerturbativeTriples/PerturbativeTriples.html">PerturbativeTriples</a></li>
-<li>FocalPointBasisSetCorrection</li>
-<li>CcsdReference</li>
 </ul>
 
 <p>
@@ -328,9 +337,9 @@ The <a href="algorithms/algorithms.html">Algorithms</a> section summarizes and e
 </div>
 </div>
 
-<div id="outline-container-orgefab338" class="outline-3">
-<h3 id="orgefab338"><span class="section-number-3">1.4</span> <a href="#orgefab338">Common input/output objects in Cc4s</a></h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgf9633c7" class="outline-3">
+<h3 id="orgf9633c7"><span class="section-number-3">1.5</span> <a href="#orgf9633c7">Common input/output objects in Cc4s</a></h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 The most important objects used by algorithms are listed below.
 </p>
@@ -342,45 +351,13 @@ The most important objects used by algorithms are listed below.
 </div>
 </div>
 
-<div id="outline-container-org94503b1" class="outline-3">
-<h3 id="org94503b1"><span class="section-number-3">1.5</span> <a href="#org94503b1">Interfaces to Cc4s</a></h3>
-<div class="outline-text-3" id="text-1-5">
-<p>
-Currently avaible interfaces to <code>Cc4s</code> are described below.
-</p>
-<ul class="org-ul">
-<li><a href="interfaces/vasp.html">VASP</a></li>
-<li><a href="interfaces/fhi-aims.html">FHI-AIMS</a></li>
-</ul>
-</div>
+<div id="outline-container-org8516a26" class="outline-3">
+<h3 id="org8516a26"><span class="section-number-3">1.6</span> <a href="#org8516a26">Contributors and Acknowledgements</a></h3>
 </div>
 
-<div id="outline-container-org71867a7" class="outline-3">
-<h3 id="org71867a7"><span class="section-number-3">1.6</span> <a href="#org71867a7">Tutorials and examples</a></h3>
-<div class="outline-text-3" id="text-1-6">
-<p>
-To learn how to run CC4S calculations and interpret its output, we provide the following tutorials
-</p>
-<ul class="org-ul">
-<li>r-BN CCSD(T) calculations</li>
-<li>Water adsorption energy on a LiH surface on the level of CCSD(T)</li>
-</ul>
-
-<p>
-In order to get started using <code>cc4s</code>
-you can start reading
-the <a href="tutorials/quick-start-lithium-fluoride.html">quick start tutorial</a>.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orga0c0745" class="outline-3">
-<h3 id="orga0c0745"><span class="section-number-3">1.7</span> <a href="#orga0c0745">Contributors and Acknowledgements</a></h3>
-</div>
-
-<div id="outline-container-orgcb7ed51" class="outline-3">
-<h3 id="orgcb7ed51"><span class="section-number-3">1.8</span> <a href="#orgcb7ed51">Documentation guide</a></h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-org8dafd8a" class="outline-3">
+<h3 id="org8dafd8a"><span class="section-number-3">1.7</span> <a href="#org8dafd8a">Documentation guide</a></h3>
+<div class="outline-text-3" id="text-1-7">
 <p>
 If you are writing documentation for <code>cc4s</code>, read the
 <a href="how-to-write.html">documentation writing manual</a>.
@@ -388,62 +365,9 @@ If you are writing documentation for <code>cc4s</code>, read the
 </div>
 </div>
 </div>
-
-<div id="outline-container-org1c39cf7" class="outline-2">
-<h2 id="org1c39cf7"><span class="section-number-2">2</span> <a href="#org1c39cf7">Sitemap</a></h2>
-<div class="outline-text-2" id="text-2">
-<ul class="org-ul">
-<li><a href="index.html">Cc4s User Documentation</a></li>
-<li><a href="how-to-write.html">How To Write</a></li>
-<li>algorithms
-<ul class="org-ul">
-<li><a href="algorithms/algorithms.html">Algorithms in CC4S</a></li>
-<li><a href="algorithms/common-inputs.html">Common inputs for <code>cc4s</code> algorithms</a></li>
-<li>CcsdFocalPointBasisSetCorrection
-<ul class="org-ul">
-<li><a href="algorithms/CcsdFocalPointBasisSetCorrection/CcsdFocalPointBasisSetCorrection.html">CcsdFocalPointBasisSetCorrection</a></li>
-</ul></li>
-<li>CoupledCluster
-<ul class="org-ul">
-<li><a href="algorithms/CoupledCluster/CoupledCluster.html"><code>CoupledCluster</code> algorithm</a></li>
-</ul></li>
-<li>PerturbativeTriples
-<ul class="org-ul">
-<li><a href="algorithms/PerturbativeTriples/PerturbativeTriples.html"><code>PerturbativeTriples</code> algorithm</a></li>
-</ul></li>
-<li>TransitionStructureFiniteSizeCorrection
-<ul class="org-ul">
-<li><a href="algorithms/TransitionStructureFiniteSizeCorrection/TransitionStructureFiniteSizeCorrection.html"><code>TransitionStructureFactorFiniteSizeCorrection</code> Algorithm</a></li>
-</ul></li>
-</ul></li>
-<li>gettingstarted
-<ul class="org-ul">
-<li><a href="gettingstarted/gettingstarted.html">Quick Start</a></li>
-</ul></li>
-<li>input
-<ul class="org-ul">
-<li><a href="input/input.html">Input to CC4S</a></li>
-</ul></li>
-<li>interfaces
-<ul class="org-ul">
-<li><a href="interfaces/vasp.html">Description of VASP interface to CC4S</a></li>
-</ul></li>
-<li>objects
-<ul class="org-ul">
-<li><a href="objects/CoulombIntegrals.html"><code>CoulombIntegrals</code></a></li>
-<li><a href="objects/CoulombVertex.html"><code>CoulombVertex</code></a></li>
-<li><a href="objects/SlicedEigenEnergies.html"><code>SlicedEigenEnergies</code></a></li>
-</ul></li>
-<li>tutorials
-<ul class="org-ul">
-<li><a href="tutorials/quick-start-lithium-fluoride.html">Quick Start: Periodic LiH calculation using VASP</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 15:14</p>
+<p class="date">Created: 2021-12-21 Tue 15:33</p>
 </div>
 </body>
 </html>
