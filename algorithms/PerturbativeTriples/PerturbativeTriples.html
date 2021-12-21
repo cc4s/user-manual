@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-21 Tue 13:38 -->
+<!-- 2021-12-21 Tue 13:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>PerturbativeTriples</code> algorithm</title>
@@ -232,6 +232,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -274,13 +296,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org76faf33">1. Input Description</a></li>
-<li><a href="#orgda9183c">2. Reference implementation</a></li>
+<li><a href="#org988fe72">1. Input Description</a>
+<ul>
+<li><a href="#mp2pairenergies">1.1. mp2PairEnergies</a></li>
+</ul>
+</li>
+<li><a href="#orgdf74b2f">2. Reference implementation</a></li>
+<li><a href="#org6e5c65b">3. Literature</a></li>
 </ul>
 </div>
 </div>
 <div class="org-src-container">
-<label class="org-src-name"><span class="listing-number">Listing 1: </span>Example input for Perturbative</label><pre class="src src-yaml" id="orgf376df4">- <span style="color: #8b4513;">name</span>: PerturbativeTriples
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>Example input for Perturbative</label><pre class="src src-yaml" id="orgbd2a3d8">- <span style="color: #8b4513;">name</span>: PerturbativeTriples
   <span style="color: #8b4513;">in</span>:
     <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
     <span style="color: #8b4513;">amplitudes</span>: Amplitudes
@@ -294,8 +321,8 @@
 </div>
 
 
-<div id="outline-container-org76faf33" class="outline-2">
-<h2 id="org76faf33"><span class="section-number-2">1</span> <a href="#org76faf33">Input Description</a></h2>
+<div id="outline-container-org988fe72" class="outline-2">
+<h2 id="org988fe72"><span class="section-number-2">1</span> <a href="#org988fe72">Input Description</a></h2>
 <div class="outline-text-2" id="text-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for PerturbativeTriples</caption>
@@ -328,17 +355,55 @@
 </tr>
 
 <tr>
-<td class="org-left"><code>slicedEigenEnergies:</code></td>
+<td class="org-left"><code>slicedEigenEnergies</code></td>
 <td class="org-left"><a href="../common-inputs.html#slicedeigenenergies">Sliced one-electron energies</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mp2PairEnergies</code></td>
+<td class="org-left"><a href="#mp2pairenergies">MP2 pair energies matrix</a></td>
 <td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
 </div>
+
+
+<div id="outline-container-mp2pairenergies" class="outline-3">
+<h3 id="mp2pairenergies"><span class="section-number-3">1.1</span> <a href="#mp2pairenergies">mp2PairEnergies</a></h3>
+<div class="outline-text-3" id="text-mp2pairenergies">
+<p>
+The <code>mp2PairEnergies</code> matrix is a matrix \( M_{ij} \)
+of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that
+an MP2 energy is given by its full contraction, i.e.
+</p>
+\begin{equation}
+\epsilon^{\mathrm{MP2}} = \sum_{ij} M_{ij}.
+\end{equation}
+<p>
+This matrix is used in the context of the theory
+CCSD(T*) (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>),
+where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
+When the <code>mp2PairEnergies</code> matrix is given as an input, the algorithm also computes the MP2 energy
+from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
+\( V^{ab}_{ij} \) within <code>slicedEigenEnergies</code> and <code>coulombIntegrals</code> respectively.
+Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
+\( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
+and computed CCSD(T) energy, the approximation
+the CCSD(T*) is computed.
+</p>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgda9183c" class="outline-2">
-<h2 id="orgda9183c"><span class="section-number-2">2</span> <a href="#orgda9183c">Reference implementation</a></h2>
+
+
+
+
+
+<div id="outline-container-orgdf74b2f" class="outline-2">
+<h2 id="orgdf74b2f"><span class="section-number-2">2</span> <a href="#orgdf74b2f">Reference implementation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 In addition to the <code>PerturbativeTriples</code> algorithm, there is also a slower
@@ -348,9 +413,19 @@ To use it, you should just change the name <code>PerturbativeTriples</code> by <
 </p>
 </div>
 </div>
+
+
+<div id="outline-container-org6e5c65b" class="outline-2">
+<h2 id="org6e5c65b"><span class="section-number-2">3</span> <a href="#org6e5c65b">Literature</a></h2>
+<div class="outline-text-2" id="text-3">
+<div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-21 Tue 13:38</p>
+<p class="date">Created: 2021-12-21 Tue 13:57</p>
 </div>
 </body>
 </html>

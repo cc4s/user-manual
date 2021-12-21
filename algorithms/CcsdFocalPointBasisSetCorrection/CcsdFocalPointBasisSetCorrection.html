@@ -6,7 +6,7 @@
 <!-- 2021-12-21 Tue 13:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Quick Start</title>
+<title>CcsdFocalPointBasisSetCorrection</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,6 +232,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -269,245 +291,197 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title">Quick Start</h1>
+<h1 class="title">CcsdFocalPointBasisSetCorrection</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga4929a2">1. Download the code</a></li>
-<li><a href="#org20db2f1">2. Compilation</a></li>
-<li><a href="#org39e2acd">3. Running tests</a>
+<li><a href="#org2c00240">1. CcsdFocalPointBasisSetCorrection algorithm</a>
 <ul>
-<li><a href="#org6386bd1">3.1. Quick start</a>
+<li><a href="#orgdcf76ae">1.1. CrazyTable</a></li>
+<li><a href="#org2368a22">1.2. Theory</a></li>
+<li><a href="#org4ea3497">1.3. Computational Complexity and memory footprint</a></li>
+<li><a href="#org076d322">1.4. Example</a>
 <ul>
-<li><a href="#org309cbc2">3.1.1. Python Dependencies</a></li>
+<li><a href="#org9d8ccfe">1.4.1. Input</a></li>
+<li><a href="#org28d3408">1.4.2. Output</a></li>
 </ul>
 </li>
-<li><a href="#orgb5666fa">3.2. Test failed, what now?</a></li>
-<li><a href="#org655587c">3.3. Running additional tests</a></li>
-<li><a href="#orgbc48cf8">3.4. Fetching data in network-constrained environments</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga4929a2" class="outline-2">
-<h2 id="orga4929a2"><span class="section-number-2">1</span> <a href="#orga4929a2">Download the code</a></h2>
+<div id="outline-container-org2c00240" class="outline-2">
+<h2 id="org2c00240"><span class="section-number-2">1</span> <a href="#org2c00240">CcsdFocalPointBasisSetCorrection algorithm</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-You can download the CC4S code by typing
+This algorithm evaluates the correction of the basis-set-incompleteness error 
+(BSIE) for CCSD as descibed in blablabla. The algorithm requires the converged
+CCSD amplitudes together with $&delta;$-integrals. Futhermore, an estimate for
+the MP2-pair-energies is needed. (see theory). 
 </p>
+</div>
+
+<div id="outline-container-orgdcf76ae" class="outline-3">
+<h3 id="orgdcf76ae"><span class="section-number-3">1.1</span> <a href="#orgdcf76ae">CrazyTable</a></h3>
+<div class="outline-text-3" id="text-1-1">
+<table id="orgad60eaa" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Input and Output keywords</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Input Key</th>
+<th scope="col" class="org-left">Default</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>amplitudes</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>deltaIntegralsPPHH</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>deltaIntegralsHH</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mp2PairEnergiese</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>coulombIntegrals</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>slicedEigenEnergies</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Output Key</td>
+<td class="org-left">Default</td>
+<td class="org-left">Description</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org2368a22" class="outline-3">
+<h3 id="org2368a22"><span class="section-number-3">1.2</span> <a href="#org2368a22">Theory</a></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+The implementation fis given in the on and only publication.
+We briefly introduce the equations implemented in the code. 
+</p>
+
+<p>
+As discussed in the mentioned publication, the CCSD-BSIE in a finite basis-set
+calculation is primarily due to the 2nd-order term, and the so-called
+particle-particle ladder (ppl) term. There exists a variety of algorithms which allow
+a reliable CBS estimate for the 2nd-order term at modest computational costs 
+(compared to a the corresponding CCSD calculation for the same system). The
+missing ppl BSIE contribution is approximated using a pair-specific expression
+which requires the 2nd-order pair-energies, CCSD-amplitudes, as-well-as the
+&delta;-integrals which are defined by
+</p>
+
+\begin{equation}
+\langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
+\end{equation}
+
+<p>
+with the Dirac delta function \(\delta(\mathbf{r})\) and the interelectronic distance
+\(\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4ea3497" class="outline-3">
+<h3 id="org4ea3497"><span class="section-number-3">1.3</span> <a href="#org4ea3497">Computational Complexity and memory footprint</a></h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+This algorithm is basically a post-processing algorithm. However, the 2nd-order
+energy is re-evaluated on-the-fly and other operations of the same computational
+complexity are performed. Also the memory footprint is in the order of a 2nd-order
+energy calculation.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org076d322" class="outline-3">
+<h3 id="org076d322"><span class="section-number-3">1.4</span> <a href="#org076d322">Example</a></h3>
+<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org9d8ccfe" class="outline-4">
+<h4 id="org9d8ccfe"><span class="section-number-4">1.4.1</span> <a href="#org9d8ccfe">Input</a></h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+The input to call the CcsdFocalPointBasisSetCorrection algorithm is given below.
+</p>
+
 <div class="org-src-container">
-<pre class="src src-sh">  git clone git@gitlab.cc4s.org:cqc/cc4s.git
-</pre>
-</div>
-
-<p>
-This will create a new folder named ./cc4s/ where the complete source code will be downloaded.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org20db2f1" class="outline-2">
-<h2 id="org20db2f1"><span class="section-number-2">2</span> <a href="#org20db2f1">Compilation</a></h2>
-<div class="outline-text-2" id="text-2">
-<p>
-Building the CC4S binary is done in two steps.
-</p>
-
-<p>
-In the first step, the external libraries employed by CC4S need to be built. 
-This is done by typing
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=&lt;config&gt; extern
-</pre>
-</div>
-<p>
-in the main directory.
-</p>
-
-<p>
-In the second step, the CC4S code is built. 
-This is done by typing
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=&lt;config&gt;
-</pre>
-</div>
-<p>
-in the main directory.
-</p>
-
-<p>
-Depending on the available set of compilers and MPI libraries, you can choose any configuration that is currently available in the <code class="src src-sh">./etc/config/</code>
-folder.
-</p>
-
-<p>
-Building the code using the Intel compiler and Intel MPI library is done by typing
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi extern
-  make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi
-</pre>
-</div>
-<p>
-in the main directory.
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-org39e2acd" class="outline-2">
-<h2 id="org39e2acd"><span class="section-number-2">3</span> <a href="#org39e2acd">Running tests</a></h2>
-<div class="outline-text-2" id="text-3">
-</div>
-<div id="outline-container-org6386bd1" class="outline-3">
-<h3 id="org6386bd1"><span class="section-number-3">3.1</span> <a href="#org6386bd1">Quick start</a></h3>
-<div class="outline-text-3" id="text-3-1">
-<p>
-You can test your CC4S binary for a set of test systems.
-The script <code>test/testis.py</code> is used to run all the tests
-and fetch the data dependencies.
-</p>
-
-
-<p>
-After having built your binary with the configuration
-<code>&lt;CONFIG&gt;</code>, you can run the tests like
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">make -C test run CONFIG=&lt;CONFIG&gt; CC4S_RUN='mpirun -np 48 ${CC4S_PATH}'
-</pre>
-</div>
-
-<p>
-You can also run the post-processing step of the tests separately
-by doing
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">make -C test check CONFIG=&lt;CONFIG&gt; CC4S_RUN='mpirun -np 48 ${CC4S_PATH}'
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org309cbc2" class="outline-4">
-<h4 id="org309cbc2"><span class="section-number-4">3.1.1</span> <a href="#org309cbc2">Python Dependencies</a></h4>
-<div class="outline-text-4" id="text-3-1-1">
-<p>
-Please note that <code>testis.py</code> depends on <code>python3.3</code> or newer.
-In order to run the <code>check</code> phase, it is also necessary
-to have the <code>pyyaml</code> python package installed.
-</p>
-
-<p>
-You can install the package locally by issuing the command
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">pip3 install --user pyyaml
-</pre>
-</div>
-<p>
-or globally by
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">sudo pip3 install pyyaml
-</pre>
-</div>
-
-<p>
-If you are not able to install <code>pyyaml</code> on your own, please contact
-your system administrator.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb5666fa" class="outline-3">
-<h3 id="orgb5666fa"><span class="section-number-3">3.2</span> <a href="#orgb5666fa">Test failed, what now?</a></h3>
-<div class="outline-text-3" id="text-3-2">
-<p>
-If a test failed, you can go to the directory
-of the test that failed with the current configuration
-as this is printed in the output of the failing test.
-</p>
-
-<p>
-For every compiler configuration there will be a different
-sub-directory in the test directory.
-In it, a series of linked files can be found that are used
-to run the binary.
-Importantly, also a link to the used binary should be found there,
-<code>Cc4s</code>, so that you can enter the test directory and rerun
-the test with
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">mpirun -np &lt;number-of-processes&gt; ./Cc4s
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: CcsdFocalPointBasisSetCorrection
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">amplitudes</span>: Amplitudes
+    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">mp2PairEnergies</span>: Mp2PairEnergies
+    <span style="color: #8b4513;">deltaIntegralsHH</span>: DeltaIntegralsHH
+    <span style="color: #8b4513;">deltaIntegralsPPHH</span>: DeltaIntegralsPPHH
+  <span style="color: #8b4513;">out</span>:
+    {}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org655587c" class="outline-3">
-<h3 id="org655587c"><span class="section-number-3">3.3</span> <a href="#org655587c">Running additional tests</a></h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-org28d3408" class="outline-4">
+<h4 id="org28d3408"><span class="section-number-4">1.4.2</span> <a href="#org28d3408">Output</a></h4>
+<div class="outline-text-4" id="text-1-4-2">
 <p>
-Every test in <code>cc4s</code> has some tags assigned to it.
-By default, when a user tests the code, only the
-tests tagged <code>essential</code> will be run.
+The output of the algorithm is the CCSD-BSIE-energy-correction, as well as the
+2nd-order energy correction. 
 </p>
 
 <p>
-You can however change this by defining the environment
-variable TAGS by issuing the make command, i.e.,
-in the case that you want to run the tests
-tagged as <code>essential</code> and <code>ccsd</code>, you can issue
-the following command
+Below an example standard output stream is shown for a successful run.
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">make -C test <span style="color: #8b4513;">CONFIG</span>=&lt;CONFIG&gt; run <span style="color: #8b4513;">TAGS</span>=<span style="color: #50a14f;">"essential ccsd"</span>
+<pre class="src src-sh">step: 10, CcsdFocalPointBasisSetCorrection
+CCSD-BSIE energy correction:      -0.0165423958
+2nd-order energy correction:      -0.0229332012
 </pre>
 </div>
-</div>
-</div>
-
-
-<div id="outline-container-orgbc48cf8" class="outline-3">
-<h3 id="orgbc48cf8"><span class="section-number-3">3.4</span> <a href="#orgbc48cf8">Fetching data in network-constrained environments</a></h3>
-<div class="outline-text-3" id="text-3-4">
-<p>
-Some tests depend on dependencies such as coulomb integrals
-coming from various quantum chemical codes in different
-repositories scattered across the internet.
-<code>testis.py</code> downloads this data automatically, as you might
-have seen in its output.
-</p>
-
-<p>
-If however your cluster does not allow internet requests
-for security reasons, you can prefetch the test data
-and then <code>scp</code> it to the respective cluster.
-</p>
-
-<p>
-In the root directory you can issue the <code>make</code> command
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">make -C test data
-</pre>
-</div>
-
-<p>
-This command downloads in <code>test/testis-store</code> the necessary
-data for the tests.
-You can then copy this folder to the required computer
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">scp -r test/testis-store user@remote-computer:path/to/cc4s/test/
-</pre>
 </div>
 </div>
 </div>
