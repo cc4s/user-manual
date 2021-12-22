@@ -7,6 +7,6 @@ echo ""
 echo ""
 
 for i in $folder/*.org; do
-  [[ $i =~ *sitemap.org ]] && continue
+  [[ $i = *sitemap.org ]] && continue
   echo "- [[file:./`basename $i`][`basename "$i" .org`]]"
 done
