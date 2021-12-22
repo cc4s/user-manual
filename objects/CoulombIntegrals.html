@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 19:42 -->
+<!-- 2021-12-22 Wed 21:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>CoulombIntegrals</code></title>
@@ -294,27 +294,26 @@
 <h1 class="title"><code>CoulombIntegrals</code></h1>
 
 
-<div id="outline-container-org791cb8b" class="outline-2">
-<h2 id="org791cb8b"><span class="section-number-2">1</span> <a href="#org791cb8b">Brief description</a></h2>
+<div id="outline-container-org0ad29c9" class="outline-2">
+<h2 id="org0ad29c9"><span class="section-number-2">1</span> <a href="#org0ad29c9">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 \[ V^{pq}_{sr} = \sum_{G} {\Gamma^\ast}^{pG}_s \Gamma^q_{rG} \]
 </p>
 
 <p>
-The <code>CoulombIntegrals</code> $ are computed from the
+<code>CoulombIntegrals</code> \(V^{pq}_{sr}\) are computed from the
 <a href="CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a>, which can
 be respresented in an arbitrary basis set depending on the employed interface
 (<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
 </p>
 
 <p>
-The <code>CoulombIntegrals</code> are computed from the
+<code>CoulombIntegrals</code> are computed from the
 <a href="CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a> using the
 <a href="../algorithms/VertexCoulombIntegrals.html#ID-VertexCoulombIntegrals">VertexCoulombIntegrals</a> algorithm using;
-for example, the following yaml input file
+for example, the following yaml input file.
 </p>
-
 <div class="org-src-container">
 <pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: VertexCoulombIntegrals
   <span style="color: #8b4513;">in</span>:
@@ -326,22 +325,21 @@ for example, the following yaml input file
 
 <p>
 We note that the <a href="../algorithms/VertexCoulombIntegrals.html#ID-VertexCoulombIntegrals">VertexCoulombIntegrals</a>
-algorithm of <code>Cc4s</code> only prepares
-a recipe for the computation of the various <code>CoulombIntegrals</code>.  The
-computation is performed only once the numerical values of the tensors are
-needed by a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an
-input argument.
+algorithm of <code>Cc4s</code> provides a "recipe" for the computation of a set of <code>CoulombIntegrals</code>
+\(\{V^{ab}_{ij}, V^{ai}_{bj}, V^{ab}_{cd}  ... \}\) .  The respective numerical evaluation of these
+integrals is performed only if the numerical values of the tensors are
+needed by an algorithm.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc1f31a2" class="outline-2">
-<h2 id="orgc1f31a2"><span class="section-number-2">2</span> <a href="#orgc1f31a2"><span class="todo TODO">TODO</span> Specification</a></h2>
+<div id="outline-container-orga8443e2" class="outline-2">
+<h2 id="orga8443e2"><span class="section-number-2">2</span> <a href="#orga8443e2"><span class="todo TODO">TODO</span> Specification</a></h2>
 </div>
 
 
-<div id="outline-container-org07b6ded" class="outline-2">
-<h2 id="org07b6ded"><span class="section-number-2">3</span> <a href="#org07b6ded">Literature</a></h2>
+<div id="outline-container-org69a84fd" class="outline-2">
+<h2 id="org69a84fd"><span class="section-number-2">3</span> <a href="#org69a84fd">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
@@ -350,7 +348,7 @@ input argument.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 19:42</p>
+<p class="date">Created: 2021-12-22 Wed 21:05</p>
 </div>
 </body>
 </html>

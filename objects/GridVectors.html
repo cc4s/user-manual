@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 19:42 -->
+<!-- 2021-12-22 Wed 21:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>GridVectors</code></title>
@@ -293,16 +293,15 @@
 <div id="content">
 <h1 class="title"><code>GridVectors</code></h1>
 
-<div id="outline-container-org9da5b0c" class="outline-2">
-<h2 id="org9da5b0c"><span class="section-number-2">1</span> <a href="#org9da5b0c">Brief description</a></h2>
+<div id="outline-container-org40ac774" class="outline-2">
+<h2 id="org40ac774"><span class="section-number-2">1</span> <a href="#org40ac774">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-The <code>GridVectors</code> object contains the grid vectors of the emplyoed plane-wave
-basis \(\{ G_1, ...,G_n \}\).
-The set of grid vectors should be read in from an external file using the
-<a href="../algorithms/TensorReader.html#ID-TensorReader">TensorReader</a> algorithm.
+The <code>GridVectors</code> object contains the grid vectors of the employed plane-wave
+basis set \(\{ G_1, ...,G_n \}\).
+The set of grid vectors needs to be provided by an interfaced electronic structure theory package
+and can be read in using the <a href="../algorithms/TensorReader.html#ID-TensorReader">TensorReader</a> algorithm.
 </p>
-
 
 <div class="org-src-container">
 <pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
@@ -315,13 +314,12 @@ The set of grid vectors should be read in from an external file using the
 </div>
 </div>
 
-<div id="outline-container-org0abf7bd" class="outline-2">
-<h2 id="org0abf7bd"><span class="section-number-2">2</span> <a href="#org0abf7bd">Specification</a></h2>
+<div id="outline-container-org223ae7e" class="outline-2">
+<h2 id="org223ae7e"><span class="section-number-2">2</span> <a href="#org223ae7e">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
-An example <code>GridVectors.yaml</code> file is given below
+An example <code>GridVectors.yaml</code> file is given below.
 </p>
-
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #8b4513;">version</span>: v1.0
 <span style="color: #8b4513;">scalarType</span>: real64
@@ -350,8 +348,8 @@ The last three lines correspond to the reciprocal lattice vectors
 </div>
 </div>
 
-<div id="outline-container-orgeb9060e" class="outline-2">
-<h2 id="orgeb9060e"><span class="section-number-2">3</span> <a href="#orgeb9060e">Literature</a></h2>
+<div id="outline-container-orgba9f218" class="outline-2">
+<h2 id="orgba9f218"><span class="section-number-2">3</span> <a href="#orgba9f218">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
 </div>
@@ -359,7 +357,7 @@ The last three lines correspond to the reciprocal lattice vectors
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 19:42</p>
+<p class="date">Created: 2021-12-22 Wed 21:05</p>
 </div>
 </body>
 </html>

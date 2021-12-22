@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 19:42 -->
+<!-- 2021-12-22 Wed 21:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>CoulombPotential</code></title>
@@ -293,29 +293,61 @@
 <div id="content">
 <h1 class="title"><code>CoulombPotential</code></h1>
 
-<div id="outline-container-org645fe42" class="outline-2">
-<h2 id="org645fe42"><span class="section-number-2">1</span> <a href="#org645fe42">Brief description</a></h2>
+<div id="outline-container-org6887056" class="outline-2">
+<h2 id="org6887056"><span class="section-number-2">1</span> <a href="#org6887056">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-The <code>coulombPotential</code> keyword requires the Coulomb potential in a plane-wave basis set representation \(\tilde{v}(G)\) as input.
-The Coulomb potential has to agree with the one employed for the calculation of
-the Coulomb vertex.
-The Coulomb potential should be read in from an external file using the
-<a href="../algorithms/TensorReader.html#ID-TensorReader">TensorReader</a> algorithm.
+<code>CoulombPotential</code> stores the Coulomb potential \(\tilde{v}(G)\)  used for the calculation of the
+<a href="CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a> in a plane-wave basis set representation.
+The <code>CoulombPotential</code> needs to be provided by an interfaced electronic structure theory package
+and can be read into <code>Cc4s</code> using the <a href="../algorithms/TensorReader.html#ID-TensorReader">TensorReader</a> algorithm.
 </p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombPotential.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">tensor</span>: CoulombPotential
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org90ed6f8" class="outline-2">
-<h2 id="org90ed6f8"><span class="section-number-2">2</span> <a href="#org90ed6f8">Literature</a></h2>
+
+
+<div id="outline-container-orgda518ab" class="outline-2">
+<h2 id="orgda518ab"><span class="section-number-2">2</span> <a href="#orgda518ab">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
+<p>
+An example <code>CoulombPotential.yaml</code> file is given below
+</p>
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: v1.0
+<span style="color: #8b4513;">scalarType</span>: real64
+<span style="color: #8b4513;">indices</span>:
+  <span style="color: #8b4513;">momentum</span>:
+    <span style="color: #8b4513;">type</span>: fullGrid
+<span style="color: #8b4513;">dimensions</span>:
+  - <span style="color: #8b4513;">length</span>:   9511
+    <span style="color: #8b4513;">type</span>: momentum
+<span style="color: #8b4513;">data</span>: CoulombPotential.dat    <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">path to raw data</span>
+<span style="color: #8b4513;">unit</span>: 0.2479966649373453       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">=(Eh/eV*Bohr^3/Angstrom^3)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org17d55b3" class="outline-2">
+<h2 id="org17d55b3"><span class="section-number-2">3</span> <a href="#org17d55b3">Literature</a></h2>
+<div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 19:42</p>
+<p class="date">Created: 2021-12-22 Wed 21:05</p>
 </div>
 </body>
 </html>

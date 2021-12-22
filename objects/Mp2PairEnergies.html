@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 19:42 -->
+<!-- 2021-12-22 Wed 21:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>Mp2PairEnergies</code></title>
@@ -293,38 +293,68 @@
 <div id="content">
 <h1 class="title"><code>Mp2PairEnergies</code></h1>
 
-<div id="outline-container-orgcbbec12" class="outline-2">
-<h2 id="orgcbbec12"><span class="section-number-2">1</span> <a href="#orgcbbec12">Brief description</a></h2>
+<div id="outline-container-orgc8b5069" class="outline-2">
+<h2 id="orgc8b5069"><span class="section-number-2">1</span> <a href="#orgc8b5069">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-The <code>mp2PairEnergies</code> matrix is a matrix \( M_{ij} \)
-of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that
-an MP2 energy is given by its full contraction, i.e.
+<code>Mp2PairEnergies</code> is a matrix \( \epsilon_{ij} \)
+of dimensions \( N_{\rm o} \times N_{\rm o}  \).
+\( \epsilon_{ij} \) is the electron-pair resolved MP2 correlation energy in the 
+complete basis set limig such that
+the total MP2 correlation energy is given by its full contraction, i.e.
 </p>
 \begin{equation}
-\epsilon^{\mathrm{MP2}} = \sum_{ij} M_{ij}.
+E_c^{\mathrm{MP2}} = \sum_{ij} \epsilon_{ij}.
 \end{equation}
 <p>
-This matrix is used in the context of the theory
-CCSD(T*) (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>),
-where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
-When the <code>mp2PairEnergies</code> matrix is given as an input, the algorithm also computes the MP2 energy
-from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
-\( V^{ab}_{ij} \) within <a href="SlicedEigenEnergies.html#ID-SlicedEigenEnergies">slicedEigenEnergies</a> and
-<a href="CoulombIntegrals.html#ID-CoulombIntegrals">coulombIntegrals</a> respectively.
-Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
-\( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
-and computed CCSD(T) energy, the approximation
-the CCSD(T*) is computed.
+\( \epsilon_{ij} \) is used by the
+<a href="../algorithms/CcsdFocalPointBasisSetCorrection.html#ID-CcsdFocalPointBasisSetCorrection">CcsdFocalPointBasisSetCorrection</a> algorithm and
+in the context of the theory
+CCSD(T*) (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>).
+<code>Mp2PairEnergies</code> needs to be provided by an interfaced electronic structure theory package
+and can be read in using the <a href="../algorithms/TensorReader.html#ID-TensorReader">TensorReader</a> algorithm.
 </p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"Mp2PairEnergies.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">tensor</span>: Mp2PairEnergies
+</pre>
 </div>
 </div>
+</div>
 
-
-
-<div id="outline-container-orgeef18f2" class="outline-2">
-<h2 id="orgeef18f2"><span class="section-number-2">2</span> <a href="#orgeef18f2">Literature</a></h2>
+<div id="outline-container-org8fdcadd" class="outline-2">
+<h2 id="org8fdcadd"><span class="section-number-2">2</span> <a href="#org8fdcadd">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
+<p>
+An example <code>Mp2PairEnergies.yaml</code> file is given below.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: v1.0
+<span style="color: #8b4513;">scalarType</span>: real64
+<span style="color: #8b4513;">indices</span>:
+  <span style="color: #8b4513;">orbital</span>:
+    <span style="color: #8b4513;">type</span>: spatial
+<span style="color: #8b4513;">dimensions</span>:
+  - <span style="color: #8b4513;">length</span>:    104
+    <span style="color: #8b4513;">type</span>: orbital
+  - <span style="color: #8b4513;">length</span>:    104
+    <span style="color: #8b4513;">type</span>: orbital
+<span style="color: #8b4513;">data</span>: Mp2PairEnergies.dat    <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">path to raw data</span>
+<span style="color: #8b4513;">unit</span>: 0.03674932217563878       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">= (Eh/eV)</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orged8d386" class="outline-2">
+<h2 id="orged8d386"><span class="section-number-2">3</span> <a href="#orged8d386">Literature</a></h2>
+<div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
 </div>
@@ -332,7 +362,7 @@ the CCSD(T*) is computed.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 19:42</p>
+<p class="date">Created: 2021-12-22 Wed 21:05</p>
 </div>
 </body>
 </html>
