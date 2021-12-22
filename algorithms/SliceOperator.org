@@ -24,19 +24,20 @@ algorithm is given below.
 
 #+caption: Input keywords
 #+name: focalpoint-input-table
-| Input Key               | Default     | Description                                    |
-|-------------------------+-------------+------------------------------------------------|
-| =operator=              |             |                                                |
-| =slicedEigenEnergies=   |             |                                                |
-|-------------------------+-------------+------------------------------------------------|
-| Output Key              | Default     | Description                                    |
-|-------------------------+-------------+------------------------------------------------|
-| =slicedOperator=        |             |                                                |
-|-------------------------+-------------+------------------------------------------------|
+| Keyword               | Value |
+|-----------------------+-------|
+| =operator=            |       |
+| =slicedEigenEnergies= |       |
 
 
 * Algorithm output
 
+| Keyword          | Value |
+|------------------+-------|
+| =slicedOperator= |       |
+|------------------+-------|
+
+** Sample =stdout=
 The output of this algorithm reads
 #+begin_src sh
 step: 4, SliceOperator
@@ -44,6 +45,7 @@ Slicing CoulombVertex.dat into holes and particles.
 realtime 0.000798066 s
 #+end_src
 
+** TODO Sample =yaml= output
 
 * Computational complexity
 None.

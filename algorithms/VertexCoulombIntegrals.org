@@ -22,17 +22,20 @@ A typical input file snippet to call the =VertexCoulombIntegrals= algorithm is g
 
 #+caption: Input keywords
 #+name: focalpoint-input-table
-| Input Key               | Default     | Description                                    |
-|-------------------------+-------------+------------------------------------------------|
-| =slicedCoulombVertex=   |             |                                                |
-|-------------------------+-------------+------------------------------------------------|
-| Output Key              | Default     | Description                                    |
-|-------------------------+-------------+------------------------------------------------|
-| =coulombIntegrals=      |             |                                                |
-|-------------------------+-------------+------------------------------------------------|
+| Keyword               | Value |
+|-----------------------+-------|
+| =slicedCoulombVertex= |       |
+|-----------------------+-------|
 
 
 * Algorithm output
+
+| Keyword            | Value |
+|--------------------+-------|
+| =coulombIntegrals= |       |
+|--------------------+-------|
+
+** Sample =stdout=
 
 The output of this algorithm reads
 #+begin_src sh
@@ -40,6 +43,8 @@ step: 8, VertexCoulombIntegrals
 number of field variables NF: 2092
 realtime 0.001249174 s
 #+end_src
+
+** TODO Sample =yaml= output
 
 
 * Computational complexity
