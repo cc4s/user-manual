@@ -9,16 +9,15 @@
 
 $$ V^{pq}_{sr} = \sum_{G} {\Gamma^\ast}^{pG}_s \Gamma^q_{rG} $$
 
-The =CoulombIntegrals= $ are computed from the
+=CoulombIntegrals= $V^{pq}_{sr}$ are computed from the
 [[id:CoulombVertex][CoulombVertex]], which can
 be respresented in an arbitrary basis set depending on the employed interface
 cite:&hummel2017low.
 
-The =CoulombIntegrals= are computed from the
+=CoulombIntegrals= are computed from the
 [[id:CoulombVertex][CoulombVertex]] using the
 [[id:VertexCoulombIntegrals][VertexCoulombIntegrals]] algorithm using;
-for example, the following yaml input file
-
+for example, the following yaml input file.
 #+begin_src yaml
 - name: VertexCoulombIntegrals
   in:
@@ -28,11 +27,10 @@ for example, the following yaml input file
 #+end_src
 
 We note that the [[id:VertexCoulombIntegrals][VertexCoulombIntegrals]]
-algorithm of =Cc4s= only prepares
-a recipe for the computation of the various =CoulombIntegrals=.  The
-computation is performed only once the numerical values of the tensors are
-needed by a subsequent algorithm which depends on the =CoulombIntegrals= by an
-input argument.
+algorithm of =Cc4s= provides a "recipe" for the computation of a set of =CoulombIntegrals=
+$\{V^{ab}_{ij}, V^{ai}_{bj}, V^{ab}_{cd}  ... \}$ .  The respective numerical evaluation of these
+integrals is performed only if the numerical values of the tensors are
+needed by an algorithm.
 
 * TODO Specification
 

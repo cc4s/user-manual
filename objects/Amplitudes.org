@@ -6,10 +6,8 @@
 
 * Brief description
 
-The =amplitudes= are in general a set of singles $t_i^a$ and doubles $t_{ij}^{ab}$ amplitudes
-stored as tensors.
-They can be generated using the [[id:CoupledCluster][CoupledCluster]]
-algorithm.
+=Amplitudes= are a set of singles $t_i^a$ and doubles $t_{ij}^{ab}$ amplitudes stored as tensors.
+They are generated using the [[id:CoupledCluster][CoupledCluster]] algorithm.
 
 * TODO Specification
 

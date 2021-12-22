@@ -6,11 +6,10 @@
 
 * Brief description
 
-The =GridVectors= object contains the grid vectors of the emplyoed plane-wave
-basis $\{ G_1, ...,G_n \}$.
-The set of grid vectors should be read in from an external file using the
-[[id:TensorReader][TensorReader]] algorithm.
-
+The =GridVectors= object contains the grid vectors of the employed plane-wave
+basis set $\{ G_1, ...,G_n \}$.
+The set of grid vectors needs to be provided by an interfaced electronic structure theory package
+and can be read in using the [[id:TensorReader][TensorReader]] algorithm.
 
 #+begin_src yaml
 - name: TensorReader
@@ -22,8 +21,7 @@ The set of grid vectors should be read in from an external file using the
 
 * Specification
 
-An example =GridVectors.yaml= file is given below
-
+An example =GridVectors.yaml= file is given below.
 #+begin_src yaml
 version: v1.0
 scalarType: real64
