@@ -1,0 +1,71 @@
+:PROPERTIES:
+:ID: PerturbativeTriples
+:END:
+#+title: =PerturbativeTriples=
+#+OPTIONS: toc:nil
+
+* Example =Cc4s= input
+
+A typical input file snippet to call the =PerturbativeTriples= algorithm is given below.
+
+#+begin_src yaml
+- name: PerturbativeTriples
+  in:
+    coulombIntegrals: CoulombIntegrals
+    amplitudes: Amplitudes
+    slicedEigenEnergies: EigenEnergies
+    mp2PairEnergies: Mp2PairEnergies
+  out:
+    energy:
+      triples: triplesEnergy
+      triples*: triplesEnergyStar
+#+end_src
+
+
+* Input Description
+
+#+caption: Input keywords for PerturbativeTriples
+| Input Keyword         | Description                    | Default |
+|-----------------------+--------------------------------+---------|
+| =amplitudes=          | [[id:Amplitudes][Singles and doubles amplitudes]] |         |
+| =coulombIntegrals=    | [[id:CoulombIntegrals][Coulomb Integrals]]              |         |
+| =slicedEigenEnergies= | [[id:SlicedEigenEnergies][Sliced one-electron energies]]   |         |
+| =mp2PairEnergies=     | [[id:Mp2PairEnergies][MP2 pair energies matrix]]       |         |
+
+
+* Output
+
+Below an example standard output stream is shown for a successful =PerturbativeTriples= algorithm run
+given a =mp2pairenergies= and thus printing the CCSD(T*) energy.
+
+
+#+begin_src sh
+step: 15, PerturbativeTriples
+Progress(%)  time(s)   GFLOP/s      
+1            334       6.027        
+10           2334      6.327        
+20           2323      6.342        
+30           2330      6.341        
+40           2282      6.373        
+50           2286      6.390        
+60           2282      6.404        
+70           2279      6.415        
+80           2279      6.423        
+90           2324      6.415        
+100          2329      6.408        
+(T) correlation energy:      -4.822365952756229
+(T*) correlation energy:      -4.965491965438498
+realtime 23297.807220394 s
+#+end_src
+
+* Computational Complexity and memory footprint
+* Reference implementation
+
+In addition to the =PerturbativeTriples= algorithm, there is also a slower
+but reference implementation called =PerturbativeTriplesReference= which
+is used in the same way as =PerturbativeTriples=.
+To use it, you should just change the name =PerturbativeTriples= by =PerturbativeTriplesReference=.
+
+
+* Literature
+bibliography:../group.bib

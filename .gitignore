@@ -3,6 +3,8 @@ build
 user-manual
 ltximg
 \#*
+id-locations
+sitemap.org
 
 config.mk
 emacs

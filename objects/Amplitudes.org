@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID: Amplitudes
+:END:
+#+title: =Amplitudes=
+#+OPTIONS: toc:nil
+
+* Definition
+
+The =amplitudes= are in general a set of singles $t_i^a$ and doubles $t_{ij}^{ab}$ amplitudes
+stored as tensors.
+They can be generated using the [[id:CoupledCluster][CoupledCluster]]
+algorithm.
+
+
+* Literature
+bibliography:../group.bib
+
+

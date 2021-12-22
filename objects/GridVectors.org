@@ -1,0 +1,48 @@
+:PROPERTIES:
+:ID: GridVectors
+:END:
+#+title: =GridVectors=
+#+OPTIONS: toc:nil
+
+* Definition
+
+The =GridVectors= object contains the grid vectors of the emplyoed plane-wave basis $\{ G_1, ...,G_n \}$.
+The set of grid vectors should be read in from an external file using the *TensorReader* algorithm.
+
+
+#+begin_src yaml
+- name: TensorReader
+  in:
+    fileName: "GridVectors.yaml"
+  out:
+    tensor: GridVectors
+#+end_src
+
+An example GridVectors.yaml file is given below
+
+#+begin_src yaml
+version: v1.0
+scalarType: real64
+indices:
+  vector:
+    type: cartesian
+  momentum:
+    type: fullGrid
+dimensions:
+  - length:      3
+    type: vector
+  - length:   9511
+    type: momentum
+data: GridVectors.dat    # path to raw data
+unit: 0.529177249       # =(Bohr^-1/Angstrom^-1)
+Gi: [ 0.526962350567279E+00, 0.451407472722934E-05, 0.427322112424627E+00]
+Gj: [-0.263486852553329E+00, 0.456369723460547E+00, 0.427306695377370E+00]
+Gk: [-0.263495162680460E+00,-0.456375083174006E+00, 0.427310866668647E+00]
+#+end_src
+
+The last three lines correspond to the reciprocal lattice vectors (including the factor $2\pi$).
+
+* Literature
+bibliography:../group.bib
+
+

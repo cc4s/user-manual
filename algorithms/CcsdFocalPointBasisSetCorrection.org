@@ -1,0 +1,89 @@
+:PROPERTIES:
+:ID: CcsdFocalPointBasisSetCorrection
+:END:
+#+title: CcsdFocalPointBasisSetCorrection 
+#+OPTIONS: toc:nil
+
+* Example =Cc4s= input
+
+A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algorithm is given below.
+
+#+begin_src yaml
+- name: CcsdFocalPointBasisSetCorrection
+  in:
+    slicedEigenEnergies: EigenEnergies
+    amplitudes: Amplitudes
+    coulombIntegrals: CoulombIntegrals
+    mp2PairEnergies: Mp2PairEnergies
+    deltaIntegralsHH: DeltaIntegralsHH
+    deltaIntegralsPPHH: DeltaIntegralsPPHH
+  out:
+    {}
+#+end_src
+
+
+* Input description
+
+#+caption: Input keywords
+#+name: focalpoint-input-table
+| Input Key               | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+| =amplitudes=            |             |                                                |
+| =deltaIntegralsPPHH=    |             |                                                |
+| =deltaIntegralsHH=      |             |                                                |
+| =mp2PairEnergiese=      |             |                                                |
+| =coulombIntegrals=      |             |                                                |
+| =slicedEigenEnergies=   |             |                                                |
+|-------------------------+-------------+------------------------------------------------|
+| Output Key              | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+
+
+** Output
+
+The output of the algorithm is the CCSD-BSIE-energy-correction, as well as the
+2nd-order energy correction. 
+
+Below an example standard output stream is shown for a successful run.
+#+begin_src sh
+step: 10, CcsdFocalPointBasisSetCorrection
+CCSD-BSIE energy correction:      -0.0165423958
+2nd-order energy correction:      -0.0229332012
+#+end_src
+
+
+** Computational Complexity and memory footprint
+
+This algorithm is basically a post-processing algorithm. However, the 2nd-order
+energy is re-evaluated on-the-fly and other operations of the same computational
+complexity are performed. Also the memory footprint is in the order of a 2nd-order
+energy calculation.
+
+
+** Theory
+
+This algorithm evaluates the correction of the basis-set-incompleteness error 
+(BSIE) for CCSD as descibed in blablabla. The algorithm requires the converged
+CCSD amplitudes together with $\delta$-integrals. Futhermore, an estimate for
+the MP2-pair-energies is needed. (see theory). 
+
+As discussed in the mentioned publication, the CCSD-BSIE in a finite basis-set
+calculation is primarily due to the 2nd-order term, and the so-called
+particle-particle ladder (ppl) term. There exists a variety of algorithms which allow
+a reliable CBS estimate for the 2nd-order term at modest computational costs 
+(compared to a the corresponding CCSD calculation for the same system). The
+missing ppl BSIE contribution is approximated using a pair-specific expression
+which requires the 2nd-order pair-energies, CCSD-amplitudes, as-well-as the
+\delta-integrals which are defined by
+
+\begin{equation}
+\langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
+\end{equation}
+
+with the Dirac delta function $\delta(\mathbf{r})$ and the interelectronic distance
+$\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|$.
+
+* Literature
+bibliography:../group.bib
+
+
