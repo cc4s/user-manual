@@ -195,7 +195,6 @@ this step the following files will be written that are needed for CC4S
     mixer:
       type: DiisMixer
   out:
-    energy: CcsdEnergy
     amplitudes: Amplitudes
 
 - name: StructureFactor
@@ -223,7 +222,7 @@ this step the following files will be written that are needed for CC4S
     amplitudes: Amplitudes
     coulombIntegrals: CoulombIntegrals
   out:
-    energy: AtripEnergy
+    {}
 #+end_src
 * Putting all together
 

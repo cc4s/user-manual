@@ -16,9 +16,7 @@ A typical input file snippet to call the =PerturbativeTriples= algorithm is give
     slicedEigenEnergies: EigenEnergies
     mp2PairEnergies: Mp2PairEnergies
   out:
-    energy:
-      triples: triplesEnergy
-      triples*: triplesEnergyStar
+    {}
 #+end_src
 
 

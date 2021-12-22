@@ -52,7 +52,6 @@ A value of $N$ for the =interpolationGridSize= means that $2 N$ sampling points 
 | Output Keyword              | Description                  |
 |-----------------------------+------------------------------|
 | =transitionStructureFactor= | Transition Structure factor  |
-| =energy=                    | finite size corrected energy |
 |-----------------------------+------------------------------|
 
 The output of the *TransitionStructureFactorFiniteSizeCorrection* algorithm includes transition structure factor $S(G)$ and

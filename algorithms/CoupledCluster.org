@@ -27,7 +27,6 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
     #  type: LinearMixer
     #  ratio: 1.0
   out:
-    energy: CcsdEnergy
     amplitudes: Amplitudes
 #+end_src
 
@@ -144,7 +143,6 @@ mixer:
 #+name: ccsd-output-table
 | Output Keyword      | Description                                                                  |
 |---------------------+------------------------------------------------------------------------------+
-| =energy=            | Second-order and coupled cluster correlation energies                        |
 | =amplitudes=        | Amplitudes                                                                   |
 |---------------------+------------------------------------------------------------------------------+
 
