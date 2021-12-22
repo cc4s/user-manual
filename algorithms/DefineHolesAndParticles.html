@@ -6,7 +6,7 @@
 <!-- 2021-12-22 Wed 12:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>Mp2PairEnergies</code></title>
+<title>DefineHolesAndParticles</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,28 +232,6 @@
     /*]]>*///-->
 // @license-end
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -291,41 +269,113 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>Mp2PairEnergies</code></h1>
+<h1 class="title">DefineHolesAndParticles</h1>
 
-<div id="outline-container-org8c51ee3" class="outline-2">
-<h2 id="org8c51ee3"><span class="section-number-2">1</span> <a href="#org8c51ee3">Definition</a></h2>
+<div id="outline-container-orgd0fb3e2" class="outline-2">
+<h2 id="orgd0fb3e2"><span class="section-number-2">1</span> <a href="#orgd0fb3e2">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-The <code>mp2PairEnergies</code> matrix is a matrix \( M_{ij} \)
-of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that
-an MP2 energy is given by its full contraction, i.e.
+A typical input file snippet to call the <code>DefineHolesAndParticles</code> algorithm is given below.
 </p>
-\begin{equation}
-\epsilon^{\mathrm{MP2}} = \sum_{ij} M_{ij}.
-\end{equation}
-<p>
-This matrix is used in the context of the theory
-CCSD(T*) (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>),
-where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
-When the <code>mp2PairEnergies</code> matrix is given as an input, the algorithm also computes the MP2 energy
-from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
-\( V^{ab}_{ij} \) within <code>slicedEigenEnergies</code> and <code>coulombIntegrals</code> respectively.
-Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
-\( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
-and computed CCSD(T) energy, the approximation
-the CCSD(T*) is computed.
-</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: DefineHolesAndParticles
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">eigenEnergies</span>: EigenEnergies
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+</pre>
+</div>
 </div>
 </div>
 
 
-
-<div id="outline-container-org77cdb18" class="outline-2">
-<h2 id="org77cdb18"><span class="section-number-2">2</span> <a href="#org77cdb18">Literature</a></h2>
+<div id="outline-container-org9dc4236" class="outline-2">
+<h2 id="org9dc4236"><span class="section-number-2">2</span> <a href="#org9dc4236">Input description</a></h2>
 <div class="outline-text-2" id="text-2">
+<table id="org444843d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Input Key</th>
+<th scope="col" class="org-left">Default</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>eigenEnergies</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>slicedEigenEnergies</code></td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Output Key</td>
+<td class="org-left">Default</td>
+<td class="org-left">Description</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div id="outline-container-org0407ed7" class="outline-3">
+<h3 id="org0407ed7"><span class="section-number-3">2.1</span> <a href="#org0407ed7">Output</a></h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The output of the algorithm provides the number of occupied and virtual states 
+in the calculation.
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">step: 3, DefineHolesAndParticles
+number of holes     No: 4
+number of particles Nv: 36
+number of states    Np: 40
+realtime 0.000832881 s
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org282cc78" class="outline-3">
+<h3 id="org282cc78"><span class="section-number-3">2.2</span> <a href="#org282cc78">Computational Complexity and memory footprint</a></h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6519ce5" class="outline-3">
+<h3 id="org6519ce5"><span class="section-number-3">2.3</span> <a href="#org6519ce5">Theory</a></h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+None.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org57ddb6d" class="outline-2">
+<h2 id="org57ddb6d"><span class="section-number-2">3</span> <a href="#org57ddb6d">Literature</a></h2>
+<div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
 </div>
 </div>
 </div>
