@@ -4,7 +4,7 @@
 #+title: =CoulombVertexSingularVectors=
 #+OPTIONS: toc:nil
 
-* Definition
+* Brief description
 
 The =CoulombVertexSingularVectors= object contains the transformation from the auxiliary-field basis to the
 plane-wave basis $U_{G}^{F}$ as input.

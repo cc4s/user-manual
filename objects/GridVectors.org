@@ -4,7 +4,7 @@
 #+title: =GridVectors=
 #+OPTIONS: toc:nil
 
-* Definition
+* Brief description
 
 The =GridVectors= object contains the grid vectors of the emplyoed plane-wave basis $\{ G_1, ...,G_n \}$.
 The set of grid vectors should be read in from an external file using the *TensorReader* algorithm.

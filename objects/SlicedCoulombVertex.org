@@ -4,7 +4,7 @@
 #+title: =slicedCoulombVertex=
 #+OPTIONS: toc:nil
 
-* Definition
+* Brief description
 
 The =slicedCoulombVertex= keyword requires the Coulomb vertex $\Gamma_{pG}^r$ as input.
 The Coulomb vertex is used to compute two-electron integrals $V_{ij}^{ab}$ and can be

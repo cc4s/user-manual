@@ -4,7 +4,7 @@
 #+title: =CoulombVertex=
 #+OPTIONS: toc:nil
 
-* Definition
+* Brief description
 
 $$ \tilde{\Gamma}^q_r({\bf G}) :=  \sqrt{\frac{4\pi}{{\bf G}^2}}   \int{\rm d}{\bf x}\,   {\rm e}^{-{\rm i}{\bf G}\cdot{\bf r}}\,   {\psi^\ast}^q({\bf x}) \psi_r({\bf x})\
 $$

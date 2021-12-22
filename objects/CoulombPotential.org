@@ -4,7 +4,7 @@
 #+title: =CoulombPotential=
 #+OPTIONS: toc:nil
 
-* Definition
+* Brief description
 
 
 The =coulombPotential= keyword requires the Coulomb potential in a plane-wave basis set representation $\tilde{v}(G)$ as input.

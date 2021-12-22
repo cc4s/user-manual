@@ -5,7 +5,7 @@
 #+OPTIONS: toc:nil
 
 
-* Definition
+* Brief description
 
 $$ V^{pq}_{sr} = \sum_{G} {\Gamma^\ast}^{pG}_s \Gamma^q_{rG} $$
 

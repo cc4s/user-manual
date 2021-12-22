@@ -4,7 +4,7 @@
 #+title: =Mp2PairEnergies=
 #+OPTIONS: toc:nil
 
-* Definition
+* Brief description
 
 The =mp2PairEnergies= matrix is a matrix \( M_{ij} \)
 of dimensions \( N_{\rm o} \times N_{\rm o}  \) such that

@@ -4,7 +4,7 @@
 #+title: =Amplitudes=
 #+OPTIONS: toc:nil
 
-* Definition
+* Brief description
 
 The =amplitudes= are in general a set of singles $t_i^a$ and doubles $t_{ij}^{ab}$ amplitudes
 stored as tensors.

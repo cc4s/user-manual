@@ -4,7 +4,7 @@
 #+title: =SlicedEigenEnergies=
 #+OPTIONS: toc:nil
 
-* Definition
+* Brief description
 
 The =slicedEigenEnergies= keyword requires a sliced input tensor corresponding to one-electron Hartree--Fock energies $\epsilon_p$
 of hole ($\epsilon_p$) and particle ($\epsilon_a$) states as input.
