@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID: DefineHolesAndParticles
+:END:
+#+title: DefineHolesAndParticles 
+#+OPTIONS: toc:nil
+
+* Example =Cc4s= input
+
+A typical input file snippet to call the =DefineHolesAndParticles= algorithm is given below.
+
+#+begin_src yaml
+- name: DefineHolesAndParticles
+  in:
+    eigenEnergies: EigenEnergies
+  out:
+    slicedEigenEnergies: EigenEnergies
+#+end_src
+
+
+* Input description
+
+#+caption: Input keywords
+#+name: focalpoint-input-table
+| Input Key               | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+| =eigenEnergies=         |             |                                                |
+| =slicedEigenEnergies=   |             |                                                |
+|-------------------------+-------------+------------------------------------------------|
+| Output Key              | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+
+
+** Output
+
+The output of the algorithm provides the number of occupied and virtual states 
+in the calculation.
+#+begin_src sh
+step: 3, DefineHolesAndParticles
+number of holes     No: 4
+number of particles Nv: 36
+number of states    Np: 40
+realtime 0.000832881 s
+#+end_src
+
+
+** Computational Complexity and memory footprint
+None.
+
+** Theory
+None.
+
+* Literature
+bibliography:../group.bib
+
+

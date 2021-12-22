@@ -1,0 +1,53 @@
+:PROPERTIES:
+:ID: VertexCoulombIntegrals 
+:END:
+#+title: VertexCoulombIntegrals
+#+OPTIONS: toc:nil
+
+* Example =Cc4s= input
+
+A typical input file snippet to call the =VertexCoulombIntegrals= algorithm is given below.
+
+#+begin_src yaml
+- name: VertexCoulombIntegrals
+  in:
+    slicedCoulombVertex: CoulombVertex
+  out:
+    coulombIntegrals: CoulombIntegrals
+#+end_src
+
+
+* Input description
+
+#+caption: Input keywords
+#+name: focalpoint-input-table
+| Input Key               | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+| =slicedCoulombVertex=   |             |                                                |
+|-------------------------+-------------+------------------------------------------------|
+| Output Key              | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+| =coulombIntegrals=      |             |                                                |
+|-------------------------+-------------+------------------------------------------------|
+
+
+** Output
+
+The output of this algorithm reads
+#+begin_src sh
+step: 8, VertexCoulombIntegrals
+number of field variables NF: 2092
+realtime 0.001249174 s
+#+end_src
+
+
+** Computational Complexity and memory footprint
+None.
+
+** Theory
+None.
+
+* Literature
+bibliography:../group.bib
+
+

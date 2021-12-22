@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID: SliceOperator
+:END:
+#+title: SliceOperator 
+#+OPTIONS: toc:nil
+
+* Example =Cc4s= input
+
+A typical input file snippet to call the =SliceOperator= algorithm is given below.
+
+#+begin_src yaml
+- name: SliceOperator
+  in:
+    slicedEigenEnergies: EigenEnergies
+    operator: CoulombVertex
+  out:
+    slicedOperator: CoulombVertex
+#+end_src
+
+
+* Input description
+
+#+caption: Input keywords
+#+name: focalpoint-input-table
+| Input Key               | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+| =operator=              |             |                                                |
+| =slicedEigenEnergies=   |             |                                                |
+|-------------------------+-------------+------------------------------------------------|
+| Output Key              | Default     | Description                                    |
+|-------------------------+-------------+------------------------------------------------|
+| =slicedOperator=        |             |                                                |
+|-------------------------+-------------+------------------------------------------------|
+
+
+** Output
+
+The output of this algorithm reads
+#+begin_src sh
+step: 4, SliceOperator
+Slicing CoulombVertex.dat into holes and particles.
+realtime 0.000798066 s
+#+end_src
+
+
+** Computational Complexity and memory footprint
+None.
+
+** Theory
+None.
+
+* Literature
+bibliography:../group.bib
+
+
