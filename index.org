@@ -21,21 +21,21 @@ Currently avaible interfaces to =Cc4s= are described below.
 - [[file:interfaces/fhi-aims.org][FHI-AIMS]]
 
 * Algorithms in Cc4s
-The most important Cc4s algorithms are listed below.
+
+The most important Cc4s algorithms are listed below:
 
 - SecondOrderPerturbationTheory
-- CcsdReference
 - [[id:CoupledCluster][CoupledCluster]]
 - [[id:TransitionStructureFiniteSizeCorrection][TransitionStructureFiniteSizeCorrection]]
 - [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]]
 - [[id:PerturbativeTriples][PerturbativeTriples]]
 
 
-* Common input/output objects in Cc4s
+* TODO Important objects
+
 The most important objects used by algorithms are listed below.
 - [[id:CoulombVertex][CoulombVertex]]
 - [[id:CoulombIntegrals][CoulombIntegrals]]
-- TODO
 
 * Contributors and Acknowledgements
 
