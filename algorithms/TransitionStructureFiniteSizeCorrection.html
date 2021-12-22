@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 16:38 -->
+<!-- 2021-12-22 Wed 16:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>TransitionStructureFactorFiniteSizeCorrection</code></title>
@@ -293,8 +293,8 @@
 <div id="content">
 <h1 class="title"><code>TransitionStructureFactorFiniteSizeCorrection</code></h1>
 
-<div id="outline-container-org61c28c3" class="outline-2">
-<h2 id="org61c28c3"><span class="section-number-2">1</span> <a href="#org61c28c3">Example <code>Cc4s</code> input</a></h2>
+<div id="outline-container-orgcdd708f" class="outline-2">
+<h2 id="orgcdd708f"><span class="section-number-2">1</span> <a href="#orgcdd708f">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A typical input file snippet to call the <code>TransitionStructureFactorFiniteSizeCorrection</code> algorithm is given below.
@@ -316,10 +316,10 @@ A typical input file snippet to call the <code>TransitionStructureFactorFiniteSi
 </div>
 </div>
 
-<div id="outline-container-org47ff571" class="outline-2">
-<h2 id="org47ff571"><span class="section-number-2">2</span> <a href="#org47ff571">Input description</a></h2>
+<div id="outline-container-org9640b3f" class="outline-2">
+<h2 id="org9640b3f"><span class="section-number-2">2</span> <a href="#org9640b3f">Input description</a></h2>
 <div class="outline-text-2" id="text-2">
-<table id="orgbabf4e0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgd6ad527" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -389,10 +389,10 @@ A value of \(N\) for the <code>interpolationGridSize</code> means that \(2 N\) s
 </div>
 
 
-<div id="outline-container-org0d36873" class="outline-2">
-<h2 id="org0d36873"><span class="section-number-2">3</span> <a href="#org0d36873">Output</a></h2>
+<div id="outline-container-org35d9a8f" class="outline-2">
+<h2 id="org35d9a8f"><span class="section-number-2">3</span> <a href="#org35d9a8f">Output</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgeec0dc9" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org7d5427c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -410,11 +410,6 @@ A value of \(N\) for the <code>interpolationGridSize</code> means that \(2 N\) s
 <tr>
 <td class="org-left"><code>transitionStructureFactor</code></td>
 <td class="org-left">Transition Structure factor</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>energy</code></td>
-<td class="org-left">finite size corrected energy</td>
 </tr>
 </tbody>
 </table>
@@ -438,8 +433,8 @@ realtime 68.117389991 s
 </div>
 </div>
 
-<div id="outline-container-org08480ea" class="outline-2">
-<h2 id="org08480ea"><span class="section-number-2">4</span> <a href="#org08480ea">Computational Complexity and memory footprint</a></h2>
+<div id="outline-container-orge2a97e5" class="outline-2">
+<h2 id="orge2a97e5"><span class="section-number-2">4</span> <a href="#orge2a97e5">Computational Complexity and memory footprint</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared. 
@@ -447,8 +442,8 @@ No considerable memory footprints or computational cost bottle necks are expecte
 </div>
 </div>
 
-<div id="outline-container-orgcad81e4" class="outline-2">
-<h2 id="orgcad81e4"><span class="section-number-2">5</span> <a href="#orgcad81e4">Theory</a></h2>
+<div id="outline-container-org27e7672" class="outline-2">
+<h2 id="org27e7672"><span class="section-number-2">5</span> <a href="#org27e7672">Theory</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
@@ -469,8 +464,8 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-org9a9729b" class="outline-2">
-<h2 id="org9a9729b"><span class="section-number-2">6</span> <a href="#org9a9729b">Literature</a></h2>
+<div id="outline-container-orgf272111" class="outline-2">
+<h2 id="orgf272111"><span class="section-number-2">6</span> <a href="#orgf272111">Literature</a></h2>
 <div class="outline-text-2" id="text-6">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
@@ -480,7 +475,7 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 16:38</p>
+<p class="date">Created: 2021-12-22 Wed 16:42</p>
 </div>
 </body>
 </html>

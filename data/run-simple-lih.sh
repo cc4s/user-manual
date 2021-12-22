@@ -171,7 +171,6 @@ cat <<EOF | tee cc4s.in
     mixer:
       type: DiisMixer
   out:
-    energy: CcsdEnergy
     amplitudes: Amplitudes
 
 - name: StructureFactor
@@ -199,7 +198,7 @@ cat <<EOF | tee cc4s.in
     amplitudes: Amplitudes
     coulombIntegrals: CoulombIntegrals
   out:
-    energy: AtripEnergy
+    {}
 EOF
 
 $CC4S -i cc4s.in | tee  cc4s.stdout
