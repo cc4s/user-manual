@@ -6,7 +6,7 @@
 <!-- 2021-12-22 Wed 18:38 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoulombVertexSingularVectors</code></title>
+<title>Algorithm List</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,28 +232,6 @@
     /*]]>*///-->
 // @license-end
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -291,41 +269,18 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoulombVertexSingularVectors</code></h1>
-
-<div id="outline-container-orgca47030" class="outline-2">
-<h2 id="orgca47030"><span class="section-number-2">1</span> <a href="#orgca47030">Brief description</a></h2>
-<div class="outline-text-2" id="text-1">
-<p>
-The <code>CoulombVertexSingularVectors</code> object contains the transformation from the auxiliary-field basis to the
-plane-wave basis \(U_{G}^{F}\) as input.
-This transformation matrix needs to be provided by the interfaced
-electronic structure code and should be read in from an external file using the
-<a href="../algorithms/TensorReader.html#ID-TensorReader">TensorReader</a> algorithm.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-sh">- name: TensorReader
-  <span style="color: #a626a4;">in</span>:
-    fileName: <span style="color: #50a14f;">"CoulombVertexSingularVectors.yaml"</span>
-  out:
-    tensor: CoulombVertexSingularVectors
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgd6a4c3f" class="outline-2">
-<h2 id="orgd6a4c3f"><span class="section-number-2">2</span> <a href="#orgd6a4c3f"><span class="todo TODO">TODO</span> Specification</a></h2>
-</div>
-
-<div id="outline-container-org1373fd0" class="outline-2">
-<h2 id="org1373fd0"><span class="section-number-2">3</span> <a href="#org1373fd0">Literature</a></h2>
-<div class="outline-text-2" id="text-3">
-<div class="csl-bib-body">
-</div>
-</div>
-</div>
+<h1 class="title">Algorithm List</h1>
+<ul class="org-ul">
+<li><a href="./CcsdFocalPointBasisSetCorrection.html">CcsdFocalPointBasisSetCorrection</a></li>
+<li><a href="./CoupledCluster.html">CoupledCluster</a></li>
+<li><a href="./DefineHolesAndParticles.html">DefineHolesAndParticles</a></li>
+<li><a href="./PerturbativeTriples.html">PerturbativeTriples</a></li>
+<li><a href="./SliceOperator.html">SliceOperator</a></li>
+<li><a href="./TensorReader.html">TensorReader</a></li>
+<li><a href="./TransitionStructureFiniteSizeCorrection.html">TransitionStructureFiniteSizeCorrection</a></li>
+<li><a href="./VertexCoulombIntegrals.html">VertexCoulombIntegrals</a></li>
+<li><a href="./sitemap.html">sitemap</a></li>
+</ul>
 </div>
 <div id="postamble" class="status">
 <p class="date">Created: 2021-12-22 Wed 18:38</p>
