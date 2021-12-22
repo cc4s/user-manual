@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 17:30 -->
+<!-- 2021-12-22 Wed 18:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>Mp2PairEnergies</code></title>
@@ -293,8 +293,8 @@
 <div id="content">
 <h1 class="title"><code>Mp2PairEnergies</code></h1>
 
-<div id="outline-container-org961c9f0" class="outline-2">
-<h2 id="org961c9f0"><span class="section-number-2">1</span> <a href="#org961c9f0">Brief description</a></h2>
+<div id="outline-container-org02dfd45" class="outline-2">
+<h2 id="org02dfd45"><span class="section-number-2">1</span> <a href="#org02dfd45">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>mp2PairEnergies</code> matrix is a matrix \( M_{ij} \)
@@ -310,7 +310,8 @@ CCSD(T*) (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>),
 where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
 When the <code>mp2PairEnergies</code> matrix is given as an input, the algorithm also computes the MP2 energy
 from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
-\( V^{ab}_{ij} \) within <code>slicedEigenEnergies</code> and <code>coulombIntegrals</code> respectively.
+\( V^{ab}_{ij} \) within <a href="SlicedEigenEnergies.html#ID-SlicedEigenEnergies">slicedEigenEnergies</a> and
+<a href="CoulombIntegrals.html#ID-CoulombIntegrals">coulombIntegrals</a> respectively.
 Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
 \( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
 and computed CCSD(T) energy, the approximation
@@ -321,8 +322,8 @@ the CCSD(T*) is computed.
 
 
 
-<div id="outline-container-orga3c64bb" class="outline-2">
-<h2 id="orga3c64bb"><span class="section-number-2">2</span> <a href="#orga3c64bb">Literature</a></h2>
+<div id="outline-container-org8f570bb" class="outline-2">
+<h2 id="org8f570bb"><span class="section-number-2">2</span> <a href="#org8f570bb">Literature</a></h2>
 <div class="outline-text-2" id="text-2">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -331,7 +332,7 @@ the CCSD(T*) is computed.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 17:30</p>
+<p class="date">Created: 2021-12-22 Wed 18:14</p>
 </div>
 </body>
 </html>

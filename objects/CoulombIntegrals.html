@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 17:30 -->
+<!-- 2021-12-22 Wed 18:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>CoulombIntegrals</code></title>
@@ -294,24 +294,25 @@
 <h1 class="title"><code>CoulombIntegrals</code></h1>
 
 
-<div id="outline-container-orgb42e992" class="outline-2">
-<h2 id="orgb42e992"><span class="section-number-2">1</span> <a href="#orgb42e992">Brief description</a></h2>
+<div id="outline-container-orgf34b14b" class="outline-2">
+<h2 id="orgf34b14b"><span class="section-number-2">1</span> <a href="#orgf34b14b">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 \[ V^{pq}_{sr} = \sum_{G} {\Gamma^\ast}^{pG}_s \Gamma^q_{rG} \]
 </p>
 
 <p>
-The <code>CoulombIntegrals</code> $ are computed from the <code>CoulombVertex</code>, which can
+The <code>CoulombIntegrals</code> $ are computed from the
+<a href="CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a>, which can
 be respresented in an arbitrary basis set depending on the employed interface
 (<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
 </p>
 
 <p>
-The <code>CoulombIntegrals</code> are computed from the <code>CoulombVertex</code> using the
+The <code>CoulombIntegrals</code> are computed from the
+<a href="CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a> using the
 <a href="../algorithms/VertexCoulombIntegrals.html#ID-VertexCoulombIntegrals">VertexCoulombIntegrals</a> algorithm using;
- for example, the following
-yaml input file
+for example, the following yaml input file
 </p>
 
 <div class="org-src-container">
@@ -324,18 +325,24 @@ yaml input file
 </div>
 
 <p>
-We note that the <a href="../algorithms/VertexCoulombIntegrals.html#ID-VertexCoulombIntegrals">VertexCoulombIntegrals</a> algorithm of <code>Cc4s</code> only prepares
-a recipe for the computation of the various <code>CoulombIntegrals</code>.
-The computation is performed only once the numerical values of the tensors are needed by
-a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an input argument.
+We note that the <a href="../algorithms/VertexCoulombIntegrals.html#ID-VertexCoulombIntegrals">VertexCoulombIntegrals</a>
+algorithm of <code>Cc4s</code> only prepares
+a recipe for the computation of the various <code>CoulombIntegrals</code>.  The
+computation is performed only once the numerical values of the tensors are
+needed by a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an
+input argument.
 </p>
 </div>
 </div>
 
+<div id="outline-container-org96d6f93" class="outline-2">
+<h2 id="org96d6f93"><span class="section-number-2">2</span> <a href="#org96d6f93"><span class="todo TODO">TODO</span> Specification</a></h2>
+</div>
 
-<div id="outline-container-org1465dbc" class="outline-2">
-<h2 id="org1465dbc"><span class="section-number-2">2</span> <a href="#org1465dbc">Literature</a></h2>
-<div class="outline-text-2" id="text-2">
+
+<div id="outline-container-org09b3e23" class="outline-2">
+<h2 id="org09b3e23"><span class="section-number-2">3</span> <a href="#org09b3e23">Literature</a></h2>
+<div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
 </div>
@@ -343,7 +350,7 @@ a subsequent algorithm which depends on the <code>CoulombIntegrals</code> by an 
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 17:30</p>
+<p class="date">Created: 2021-12-22 Wed 18:14</p>
 </div>
 </body>
 </html>

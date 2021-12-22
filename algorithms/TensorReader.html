@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 18:13 -->
+<!-- 2021-12-22 Wed 18:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Quick Start</title>
+<title>TensorReader</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -269,252 +269,16 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title">Quick Start</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org1656179">1. Download the code</a></li>
-<li><a href="#org0012869">2. Compilation</a></li>
-<li><a href="#org94f69ab">3. Running tests</a>
-<ul>
-<li><a href="#org38a3dee">3.1. Quick start</a>
-<ul>
-<li><a href="#org1653c62">3.1.1. Python Dependencies</a></li>
-</ul>
-</li>
-<li><a href="#orgde08d2f">3.2. Test failed, what now?</a></li>
-<li><a href="#org92f0fcf">3.3. Running additional tests</a></li>
-<li><a href="#orge91576a">3.4. Fetching data in network-constrained environments</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org1656179" class="outline-2">
-<h2 id="org1656179"><span class="section-number-2">1</span> <a href="#org1656179">Download the code</a></h2>
-<div class="outline-text-2" id="text-1">
+<h1 class="title">TensorReader</h1>
+<div class="todo" id="org2257e16">
 <p>
-You can download the CC4S code by typing
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">  git clone git@gitlab.cc4s.org:cqc/cc4s.git
-</pre>
-</div>
-
-<p>
-This will create a new folder named ./cc4s/ where the complete source code will be downloaded.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org0012869" class="outline-2">
-<h2 id="org0012869"><span class="section-number-2">2</span> <a href="#org0012869">Compilation</a></h2>
-<div class="outline-text-2" id="text-2">
-<p>
-Building the CC4S binary is done in two steps.
+TODO
 </p>
 
-<p>
-In the first step, the external libraries employed by CC4S need to be built. 
-This is done by typing
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=&lt;config&gt; extern
-</pre>
-</div>
-<p>
-in the main directory.
-</p>
-
-<p>
-In the second step, the CC4S code is built. 
-This is done by typing
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=&lt;config&gt;
-</pre>
-</div>
-<p>
-in the main directory.
-</p>
-
-<p>
-Depending on the available set of compilers and MPI libraries, you can choose any configuration that is currently available in the <code class="src src-sh">./etc/config/</code>
-folder.
-</p>
-
-<p>
-Building the code using the Intel compiler and Intel MPI library is done by typing
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">  make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi extern
-  make <span style="color: #8b4513;">CONFIG</span>=icc-mkl-impi
-</pre>
-</div>
-<p>
-in the main directory.
-</p>
-</div>
-</div>
-
-
-<div id="outline-container-org94f69ab" class="outline-2">
-<h2 id="org94f69ab"><span class="section-number-2">3</span> <a href="#org94f69ab">Running tests</a></h2>
-<div class="outline-text-2" id="text-3">
-</div>
-<div id="outline-container-org38a3dee" class="outline-3">
-<h3 id="org38a3dee"><span class="section-number-3">3.1</span> <a href="#org38a3dee">Quick start</a></h3>
-<div class="outline-text-3" id="text-3-1">
-<p>
-You can test your CC4S binary for a set of test systems.
-The script <code>test/testis.py</code> is used to run all the tests
-and fetch the data dependencies.
-</p>
-
-
-<p>
-After having built your binary with the configuration
-<code>&lt;CONFIG&gt;</code>, you can run the tests like
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">make -C test run CONFIG=&lt;CONFIG&gt; CC4S_RUN='mpirun -np 48 ${CC4S_PATH}'
-</pre>
-</div>
-
-<p>
-You can also run the post-processing step of the tests separately
-by doing
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">make -C test check CONFIG=&lt;CONFIG&gt; CC4S_RUN='mpirun -np 48 ${CC4S_PATH}'
-</pre>
-</div>
-</div>
-
-<div id="outline-container-org1653c62" class="outline-4">
-<h4 id="org1653c62"><span class="section-number-4">3.1.1</span> <a href="#org1653c62">Python Dependencies</a></h4>
-<div class="outline-text-4" id="text-3-1-1">
-<p>
-Please note that <code>testis.py</code> depends on <code>python3.3</code> or newer.
-In order to run the <code>check</code> phase, it is also necessary
-to have the <code>pyyaml</code> python package installed.
-</p>
-
-<p>
-You can install the package locally by issuing the command
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">pip3 install --user pyyaml
-</pre>
-</div>
-<p>
-or globally by
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">sudo pip3 install pyyaml
-</pre>
-</div>
-
-<p>
-If you are not able to install <code>pyyaml</code> on your own, please contact
-your system administrator.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgde08d2f" class="outline-3">
-<h3 id="orgde08d2f"><span class="section-number-3">3.2</span> <a href="#orgde08d2f">Test failed, what now?</a></h3>
-<div class="outline-text-3" id="text-3-2">
-<p>
-If a test failed, you can go to the directory
-of the test that failed with the current configuration
-as this is printed in the output of the failing test.
-</p>
-
-<p>
-For every compiler configuration there will be a different
-sub-directory in the test directory.
-In it, a series of linked files can be found that are used
-to run the binary.
-Importantly, also a link to the used binary should be found there,
-<code>Cc4s</code>, so that you can enter the test directory and rerun
-the test with
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">mpirun -np &lt;number-of-processes&gt; ./Cc4s
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org92f0fcf" class="outline-3">
-<h3 id="org92f0fcf"><span class="section-number-3">3.3</span> <a href="#org92f0fcf">Running additional tests</a></h3>
-<div class="outline-text-3" id="text-3-3">
-<p>
-Every test in <code>cc4s</code> has some tags assigned to it.
-By default, when a user tests the code, only the
-tests tagged <code>essential</code> will be run.
-</p>
-
-<p>
-You can however change this by defining the environment
-variable TAGS by issuing the make command, i.e.,
-in the case that you want to run the tests
-tagged as <code>essential</code> and <code>ccsd</code>, you can issue
-the following command
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">make -C test <span style="color: #8b4513;">CONFIG</span>=&lt;CONFIG&gt; run <span style="color: #8b4513;">TAGS</span>=<span style="color: #50a14f;">"essential ccsd"</span>
-</pre>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orge91576a" class="outline-3">
-<h3 id="orge91576a"><span class="section-number-3">3.4</span> <a href="#orge91576a">Fetching data in network-constrained environments</a></h3>
-<div class="outline-text-3" id="text-3-4">
-<p>
-Some tests depend on dependencies such as coulomb integrals
-coming from various quantum chemical codes in different
-repositories scattered across the internet.
-<code>testis.py</code> downloads this data automatically, as you might
-have seen in its output.
-</p>
-
-<p>
-If however your cluster does not allow internet requests
-for security reasons, you can prefetch the test data
-and then <code>scp</code> it to the respective cluster.
-</p>
-
-<p>
-In the root directory you can issue the <code>make</code> command
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">make -C test data
-</pre>
-</div>
-
-<p>
-This command downloads in <code>test/testis-store</code> the necessary
-data for the tests.
-You can then copy this folder to the required computer
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">scp -r test/testis-store user@remote-computer:path/to/cc4s/test/
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 18:13</p>
+<p class="date">Created: 2021-12-22 Wed 18:14</p>
 </div>
 </body>
 </html>
