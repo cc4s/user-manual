@@ -4,7 +4,8 @@
 #+title: SliceOperator 
 #+OPTIONS: toc:nil
 
-* Example =Cc4s= input
+* TODO Brief description
+* Algorithm call
 
 A typical input file snippet to call the =SliceOperator= algorithm is given below.
 
@@ -18,7 +19,7 @@ A typical input file snippet to call the =SliceOperator= algorithm is given belo
 #+end_src
 
 
-* Input description
+* Algorithm input
 
 #+caption: Input keywords
 #+name: focalpoint-input-table
@@ -33,7 +34,7 @@ A typical input file snippet to call the =SliceOperator= algorithm is given belo
 |-------------------------+-------------+------------------------------------------------|
 
 
-** Output
+* Algorithm output
 
 The output of this algorithm reads
 #+begin_src sh
@@ -43,10 +44,10 @@ realtime 0.000798066 s
 #+end_src
 
 
-** Computational Complexity and memory footprint
+* Computational complexity
 None.
 
-** Theory
+* Theory
 None.
 
 * Literature

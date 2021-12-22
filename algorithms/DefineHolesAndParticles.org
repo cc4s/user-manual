@@ -1,10 +1,11 @@
 :PROPERTIES:
 :ID: DefineHolesAndParticles
 :END:
-#+title: DefineHolesAndParticles 
+#+title: DefineHolesAndParticles
 #+OPTIONS: toc:nil
 
-* Example =Cc4s= input
+* TODO Brief description
+* Algorithm call
 
 A typical input file snippet to call the =DefineHolesAndParticles= algorithm is given below.
 
@@ -17,7 +18,7 @@ A typical input file snippet to call the =DefineHolesAndParticles= algorithm is 
 #+end_src
 
 
-* Input description
+* Algorithm input
 
 #+caption: Input keywords
 #+name: focalpoint-input-table
@@ -25,14 +26,11 @@ A typical input file snippet to call the =DefineHolesAndParticles= algorithm is 
 |-------------------------+-------------+------------------------------------------------|
 | =eigenEnergies=         |             |                                                |
 | =slicedEigenEnergies=   |             |                                                |
-|-------------------------+-------------+------------------------------------------------|
-| Output Key              | Default     | Description                                    |
-|-------------------------+-------------+------------------------------------------------|
 
 
-** Output
+* Algorithm output
 
-The output of the algorithm provides the number of occupied and virtual states 
+The output of the algorithm provides the number of occupied and virtual states
 in the calculation.
 #+begin_src sh
 step: 3, DefineHolesAndParticles
@@ -43,10 +41,10 @@ realtime 0.000832881 s
 #+end_src
 
 
-** Computational Complexity and memory footprint
+* Computational complexity
 None.
 
-** Theory
+* Theory
 None.
 
 * Literature

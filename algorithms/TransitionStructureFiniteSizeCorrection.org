@@ -4,7 +4,8 @@
 #+title: =TransitionStructureFactorFiniteSizeCorrection=
 #+OPTIONS: toc:nil
 
-* Example =Cc4s= input
+* TODO Brief description
+* Algorithm call
 
 A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCorrection= algorithm is given below.
 #+begin_src yaml
@@ -17,11 +18,9 @@ A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCor
     gridVectors: GridVectors
   out:
     transitionStructureFactor: SF
-    corrected: Corrected
-    uncorrected: Uncorrected
 #+end_src
 
-* Input description
+* Algorithm input
 
 #+caption: Input keywords for CoupledCluster
 #+name: ccsd-input-table
@@ -45,7 +44,7 @@ electronic transition structure factor in each spatial direction.
 A value of $N$ for the =interpolationGridSize= means that $2 N$ sampling points are used to sample the interpolated structure factor in each direction.
 
 
-* Output
+* Algorithm output
 
 #+caption: Output keywords for CoupledCluster
 #+name: ccsd-output-table
@@ -66,9 +65,9 @@ Finite-size energy correction:    -0.8222012413
 realtime 68.117389991 s
 #+end_src
 
-* Computational Complexity and memory footprint
+* Computational complexity
 
-No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared. 
+No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared.
 
 * Theory
 

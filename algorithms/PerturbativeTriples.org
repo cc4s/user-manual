@@ -4,7 +4,8 @@
 #+title: =PerturbativeTriples=
 #+OPTIONS: toc:nil
 
-* Example =Cc4s= input
+* TODO Brief description
+* Algorithm call
 
 A typical input file snippet to call the =PerturbativeTriples= algorithm is given below.
 
@@ -20,7 +21,7 @@ A typical input file snippet to call the =PerturbativeTriples= algorithm is give
 #+end_src
 
 
-* Input Description
+* Algorithm input
 
 #+caption: Input keywords for PerturbativeTriples
 | Input Keyword         | Description                    | Default |
@@ -31,7 +32,7 @@ A typical input file snippet to call the =PerturbativeTriples= algorithm is give
 | =mp2PairEnergies=     | [[id:Mp2PairEnergies][MP2 pair energies matrix]]       |         |
 
 
-* Output
+* Algorithm output
 
 Below an example standard output stream is shown for a successful =PerturbativeTriples= algorithm run
 given a =mp2pairenergies= and thus printing the CCSD(T*) energy.
@@ -56,14 +57,16 @@ Progress(%)  time(s)   GFLOP/s
 realtime 23297.807220394 s
 #+end_src
 
-* Computational Complexity and memory footprint
+* Computational complexity
+
+* Theory
+
 * Reference implementation
 
 In addition to the =PerturbativeTriples= algorithm, there is also a slower
 but reference implementation called =PerturbativeTriplesReference= which
 is used in the same way as =PerturbativeTriples=.
 To use it, you should just change the name =PerturbativeTriples= by =PerturbativeTriplesReference=.
-
 
 * Literature
 bibliography:../group.bib

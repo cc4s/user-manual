@@ -1,10 +1,11 @@
 :PROPERTIES:
-:ID: VertexCoulombIntegrals 
+:ID: VertexCoulombIntegrals
 :END:
 #+title: VertexCoulombIntegrals
 #+OPTIONS: toc:nil
 
-* Example =Cc4s= input
+* TODO Brief description
+* Algorithm call
 
 A typical input file snippet to call the =VertexCoulombIntegrals= algorithm is given below.
 
@@ -17,7 +18,7 @@ A typical input file snippet to call the =VertexCoulombIntegrals= algorithm is g
 #+end_src
 
 
-* Input description
+* Algorithm input
 
 #+caption: Input keywords
 #+name: focalpoint-input-table
@@ -31,7 +32,7 @@ A typical input file snippet to call the =VertexCoulombIntegrals= algorithm is g
 |-------------------------+-------------+------------------------------------------------|
 
 
-** Output
+* Algorithm output
 
 The output of this algorithm reads
 #+begin_src sh
@@ -41,10 +42,10 @@ realtime 0.001249174 s
 #+end_src
 
 
-** Computational Complexity and memory footprint
+* Computational complexity
 None.
 
-** Theory
+* Theory
 None.
 
 * Literature

@@ -4,7 +4,8 @@
 #+title: =CoupledCluster=
 #+OPTIONS: toc:nil
 
-* Example =Cc4s= input
+* TODO Brief description
+* Algorithm call
 
 A typical input file snippet to call the =CoupledCluster= algorithm is given below.
 #+begin_src yaml :noweb yes
@@ -30,7 +31,7 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
     amplitudes: Amplitudes
 #+end_src
 
-* Input description
+* Algorithm input
 
 #+caption: Input keywords
 #+name: ccsd-input-table
@@ -137,7 +138,7 @@ mixer:
   ratio: 1.0
 #+end_src
 
-* Output
+* Algorithm output
 
 #+caption: Output keywords for CoupledCluster
 #+name: ccsd-output-table
@@ -176,7 +177,7 @@ Ccsd correlation energy:          -151.9981733061
 realtime 3463.773373
 #+end_src
 
-* Computational Complexity and memory footprint
+* Computational complexity
 
 This section contains computational or memory footprints
 for the various methods implemented in *CoupledCluster*
@@ -187,7 +188,7 @@ The computational bottle neck of a typical Ccsd calculation originates from the 
 part of the doubles amplitude equations: $V_{cd}^{ab} t_{ij}^{cd}$. The computational cost for evaluating this expression scales
 as $\mathcal{O}(N_{\rm o}^2 N_{\rm v}^4)$. To avoid a memory footprint of $\mathcal{O}(N_{\rm v}^4)$ in storing
 $V_{cd}^{ab}$, slices $V_{cd}^{xy}$ are computed on-the-fly and used in the contraction, reducing
-the corresponding memory footprint to $\mathcal{O}(N_{\rm v}^2 N_{\rm s}^2)$, where $N_{\rm s}$ is controlled using 
+the corresponding memory footprint to $\mathcal{O}(N_{\rm v}^2 N_{\rm s}^2)$, where $N_{\rm s}$ is controlled using
 the =integralsSliceSize= keyword.
 
 We note that required storage of a set of doubles amplitudes adds substantially to the memory footprint in Ccsd calculations.

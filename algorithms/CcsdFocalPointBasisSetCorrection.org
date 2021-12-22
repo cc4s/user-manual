@@ -1,10 +1,11 @@
 :PROPERTIES:
 :ID: CcsdFocalPointBasisSetCorrection
 :END:
-#+title: CcsdFocalPointBasisSetCorrection 
+#+title: CcsdFocalPointBasisSetCorrection
 #+OPTIONS: toc:nil
 
-* Example =Cc4s= input
+* TODO Brief description
+* Algorithm call
 
 A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algorithm is given below.
 
@@ -22,7 +23,7 @@ A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algo
 #+end_src
 
 
-* Input description
+* Algorithm input
 
 #+caption: Input keywords
 #+name: focalpoint-input-table
@@ -34,12 +35,9 @@ A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algo
 | =mp2PairEnergiese=      | [[id:Mp2PairEnergies][MP2 pair energies matrix]]            |                                                |
 | =coulombIntegrals=      | [[id:CoulombIntegrals][Coulomb Integrals]]            |                                                |
 | =slicedEigenEnergies=   | [[id:SlicedEigenEnergies][Sliced one-electron energies]]            |                                                |
-|-------------------------+-------------+------------------------------------------------|
-| Output Key              | Default     | Description                                    |
-|-------------------------+-------------+------------------------------------------------|
 
 
-* Output
+* Algorithm output
 
 The output of the algorithm is the CCSD-BSIE-energy-correction. This energy contains
 the 2nd-order energy correction and a pair-specific ppl contribution (see theory).
@@ -52,7 +50,7 @@ CCSD-BSIE energy correction:      -0.0165423958
 #+end_src
 
 
-* Computational Complexity and memory footprint
+* Computational complexity
 
 This algorithm is basically a post-processing algorithm. However, the 2nd-order
 energy is re-evaluated and other operations of the same computational
@@ -62,15 +60,15 @@ energy calculation.
 
 * Theory
 
-This algorithm evaluates the correction of the basis-set-incompleteness-error 
+This algorithm evaluates the correction of the basis-set-incompleteness-error
 (BSIE) for CCSD as descibed in Ref. cite:&FocalPointAppIrmler2021. The algorithm
 requires the converged CCSD amplitudes together with \delta-integrals. Futhermore,
-a complete-basis-set estimate for the MP2-pair-energies is needed. 
+a complete-basis-set estimate for the MP2-pair-energies is needed.
 
 As discussed in the mentioned publication, the CCSD-BSIE in a finite basis-set
 calculation is primarily due to the 2nd-order term, and the so-called
 particle-particle ladder (ppl) term. There exists a variety of algorithms which allow
-a reliable CBS estimate for the 2nd-order term at modest computational costs 
+a reliable CBS estimate for the 2nd-order term at modest computational costs
 (compared to a the corresponding CCSD calculation for the same system). The
 missing ppl BSIE contribution is approximated using a pair-specific expression
 which requires the 2nd-order pair-energies, CCSD-amplitudes, as-well-as the
@@ -81,7 +79,7 @@ which requires the 2nd-order pair-energies, CCSD-amplitudes, as-well-as the
 \end{equation}
 
 with the Dirac delta function $\delta(\mathbf{r})$ and the interelectronic distance
-$\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|$. The delta-integrals have to be 
+$\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|$. The delta-integrals have to be
 provided and cannot be evaluated within cc4s. This ppl-correction
 is implemented as given in Eq.(31) in Ref. cite:&FocalPointAppIrmler2021
 
