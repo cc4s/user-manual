@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 12:42 -->
+<!-- 2021-12-22 Wed 14:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Coupled-cluster theory calculations of rhombohedral boron nitride</title>
@@ -293,8 +293,8 @@
 <div id="content">
 <h1 class="title">Coupled-cluster theory calculations of rhombohedral boron nitride</h1>
 
-<div id="outline-container-orgd7a3ae3" class="outline-2">
-<h2 id="orgd7a3ae3"><span class="section-number-2">1</span> <a href="#orgd7a3ae3">Introduction</a></h2>
+<div id="outline-container-org3760817" class="outline-2">
+<h2 id="org3760817"><span class="section-number-2">1</span> <a href="#org3760817">Introduction</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In this tutorial we explain all steps necessary to perform a  <code>Cc4s</code> calculation
@@ -303,8 +303,8 @@ on the level of CCSD(T) theory for a simple test system.
 </div>
 </div>
 
-<div id="outline-container-org627cd7a" class="outline-2">
-<h2 id="org627cd7a"><span class="section-number-2">2</span> <a href="#org627cd7a">Prerequisites</a></h2>
+<div id="outline-container-org37ddce2" class="outline-2">
+<h2 id="org37ddce2"><span class="section-number-2">2</span> <a href="#org37ddce2">Prerequisites</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 The following files are needed to reproduce all calculations of this tutorial.
@@ -332,8 +332,8 @@ the <code>Cc4s</code> binary is called. The <code>cc4s.in</code> YAML input file
 </div>
 </div>
 
-<div id="outline-container-org2b90e30" class="outline-2">
-<h2 id="org2b90e30"><span class="section-number-2">3</span> <a href="#org2b90e30">Description of CCSD calculations</a></h2>
+<div id="outline-container-org1ac40cd" class="outline-2">
+<h2 id="org1ac40cd"><span class="section-number-2">3</span> <a href="#org1ac40cd">Description of CCSD calculations</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 <code>Cc4s</code> calculations are controlled by a YAML input file. Every input file consists of a list
@@ -360,16 +360,20 @@ Here, we employ <code>./cc4s.in</code> as the YAML input file that controls <cod
 
 <p>
 The above call to the <code>TensorReader</code> algorithm reads in the
-<b>CoulombVertex.yaml</b> file that contains all meta-information of the <code>CoulombVertex</code> tensor in a human-readable format.
+<b>CoulombVertex.yaml</b> file that contains all meta-information of the
+<a href="../objects/CoulombVertex.html#ID-CoulombVertex"><code>CoulombVertex</code></a> tensor in a human-readable format.
 If <code>Cc4s</code> is not in the dry-run mode (TODO: add link to dry-run description), it will also follow the link in
-<b>CoulombVertex.yaml</b> to <b>CoulombVertex.dat</b> and read in all numerical data of the corresponding <code>CoulombVertex</code> tensor.
-The output of <code>TensorReader</code> algorithm is the <code>CoulombVertex</code> tensor object, which can be used as input for all subsequent
+<b>CoulombVertex.yaml</b> to <b>CoulombVertex.dat</b> and read in all numerical data of
+the corresponding <a href="../objects/CoulombVertex.html#ID-CoulombVertex"><code>CoulombVertex</code></a> tensor.
+The output of <code>TensorReader</code> algorithm is the <a href="../objects/CoulombVertex.html#ID-CoulombVertex"><code>CoulombVertex</code></a> tensor object, which can
+be used as input for all subsequent
 <code>Cc4s</code> algorithms if needed.
 </p>
 
 <p>
 In addition, we want <code>Cc4s</code> to read in the <b>EigenEnergies.yaml</b> and
-<b>EigenEnergies.dat</b> files by including the following <code>TensorReader</code> call in the <code>./cc4s.in</code> file
+<b>EigenEnergies.dat</b> files by including the following <code>TensorReader</code> call in the
+<code>./cc4s.in</code> file
 </p>
 <div class="org-src-container">
 <pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
@@ -381,9 +385,11 @@ In addition, we want <code>Cc4s</code> to read in the <b>EigenEnergies.yaml</b> 
 </div>
 
 <p>
-In the following step we include two further algorithm calls that are necessary to process the <code>CoulombVertex</code> and <code>EigenEnergies</code>
+In the following step we include two further algorithm calls that are necessary
+to process the <a href="../objects/CoulombVertex.html#ID-CoulombVertex"><code>CoulombVertex</code></a> and <code>EigenEnergies</code>
 tensors in <code>Cc4s</code> and prepare them for coupled-cluster calculations. To this end the <code>./cc4s.in</code> file calls the
-<code>DefineHolesAndParticles</code> and <code>SliceOperator</code> algorthims as described below
+<a href="../algorithms/DefineHolesAndParticles.html#ID-DefineHolesAndParticles">DefineHolesAndParticles</a> and
+<a href="../algorithms/SliceOperator.html#ID-SliceOperator">SliceOperator</a> algorthims as described below
 </p>
 
 <div class="org-src-container">
@@ -403,9 +409,11 @@ tensors in <code>Cc4s</code> and prepare them for coupled-cluster calculations. 
 </div>
 
 <p>
-Note that we have now overwritten the original tensors stored in <code>CoulombVertex</code> and <code>EigenEnergies</code>,
+Note that we have now overwritten the original tensors stored in
+<a href="../objects/CoulombVertex.html#ID-CoulombVertex"><code>CoulombVertex</code></a> and <code>EigenEnergies</code>,
 turning them into objects of the type <code>slicedOperator</code> and <code>slicedEigenEnergies</code>, respectively.
-Using these outputs, we can call the <code>VertexCoulombIntegrals</code> algorithm of <code>Cc4s</code> by including
+Using these outputs, we can call the <a href="../algorithms/VertexCoulombIntegrals.html#ID-VertexCoulombIntegrals">VertexCoulombIntegrals</a>
+ algorithm of <code>Cc4s</code> by including
 the follow paragraph in the  <code>./cc4s.in</code> file
 </p>
 <div class="org-src-container">
@@ -527,20 +535,20 @@ total operations: 2267.4 GFLOPS, speed: 7.1 GFLOPS/s/core
 </div>
 </div>
 
-<div id="outline-container-orgd36d22e" class="outline-2">
-<h2 id="orgd36d22e"><span class="section-number-2">4</span> <a href="#orgd36d22e">Description of finite-size correction to CCSD</a></h2>
+<div id="outline-container-org89759c6" class="outline-2">
+<h2 id="org89759c6"><span class="section-number-2">4</span> <a href="#org89759c6">Description of finite-size correction to CCSD</a></h2>
 </div>
 
-<div id="outline-container-orgf33d865" class="outline-2">
-<h2 id="orgf33d865"><span class="section-number-2">5</span> <a href="#orgf33d865">Description of basis-set incompleteness errors corrections to CCSD</a></h2>
+<div id="outline-container-orgddb5be4" class="outline-2">
+<h2 id="orgddb5be4"><span class="section-number-2">5</span> <a href="#orgddb5be4">Description of basis-set incompleteness errors corrections to CCSD</a></h2>
 </div>
 
-<div id="outline-container-org9cc7de4" class="outline-2">
-<h2 id="org9cc7de4"><span class="section-number-2">6</span> <a href="#org9cc7de4">Description of CCSD(T) calculations</a></h2>
+<div id="outline-container-org6bff567" class="outline-2">
+<h2 id="org6bff567"><span class="section-number-2">6</span> <a href="#org6bff567">Description of CCSD(T) calculations</a></h2>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 12:42</p>
+<p class="date">Created: 2021-12-22 Wed 14:57</p>
 </div>
 </body>
 </html>
