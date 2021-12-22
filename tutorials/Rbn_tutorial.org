@@ -1,6 +1,8 @@
 #+title: Coupled-cluster theory calculations of rhombohedral boron nitride
 #+OPTIONS: toc:nil
 
+#+macro: CV [[id:CoulombVertex][=CoulombVertex=]]
+
 * Introduction
 
 In this tutorial we explain all steps necessary to perform a  =Cc4s= calculation
@@ -45,14 +47,18 @@ Here, we employ =./cc4s.in= as the YAML input file that controls =Cc4s= and we e
 #+end_src
 
 The above call to the =TensorReader= algorithm reads in the
-*CoulombVertex.yaml* file that contains all meta-information of the =CoulombVertex= tensor in a human-readable format.
+*CoulombVertex.yaml* file that contains all meta-information of the
+{{{CV}}} tensor in a human-readable format.
 If =Cc4s= is not in the dry-run mode (TODO: add link to dry-run description), it will also follow the link in
-*CoulombVertex.yaml* to *CoulombVertex.dat* and read in all numerical data of the corresponding =CoulombVertex= tensor.
-The output of =TensorReader= algorithm is the =CoulombVertex= tensor object, which can be used as input for all subsequent
+*CoulombVertex.yaml* to *CoulombVertex.dat* and read in all numerical data of
+the corresponding {{{CV}}} tensor.
+The output of =TensorReader= algorithm is the {{{CV}}} tensor object, which can
+be used as input for all subsequent
 =Cc4s= algorithms if needed.
 
 In addition, we want =Cc4s= to read in the *EigenEnergies.yaml* and
-*EigenEnergies.dat* files by including the following =TensorReader= call in the =./cc4s.in= file
+*EigenEnergies.dat* files by including the following =TensorReader= call in the
+=./cc4s.in= file
 #+begin_src yaml
 - name: TensorReader
   in:
@@ -61,9 +67,11 @@ In addition, we want =Cc4s= to read in the *EigenEnergies.yaml* and
     tensor: EigenEnergies
 #+end_src
 
-In the following step we include two further algorithm calls that are necessary to process the =CoulombVertex= and =EigenEnergies=
+In the following step we include two further algorithm calls that are necessary
+to process the {{{CV}}} and =EigenEnergies=
 tensors in =Cc4s= and prepare them for coupled-cluster calculations. To this end the =./cc4s.in= file calls the
-=DefineHolesAndParticles= and =SliceOperator= algorthims as described below
+[[id:DefineHolesAndParticles][DefineHolesAndParticles]] and
+[[id:SliceOperator][SliceOperator]] algorthims as described below
 
 #+begin_src yaml
 - name: DefineHolesAndParticles
@@ -80,9 +88,11 @@ tensors in =Cc4s= and prepare them for coupled-cluster calculations. To this end
     slicedOperator: CoulombVertex
 #+end_src
 
-Note that we have now overwritten the original tensors stored in =CoulombVertex= and =EigenEnergies=,
+Note that we have now overwritten the original tensors stored in
+{{{CV}}} and =EigenEnergies=,
 turning them into objects of the type =slicedOperator= and =slicedEigenEnergies=, respectively.
-Using these outputs, we can call the =VertexCoulombIntegrals= algorithm of =Cc4s= by including
+Using these outputs, we can call the [[id:VertexCoulombIntegrals][VertexCoulombIntegrals]]
+ algorithm of =Cc4s= by including
 the follow paragraph in the  =./cc4s.in= file
 #+begin_src yaml
 - name: VertexCoulombIntegrals
