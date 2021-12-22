@@ -1,29 +1,26 @@
 #+title: Cc4s User Documentation
 #+OPTIONS: toc:nil
 
-* Cc4s User Documentation
-  :PROPERTIES:
-  :CUSTOM_ID: cc4s-user-documentation
-  :END:
-
+#+begin_center
 Welcome to the =Cc4s= user manual. The following sections explain everything from
 downloading the code to running calculations.
+#+end_center
 
-** How to get started?
+* How to get started?
 - [[file:./gettingstarted/gettingstarted.org][Download, compile and run tests]]
 
-** How to run Cc4s calculations?
+* How to run Cc4s calculations?
 
 We provide the following examples that teach you how to perform =Cc4s= calculations
 - [[file:tutorials/Rbn_tutorial.org][r-BN CCSD(T) calculations]]
 - Water examples
 
-** Interfaces to Cc4s
+* Interfaces to Cc4s
 Currently avaible interfaces to =Cc4s= are described below.
 - [[file:interfaces/vasp.org][VASP]]
 - [[file:interfaces/fhi-aims.org][FHI-AIMS]]
 
-** Algorithms in Cc4s
+* Algorithms in Cc4s
 The most important Cc4s algorithms are listed below.
 
 - SecondOrderPerturbationTheory
@@ -34,18 +31,14 @@ The most important Cc4s algorithms are listed below.
 - [[id:PerturbativeTriples][PerturbativeTriples]]
 
 
-** Common input/output objects in Cc4s
+* Common input/output objects in Cc4s
 The most important objects used by algorithms are listed below.
 - [[id:CoulombVertex][CoulombVertex]]
 - [[id:CoulombIntegrals][CoulombIntegrals]]
 - TODO
 
-** Contributors and Acknowledgements
+* Contributors and Acknowledgements
 
-** Documentation guide
+* Documentation guide
 If you are writing documentation for =cc4s=, read the
 [[file:how-to-write.org][documentation writing manual]].
-
-
-* Sitemap
-#+include: sitemap.org :only-contents t
