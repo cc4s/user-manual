@@ -1,4 +1,4 @@
-#+title: Coupled-cluster theory calculations of rhombohedral boron nitride
+#+title: How to run =Cc4s= calculations?
 #+OPTIONS: toc:nil
 
 #+macro: CV [[id:CoulombVertex][=CoulombVertex=]]
@@ -7,6 +7,14 @@
 
 In this tutorial we explain all steps necessary to perform a  =Cc4s= calculation
 on the level of CCSD(T) theory for a simple test system.
+The test system corresponds to a periodic rhomobohedral boron nitride crystal.
+All required =Cc4s= input files have been created using the =VASP= interface.
+
+=Cc4s= calculations are controlled by a YAML input file, which is called =cc4s.in= in the present tutorial.
+This input file consists of a list of calls to algorithms with input arguments and output objects.
+Here, we will walk you through all employed algorithms used to compute the CCSD(T) correlation energy.
+However, if you want to skip the detailed  explanations below and proceed directly to performing
+CCSD(T) calculations, you might as well download the complete =cc4s.in= file (here, TODO add link).
 
 * Prerequisites
 
@@ -23,20 +31,16 @@ The following files are needed to reproduce all calculations of this tutorial.
   + $U_F^G$ : =CoulombVertexSingularVectors.yaml=, =CoulombVertexSingularVectors.dat=
   + $\epsilon_{ij}$ : =Mp2PairEnergies.yaml=, =Mp2PairEnergies.dat=
 
-For the following example we assume that all above input files and =cc4s.in= are located in the same directory where
-the =Cc4s= binary is called. The =cc4s.in= YAML input file is described in the following section.
+For the following example we assume that all input files listed above and the =cc4s.in= file
+are located in the same directory.
+The =cc4s.in= YAML input file is described in the following section in detail.
 
-* Description of CCSD calculations
+* Coupled cluster singles and doubles theory calculations
 
-=Cc4s= calculations are controlled by a YAML input file. Every input file consists of a list
-of calls to algorithms with input arguments and output objects.
-The output of any algorithm becomes available as potential input for all subsequent algorithm calls.
-
-For the present tutorial we seek to compute the electronic correlation energy on the level of
-CCSD(T) theory.
-To this end =Cc4s= has to read in essential data files from disk, which can be achieved using the
-=TensorReader= algorithm.
-Here, we employ =./cc4s.in= as the YAML input file that controls =Cc4s= and we edit this file to contain the following code block
+We start this tutorial by taking the first steps in =Cc4s= necessary to compute the CCSD correlation energy.
+To this end essential data files have to be read in from disk using the =TensorReader= algorithm.
+Since we employ =./cc4s.in= as the YAML input file that controls =Cc4s=,
+we edit this file to contain the following code block
 
 #+begin_src yaml
 - name: TensorReader
@@ -71,7 +75,7 @@ In the following step we include two further algorithm calls that are necessary
 to process the {{{CV}}} and =EigenEnergies=
 tensors in =Cc4s= and prepare them for coupled-cluster calculations. To this end the =./cc4s.in= file calls the
 [[id:DefineHolesAndParticles][DefineHolesAndParticles]] and
-[[id:SliceOperator][SliceOperator]] algorthims as described below
+[[id:SliceOperator][SliceOperator]] algorithms as described below
 
 #+begin_src yaml
 - name: DefineHolesAndParticles
@@ -90,7 +94,9 @@ tensors in =Cc4s= and prepare them for coupled-cluster calculations. To this end
 
 Note that we have now overwritten the original tensors stored in
 {{{CV}}} and =EigenEnergies=,
-turning them into objects of the type =slicedOperator= and =slicedEigenEnergies=, respectively.
+turning them into objects corresponding to sets of tensors with partitioned orbital indices, respectively.
+In particular, all state indices have been partitioned to refer to particle or hole states; for example,
+$\epsilon_q \rightarrow \{\epsilon_a, \epsilon_i\}$.
 Using these outputs, we can call the [[id:VertexCoulombIntegrals][VertexCoulombIntegrals]]
  algorithm of =Cc4s= by including
 the follow paragraph in the  =./cc4s.in= file
@@ -121,19 +127,17 @@ The =VertexCoulombIntegrals= algorithm produces the =CoulombIntegrals= output, w
       type: DiisMixer
       maxResidua: 5
   out:
-    energy: CcsdEnergy
     amplitudes: Amplitudes
 #+end_src
 
-If all code blocks given above are included in the =./cc4s.in= file and all other prerequisites all fulfilled,
-=Cc4s= can be called by typing the following in the terminal:
+If all code blocks given above are included in the =./cc4s.in= file and all other prerequisites are fulfilled,
+=Cc4s= can be called by typing the following command in the terminal:
 #+begin_src sh
-Cc4s -i cc4s.in
+mpirun -np 48 Cc4s -i cc4s.in
 #+end_src
 
 If all algorithms work successfully, the following output stream will appear on the terminal
 #+begin_src sh
-
                 __ __      
      __________/ // / _____
     / ___/ ___/ // /_/ ___/
@@ -144,33 +148,33 @@ If all algorithms work successfully, the following output stream will appear on 
 version: heads/develop-0-g3c7f382, date: Fri Dec 17 16:11:36 2021 +0100
 build date: Dec 21 2021 18:00:10
 compiler: icc (ICC) 19.1.0.166 20191121
-total processes: 1
-calculation started on: Tue Dec 21 22:35:27 2021
+total processes: 48
+calculation started on: Wed Dec 22 19:47:55 2021
 
 
 execution plan read, steps: 6
 
 step: 1, TensorReader
 Reading from binary file CoulombVertex.dat
-realtime 2.327871286 s
+realtime 0.078560298 s
 --
 step: 2, TensorReader
 Reading from text file EigenEnergies.dat
-realtime 0.006519348 s
+realtime 0.003298238 s
 --
 step: 3, DefineHolesAndParticles
 number of holes     No: 16
 number of particles Nv: 80
 number of states    Np: 96
-realtime 0.001037427 s
+realtime 0.000931083 s
 --
 step: 4, SliceOperator
 Slicing CoulombVertex.dat into holes and particles.
-realtime 0.000913122 s
+realtime 0.000822282 s
 --
 step: 5, VertexCoulombIntegrals
 number of field variables NF: 356
-realtime 0.015747318 s
+realtime 0.003224221 s
 --
 step: 6, CoupledCluster
 Using method Ccsd. integralsSliceSize: 100
@@ -179,32 +183,255 @@ Maximum number of iterations: 30
 Unless reaching energy convergence dE: 1e-05
 and amplitudes convergence dR: 1e-05
 Iter         Energy         dE           dR         time   GF/s/core
-   1  -2.43605043e+01  -2.4361e+01   4.3924e-01      4.1    5.7
-   2  -2.47577534e+01  -3.9725e-01   7.4733e-02     30.8    6.1
-   3  -2.53776918e+01  -6.1994e-01   1.8674e-02     24.9    7.5
-   4  -2.54455925e+01  -6.7901e-02   6.4132e-03     25.3    7.3
-   5  -2.54445080e+01   1.0845e-03   2.2120e-03     25.8    7.2
-   6  -2.54458312e+01  -1.3232e-03   1.0304e-03     25.7    7.2
-   7  -2.54448941e+01   9.3705e-04   5.0727e-04     25.8    7.2
-   8  -2.54452894e+01  -3.9521e-04   1.9694e-04     25.8    7.2
-   9  -2.54454262e+01  -1.3682e-04   7.7180e-05     25.8    7.2
-  10  -2.54455328e+01  -1.0663e-04   3.0247e-05     25.8    7.2
-  11  -2.54455929e+01  -6.0110e-05   1.1758e-05     25.7    7.2
-  12  -2.54456151e+01  -2.2218e-05   5.0053e-06     25.7    7.2
-  13  -2.54456249e+01  -9.7454e-06   2.2689e-06     25.7    7.2
+   1  -2.43605043e+01  -2.4361e+01   4.3924e-01      0.2    2.5
+   2  -2.47577534e+01  -3.9725e-01   7.4733e-02      1.3    3.1
+   3  -2.53776918e+01  -6.1994e-01   1.8674e-02      1.1    3.4
+   4  -2.54455925e+01  -6.7901e-02   6.4132e-03      1.1    3.5
+   5  -2.54445080e+01   1.0845e-03   2.2120e-03      1.1    3.5
+   6  -2.54458312e+01  -1.3232e-03   1.0304e-03      1.1    3.5
+   7  -2.54448941e+01   9.3705e-04   5.0727e-04      1.1    3.5
+   8  -2.54452894e+01  -3.9521e-04   1.9694e-04      1.1    3.5
+   9  -2.54454262e+01  -1.3682e-04   7.7180e-05      1.1    3.5
+  10  -2.54455328e+01  -1.0663e-04   3.0247e-05      1.1    3.5
+  11  -2.54455929e+01  -6.0110e-05   1.1758e-05      1.1    3.5
+  12  -2.54456151e+01  -2.2218e-05   5.0053e-06      1.1    3.5
+  13  -2.54456249e+01  -9.7454e-06   2.2689e-06      1.1    3.5
 
 CCSD correlation energy:          -25.4456248862
 2nd-order correlation energy:     -24.3605043096
-realtime 317.059767911 s
+realtime 13.653374348 s
 --
-total realtime: 319.445774591 s
-total operations: 2267.4 GFLOPS, speed: 7.1 GFLOPS/s/core
+total realtime: 13.753230265 s
+total operations: 2267.4 GFLOPS, speed: 3.4 GFLOPS/s/core
 #+end_src
 
-* Description of finite-size correction to CCSD
+The CCSD correlation energy can either be extracted
+directly from the standard output stream or the =cc4s.out= YAML file, which contains additional information as well
+as the correlation energy. The corresponding block of =cc4s.out= reads
+#+begin_src yaml
+    out:
+      amplitudes: 0x2682218
+      convergenceReached: 1
+      energy:
+        direct: -38.822491455744313
+        exchange: 13.376866569541551
+        secondOrder: -24.360504309639897
+        unit: 0.036749322175638782
+        correlation: -25.445624886202761
+#+end_src
+Note that the energies are given in units of eV for the present system. The energy units are defined by
+input files and always correspond to eV in the case of input files generated by =VASP=.
 
-* Description of basis-set incompleteness errors corrections to CCSD
+* Perturbative triples calculations
 
-* Description of CCSD(T) calculations
+We now proceed with the CCSD(T) energy calculation and seek to compute the (T) contribution,
+which has to be added to the CCSD correlation energy contribution estimated in the
+previous section.
+
+The [[id:PerturbativeTriples][PerturbativeTriples]] algorithm computes the (T)
+correlation energy contribution and is called from the =./cc4s.in= file in the following manner
+
+#+begin_src yaml
+- name: PerturbativeTriples
+  in:
+    slicedEigenEnergies: EigenEnergies
+    amplitudes: Amplitudes
+    coulombIntegrals: CoulombIntegrals
+  out:
+    {}
+#+end_src
+
+Note that the  [[id:PerturbativeTriples][PerturbativeTriples]] algorithm depends on =Amplitudes=
+as input argument which has been computed above using the
+[[id:CoupledCluster][CoupledCluster]] algorithm. 
+If we append the above code block to the =./cc4s.in= file described in the previous section and run =Cc4s=,
+the following additional standard output stream should appear.
+#+begin_src sh
+--
+step: 7, PerturbativeTriples
+Progress(%)  time(s)   GFLOP/s      
+1            0         3.850        
+10           0         5.376        
+20           0         5.531        
+30           0         5.625        
+40           0         5.618        
+50           0         5.643        
+60           0         5.664        
+70           0         5.696        
+80           0         5.704        
+90           0         5.731        
+100          0         5.730        
+(T) correlation energy:      -0.822530510989498
+realtime 2.855223959 s
+--
+#+end_src
+
+The (T) correlation energy contribution can either be extracted
+directly from the standard output stream or the =cc4s.out= YAML file, which contains additional information as well
+as the correlation energy contribution. The corresponding block of =cc4s.out= reads
+#+begin_src yaml
+    name: PerturbativeTriples
+    out:
+      energy:
+        triples: -0.82253051098949814
+    realtime: 2.856075204
+#+end_src
+
+* Basis-set incompleteness error corrections
+
+We note that the CCSD correlation energy is computed in the present system using a set of truncated
+approximate natural orbitals. Increasing this basis set size yields correlation energies that
+converge only slowly to the complete basis set limit. =Cc4s= includes an algorithm that can compute
+a basis-set incompleteness error (BSIE) correction, yielding significantly more rapidly convergent correlation
+energies with respect to the number virtual orbitals.
+
+The [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]] computes a BSIE correction for
+CCSD theory and requires a set of additional input files that are also provided using the =VASP= interface.
+Reading the corresponding input files and calling the
+[[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]] algorithm is achieved using the
+following code block in =./cc4s.in=
+#+begin_src yaml
+- name: TensorReader
+  in:
+    fileName: "DeltaIntegralsHH.yaml"
+  out:
+    tensor: Nij
+
+- name: TensorReader
+  in:
+    fileName: "DeltaIntegralsPPHH.yaml"
+  out:
+    tensor: DeltaIntegrals
+
+- name: TensorReader
+  in:
+    fileName: "Mp2PairEnergies.yaml"
+  out:
+    tensor: Mp2PairEnergies
+
+- name: CcsdFocalPointBasisSetCorrection
+  in:
+    slicedEigenEnergies: EigenEnergies
+    amplitudes: Amplitudes
+    coulombIntegrals: CoulombIntegrals
+    mp2PairEnergies: Mp2PairEnergies
+    deltaIntegralsHH: Nij
+    deltaIntegralsPPHH: DeltaIntegrals
+  out:
+    {}
+#+end_src
+
+Appending the code block above to the =./cc4s.in= file described in all previous sections and running =Cc4s=,
+yields the following additional standard output stream.
+#+begin_src sh
+--
+step: 8, TensorReader
+Reading from text file DeltaIntegralsHH.dat
+realtime 0.011865465 s
+--
+step: 9, TensorReader
+Reading from binary file DeltaIntegralsPPHH.dat
+realtime 0.063157853 s
+--
+step: 10, TensorReader
+Reading from text file Mp2PairEnergies.dat
+realtime 0.016661099 s
+--
+step: 11, CcsdFocalPointBasisSetCorrection
+CCSD correlation energy:          -25.4456248862
+CCSD-FP correlation energy:       -30.7454273364
+2nd-order-CBS correlation energy: -30.8616919387
+==================================
+CCSD-BSIE energy correction:      -5.2998024502
+2nd-order energy correction :     -6.5011876290
+PS-PPL-BSIE energy correction:    1.2013851788
+realtime 0.079432832 s
+--
+#+end_src
+
+The BSIE correction can either be extracted
+directly from the standard output stream or the =cc4s.out= YAML file, which contains additional information as well
+as the correction. The corresponding block of =cc4s.out= reads
+#+begin_src yaml
+????
+#+end_src
+
+* Finite-size corrections
+
+We note that the CCSD correlation energy is computed in the present case for a finite periodic
+simulation cell.
+Increasing the size of the periodic simulation cell, studying a large periodic supercell,
+yields correlation energies per atom that converge only slowly to the thermodynamic limit.
+=Cc4s= includes an algorithm that can compute
+a finite-size error correction, yielding significantly more rapidly convergent correlation
+energies per atom with respect to the simulation cell size.
+
+The [[id:TransitionStructureFactorFiniteSizeCorrection][TransitionStructureFactorFiniteSizeCorrection]] computes
+a finite-size correction for CCSD theory and requires a set of additional input files that are also
+provided using the =VASP= interface.
+Reading the corresponding input files and calling the
+[[id:TransitionStructureFactorFiniteSizeCorrection][TransitionStructureFactorFiniteSizeCorrection]]
+algorithm is achieved using the following code block in =./cc4s.in=
+#+begin_src yaml
+- name: TensorReader
+  in:
+    fileName: "CoulombVertexSingularVectors.yaml"
+  out:
+    tensor: CoulombVertexSingularVectors
+
+- name: TensorReader
+  in:
+    fileName: "GridVectors.yaml"
+  out:
+    tensor: GridVectors
+
+- name: TensorReader
+  in:
+    fileName: "CoulombPotential.yaml"
+  out:
+    tensor: CoulombPotential
+
+- name: TransitionStructureFactorFiniteSizeCorrection
+  in:
+    slicedCoulombVertex: CoulombVertex
+    amplitudes: Amplitudes
+    coulombVertexSingularVectors: CoulombVertexSingularVectors
+    coulombPotential: CoulombPotential
+    gridVectors: GridVectors
+  out:
+    corrected: Corrected
+    uncorrected: Uncorrected
+    transitionStructureFactor: SF
+#+end_src
+
+Appending the code block above to the =./cc4s.in= file described in all previous sections and running =Cc4s=,
+yields the following additional standard output stream.
+#+begin_src sh
+--
+step: 12, TensorReader
+Reading from binary file CoulombVertexSingularVectors.dat
+realtime 0.009562659 s
+--
+step: 13, TensorReader
+Reading from text file GridVectors.dat
+realtime 0.003062648 s
+--
+step: 14, TensorReader
+Reading from text file CoulombPotential.dat
+realtime 0.002374490 s
+--
+step: 15, TransitionStructureFactorFiniteSizeCorrection
+Uncorrected correlation energy:   -25.4453762360
+Finite-size energy correction:    -1.1152868081
+realtime 0.452425713 s
+--
+#+end_src
+
+The finite-size correction can either be extracted
+directly from the standard output stream or the =cc4s.out= YAML file, which contains additional information as well
+as the correction. The corresponding block of =cc4s.out= reads
+#+begin_src yaml
+????
+#+end_src
 
 
