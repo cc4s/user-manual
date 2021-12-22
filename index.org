@@ -27,7 +27,7 @@ The most important Cc4s algorithms are listed below:
 
 - SecondOrderPerturbationTheory
 - [[id:CoupledCluster][CoupledCluster]]
-- [[id:TransitionStructureFiniteSizeCorrection][TransitionStructureFiniteSizeCorrection]]
+- [[id:TransitionStructureFactorFiniteSizeCorrection][TransitionStructureFiniteSizeCorrection]]
 - [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]]
 - [[id:PerturbativeTriples][PerturbativeTriples]]
 
