@@ -22,14 +22,15 @@ A typical input file snippet to call the =DefineHolesAndParticles= algorithm is 
 
 #+caption: Input keywords
 #+name: focalpoint-input-table
-| Input Key               | Default     | Description                                    |
-|-------------------------+-------------+------------------------------------------------|
-| =eigenEnergies=         |             |                                                |
-| =slicedEigenEnergies=   |             |                                                |
+| Keyword               | Value |
+|-----------------------+-------|
+| =eigenEnergies=       |       |
+| =slicedEigenEnergies= |       |
 
 
 * Algorithm output
 
+** Sample =stdout=
 The output of the algorithm provides the number of occupied and virtual states
 in the calculation.
 #+begin_src sh
@@ -40,6 +41,7 @@ number of states    Np: 40
 realtime 0.000832881 s
 #+end_src
 
+** TODO Sample =yaml= output
 
 * Computational complexity
 None.

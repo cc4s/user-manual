@@ -175,3 +175,74 @@ You can also combine both by doing
 make publish serve
 #+end_src
 periodically and refreshing your browser.
+
+* Conventions
+
+** How to document an Object
+In order to document an object, the following sections have to appear:
+
+- Brief description ::
+  A brief description of what the object is and what it is commonly used for.
+  Some further discussion of the object can be added here, for instance
+  an example of an algorithm call to create the object or links to relevant
+  algorithms.
+- Specification =[Optional]= ::
+  In the case of objects with a clear =yaml= specification, this should be explicitly
+  provided here, see for instance the =yaml= specification of
+  [[id:GridVectors][GridVectors]].
+- Literature =[Optional]= ::
+  If in the previous sections a literature citation has been used, then add this section
+  to list the references.
+
+** How to document an Algorithm
+The following sections have to be provided:
+
+- Brief description ::
+  A very brief description of what the algorithm is doing when called.
+  Limit this description to a couple of lines.
+- Algorithm call ::
+  An example of an algorithm call in =yaml= format.
+  Optional parameters should have the following format in the sample
+  #+begin_src yaml
+  # keyName: valueName    # optional
+  #+end_src
+  For instance for [[id:PerturbativeTriples][PerturbativeTriples]]
+  #+begin_src yaml
+  - name: PerturbativeTriples
+    in:
+      coulombIntegrals: CoulombIntegrals
+      amplitudes: Amplitudes
+      slicedEigenEnergies: EigenEnergies
+      # mp2PairEnergies: Mp2PairEnergies            # optional
+    out:
+      {}
+  #+end_src
+- Algorithm input ::
+  Explanation of the inputs of the Algorithm.
+  It should contain a table with two columns, *Keyword* and *Value*,
+  e.g.
+  | Keyword                      | Value                    |
+  |------------------------------+--------------------------|
+  | =coulombIntegrals=           | [[id:CoulombIntegrals][Coulomb Integrals]]        |
+  | =mp2PairEnergies= /optional/ | [[id:Mp2PairEnergies][MP2 pair energies matrix]] |
+  Optional inputs should be followed by an /optional/ marker.
+  The value field should be always a link to a detailed description
+  of the input. If the value should be a commonly used object,
+  it should be an =id:= like link to the corresponding object.
+  Otherwise it can link to a section in the same document.
+- Algorithm output ::
+  This section should include:
+  - A table with the same format as for the input parameters for
+    the output parameters.
+  - A section with a sample =stdout= output of a succesful run
+    of the algorithm
+  - A section with the *relevant* =yaml= output of the algorithm.
+    I.e., timings and flop count and so on needn't be included.
+- Computational complexity =[Optional]= ::
+  A discussion of the computational of the algorithm and some methods
+  developed for it.
+- Theory =[Optional]= :: A quick description of the theoretical background.
+  If the method is well-known, refer to relevant articles.
+- Literature =[Optional]= ::
+  If in the previous sections a literature citation has been used, then add this section
+  to list the references.

@@ -24,16 +24,18 @@ A typical input file snippet to call the =PerturbativeTriples= algorithm is give
 * Algorithm input
 
 #+caption: Input keywords for PerturbativeTriples
-| Input Keyword         | Description                    | Default |
-|-----------------------+--------------------------------+---------|
-| =amplitudes=          | [[id:Amplitudes][Singles and doubles amplitudes]] |         |
-| =coulombIntegrals=    | [[id:CoulombIntegrals][Coulomb Integrals]]              |         |
-| =slicedEigenEnergies= | [[id:SlicedEigenEnergies][Sliced one-electron energies]]   |         |
-| =mp2PairEnergies=     | [[id:Mp2PairEnergies][MP2 pair energies matrix]]       |         |
+| Keyword               | Value                          |
+|-----------------------+--------------------------------|
+| =amplitudes=          | [[id:Amplitudes][Singles and doubles amplitudes]] |
+| =coulombIntegrals=    | [[id:CoulombIntegrals][Coulomb Integrals]]              |
+| =slicedEigenEnergies= | [[id:SlicedEigenEnergies][Sliced one-electron energies]]   |
+| =mp2PairEnergies=     | [[id:Mp2PairEnergies][MP2 pair energies matrix]]       |
 
 
 * Algorithm output
 
+
+** Sample =stdout=
 Below an example standard output stream is shown for a successful =PerturbativeTriples= algorithm run
 given a =mp2pairenergies= and thus printing the CCSD(T*) energy.
 
@@ -56,6 +58,8 @@ Progress(%)  time(s)   GFLOP/s
 (T*) correlation energy:      -4.965491965438498
 realtime 23297.807220394 s
 #+end_src
+
+** TODO Sample =yaml= output
 
 * Computational complexity
 

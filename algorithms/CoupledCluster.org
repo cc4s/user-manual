@@ -35,18 +35,18 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
 
 #+caption: Input keywords
 #+name: ccsd-input-table
-| Input Keyword                 | Description                       | Default                     |
-|-------------------------------+-----------------------------------+-----------------------------|
-| =method: type=               | [[#method-type][Type of coupled cluster algorithm]] | Ccsd                        |
-| =method: integralsSliceSize= | [[#integralsslicesize][Integral slice size]]               | Number of occupied orbitals |
-| =slicedEigenEnergies=        | [[id:SlicedEigenEnergies][Sliced one-electron energies]]      |                             |
-| =coulombIntegrals=           | [[id:CoulombIntegrals][Coulomb Integrals]]                 |                             |
-| =slicedCoulombVertex=        | [[id:SlicedCoulombVertex][Sliced Coulomb vertex]]   |                             |
-| =maxIterations=              | [[#maxiterations][Maximum number of iterations]]      | 20                          |
-| =energyConvergence=          | [[#energyconvergence][Energy convergence threshold]]      |                             |
-| =amplitudesConvergence=      | [[#amplitudesconvergence][Amplitude convergence threshold]]   |                             |
-| =mixer: type=                | [[#mixer][Mixer type]]                        | DiisMixer                   |
-|-------------------------------+-----------------------------------+-----------------------------|
+| Keyword                      | Value                             |
+|------------------------------+-----------------------------------|
+| =method: type=               | [[#method-type][Type of coupled cluster algorithm]] |
+| =method: integralsSliceSize= | [[#integralsslicesize][Integral slice size]]               |
+| =slicedEigenEnergies=        | [[id:SlicedEigenEnergies][Sliced one-electron energies]]      |
+| =coulombIntegrals=           | [[id:CoulombIntegrals][Coulomb Integrals]]                 |
+| =slicedCoulombVertex=        | [[id:SlicedCoulombVertex][Sliced Coulomb vertex]]             |
+| =maxIterations=              | [[#maxiterations][Maximum number of iterations]]      |
+| =energyConvergence=          | [[#energyconvergence][Energy convergence threshold]]      |
+| =amplitudesConvergence=      | [[#amplitudesconvergence][Amplitude convergence threshold]]   |
+| =mixer: type=                | [[#mixer][Mixer type]]                        |
+|------------------------------+-----------------------------------|
 
 ** type
 :PROPERTIES:
@@ -142,16 +142,17 @@ mixer:
 
 #+caption: Output keywords for CoupledCluster
 #+name: ccsd-output-table
-| Output Keyword      | Description                                                                  |
-|---------------------+------------------------------------------------------------------------------+
-| =amplitudes=        | Amplitudes                                                                   |
-|---------------------+------------------------------------------------------------------------------+
+| Keyword      | Value      |
+|--------------+------------|
+| =amplitudes= | [[id:Amplitudes][Amplitudes]] |
+|--------------+------------|
 
 The output of the *CoupledCluster* algorithm includes =energy= and =amplitudes= . The =amplitudes= output contains
 the converged singles and doubles amplitude tensors. The amplitudes can be used as input for algorithms
 that estimate the finite simulation cell size error (*TransitionStructureFactorFiniteSizeCorrection*)
 and the basis set incompleteness errors (*CcsdFocalPointBasisSetCorrection*).
 
+** Sample =stdout=
 Below an example standard output stream is shown for a successful *CoupledCluster* algorithm run.
 #+begin_src sh
 step: 9, CoupledCluster
@@ -176,6 +177,8 @@ Ccsd correlation energy:          -151.9981733061
 2nd-order correlation energy:     -151.9959332292
 realtime 3463.773373
 #+end_src
+
+** TODO Sample =yaml= output
 
 * Computational complexity
 

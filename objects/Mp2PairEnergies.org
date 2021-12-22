@@ -17,7 +17,8 @@ CCSD(T*) [[cite:&FocalPointAppIrmler2021]],
 where \( M_{ij} \) represents the Complete Basis Set (CBS) approximation to the MP2 pair energies.
 When the =mp2PairEnergies= matrix is given as an input, the algorithm also computes the MP2 energy
 from the Hartree-Fock eigenenergies \( \epsilon_p \) and the coulomb integrals
-\( V^{ab}_{ij} \) within =slicedEigenEnergies= and =coulombIntegrals= respectively.
+\( V^{ab}_{ij} \) within [[id:SlicedEigenEnergies][slicedEigenEnergies]] and
+[[id:CoulombIntegrals][coulombIntegrals]] respectively.
 Using \( \epsilon^{\rm MP2}_{\rm CBS} \) calculated from \( M_{ij} \),
 \( \epsilon^{\rm MP2} \) from \( \epsilon_p,  V^{ab}_{ij} \)
 and computed CCSD(T) energy, the approximation

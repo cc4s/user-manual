@@ -27,14 +27,14 @@ A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algo
 
 #+caption: Input keywords
 #+name: focalpoint-input-table
-| Input Key               | Default     | Description                                    |
-|-------------------------+-------------+------------------------------------------------|
-| =amplitudes=            | [[id:Amplitudes][Singles and doubles amplitudes]]       |                                                |
-| =deltaIntegralsPPHH=    |             |                                                |
-| =deltaIntegralsHH=      |             |                                                |
-| =mp2PairEnergiese=      | [[id:Mp2PairEnergies][MP2 pair energies matrix]]            |                                                |
-| =coulombIntegrals=      | [[id:CoulombIntegrals][Coulomb Integrals]]            |                                                |
-| =slicedEigenEnergies=   | [[id:SlicedEigenEnergies][Sliced one-electron energies]]            |                                                |
+| Keyword               | Value                          |
+|-----------------------+--------------------------------|
+| =amplitudes=          | [[id:Amplitudes][Singles and doubles amplitudes]] |
+| =deltaIntegralsPPHH=  |                                |
+| =deltaIntegralsHH=    |                                |
+| =mp2PairEnergiese=    | [[id:Mp2PairEnergies][MP2 pair energies matrix]]       |
+| =coulombIntegrals=    | [[id:CoulombIntegrals][Coulomb Integrals]]              |
+| =slicedEigenEnergies= | [[id:SlicedEigenEnergies][Sliced one-electron energies]]   |
 
 
 * Algorithm output
@@ -42,12 +42,15 @@ A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algo
 The output of the algorithm is the CCSD-BSIE-energy-correction. This energy contains
 the 2nd-order energy correction and a pair-specific ppl contribution (see theory).
 
+** Sample =stdout=
 Below an example standard output stream is shown for a successful run.
 #+begin_src sh
 step: 10, CcsdFocalPointBasisSetCorrection
 CCSD-BSIE energy correction:      -0.0165423958
 2nd-order energy correction:      -0.0229332012 // will be removed
 #+end_src
+
+** TODO Sample =yaml= output
 
 
 * Computational complexity

@@ -15,7 +15,9 @@ $\sqrt{\frac{4\pi}{{\bf G}^2}}$.
 Different representations of the =CoulombVertex= are possible using; for example,
 singular-value-decomposition techniques as discussed in cite:&hummel2017low.
 The transformation of the =CoulombVertex= into a truncated auxilliary field representation
-reduces the memory footprint and is achieved using the =CoulombVertexSingularVectors= $\left({U^*}^G_F\right)$ :
+reduces the memory footprint and is achieved using the
+[[id:CoulombVertexSingularVectors][CoulombVertexSingularVectors]]
+$\left({U^*}^G_F\right)$ :
 $$
 \Gamma^q_r({F}) = \sum_{\bf G}
   {U^*}^{\bf G}_F \tilde{\Gamma}^q_r({\bf G})
@@ -23,7 +25,7 @@ $$
 
 
 The =CoulombVertex= needs to be provided by an interfaced electronic structure theory package
-and can be read into =Cc4s= using the *TensorReader* algorithm.
+and can be read into =Cc4s= using the [[id:TensorReader][TensorReader]] algorithm.
 
 #+begin_src yaml
 - name: TensorReader
@@ -32,6 +34,8 @@ and can be read into =Cc4s= using the *TensorReader* algorithm.
   out:
     tensor: CoulombVertex
 #+end_src
+
+* Specification
 
 An example =CoulombVertex.yaml= file is given below
 

@@ -195,6 +195,8 @@
              :html-validation-link nil
              :html-head-extra ,cc4s/html-head-libs
              :language en
+             ;; :body-only t
+             ;; :makeindex t
              ;; :html-use-infojs nil
              ;; :html-link-home "sitemap.html"
              :auto-sitemap t

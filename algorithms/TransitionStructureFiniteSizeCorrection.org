@@ -24,15 +24,15 @@ A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCor
 
 #+caption: Input keywords for CoupledCluster
 #+name: ccsd-input-table
-| Input Keyword                  | Description                    | Default |
-|--------------------------------+--------------------------------+---------|
-| =slicedCoulombVertex=          | [[id:SlicedCoulombVertex][Sliced Coulomb vertex]]          |         |
-| =amplitudes=                   | [[id:Amplitudes][Singles and doubles amplitudes]] |         |
-| =coulombVertexSingularVectors= | [[id:CoulombVertexSingularVectors][coulombVertexSingularVectors]]   |         |
-| =coulombPotential=             | [[id:CoulombPotential][Coulomb potential]]              |         |
-| =gridVectors=                  | [[id:GridVectors][Grid Vectors]]                   |         |
-| =interpolationGridSize=        | [[#interpolationgridsize][Interpolation grid size]]        |      20 |
-|--------------------------------+--------------------------------+---------|
+| Keyword                        | Value                          |
+|--------------------------------+--------------------------------|
+| =slicedCoulombVertex=          | [[id:SlicedCoulombVertex][Sliced Coulomb vertex]]          |
+| =amplitudes=                   | [[id:Amplitudes][Singles and doubles amplitudes]] |
+| =coulombVertexSingularVectors= | [[id:CoulombVertexSingularVectors][coulombVertexSingularVectors]]   |
+| =coulombPotential=             | [[id:CoulombPotential][Coulomb potential]]              |
+| =gridVectors=                  | [[id:GridVectors][Grid Vectors]]                   |
+| =interpolationGridSize=        | [[#interpolationgridsize][Interpolation grid size]]        |
+|--------------------------------+--------------------------------|
 
 ** interpolationGridSize
 :PROPERTIES:
@@ -48,15 +48,16 @@ A value of $N$ for the =interpolationGridSize= means that $2 N$ sampling points 
 
 #+caption: Output keywords for CoupledCluster
 #+name: ccsd-output-table
-| Output Keyword              | Description                  |
-|-----------------------------+------------------------------|
-| =transitionStructureFactor= | Transition Structure factor  |
-|-----------------------------+------------------------------|
+| Keyword                     | Value                       |
+|-----------------------------+-----------------------------|
+| =transitionStructureFactor= | Transition Structure factor |
+|-----------------------------+-----------------------------|
 
 The output of the *TransitionStructureFactorFiniteSizeCorrection* algorithm includes transition structure factor $S(G)$ and
 an estimate of the finitie size error correction to the correlation energy. The finite size error is estimated using a tricubic interpolation
 algorithm of the electronic transition structure factor.
 
+** Sample =stdout=
 Below an example standard output stream is shown for a successful *TransitionStructureFactorFiniteSizeCorrection* algorithm run.
 #+begin_src sh
 step: 10, TransitionStructureFactorFiniteSizeCorrection
@@ -64,6 +65,8 @@ Uncorrected correlation energy:   -171.7706873818
 Finite-size energy correction:    -0.8222012413
 realtime 68.117389991 s
 #+end_src
+
+** TODO Sample =yaml= output
 
 * Computational complexity
 

@@ -8,8 +8,10 @@
 
 
 The =coulombPotential= keyword requires the Coulomb potential in a plane-wave basis set representation $\tilde{v}(G)$ as input.
-The Coulomb potential has to agree with the one employed for the calculation of the Coulomb vertex.
-The Coulomb potential should be read in from an external file using the *TensorReader* algorithm.
+The Coulomb potential has to agree with the one employed for the calculation of
+the Coulomb vertex.
+The Coulomb potential should be read in from an external file using the
+[[id:TensorReader][TensorReader]] algorithm.
 
 * Literature
 bibliography:../group.bib
