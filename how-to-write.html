@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 17:00 -->
+<!-- 2021-12-22 Wed 17:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How To Write</title>
@@ -296,35 +296,41 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org60e0145">1. Engine</a>
+<li><a href="#org1f5da06">1. Engine</a>
 <ul>
-<li><a href="#org76f5482">1.1. Introduction</a>
+<li><a href="#org072e161">1.1. Introduction</a>
 <ul>
-<li><a href="#orgbec3342">1.1.1. Installing a minimal emacs version locally</a></li>
+<li><a href="#orgec2dfd7">1.1.1. Installing a minimal emacs version locally</a></li>
 </ul>
 </li>
-<li><a href="#orgaffb76f">1.2. Math</a></li>
-<li><a href="#orgf4a95a6">1.3. Links</a></li>
-<li><a href="#org7889ccb">1.4. Bibliography</a>
+<li><a href="#org52be0a9">1.2. Math</a></li>
+<li><a href="#org60fb278">1.3. Links</a></li>
+<li><a href="#org692075c">1.4. Bibliography</a>
 <ul>
-<li><a href="#orgbd60c1d">1.4.1. Literature</a></li>
-<li><a href="#org04b4cb3">1.4.2. More information</a></li>
+<li><a href="#org6884acf">1.4.1. Literature</a></li>
+<li><a href="#org20995d0">1.4.2. More information</a></li>
 </ul>
 </li>
-<li><a href="#org156aa2f">1.5. Src blocks</a></li>
+<li><a href="#org20f79e6">1.5. Src blocks</a></li>
 </ul>
 </li>
-<li><a href="#orga32fccf">2. Test locally</a></li>
+<li><a href="#org7298a11">2. Test locally</a></li>
+<li><a href="#org3273d38">3. Conventions</a>
+<ul>
+<li><a href="#orgba05ca6">3.1. How to document an Object</a></li>
+<li><a href="#org05f0896">3.2. How to document an Algorithm</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org60e0145" class="outline-2">
-<h2 id="org60e0145"><span class="section-number-2">1</span> <a href="#org60e0145">Engine</a></h2>
+<div id="outline-container-org1f5da06" class="outline-2">
+<h2 id="org1f5da06"><span class="section-number-2">1</span> <a href="#org1f5da06">Engine</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org76f5482" class="outline-3">
-<h3 id="org76f5482"><span class="section-number-3">1.1</span> <a href="#org76f5482">Introduction</a></h3>
+<div id="outline-container-org072e161" class="outline-3">
+<h3 id="org072e161"><span class="section-number-3">1.1</span> <a href="#org072e161">Introduction</a></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 This manual is written using the <a href="https://orgmode.org"><code>org-mode</code> markup language</a>.
@@ -351,8 +357,8 @@ a supported distribution.
 </p>
 </div>
 
-<div id="outline-container-orgbec3342" class="outline-4">
-<h4 id="orgbec3342"><span class="section-number-4">1.1.1</span> <a href="#orgbec3342">Installing a minimal emacs version locally</a></h4>
+<div id="outline-container-orgec2dfd7" class="outline-4">
+<h4 id="orgec2dfd7"><span class="section-number-4">1.1.1</span> <a href="#orgec2dfd7">Installing a minimal emacs version locally</a></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 In case you are having some problems installing emacs
@@ -406,8 +412,8 @@ You can use this emacs binary by writing a <code>config.mk</code> file with the 
 
 
 
-<div id="outline-container-orgaffb76f" class="outline-3">
-<h3 id="orgaffb76f"><span class="section-number-3">1.2</span> <a href="#orgaffb76f">Math</a></h3>
+<div id="outline-container-org52be0a9" class="outline-3">
+<h3 id="org52be0a9"><span class="section-number-3">1.2</span> <a href="#org52be0a9">Math</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Just use latex as if you were in latex
@@ -425,8 +431,8 @@ and references work too \ref{eqseq}.
 </div>
 </div>
 
-<div id="outline-container-orgf4a95a6" class="outline-3">
-<h3 id="orgf4a95a6"><span class="section-number-3">1.3</span> <a href="#orgf4a95a6">Links</a></h3>
+<div id="outline-container-org60fb278" class="outline-3">
+<h3 id="org60fb278"><span class="section-number-3">1.3</span> <a href="#org60fb278">Links</a></h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 org-mode has several types of links.
@@ -447,7 +453,7 @@ My section~<span style="color: #a626a4;">\ref</span>{<span style="font-weight: b
 is
 </p>
 
-<pre class="example" id="org18f8370">
+<pre class="example" id="orgc987fb1">
 * My section
 :PROPERTIES:
 :CUSTOM_ID: sec-my-section
@@ -468,7 +474,7 @@ Checkout some other example in the
 Some important examples for us are
 </p>
 
-<pre class="example" id="org9ff3d00">
+<pre class="example" id="org2c1b15a">
 [[file:algorithms/CoupledCluster/CoupledCluster.org::#maxiterations][maxIterations keyword]]
 </pre>
 
@@ -482,8 +488,8 @@ and gets rendered as <a href="algorithms/CoupledCluster/CoupledCluster.html#maxi
 
 
 
-<div id="outline-container-org7889ccb" class="outline-3">
-<h3 id="org7889ccb"><span class="section-number-3">1.4</span> <a href="#org7889ccb">Bibliography</a></h3>
+<div id="outline-container-org692075c" class="outline-3">
+<h3 id="org692075c"><span class="section-number-3">1.4</span> <a href="#org692075c">Bibliography</a></h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 In order to use a bibtex file in a page,
@@ -506,8 +512,8 @@ and add citations like <code>cite:&amp;yourcite</code>, for instance
 Here an example of the rendered bibliography of the citations made up here.
 </p>
 </div>
-<div id="outline-container-orgbd60c1d" class="outline-4">
-<h4 id="orgbd60c1d"><span class="section-number-4">1.4.1</span> <a href="#orgbd60c1d">Literature</a></h4>
+<div id="outline-container-org6884acf" class="outline-4">
+<h4 id="org6884acf"><span class="section-number-4">1.4.1</span> <a href="#org6884acf">Literature</a></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Al-Hamdani, Yasmine S, Mariana Rossi, Dario Alfe, Theodoros Tsatsoulis, Benjamin Ramberger, J Gerit Brandenburg, Andrea Zen, et al. 2017. “Properties of the Water to Boron Nitride Interaction: From Zero to Two Dimensions with Benchmark Accuracy.” <i>The Journal of Chemical Physics</i> 147 (4): 044710. <a href="http://doi.org/10.1063/1.4985878">http://doi.org/10.1063/1.4985878</a>.</div>
@@ -516,8 +522,8 @@ Here an example of the rendered bibliography of the citations made up here.
 </div>
 </div>
 
-<div id="outline-container-org04b4cb3" class="outline-4">
-<h4 id="org04b4cb3"><span class="section-number-4">1.4.2</span> <a href="#org04b4cb3">More information</a></h4>
+<div id="outline-container-org20995d0" class="outline-4">
+<h4 id="org20995d0"><span class="section-number-4">1.4.2</span> <a href="#org20995d0">More information</a></h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 You can find more information in videos like <a href="https://www.youtube.com/watch?v=3u6eTSzHT6s">this</a> by the
@@ -528,8 +534,8 @@ You can find more information in videos like <a href="https://www.youtube.com/wa
 </div>
 
 
-<div id="outline-container-org156aa2f" class="outline-3">
-<h3 id="org156aa2f"><span class="section-number-3">1.5</span> <a href="#org156aa2f">Src blocks</a></h3>
+<div id="outline-container-org20f79e6" class="outline-3">
+<h3 id="org20f79e6"><span class="section-number-3">1.5</span> <a href="#org20f79e6">Src blocks</a></h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 If you want to write some code blocks, the equivalent of markdown's
@@ -566,8 +572,8 @@ and it renders like:
 </div>
 
 
-<div id="outline-container-orga32fccf" class="outline-2">
-<h2 id="orga32fccf"><span class="section-number-2">2</span> <a href="#orga32fccf">Test locally</a></h2>
+<div id="outline-container-org7298a11" class="outline-2">
+<h2 id="org7298a11"><span class="section-number-2">2</span> <a href="#org7298a11">Test locally</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 To build locally just make
@@ -601,9 +607,124 @@ periodically and refreshing your browser.
 </p>
 </div>
 </div>
+
+<div id="outline-container-org3273d38" class="outline-2">
+<h2 id="org3273d38"><span class="section-number-2">3</span> <a href="#org3273d38">Conventions</a></h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgba05ca6" class="outline-3">
+<h3 id="orgba05ca6"><span class="section-number-3">3.1</span> <a href="#orgba05ca6">How to document an Object</a></h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+In order to document an object, the following sections have to appear:
+</p>
+
+<dl class="org-dl">
+<dt>Brief description</dt><dd>A brief description of what the object is and what it is commonly used for.
+Some further discussion of the object can be added here, for instance
+an example of an algorithm call to create the object or links to relevant
+algorithms.</dd>
+<dt>Specification <code>[Optional]</code></dt><dd>In the case of objects with a clear <code>yaml</code> specification, this should be explicitly
+provided here, see for instance the <code>yaml</code> specification of
+<a href="objects/GridVectors.html#ID-GridVectors">GridVectors</a>.</dd>
+<dt>Literature <code>[Optional]</code></dt><dd>If in the previous sections a literature citation has been used, then add this section
+to list the references.</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org05f0896" class="outline-3">
+<h3 id="org05f0896"><span class="section-number-3">3.2</span> <a href="#org05f0896">How to document an Algorithm</a></h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The following sections have to be provided:
+</p>
+
+<dl class="org-dl">
+<dt>Brief description</dt><dd>A very brief description of what the algorithm is doing when called.
+Limit this description to a couple of lines.</dd>
+<dt>Algorithm call</dt><dd><p>
+An example of an algorithm call in <code>yaml</code> format.
+Optional parameters should have the following format in the sample
+</p>
+<div class="org-src-container">
+<pre class="src src-yaml">  <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">keyName: valueName    # optional</span>
+</pre>
+</div>
+<p>
+For instance for <a href="algorithms/PerturbativeTriples.html#ID-PerturbativeTriples">PerturbativeTriples</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-yaml">  - <span style="color: #8b4513;">name</span>: PerturbativeTriples
+    <span style="color: #8b4513;">in</span>:
+      <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+      <span style="color: #8b4513;">amplitudes</span>: Amplitudes
+      <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+      <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">mp2PairEnergies: Mp2PairEnergies            # optional</span>
+    <span style="color: #8b4513;">out</span>:
+      {}
+</pre>
+</div></dd>
+<dt>Algorithm input</dt><dd><p>
+Explanation of the inputs of the Algorithm.
+It should contain a table with two columns, <b>Keyword</b> and <b>Value</b>,
+e.g.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keyword</th>
+<th scope="col" class="org-left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>coulombIntegrals</code></td>
+<td class="org-left"><a href="objects/CoulombIntegrals.html#ID-CoulombIntegrals">Coulomb Integrals</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mp2PairEnergies</code> <i>optional</i></td>
+<td class="org-left"><a href="objects/Mp2PairEnergies.html#ID-Mp2PairEnergies">MP2 pair energies matrix</a></td>
+</tr>
+</tbody>
+</table>
+<p>
+Optional inputs should be followed by an <i>optional</i> marker.
+The value field should be always a link to a detailed description
+of the input. If the value should be a commonly used object,
+it should be an <code>id:</code> like link to the corresponding object.
+Otherwise it can link to a section in the same document.
+</p></dd>
+<dt>Algorithm output</dt><dd>This section should include:
+<ul class="org-ul">
+<li>A table with the same format as for the input parameters for
+the output parameters.</li>
+<li>A section with a sample <code>stdout</code> output of a succesful run
+of the algorithm</li>
+<li>A section with the <b>relevant</b> <code>yaml</code> output of the algorithm.
+I.e., timings and flop count and so on needn't be included.</li>
+</ul></dd>
+<dt>Computational complexity <code>[Optional]</code></dt><dd>A discussion of the computational of the algorithm and some methods
+developed for it.</dd>
+<dt>Theory <code>[Optional]</code></dt><dd>A quick description of the theoretical background.
+If the method is well-known, refer to relevant articles.</dd>
+<dt>Literature <code>[Optional]</code></dt><dd>If in the previous sections a literature citation has been used, then add this section
+to list the references.</dd>
+</dl>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 17:00</p>
+<p class="date">Created: 2021-12-22 Wed 17:30</p>
 </div>
 </body>
 </html>
