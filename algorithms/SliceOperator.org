@@ -7,7 +7,8 @@
 * TODO Brief description
 * Algorithm call
 
-A typical input file snippet to call the =SliceOperator= algorithm is given below.
+A typical input file snippet to call the [[id:SliceOperator][SliceOperator]]
+algorithm is given below.
 
 #+begin_src yaml
 - name: SliceOperator

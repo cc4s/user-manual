@@ -11,6 +11,8 @@ stored as tensors.
 They can be generated using the [[id:CoupledCluster][CoupledCluster]]
 algorithm.
 
+* TODO Specification
+
 
 * Literature
 bibliography:../group.bib
