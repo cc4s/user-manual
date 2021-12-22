@@ -1,19 +1,182 @@
 #+title: Description of VASP interface to CC4S
 
-* Interface to VASP
+* Introduction: the example of solid boron nitride
 
+Here we describe how to use cc4s in combination with the Vienna Ab initio Simulation Package (VASP).
+This page essentially explains the VASP work flow to calculate occupied and unoccupied one-electron Hartree-Fock orbitals, as well as all necessary input files for cc4s.
+The entire workflow is also available as a bash script in ??? (ToDo).
+Basic knowledge with VASP is assumed.
+In addition, we also refer to the [[https://www.vasp.at/wiki][Wiki page of VASP]].
 
-<cc4s-incar>=
-#+name: cc4s-incar
+We use an 8 atom supercell (=POSCAR= file) of the cubic phase of solid boron nitride as an example.
+
+<poscar>=
+#+name: cBN-poscar
 #+begin_src sh
-ENCUT      = $enc
-EDIFF      = 1E-6
-LHFCALC    = .TRUE.
-AEXX       = 1.0
-ISYM       = -1
-ALGO       = CC4S
-NBANDS     = $nb
-NBANDSHIGH = $nb
+cBN
+3.615
+1.000 0.000 0.000
+0.000 1.000 0.000
+0.000 0.000 1.000
+4 4
+direct
+0.000 0.000 0.000
+0.500 0.500 0.000
+0.000 0.500 0.500
+0.500 0.000 0.500
+0.250 0.250 0.250
+0.750 0.750 0.250
+0.250 0.750 0.750
+0.750 0.250 0.750
+#+end_src
+
+We chose a $\Gamma$ -point only sampling of the Brillouine zone.
+
+<kpoints>=
+#+name: kpoints
+#+begin_src sh
+k-mesh
+0
+gamma
+1 1 1
+#+end_src
+
+Please make sure that a correctly merged =POTCAR= file is available in your working directory for boron (N) and nitrogen (N): e.g. =B_GW/POTCAR= and =N_GW_new/POTCAR= from the folder of your VASP copy. 
+
+
+# Essentially, 
+# 1. Grundzustand
+# 2. Virtuelle Orbitale
+# 3. Natural orbitals
+# 4. Low-rank
+# 5. Output files for cc4s
+
+* Hartree-Fock ground state
+
+** occupied orbitals
+
+We initialize the Hartree-Fock (HF) step by a preceding DFT (density functional theory) ground state calculation using the following INCAR file. 
+The individual flags will be explained below.
+
+#+name: dft-incar
+#+begin_src sh
+ENCUT   = $encut
+NCORE   = $ncore
+ISMEAR  = 0
+SIGMA   = 0.001
+#+end_src
+
+Although not essential, the DFT preparation usually increases the stability of the subsequent HF iteration procedure in VASP.
+The produced =WAVECAR= file is then read in the HF step for which we use the following INCAR file.
+
+#+name: hf-incar
+#+begin_src sh
+ENCUT   = $encut
+NCORE   = $ncore
+ISMEAR  = 0
+SIGMA   = 0.001
+
+ALGO    = A
+EDIFF   = 1E-7
+LHFCALC = T
+AEXX    = 1.0
+NCORE   = $ncore
+#+end_src
+
+The tag =ENCUT= defines the plane-wave basis set size by a kinetic energy cutoff in eV. 
+It is advisable to set =ENCUT= to a value which is at least 20% larger than the largest =ENMAX= entry in the =POTCAR= file.
+We therefore chose =ENCUT=550=.
+For optimal MPI performance on parallel machines set =NCORE= to the number of cores per socket. 
+The =ISMEAR= and =SIGMA= ensure integer occupancies of the one-electron orbitals and can safely be used for all insulating systems with a finite band gap.
+We recommend to use the conjugated gradient algorithm for the iterative HF procedure by setting =ALGO=A=.
+For properly converged HF orbital energies, we chose a break condition of $10^{-7}\,\text{eV}$ by setting =EDIFF=1E-7=.
+Further information to the used tags can be found in the VASP wiki.
+
+
+** unoccupied orbitals
+
+Since the coupled cluster theory approximates the many-electron wave function by excited Slater determinants (in a style comparible to the configuration interaction method), all unoccupied HF orbitals have to be calclated in the given plane-wave basis.
+The exact number of HF bands is equal to the number of plane-waves and can be found in the OUTCAR of the HF ground state in the following way:
+
+#+name: nbands
+#+begin_src sh
+nplw=`awk '/number of plane-waves:/ {print $5} ' < OUTCAR # OUTCAR file from HF ground state calculation
+nbands=$(echo "($nplw * 2 / $mpiranks) + 1" | bc) # include this factor 2 in gamma-only code version
+nbands=$(echo "$nbands * $mpiranks" | bc)
+#+end_src
+
+Please note, that the number of bands must be a multiple of the number of MPI ranks in VASP calculations for reasons of parallelization.
+Additionally, a factor of 2 has to be included in the gamma-only code version of VASP.
+
+Ensure that the =WAVECAR= stems from the previous HF calculation and use the following INCAR file to calculate the unoccupied HF orbitals:
+
+#+name: hfv-incar
+#+begin_src sh
+ENCUT   = $encut
+NCORE   = $ncore
+ISMEAR  = 0
+SIGMA   = 0.001
+
+ALGO    = Exact
+LHFCALC = T
+AEXX    = 1.0
+NCORE   = $ncore
+NBANDS  = $nbands
+NELM    = 1
+#+end_src
+
+Here, an exact diagonalisation (=ALGO=Exact=) of the Fock matrix with dimension =$nbands x $nbands= is performed.
+This is a one-shot step, i.e. no iterations are necessary: =NELM=1=.
+Please save the =WAVECAR= file with all unoccupied (virtual) orbitals, e.g. =mv WAVECAR WAVECAR.HFV=.
+
+
+* Calculating Coulomb vertices 
+
+
+Use the =WAVECAR= file with the full HF orbitals, e.g. =cp WAVECAR.HFV WAVECAR=
+
+#+name: ftoddump-incar
+#+begin_src sh
+ENCUT   = $encut
+NCORE   = $ncore
+ISMEAR  = 0
+SIGMA   = 0.001
+
+ALGO        = FTODDUMP
+EDIFF       = 1E-5
+NBANDS      = $nbands
+PRECFOCK    = Normal
+ENCUTGW     = $encutgw
+ENCUTGWSOFT = $encutgw
+ISYM        = -1
+#+end_src
+
+
+* Work flow for optional steps
+
+** reducing the number of unoccupied HF orbitals using natural orbitals
+
+TODO
+
+** focal point basis set correction 
+
+TODO
+Use the =WAVECAR= file with the full HF orbitals, e.g. =cp WAVECAR.HFV WAVECAR=
+
+#+name: mp2-incar
+#+begin_src sh
+ENCUT   = $encut
+NCORE   = $ncore
+ISMEAR  = 0
+SIGMA   = 0.001
+
+ALGO        = FTODDUMP
+NBANDS      = $nbands
+PRECFOCK    = Normal
+ENCUTGW     = $encutgw
+ENCUTGWSOFT = $encutgw
+ISYM        = -1
+LSFACTOR    = T
 #+end_src
 
 this step the following files will be written that are needed for CC4S
