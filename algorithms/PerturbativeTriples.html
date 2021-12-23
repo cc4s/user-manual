@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-23 Thu 13:40 -->
+<!-- 2021-12-23 Thu 18:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>PerturbativeTriples</code></title>
@@ -232,6 +232,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -271,11 +293,11 @@
 <div id="content">
 <h1 class="title"><code>PerturbativeTriples</code></h1>
 
-<div id="outline-container-org1eead9f" class="outline-2">
-<h2 id="org1eead9f"><span class="section-number-2">1</span> <a href="#org1eead9f"><span class="todo TODO">TODO</span> Brief description</a></h2>
+<div id="outline-container-orgfe4f59a" class="outline-2">
+<h2 id="orgfe4f59a"><span class="section-number-2">1</span> <a href="#orgfe4f59a"><span class="todo TODO">TODO</span> Brief description</a></h2>
 </div>
-<div id="outline-container-orgd19a746" class="outline-2">
-<h2 id="orgd19a746"><span class="section-number-2">2</span> <a href="#orgd19a746">Algorithm call</a></h2>
+<div id="outline-container-org5cfdf4f" class="outline-2">
+<h2 id="org5cfdf4f"><span class="section-number-2">2</span> <a href="#org5cfdf4f">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>PerturbativeTriples</code> algorithm is given below.
@@ -296,8 +318,8 @@ A typical input file snippet to call the <code>PerturbativeTriples</code> algori
 </div>
 
 
-<div id="outline-container-org78d2262" class="outline-2">
-<h2 id="org78d2262"><span class="section-number-2">3</span> <a href="#org78d2262">Algorithm input</a></h2>
+<div id="outline-container-org055bc6f" class="outline-2">
+<h2 id="org055bc6f"><span class="section-number-2">3</span> <a href="#org055bc6f">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for PerturbativeTriples</caption>
@@ -339,12 +361,12 @@ A typical input file snippet to call the <code>PerturbativeTriples</code> algori
 </div>
 
 
-<div id="outline-container-org81396d9" class="outline-2">
-<h2 id="org81396d9"><span class="section-number-2">4</span> <a href="#org81396d9">Algorithm output</a></h2>
+<div id="outline-container-org3caa76b" class="outline-2">
+<h2 id="org3caa76b"><span class="section-number-2">4</span> <a href="#org3caa76b">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgd49fa6c" class="outline-3">
-<h3 id="orgd49fa6c"><span class="section-number-3">4.1</span> <a href="#orgd49fa6c">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgae1334f" class="outline-3">
+<h3 id="orgae1334f"><span class="section-number-3">4.1</span> <a href="#orgae1334f">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <code>PerturbativeTriples</code> algorithm run
@@ -354,7 +376,7 @@ given a <code>mp2pairenergies</code> and thus printing the CCSD(T*) energy.
 
 <div class="org-src-container">
 <pre class="src src-sh">step: 15, PerturbativeTriples
-<span style="color: #0184bc;">Progress</span>(%)  <span style="color: #a626a4;">time</span>(s)   GFLOP/s      
+<span style="color: #0184bc;">Progress</span>(%)  <span style="color: #a626a4;">time</span>(s)   GFLOP/s
 1            334       6.027        
 10           2334      6.327        
 20           2323      6.342        
@@ -374,21 +396,32 @@ realtime 23297.807220394 s
 </div>
 </div>
 
-<div id="outline-container-org8b3cb34" class="outline-3">
-<h3 id="org8b3cb34"><span class="section-number-3">4.2</span> <a href="#org8b3cb34"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org3f8db35" class="outline-3">
+<h3 id="org3f8db35"><span class="section-number-3">4.2</span> <a href="#org3f8db35"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
-<div id="outline-container-org10db9f6" class="outline-2">
-<h2 id="org10db9f6"><span class="section-number-2">5</span> <a href="#org10db9f6">Computational complexity</a></h2>
+<div id="outline-container-orgfb8c95d" class="outline-2">
+<h2 id="orgfb8c95d"><span class="section-number-2">5</span> <a href="#orgfb8c95d">Computational complexity</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The computational cost is \(\mathcal{O}{(N_o^3 N_v^3(N_o+N_v))}\) with \(N_o\) and 
+\(N_v\) being the number of occupied and virtual orbitals, respecively. The memory
+footprint is mainly determined by the storage of the PPPH-integral, which is of 
+size \(\mathcal{O}{N_o N_v^3}\).
+</p>
 </div>
-
-<div id="outline-container-org743fd9c" class="outline-2">
-<h2 id="org743fd9c"><span class="section-number-2">6</span> <a href="#org743fd9c">Theory</a></h2>
 </div>
-
-<div id="outline-container-org505a9c9" class="outline-2">
-<h2 id="org505a9c9"><span class="section-number-2">7</span> <a href="#org505a9c9">Reference implementation</a></h2>
+<div id="outline-container-org91d376c" class="outline-2">
+<h2 id="org91d376c"><span class="section-number-2">6</span> <a href="#org91d376c">Theory</a></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Its the standard (T) stuff&#x2026;.if you dont know how this works ask juergen gauss&#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-orgdb466bf" class="outline-2">
+<h2 id="orgdb466bf"><span class="section-number-2">7</span> <a href="#orgdb466bf">Reference implementation</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 In addition to the <code>PerturbativeTriples</code> algorithm, there is also a slower
@@ -399,8 +432,8 @@ To use it, you should just change the name <code>PerturbativeTriples</code> by <
 </div>
 </div>
 
-<div id="outline-container-org2bacf95" class="outline-2">
-<h2 id="org2bacf95"><span class="section-number-2">8</span> <a href="#org2bacf95">Literature</a></h2>
+<div id="outline-container-org9ebc541" class="outline-2">
+<h2 id="org9ebc541"><span class="section-number-2">8</span> <a href="#org9ebc541">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <div class="csl-bib-body">
 </div>
@@ -408,7 +441,7 @@ To use it, you should just change the name <code>PerturbativeTriples</code> by <
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-23 Thu 13:40</p>
+<p class="date">Created: 2021-12-23 Thu 18:23</p>
 </div>
 </body>
 </html>

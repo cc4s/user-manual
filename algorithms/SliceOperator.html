@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-23 Thu 13:40 -->
+<!-- 2021-12-23 Thu 18:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SliceOperator</title>
@@ -293,22 +293,22 @@
 <div id="content">
 <h1 class="title">SliceOperator</h1>
 
-<div id="outline-container-org33e4f55" class="outline-2">
-<h2 id="org33e4f55"><span class="section-number-2">1</span> <a href="#org33e4f55">Brief description</a></h2>
+<div id="outline-container-org3651b18" class="outline-2">
+<h2 id="org3651b18"><span class="section-number-2">1</span> <a href="#org3651b18">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-This algorithm splits all edges of an input tensor of type orbital and size \(p\) 
+This algorithm splits all edges of an input tensor of type orbital and size \(p\)
 in sizes of \(o\) and \(v\). It uses <code>slicedEigenEnergies</code> to identify
-the number of holes \(o\) and particles \(v\). The output tensor will be a set of 
+the number of holes \(o\) and particles \(v\). The output tensor will be a set of
 \(2^n\) tensors, where n is the number of edges with type orbital. For instance
-the Coulomb Vertex will be processed like 
+the Coulomb Vertex will be processed like
 \(\Gamma_p^p(G) \rightarrow \{ \Gamma_o^o(G), \Gamma_o^v(G), \Gamma_v^o(G), \Gamma_v^v(G)\}\).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org6d5116d" class="outline-2">
-<h2 id="org6d5116d"><span class="section-number-2">2</span> <a href="#org6d5116d">Algorithm call</a></h2>
+<div id="outline-container-org3a2b49a" class="outline-2">
+<h2 id="org3a2b49a"><span class="section-number-2">2</span> <a href="#org3a2b49a">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <a href="SliceOperator.html#ID-SliceOperator">SliceOperator</a>
@@ -328,10 +328,10 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-org344c3fb" class="outline-2">
-<h2 id="org344c3fb"><span class="section-number-2">3</span> <a href="#org344c3fb">Algorithm input</a></h2>
+<div id="outline-container-orgbf085cb" class="outline-2">
+<h2 id="orgbf085cb"><span class="section-number-2">3</span> <a href="#orgbf085cb">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org56a766e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org45db20a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -348,23 +348,31 @@ algorithm is given below.
 <tbody>
 <tr>
 <td class="org-left"><code>operator</code></td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#operator">Operator</a></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>slicedEigenEnergies</code></td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="../objects/SlicedEigenEnergies.html#ID-SlicedEigenEnergies">SlicedEigenEnergies</a></td>
 </tr>
 </tbody>
 </table>
 </div>
+
+<div id="outline-container-operator" class="outline-3">
+<h3 id="operator"><span class="section-number-3">3.1</span> <a href="#operator">operator</a></h3>
+<div class="outline-text-3" id="text-operator">
+<p>
+This is a normal tensor ole.
+</p>
+</div>
+</div>
 </div>
 
-
-<div id="outline-container-org5803da7" class="outline-2">
-<h2 id="org5803da7"><span class="section-number-2">4</span> <a href="#org5803da7">Algorithm output</a></h2>
+<div id="outline-container-org71cf3af" class="outline-2">
+<h2 id="org71cf3af"><span class="section-number-2">4</span> <a href="#org71cf3af">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org90611ff" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orge82d683" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -381,15 +389,24 @@ algorithm is given below.
 <tbody>
 <tr>
 <td class="org-left"><code>slicedOperator</code></td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="#slicedOperator">SlicedOperator</a></td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-org911e130" class="outline-3">
-<h3 id="org911e130"><span class="section-number-3">4.1</span> <a href="#org911e130">Sample <code>stdout</code></a></h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-slicedOperator" class="outline-3">
+<h3 id="slicedOperator"><span class="section-number-3">4.1</span> <a href="#slicedOperator">slicedOperator</a></h3>
+<div class="outline-text-3" id="text-slicedOperator">
+<p>
+this is a set of tensors&#x2026;.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge794645" class="outline-3">
+<h3 id="orge794645"><span class="section-number-3">4.2</span> <a href="#orge794645">Sample <code>stdout</code></a></h3>
+<div class="outline-text-3" id="text-4-2">
 <p>
 The output of this algorithm reads
 </p>
@@ -402,31 +419,31 @@ realtime 0.000798066 s
 </div>
 </div>
 
-<div id="outline-container-orgf9035c7" class="outline-3">
-<h3 id="orgf9035c7"><span class="section-number-3">4.2</span> <a href="#orgf9035c7"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org031d3f4" class="outline-3">
+<h3 id="org031d3f4"><span class="section-number-3">4.3</span> <a href="#org031d3f4"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
-<div id="outline-container-orgc27c879" class="outline-2">
-<h2 id="orgc27c879"><span class="section-number-2">5</span> <a href="#orgc27c879">Computational complexity</a></h2>
+<div id="outline-container-orga9dac5b" class="outline-2">
+<h2 id="orga9dac5b"><span class="section-number-2">5</span> <a href="#orga9dac5b">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
-<p>
-None.
-</p>
+<ul class="org-ul">
+<li></li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org57c80bf" class="outline-2">
-<h2 id="org57c80bf"><span class="section-number-2">6</span> <a href="#org57c80bf">Theory</a></h2>
+<div id="outline-container-org1ad82a3" class="outline-2">
+<h2 id="org1ad82a3"><span class="section-number-2">6</span> <a href="#org1ad82a3">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
-<p>
-None.
-</p>
+<ul class="org-ul">
+<li></li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgc099f0f" class="outline-2">
-<h2 id="orgc099f0f"><span class="section-number-2">7</span> <a href="#orgc099f0f">Literature</a></h2>
+<div id="outline-container-org224c7a6" class="outline-2">
+<h2 id="org224c7a6"><span class="section-number-2">7</span> <a href="#org224c7a6">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
 </div>
@@ -434,7 +451,7 @@ None.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-23 Thu 13:40</p>
+<p class="date">Created: 2021-12-23 Thu 18:23</p>
 </div>
 </body>
 </html>
