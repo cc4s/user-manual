@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 21:05 -->
+<!-- 2021-12-23 Thu 10:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TensorReader</title>
@@ -270,15 +270,138 @@
 </div>
 <div id="content">
 <h1 class="title">TensorReader</h1>
-<div class="todo" id="orgcf5684a">
+
+<div id="outline-container-orgc632d1c" class="outline-2">
+<h2 id="orgc632d1c"><span class="section-number-2">1</span> <a href="#orgc632d1c">Brief description</a></h2>
+<div class="outline-text-2" id="text-1">
 <p>
-TODO
+TensorReader reads a cc4s tensor&#x2026;.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1c55dee" class="outline-2">
+<h2 id="org1c55dee"><span class="section-number-2">2</span> <a href="#org1c55dee">Algorithm call</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+A typical input file snippet to call the <a href="TensorReader.html#ID-TensorReader">TensorReader</a>
+algorithm is given below.
 </p>
 
+<div class="org-src-container">
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombVertex.yaml"</span>
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">data</span>: CoulombVertex
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf93922d" class="outline-2">
+<h2 id="orgf93922d"><span class="section-number-2">3</span> <a href="#orgf93922d">Algorithm input</a></h2>
+<div class="outline-text-2" id="text-3">
+<table id="orge0f7cb0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keyword</th>
+<th scope="col" class="org-left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>fileName</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orgb475010" class="outline-2">
+<h2 id="orgb475010"><span class="section-number-2">4</span> <a href="#orgb475010">Algorithm output</a></h2>
+<div class="outline-text-2" id="text-4">
+<table id="org2fd08de" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keyword</th>
+<th scope="col" class="org-left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>data</code></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgb37e443" class="outline-3">
+<h3 id="orgb37e443"><span class="section-number-3">4.1</span> <a href="#orgb37e443">Sample <code>stdout</code></a></h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The output of this algorithm reads
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">step: 2, TensorReader
+Reading from binary file CoulombVertex.dat
+realtime 0.045400572 s
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org468a69a" class="outline-3">
+<h3 id="org468a69a"><span class="section-number-3">4.2</span> <a href="#org468a69a"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+</div>
+</div>
+
+<div id="outline-container-orgdf4b19b" class="outline-2">
+<h2 id="orgdf4b19b"><span class="section-number-2">5</span> <a href="#orgdf4b19b">Computational complexity</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc18220b" class="outline-2">
+<h2 id="orgc18220b"><span class="section-number-2">6</span> <a href="#orgc18220b">Theory</a></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+None.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgded1c5f" class="outline-2">
+<h2 id="orgded1c5f"><span class="section-number-2">7</span> <a href="#orgded1c5f">Literature</a></h2>
+<div class="outline-text-2" id="text-7">
+<div class="csl-bib-body">
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 21:05</p>
+<p class="date">Created: 2021-12-23 Thu 10:21</p>
 </div>
 </body>
 </html>

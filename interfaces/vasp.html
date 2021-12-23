@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 21:05 -->
+<!-- 2021-12-23 Thu 10:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Description of VASP interface to CC4S</title>
@@ -296,26 +296,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf21ab90">1. Introduction: the example of solid boron nitride</a></li>
-<li><a href="#org2f67a32">2. Hartree-Fock ground state</a>
+<li><a href="#org21f94f1">1. Introduction: the example of solid boron nitride</a></li>
+<li><a href="#org849b3ec">2. Hartree-Fock ground state</a>
 <ul>
-<li><a href="#orga676d0e">2.1. occupied orbitals</a></li>
-<li><a href="#org64f5064">2.2. unoccupied orbitals</a></li>
+<li><a href="#org5e18304">2.1. occupied orbitals</a></li>
+<li><a href="#org6d72736">2.2. unoccupied orbitals</a></li>
 </ul>
 </li>
-<li><a href="#org7034708">3. Calculating Coulomb vertices</a></li>
-<li><a href="#org26dea00">4. Work flow for optional steps</a>
+<li><a href="#orgedd79f6">3. Calculating Coulomb vertices</a></li>
+<li><a href="#org1b61682">4. Work flow for optional steps</a>
 <ul>
-<li><a href="#org128d837">4.1. reducing the number of unoccupied HF orbitals using natural orbitals</a></li>
-<li><a href="#orgf5db6a4">4.2. focal point basis set correction</a></li>
+<li><a href="#orge4274bf">4.1. reducing the number of unoccupied HF orbitals using natural orbitals</a></li>
+<li><a href="#orgf0097be">4.2. focal point basis set correction</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf21ab90" class="outline-2">
-<h2 id="orgf21ab90"><span class="section-number-2">1</span> <a href="#orgf21ab90">Introduction: the example of solid boron nitride</a></h2>
+<div id="outline-container-org21f94f1" class="outline-2">
+<h2 id="org21f94f1"><span class="section-number-2">1</span> <a href="#org21f94f1">Introduction: the example of solid boron nitride</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Here we describe how to use cc4s in combination with the Vienna Ab initio Simulation Package (VASP).
@@ -333,7 +333,7 @@ We use an 8 atom supercell (<code>POSCAR</code> file) of the cubic phase of soli
 &lt;poscar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org3fbf7c2">cBN
+<pre class="src src-sh" id="orgab3f735">cBN
 3.615
 1.000 0.000 0.000
 0.000 1.000 0.000
@@ -359,7 +359,7 @@ We chose a \(\Gamma\) -point only sampling of the Brillouine zone.
 &lt;kpoints&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org43edeca">k-mesh
+<pre class="src src-sh" id="org0dc3ea9">k-mesh
 0
 gamma
 1 1 1
@@ -372,12 +372,12 @@ Please make sure that a correctly merged <code>POTCAR</code> file is available i
 </div>
 </div>
 
-<div id="outline-container-org2f67a32" class="outline-2">
-<h2 id="org2f67a32"><span class="section-number-2">2</span> <a href="#org2f67a32">Hartree-Fock ground state</a></h2>
+<div id="outline-container-org849b3ec" class="outline-2">
+<h2 id="org849b3ec"><span class="section-number-2">2</span> <a href="#org849b3ec">Hartree-Fock ground state</a></h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orga676d0e" class="outline-3">
-<h3 id="orga676d0e"><span class="section-number-3">2.1</span> <a href="#orga676d0e">occupied orbitals</a></h3>
+<div id="outline-container-org5e18304" class="outline-3">
+<h3 id="org5e18304"><span class="section-number-3">2.1</span> <a href="#org5e18304">occupied orbitals</a></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 We initialize the Hartree-Fock (HF) step by a preceding DFT (density functional theory) ground state calculation using the following INCAR file. 
@@ -385,7 +385,7 @@ The individual flags will be explained below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org2cc5338">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org0ef88b7">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -398,7 +398,7 @@ The produced <code>WAVECAR</code> file is then read in the HF step for which we 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgcd8cc1a">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org5b1ac12">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -425,8 +425,8 @@ Further information to the used tags can be found in the VASP wiki.
 </div>
 
 
-<div id="outline-container-org64f5064" class="outline-3">
-<h3 id="org64f5064"><span class="section-number-3">2.2</span> <a href="#org64f5064">unoccupied orbitals</a></h3>
+<div id="outline-container-org6d72736" class="outline-3">
+<h3 id="org6d72736"><span class="section-number-3">2.2</span> <a href="#org6d72736">unoccupied orbitals</a></h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Since the coupled cluster theory approximates the many-electron wave function by excited Slater determinants (in a style comparible to the configuration interaction method), all unoccupied HF orbitals have to be calclated in the given plane-wave basis.
@@ -434,7 +434,7 @@ The exact number of HF bands is equal to the number of plane-waves and can be fo
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org2a1c153"><span style="color: #8b4513;">nplw</span>=<span style="font-weight: bold;">`awk '/number of plane-waves:/ {print $5} ' &lt; OUTCAR # OUTCAR file from HF ground state calculation</span>
+<pre class="src src-sh" id="orgb2dc586"><span style="color: #8b4513;">nplw</span>=<span style="font-weight: bold;">`awk '/number of plane-waves:/ {print $5} ' &lt; OUTCAR # OUTCAR file from HF ground state calculation</span>
 <span style="font-weight: bold;">nbands=$(echo "($nplw * 2 / $mpiranks) + 1" | bc) # include this factor 2 in gamma-only code version</span>
 <span style="font-weight: bold;">nbands=$(echo "$nbands * $mpiranks" | bc)</span>
 </pre>
@@ -450,7 +450,7 @@ Ensure that the <code>WAVECAR</code> stems from the previous HF calculation and 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgd880dcc">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="orgd741c36">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -474,15 +474,15 @@ Please save the <code>WAVECAR</code> file with all unoccupied (virtual) orbitals
 </div>
 
 
-<div id="outline-container-org7034708" class="outline-2">
-<h2 id="org7034708"><span class="section-number-2">3</span> <a href="#org7034708">Calculating Coulomb vertices</a></h2>
+<div id="outline-container-orgedd79f6" class="outline-2">
+<h2 id="orgedd79f6"><span class="section-number-2">3</span> <a href="#orgedd79f6">Calculating Coulomb vertices</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Use the <code>WAVECAR</code> file with the full HF orbitals, e.g. <code>cp WAVECAR.HFV WAVECAR</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orge5ad44f">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="orge8e414f">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -500,12 +500,12 @@ ISYM        = -1
 </div>
 
 
-<div id="outline-container-org26dea00" class="outline-2">
-<h2 id="org26dea00"><span class="section-number-2">4</span> <a href="#org26dea00">Work flow for optional steps</a></h2>
+<div id="outline-container-org1b61682" class="outline-2">
+<h2 id="org1b61682"><span class="section-number-2">4</span> <a href="#org1b61682">Work flow for optional steps</a></h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org128d837" class="outline-3">
-<h3 id="org128d837"><span class="section-number-3">4.1</span> <a href="#org128d837">reducing the number of unoccupied HF orbitals using natural orbitals</a></h3>
+<div id="outline-container-orge4274bf" class="outline-3">
+<h3 id="orge4274bf"><span class="section-number-3">4.1</span> <a href="#orge4274bf">reducing the number of unoccupied HF orbitals using natural orbitals</a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 TODO
@@ -513,8 +513,8 @@ TODO
 </div>
 </div>
 
-<div id="outline-container-orgf5db6a4" class="outline-3">
-<h3 id="orgf5db6a4"><span class="section-number-3">4.2</span> <a href="#orgf5db6a4">focal point basis set correction</a></h3>
+<div id="outline-container-orgf0097be" class="outline-3">
+<h3 id="orgf0097be"><span class="section-number-3">4.2</span> <a href="#orgf0097be">focal point basis set correction</a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 TODO
@@ -522,7 +522,7 @@ Use the <code>WAVECAR</code> file with the full HF orbitals, e.g. <code>cp WAVEC
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org200085e">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org16b2b61">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -557,7 +557,7 @@ this step the following files will be written that are needed for CC4S
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 21:05</p>
+<p class="date">Created: 2021-12-23 Thu 10:21</p>
 </div>
 </body>
 </html>

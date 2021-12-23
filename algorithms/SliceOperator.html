@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-22 Wed 21:05 -->
+<!-- 2021-12-23 Thu 10:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SliceOperator</title>
@@ -232,6 +232,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -271,11 +293,22 @@
 <div id="content">
 <h1 class="title">SliceOperator</h1>
 
-<div id="outline-container-org2ded0fb" class="outline-2">
-<h2 id="org2ded0fb"><span class="section-number-2">1</span> <a href="#org2ded0fb"><span class="todo TODO">TODO</span> Brief description</a></h2>
+<div id="outline-container-org0d7a400" class="outline-2">
+<h2 id="org0d7a400"><span class="section-number-2">1</span> <a href="#org0d7a400">Brief description</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This algorithm splits all edges of an input tensor of type orbital and size \(p\) 
+in sizes of \(o\) and \(v\). It uses <code>slicedEigenEnergies</code> to identify
+the number of holes \(o\) and particles \(v\). The output tensor will be a set of 
+\(2^n\) tensors, where n is the number of edges with type orbital. For instance
+the Coulomb Vertex will be processed like 
+\(\Gamma_p^p(G) \rightarrow \{ \Gamma_o^o(G), \Gamma_o^v(G), \Gamma_v^o(G), \Gamma_v^v(G)\}\).
+</p>
 </div>
-<div id="outline-container-org113d5a5" class="outline-2">
-<h2 id="org113d5a5"><span class="section-number-2">2</span> <a href="#org113d5a5">Algorithm call</a></h2>
+</div>
+
+<div id="outline-container-org7395882" class="outline-2">
+<h2 id="org7395882"><span class="section-number-2">2</span> <a href="#org7395882">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <a href="SliceOperator.html#ID-SliceOperator">SliceOperator</a>
@@ -295,11 +328,11 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-org6f3aade" class="outline-2">
-<h2 id="org6f3aade"><span class="section-number-2">3</span> <a href="#org6f3aade">Algorithm input</a></h2>
+<div id="outline-container-orgb5e8fab" class="outline-2">
+<h2 id="orgb5e8fab"><span class="section-number-2">3</span> <a href="#orgb5e8fab">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org3375b49" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
+<table id="org2159bbc" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
 
 <colgroup>
 <col  class="org-left" />
@@ -328,10 +361,10 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-org6c531b8" class="outline-2">
-<h2 id="org6c531b8"><span class="section-number-2">4</span> <a href="#org6c531b8">Algorithm output</a></h2>
+<div id="outline-container-orge76aee8" class="outline-2">
+<h2 id="orge76aee8"><span class="section-number-2">4</span> <a href="#orge76aee8">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orge537f6d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -354,8 +387,8 @@ algorithm is given below.
 </table>
 </div>
 
-<div id="outline-container-org3734a68" class="outline-3">
-<h3 id="org3734a68"><span class="section-number-3">4.1</span> <a href="#org3734a68">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org85f81b0" class="outline-3">
+<h3 id="org85f81b0"><span class="section-number-3">4.1</span> <a href="#org85f81b0">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 The output of this algorithm reads
@@ -369,13 +402,13 @@ realtime 0.000798066 s
 </div>
 </div>
 
-<div id="outline-container-org2068167" class="outline-3">
-<h3 id="org2068167"><span class="section-number-3">4.2</span> <a href="#org2068167"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-orge86ffd2" class="outline-3">
+<h3 id="orge86ffd2"><span class="section-number-3">4.2</span> <a href="#orge86ffd2"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
-<div id="outline-container-org346a843" class="outline-2">
-<h2 id="org346a843"><span class="section-number-2">5</span> <a href="#org346a843">Computational complexity</a></h2>
+<div id="outline-container-org1a32f9c" class="outline-2">
+<h2 id="org1a32f9c"><span class="section-number-2">5</span> <a href="#org1a32f9c">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 None.
@@ -383,8 +416,8 @@ None.
 </div>
 </div>
 
-<div id="outline-container-org7761110" class="outline-2">
-<h2 id="org7761110"><span class="section-number-2">6</span> <a href="#org7761110">Theory</a></h2>
+<div id="outline-container-org507dc43" class="outline-2">
+<h2 id="org507dc43"><span class="section-number-2">6</span> <a href="#org507dc43">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 None.
@@ -392,8 +425,8 @@ None.
 </div>
 </div>
 
-<div id="outline-container-orgf0e8ef5" class="outline-2">
-<h2 id="orgf0e8ef5"><span class="section-number-2">7</span> <a href="#orgf0e8ef5">Literature</a></h2>
+<div id="outline-container-org79148e1" class="outline-2">
+<h2 id="org79148e1"><span class="section-number-2">7</span> <a href="#org79148e1">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
 </div>
@@ -401,7 +434,7 @@ None.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-22 Wed 21:05</p>
+<p class="date">Created: 2021-12-23 Thu 10:21</p>
 </div>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <!-- 2021-12-23 Thu 10:21 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cc4s User Documentation</title>
+<title><code>SecondOrderPerturbationTheory</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,6 +232,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -269,101 +291,104 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title">Cc4s User Documentation</h1>
-<div class="org-center">
-<p>
-Welcome to the <code>Cc4s</code> user manual. The following sections explain everything from
-downloading the code to running calculations.
-</p>
-</div>
+<h1 class="title"><code>SecondOrderPerturbationTheory</code></h1>
 
-<div id="outline-container-orgd9c0550" class="outline-2">
-<h2 id="orgd9c0550"><span class="section-number-2">1</span> <a href="#orgd9c0550">How to get started?</a></h2>
+<div id="outline-container-org04e17c3" class="outline-2">
+<h2 id="org04e17c3"><span class="section-number-2">1</span> <a href="#org04e17c3">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
-<ul class="org-ul">
-<li><a href="./gettingstarted/gettingstarted.html">Download, compile and run tests</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgf519140" class="outline-2">
-<h2 id="orgf519140"><span class="section-number-2">2</span> <a href="#orgf519140">How to run Cc4s calculations?</a></h2>
-<div class="outline-text-2" id="text-2">
 <p>
-We provide the following examples that teach you how to perform <code>Cc4s</code> calculations
+A typical input file snippet to call the <code>SecondOrderPerturbationTheory</code> algorithm is given below.
 </p>
-<ul class="org-ul">
-<li><a href="tutorials/Rbn_tutorial.html">r-BN CCSD(T) calculations</a></li>
-<li>Water examples</li>
-</ul>
+
+<div class="org-src-container">
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: SecondOrderPerturbationTheory
+  <span style="color: #8b4513;">in</span>:
+    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
+    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
+  <span style="color: #8b4513;">out</span>:
+    <span style="color: #8b4513;">energy</span>:
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-orgf4e60d2" class="outline-2">
-<h2 id="orgf4e60d2"><span class="section-number-2">3</span> <a href="#orgf4e60d2">Interfaces to Cc4s</a></h2>
+
+<div id="outline-container-org39d0420" class="outline-2">
+<h2 id="org39d0420"><span class="section-number-2">2</span> <a href="#org39d0420">Input Description</a></h2>
+<div class="outline-text-2" id="text-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for PerturbativeTriples</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Input Keyword</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>coulombIntegrals</code></td>
+<td class="org-left"><a href="../objects/CoulombIntegrals.html#ID-CoulombIntegrals">Coulomb Integrals</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>slicedEigenEnergies</code></td>
+<td class="org-left"><a href="../objects/SlicedEigenEnergies.html#ID-SlicedEigenEnergies">Sliced one-electron energies</a></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-orgc87b432" class="outline-2">
+<h2 id="orgc87b432"><span class="section-number-2">3</span> <a href="#orgc87b432">Output</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
-Currently avaible interfaces to <code>Cc4s</code> are described below.
+Below an example standard output stream is shown for a successful <code>SecondOrderPerturbationTheory</code> algorithm run
 </p>
-<ul class="org-ul">
-<li><a href="interfaces/vasp.html">VASP</a></li>
-<li><a href="interfaces/fhi-aims.html">FHI-AIMS</a></li>
-</ul>
+
+
+<div class="org-src-container">
+<pre class="src src-sh">dont know yet.
+</pre>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org9e34b6b" class="outline-2">
-<h2 id="org9e34b6b"><span class="section-number-2">4</span> <a href="#org9e34b6b">Algorithms in Cc4s</a></h2>
+<div id="outline-container-orgb9fbf4a" class="outline-2">
+<h2 id="orgb9fbf4a"><span class="section-number-2">4</span> <a href="#orgb9fbf4a">Computational Complexity and memory footprint</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
-The most important Cc4s algorithms are listed below:
-</p>
-
-<ul class="org-ul">
-<li>SecondOrderPerturbationTheory</li>
-<li><a href="algorithms/CoupledCluster.html#ID-CoupledCluster">CoupledCluster</a></li>
-<li><a href="algorithms/TransitionStructureFactorFiniteSizeCorrection.html#ID-TransitionStructureFactorFiniteSizeCorrection">TransitionStructureFiniteSizeCorrection</a></li>
-<li><a href="algorithms/CcsdFocalPointBasisSetCorrection.html#ID-CcsdFocalPointBasisSetCorrection">CcsdFocalPointBasisSetCorrection</a></li>
-<li><a href="algorithms/PerturbativeTriples.html#ID-PerturbativeTriples">PerturbativeTriples</a></li>
-</ul>
-
-<p>
-You can find a complete list of algorithms
-<a href="algorithms/sitemap.html">here</a>.
+Two objects of size \(\mathcal{O}{(N_o^2 N_v^2)}\) are hold in main memory. The computational complexity should be negligible as is of order \(\mathcal{O}{(N_o^2 N_v^2)}\).
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org4b9c137" class="outline-2">
-<h2 id="org4b9c137"><span class="section-number-2">5</span> <a href="#org4b9c137"><span class="todo TODO">TODO</span> Important objects</a></h2>
+<div id="outline-container-orgeac57ac" class="outline-2">
+<h2 id="orgeac57ac"><span class="section-number-2">5</span> <a href="#orgeac57ac">Theory</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
-The most important objects used by algorithms are listed below.
-</p>
-<ul class="org-ul">
-<li><a href="objects/CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a></li>
-<li><a href="objects/CoulombIntegrals.html#ID-CoulombIntegrals">CoulombIntegrals</a></li>
-</ul>
-
-<p>
-You can find a complete list of algorithms
-<a href="objects/sitemap.html">here</a>.
+The question is how much will be written here and in ccsd etc&#x2026;
 </p>
 </div>
 </div>
 
-<div id="outline-container-org241b34f" class="outline-2">
-<h2 id="org241b34f"><span class="section-number-2">6</span> <a href="#org241b34f">Contributors and Acknowledgements</a></h2>
-</div>
 
-<div id="outline-container-org86dbd79" class="outline-2">
-<h2 id="org86dbd79"><span class="section-number-2">7</span> <a href="#org86dbd79">Documentation guide</a></h2>
-<div class="outline-text-2" id="text-7">
-<p>
-If you are writing documentation for <code>cc4s</code>, read the
-<a href="how-to-write.html">documentation writing manual</a>.
-</p>
+<div id="outline-container-org62da503" class="outline-2">
+<h2 id="org62da503"><span class="section-number-2">6</span> <a href="#org62da503">Literature</a></h2>
+<div class="outline-text-2" id="text-6">
+<div class="csl-bib-body">
+</div>
 </div>
 </div>
 </div>
