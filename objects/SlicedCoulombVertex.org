@@ -7,8 +7,8 @@
 * Brief description
 
 =SlicedCoulombVertex= corresponds to a set of Coulomb vertices partitioned
-into particle and hole index channels: $\{\Gamma_{aG}^i, \Gamma_{kG}^i, \Gamma_{bG}^a, ...\}$.
-The Coulomb vertex is used to compute different types of two-electron integrals; for example $V_{ij}^{ab}$ and can be
+into particle and hole index channels: $\{ \Gamma_i^j(G), \Gamma_i^a(G), \Gamma_a^i(G), \Gamma_a^b(G)\}$.
+The =SlicedCoulombVertex= is used to compute different types of two-electron integrals; for example $V_{ij}^{ab}$ and can be
 generated using the [[id:SliceOperator][SliceOperator]] algorithm.
 
 #+begin_src yaml

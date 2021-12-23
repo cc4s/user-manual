@@ -1,8 +1,8 @@
-#+title: Cc4s User Documentation
+#+title: =Cc4s= User Documentation
 #+OPTIONS: toc:nil
 
 #+begin_center
-Welcome to the =Cc4s= user manual. The following sections explain everything from
+The following sections explain everything from
 downloading the code to running calculations.
 #+end_center
 
@@ -11,33 +11,28 @@ downloading the code to running calculations.
 
 * How to run Cc4s calculations?
 
-We provide the following examples that teach you how to perform =Cc4s= calculations
-- [[file:tutorials/Rbn_tutorial.org][r-BN CCSD(T) calculations]]
-- Water examples
+- [[file:tutorials/Rbn_tutorial.org][Take a walk through a complete CCSD(T) calculation for a periodic BN crystal]]
 
 * Interfaces to Cc4s
 
-Currently avaible interfaces to =Cc4s= are described below.
+Currently avaible interfaces are provided by
 - [[file:interfaces/vasp.org][VASP]]
 - [[file:interfaces/fhi-aims.org][FHI-AIMS]]
 
 * Algorithms in Cc4s
 
-The most important Cc4s algorithms are listed below:
-
-- SecondOrderPerturbationTheory
+The most important Cc4s algorithms include
 - [[id:CoupledCluster][CoupledCluster]]
+- [[id:PerturbativeTriples][PerturbativeTriples]]
 - [[id:TransitionStructureFactorFiniteSizeCorrection][TransitionStructureFiniteSizeCorrection]]
 - [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]]
-- [[id:PerturbativeTriples][PerturbativeTriples]]
 
 You can find a complete list of algorithms
 [[file:algorithms/sitemap.org][here]].
 
+* Important objects
 
-* TODO Important objects
-
-The most important objects used by algorithms are listed below.
+The most important objects used by algorithms include
 - [[id:CoulombVertex][CoulombVertex]]
 - [[id:CoulombIntegrals][CoulombIntegrals]]
 
