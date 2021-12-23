@@ -1,10 +1,60 @@
 :PROPERTIES:
-:ID: TensorReader
+:ID: TensorReader 
 :END:
-#+title: TensorReader
+#+title: TensorReader 
 #+OPTIONS: toc:nil
 
-#+begin_todo
-TODO
-#+end_todo
+* Brief description
+TensorReader reads a cc4s tensor....
+
+* Algorithm call
+
+A typical input file snippet to call the [[id:TensorReader][TensorReader]]
+algorithm is given below.
+
+#+begin_src yaml
+- name: TensorReader
+  in:
+    fileName: "CoulombVertex.yaml"
+  out:
+    data: CoulombVertex
+#+end_src
+
+
+* Algorithm input
+
+# #+caption: Input keywords
+#+name: reader-input-table
+| Keyword               | Value |
+|-----------------------+-------|
+| =fileName=            |       |
+|-----------------------+-------|
+
+
+* Algorithm output
+#+name: reader-output-table
+| Keyword          | Value |
+|------------------+-------|
+| =data=           |       |
+|------------------+-------|
+
+** Sample =stdout=
+The output of this algorithm reads
+#+begin_src sh
+step: 2, TensorReader
+Reading from binary file CoulombVertex.dat
+realtime 0.045400572 s
+#+end_src
+
+** TODO Sample =yaml= output
+
+* Computational complexity
+None.
+
+* Theory
+None.
+
+* Literature
+bibliography:../group.bib
+
 

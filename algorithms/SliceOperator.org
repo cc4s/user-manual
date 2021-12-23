@@ -4,7 +4,14 @@
 #+title: SliceOperator 
 #+OPTIONS: toc:nil
 
-* TODO Brief description
+* Brief description
+This algorithm splits all edges of an input tensor of type orbital and size $p$ 
+in sizes of $o$ and $v$. It uses =slicedEigenEnergies= to identify
+the number of holes $o$ and particles $v$. The output tensor will be a set of 
+$2^n$ tensors, where n is the number of edges with type orbital. For instance
+the Coulomb Vertex will be processed like 
+$\Gamma_p^p(G) \rightarrow \{ \Gamma_o^o(G), \Gamma_o^v(G), \Gamma_v^o(G), \Gamma_v^v(G)\}$.
+
 * Algorithm call
 
 A typical input file snippet to call the [[id:SliceOperator][SliceOperator]]
@@ -22,8 +29,8 @@ algorithm is given below.
 
 * Algorithm input
 
-#+caption: Input keywords
-#+name: focalpoint-input-table
+# +caption: Input keywords
+#+name: sliceop-input-table
 | Keyword               | Value |
 |-----------------------+-------|
 | =operator=            |       |
@@ -31,7 +38,7 @@ algorithm is given below.
 
 
 * Algorithm output
-
+#+name: sliceop-output-table
 | Keyword          | Value |
 |------------------+-------|
 | =slicedOperator= |       |

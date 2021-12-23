@@ -4,7 +4,10 @@
 #+title: DefineHolesAndParticles
 #+OPTIONS: toc:nil
 
-* TODO Brief description
+* Brief description
+The algorithm takes a sorted vector of eigenenergies and splits it into a set of
+two tensors, according to the provided fermiEnergy.
+
 * Algorithm call
 
 A typical input file snippet to call the =DefineHolesAndParticles= algorithm is given below.
@@ -20,15 +23,19 @@ A typical input file snippet to call the =DefineHolesAndParticles= algorithm is 
 
 * Algorithm input
 
-#+caption: Input keywords
-#+name: focalpoint-input-table
+# +caption: Input keywords
+#+name: defineholes-input-table
 | Keyword               | Value |
 |-----------------------+-------|
 | =eigenEnergies=       |       |
-| =slicedEigenEnergies= |       |
 
 
 * Algorithm output
+#+name: defineholes-output-table
+| Keyword               | Value |
+|-----------------------+-------|
+| =slicedEigenEnergies= |       |
+
 
 ** Sample =stdout=
 The output of the algorithm provides the number of occupied and virtual states

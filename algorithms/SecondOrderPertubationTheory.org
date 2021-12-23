@@ -1,0 +1,46 @@
+:PROPERTIES:
+:ID: SecondOrderPerturbationTheory
+:END:
+#+title: =SecondOrderPerturbationTheory=
+#+OPTIONS: toc:nil
+
+* Example =Cc4s= input
+
+A typical input file snippet to call the =SecondOrderPerturbationTheory= algorithm is given below.
+
+#+begin_src yaml
+- name: SecondOrderPerturbationTheory
+  in:
+    coulombIntegrals: CoulombIntegrals
+    slicedEigenEnergies: EigenEnergies
+  out:
+    energy:
+#+end_src
+
+
+* Input Description
+
+#+caption: Input keywords for PerturbativeTriples
+| Input Keyword         | Description                    | Default |
+|-----------------------+--------------------------------+---------|
+| =coulombIntegrals=    | [[id:CoulombIntegrals][Coulomb Integrals]]              |         |
+| =slicedEigenEnergies= | [[id:SlicedEigenEnergies][Sliced one-electron energies]]   |         |
+
+
+* Output
+
+Below an example standard output stream is shown for a successful =SecondOrderPerturbationTheory= algorithm run
+
+
+#+begin_src sh
+dont know yet.
+#+end_src
+
+* Computational Complexity and memory footprint
+Two objects of size $\mathcal{O}{(N_o^2 N_v^2)}$ are hold in main memory. The computational complexity should be negligible as is of order $\mathcal{O}{(N_o^2 N_v^2)}$.
+* Theory
+The question is how much will be written here and in ccsd etc...
+
+
+* Literature
+bibliography:../group.bib
