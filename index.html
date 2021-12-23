@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-23 Thu 10:21 -->
+<!-- 2021-12-23 Thu 13:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cc4s User Documentation</title>
+<title><code>Cc4s</code> User Documentation</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -269,16 +269,16 @@
   </nav>
 </div>
 <div id="content">
-<h1 class="title">Cc4s User Documentation</h1>
+<h1 class="title"><code>Cc4s</code> User Documentation</h1>
 <div class="org-center">
 <p>
-Welcome to the <code>Cc4s</code> user manual. The following sections explain everything from
+The following sections explain everything from
 downloading the code to running calculations.
 </p>
 </div>
 
-<div id="outline-container-orgd9c0550" class="outline-2">
-<h2 id="orgd9c0550"><span class="section-number-2">1</span> <a href="#orgd9c0550">How to get started?</a></h2>
+<div id="outline-container-orgc2d6759" class="outline-2">
+<h2 id="orgc2d6759"><span class="section-number-2">1</span> <a href="#orgc2d6759">How to get started?</a></h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><a href="./gettingstarted/gettingstarted.html">Download, compile and run tests</a></li>
@@ -286,24 +286,20 @@ downloading the code to running calculations.
 </div>
 </div>
 
-<div id="outline-container-orgf519140" class="outline-2">
-<h2 id="orgf519140"><span class="section-number-2">2</span> <a href="#orgf519140">How to run Cc4s calculations?</a></h2>
+<div id="outline-container-org0eef968" class="outline-2">
+<h2 id="org0eef968"><span class="section-number-2">2</span> <a href="#org0eef968">How to run Cc4s calculations?</a></h2>
 <div class="outline-text-2" id="text-2">
-<p>
-We provide the following examples that teach you how to perform <code>Cc4s</code> calculations
-</p>
 <ul class="org-ul">
-<li><a href="tutorials/Rbn_tutorial.html">r-BN CCSD(T) calculations</a></li>
-<li>Water examples</li>
+<li><a href="tutorials/Rbn_tutorial.html">Take a walk through a complete CCSD(T) calculation for a periodic BN crystal</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf4e60d2" class="outline-2">
-<h2 id="orgf4e60d2"><span class="section-number-2">3</span> <a href="#orgf4e60d2">Interfaces to Cc4s</a></h2>
+<div id="outline-container-orgd417a3f" class="outline-2">
+<h2 id="orgd417a3f"><span class="section-number-2">3</span> <a href="#orgd417a3f">Interfaces to Cc4s</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
-Currently avaible interfaces to <code>Cc4s</code> are described below.
+Currently avaible interfaces are provided by
 </p>
 <ul class="org-ul">
 <li><a href="interfaces/vasp.html">VASP</a></li>
@@ -312,19 +308,17 @@ Currently avaible interfaces to <code>Cc4s</code> are described below.
 </div>
 </div>
 
-<div id="outline-container-org9e34b6b" class="outline-2">
-<h2 id="org9e34b6b"><span class="section-number-2">4</span> <a href="#org9e34b6b">Algorithms in Cc4s</a></h2>
+<div id="outline-container-org97d6ef2" class="outline-2">
+<h2 id="org97d6ef2"><span class="section-number-2">4</span> <a href="#org97d6ef2">Algorithms in Cc4s</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
-The most important Cc4s algorithms are listed below:
+The most important Cc4s algorithms include
 </p>
-
 <ul class="org-ul">
-<li>SecondOrderPerturbationTheory</li>
 <li><a href="algorithms/CoupledCluster.html#ID-CoupledCluster">CoupledCluster</a></li>
+<li><a href="algorithms/PerturbativeTriples.html#ID-PerturbativeTriples">PerturbativeTriples</a></li>
 <li><a href="algorithms/TransitionStructureFactorFiniteSizeCorrection.html#ID-TransitionStructureFactorFiniteSizeCorrection">TransitionStructureFiniteSizeCorrection</a></li>
 <li><a href="algorithms/CcsdFocalPointBasisSetCorrection.html#ID-CcsdFocalPointBasisSetCorrection">CcsdFocalPointBasisSetCorrection</a></li>
-<li><a href="algorithms/PerturbativeTriples.html#ID-PerturbativeTriples">PerturbativeTriples</a></li>
 </ul>
 
 <p>
@@ -334,12 +328,11 @@ You can find a complete list of algorithms
 </div>
 </div>
 
-
-<div id="outline-container-org4b9c137" class="outline-2">
-<h2 id="org4b9c137"><span class="section-number-2">5</span> <a href="#org4b9c137"><span class="todo TODO">TODO</span> Important objects</a></h2>
+<div id="outline-container-org6b7b15b" class="outline-2">
+<h2 id="org6b7b15b"><span class="section-number-2">5</span> <a href="#org6b7b15b">Important objects</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
-The most important objects used by algorithms are listed below.
+The most important objects used by algorithms include
 </p>
 <ul class="org-ul">
 <li><a href="objects/CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a></li>
@@ -353,12 +346,12 @@ You can find a complete list of algorithms
 </div>
 </div>
 
-<div id="outline-container-org241b34f" class="outline-2">
-<h2 id="org241b34f"><span class="section-number-2">6</span> <a href="#org241b34f">Contributors and Acknowledgements</a></h2>
+<div id="outline-container-org03736d9" class="outline-2">
+<h2 id="org03736d9"><span class="section-number-2">6</span> <a href="#org03736d9">Contributors and Acknowledgements</a></h2>
 </div>
 
-<div id="outline-container-org86dbd79" class="outline-2">
-<h2 id="org86dbd79"><span class="section-number-2">7</span> <a href="#org86dbd79">Documentation guide</a></h2>
+<div id="outline-container-org01db993" class="outline-2">
+<h2 id="org01db993"><span class="section-number-2">7</span> <a href="#org01db993">Documentation guide</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 If you are writing documentation for <code>cc4s</code>, read the
@@ -368,7 +361,7 @@ If you are writing documentation for <code>cc4s</code>, read the
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-23 Thu 10:21</p>
+<p class="date">Created: 2021-12-23 Thu 13:40</p>
 </div>
 </body>
 </html>

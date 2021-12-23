@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-23 Thu 10:21 -->
+<!-- 2021-12-23 Thu 13:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CcsdFocalPointBasisSetCorrection</title>
@@ -293,11 +293,11 @@
 <div id="content">
 <h1 class="title">CcsdFocalPointBasisSetCorrection</h1>
 
-<div id="outline-container-org900b745" class="outline-2">
-<h2 id="org900b745"><span class="section-number-2">1</span> <a href="#org900b745"><span class="todo TODO">TODO</span> Brief description</a></h2>
+<div id="outline-container-org8b75d28" class="outline-2">
+<h2 id="org8b75d28"><span class="section-number-2">1</span> <a href="#org8b75d28"><span class="todo TODO">TODO</span> Brief description</a></h2>
 </div>
-<div id="outline-container-org008e787" class="outline-2">
-<h2 id="org008e787"><span class="section-number-2">2</span> <a href="#org008e787">Algorithm call</a></h2>
+<div id="outline-container-org3827519" class="outline-2">
+<h2 id="org3827519"><span class="section-number-2">2</span> <a href="#org3827519">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>CcsdFocalPointBasisSetCorrection</code> algorithm is given below.
@@ -320,10 +320,10 @@ A typical input file snippet to call the <code>CcsdFocalPointBasisSetCorrection<
 </div>
 
 
-<div id="outline-container-org5dbaffa" class="outline-2">
-<h2 id="org5dbaffa"><span class="section-number-2">3</span> <a href="#org5dbaffa">Algorithm input</a></h2>
+<div id="outline-container-org6d6dab5" class="outline-2">
+<h2 id="org6d6dab5"><span class="section-number-2">3</span> <a href="#org6d6dab5">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org394e715" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org2be355d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
 
 <colgroup>
@@ -373,8 +373,8 @@ A typical input file snippet to call the <code>CcsdFocalPointBasisSetCorrection<
 </div>
 
 
-<div id="outline-container-org83f3873" class="outline-2">
-<h2 id="org83f3873"><span class="section-number-2">4</span> <a href="#org83f3873">Algorithm output</a></h2>
+<div id="outline-container-orga19e376" class="outline-2">
+<h2 id="orga19e376"><span class="section-number-2">4</span> <a href="#orga19e376">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The output of the algorithm is the CCSD-BSIE-energy-correction. This energy contains
@@ -382,8 +382,8 @@ the 2nd-order energy correction and a pair-specific ppl contribution (see theory
 </p>
 </div>
 
-<div id="outline-container-org6ea3b4b" class="outline-3">
-<h3 id="org6ea3b4b"><span class="section-number-3">4.1</span> <a href="#org6ea3b4b">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org8608377" class="outline-3">
+<h3 id="org8608377"><span class="section-number-3">4.1</span> <a href="#org8608377">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful run.
@@ -397,14 +397,14 @@ CCSD-BSIE energy correction:      -0.0165423958
 </div>
 </div>
 
-<div id="outline-container-orgab0b1f4" class="outline-3">
-<h3 id="orgab0b1f4"><span class="section-number-3">4.2</span> <a href="#orgab0b1f4"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org2e3b7af" class="outline-3">
+<h3 id="org2e3b7af"><span class="section-number-3">4.2</span> <a href="#org2e3b7af"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
 
-<div id="outline-container-org614c089" class="outline-2">
-<h2 id="org614c089"><span class="section-number-2">5</span> <a href="#org614c089">Computational complexity</a></h2>
+<div id="outline-container-orgec718b7" class="outline-2">
+<h2 id="orgec718b7"><span class="section-number-2">5</span> <a href="#orgec718b7">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 This algorithm is basically a post-processing algorithm. However, the 2nd-order
@@ -416,8 +416,8 @@ energy calculation.
 </div>
 
 
-<div id="outline-container-orgc3f66c2" class="outline-2">
-<h2 id="orgc3f66c2"><span class="section-number-2">6</span> <a href="#orgc3f66c2">Theory</a></h2>
+<div id="outline-container-org9b8507a" class="outline-2">
+<h2 id="org9b8507a"><span class="section-number-2">6</span> <a href="#org9b8507a">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This algorithm evaluates the correction of the basis-set-incompleteness-error
@@ -456,8 +456,8 @@ correction and the ppl-correction-term.
 </div>
 
 
-<div id="outline-container-orgae40e4e" class="outline-2">
-<h2 id="orgae40e4e"><span class="section-number-2">7</span> <a href="#orgae40e4e">Literature</a></h2>
+<div id="outline-container-orgb2d41d6" class="outline-2">
+<h2 id="orgb2d41d6"><span class="section-number-2">7</span> <a href="#orgb2d41d6">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -466,7 +466,7 @@ correction and the ppl-correction-term.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-23 Thu 10:21</p>
+<p class="date">Created: 2021-12-23 Thu 13:40</p>
 </div>
 </body>
 </html>
