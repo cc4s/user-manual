@@ -4,7 +4,9 @@
 #+title: =CoupledCluster=
 #+OPTIONS: toc:nil
 
-* TODO Brief description
+* Brief description
+This algorithm solves the CCSD amplitude equations using the Coulomb integrals
+and Hartree--Fock eigenenergies.
 * Algorithm call
 
 A typical input file snippet to call the =CoupledCluster= algorithm is given below.

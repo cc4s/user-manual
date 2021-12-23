@@ -48,10 +48,10 @@ realtime 0.001249174 s
 
 
 * Computational complexity
-None.
+-
 
 * Theory
-None.
+-
 
 * Literature
 bibliography:../group.bib

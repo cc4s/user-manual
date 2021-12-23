@@ -1,7 +1,7 @@
 :PROPERTIES:
-:ID: TensorReader 
+:ID: TensorReader
 :END:
-#+title: TensorReader 
+#+title: TensorReader
 #+OPTIONS: toc:nil
 
 * Brief description
@@ -27,16 +27,29 @@ algorithm is given below.
 #+name: reader-input-table
 | Keyword               | Value |
 |-----------------------+-------|
-| =fileName=            |       |
+| =fileName=            | [[#what][what]]      |
 |-----------------------+-------|
 
+** what
+:PROPERTIES:
+:CUSTOM_ID: what
+:END:
+
+i dont knwo what to write here
 
 * Algorithm output
 #+name: reader-output-table
 | Keyword          | Value |
 |------------------+-------|
-| =data=           |       |
+| =data=           | [[#data][data]]      |
 |------------------+-------|
+
+** data
+:PROPERTIES:
+:CUSTOM_ID: data
+:END:
+
+this is data data data
 
 ** Sample =stdout=
 The output of this algorithm reads
@@ -49,10 +62,10 @@ realtime 0.045400572 s
 ** TODO Sample =yaml= output
 
 * Computational complexity
-None.
+-
 
 * Theory
-None.
+-
 
 * Literature
 bibliography:../group.bib

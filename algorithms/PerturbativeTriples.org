@@ -42,7 +42,7 @@ given a =mp2pairenergies= and thus printing the CCSD(T*) energy.
 
 #+begin_src sh
 step: 15, PerturbativeTriples
-Progress(%)  time(s)   GFLOP/s      
+Progress(%)  time(s)   GFLOP/s
 1            334       6.027        
 10           2334      6.327        
 20           2323      6.342        
@@ -63,8 +63,13 @@ realtime 23297.807220394 s
 
 * Computational complexity
 
+The computational cost is $\mathcal{O}{(N_o^3 N_v^3(N_o+N_v))}$ with $N_o$ and 
+$N_v$ being the number of occupied and virtual orbitals, respecively. The memory
+footprint is mainly determined by the storage of the PPPH-integral, which is of 
+size $\mathcal{O}{N_o N_v^3}$.
 * Theory
 
+Its the standard (T) stuff....if you dont know how this works ask juergen gauss...
 * Reference implementation
 
 In addition to the =PerturbativeTriples= algorithm, there is also a slower
