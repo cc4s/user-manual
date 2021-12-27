@@ -4,7 +4,11 @@
 #+title: =TransitionStructureFactorFiniteSizeCorrection=
 #+OPTIONS: toc:nil
 
-* TODO Brief description
+* Brief description
+This algorithm calculates the structure factor for (ccsd) amplitudes provided.
+CoulombVertexSingularVectors are needed to transform back to the common reciprocal 
+mesh. Furthermore, a tricubic interpolaton can be performed which reduces
+quadrature errors.
 * Algorithm call
 
 A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCorrection= algorithm is given below.

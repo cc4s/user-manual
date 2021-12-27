@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: DefineHolesAndParticles
 :END:
-#+title: DefineHolesAndParticles
+#+title: =DefineHolesAndParticles=
 #+OPTIONS: toc:nil
 
 * Brief description

@@ -4,7 +4,8 @@
 #+title: =PerturbativeTriples=
 #+OPTIONS: toc:nil
 
-* TODO Brief description
+* Brief description
+Evaluates the (T) contribution.
 * Algorithm call
 
 A typical input file snippet to call the =PerturbativeTriples= algorithm is given below.

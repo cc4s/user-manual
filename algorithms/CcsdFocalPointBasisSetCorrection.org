@@ -1,10 +1,12 @@
 :PROPERTIES:
 :ID: CcsdFocalPointBasisSetCorrection
 :END:
-#+title: CcsdFocalPointBasisSetCorrection
+#+title: =CcsdFocalPointBasisSetCorrection=
 #+OPTIONS: toc:nil
 
-* TODO Brief description
+* Brief description
+This algorithm evaluates a contribution for the basis-set-incompeteness
+error.
 * Algorithm call
 
 A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algorithm is given below.

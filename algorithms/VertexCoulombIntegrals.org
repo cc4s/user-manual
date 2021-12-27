@@ -1,10 +1,11 @@
 :PROPERTIES:
 :ID: VertexCoulombIntegrals
 :END:
-#+title: VertexCoulombIntegrals
+#+title: =VertexCoulombIntegrals=
 #+OPTIONS: toc:nil
 
-* TODO Brief description
+* Brief description
+Evaluation of Coulomb integrals from provided Coulomb vertex.
 * Algorithm call
 
 A typical input file snippet to call the =VertexCoulombIntegrals= algorithm is given below.
