@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-23 Thu 18:23 -->
+<!-- 2021-12-27 Mon 08:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>TransitionStructureFactorFiniteSizeCorrection</code></title>
@@ -293,11 +293,19 @@
 <div id="content">
 <h1 class="title"><code>TransitionStructureFactorFiniteSizeCorrection</code></h1>
 
-<div id="outline-container-org633baaf" class="outline-2">
-<h2 id="org633baaf"><span class="section-number-2">1</span> <a href="#org633baaf"><span class="todo TODO">TODO</span> Brief description</a></h2>
+<div id="outline-container-org4518ef3" class="outline-2">
+<h2 id="org4518ef3"><span class="section-number-2">1</span> <a href="#org4518ef3">Brief description</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This algorithm calculates the structure factor for (ccsd) amplitudes provided.
+CoulombVertexSingularVectors are needed to transform back to the common reciprocal 
+mesh. Furthermore, a tricubic interpolaton can be performed which reduces
+quadrature errors.
+</p>
 </div>
-<div id="outline-container-org91a5a54" class="outline-2">
-<h2 id="org91a5a54"><span class="section-number-2">2</span> <a href="#org91a5a54">Algorithm call</a></h2>
+</div>
+<div id="outline-container-orge88cc23" class="outline-2">
+<h2 id="orge88cc23"><span class="section-number-2">2</span> <a href="#orge88cc23">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>TransitionStructureFactorFiniteSizeCorrection</code> algorithm is given below.
@@ -317,10 +325,10 @@ A typical input file snippet to call the <code>TransitionStructureFactorFiniteSi
 </div>
 </div>
 
-<div id="outline-container-org0edb834" class="outline-2">
-<h2 id="org0edb834"><span class="section-number-2">3</span> <a href="#org0edb834">Algorithm input</a></h2>
+<div id="outline-container-orgaac1433" class="outline-2">
+<h2 id="orgaac1433"><span class="section-number-2">3</span> <a href="#orgaac1433">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgcd0cce9" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org60648af" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -381,10 +389,10 @@ A value of \(N\) for the <code>interpolationGridSize</code> means that \(2 N\) s
 </div>
 
 
-<div id="outline-container-org90a8435" class="outline-2">
-<h2 id="org90a8435"><span class="section-number-2">4</span> <a href="#org90a8435">Algorithm output</a></h2>
+<div id="outline-container-orgcd4471c" class="outline-2">
+<h2 id="orgcd4471c"><span class="section-number-2">4</span> <a href="#orgcd4471c">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org69b4d21" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org803ce81" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -413,8 +421,8 @@ algorithm of the electronic transition structure factor.
 </p>
 </div>
 
-<div id="outline-container-org2ef9d33" class="outline-3">
-<h3 id="org2ef9d33"><span class="section-number-3">4.1</span> <a href="#org2ef9d33">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgf402920" class="outline-3">
+<h3 id="orgf402920"><span class="section-number-3">4.1</span> <a href="#orgf402920">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <b>TransitionStructureFactorFiniteSizeCorrection</b> algorithm run.
@@ -429,13 +437,13 @@ realtime 68.117389991 s
 </div>
 </div>
 
-<div id="outline-container-orga3ca068" class="outline-3">
-<h3 id="orga3ca068"><span class="section-number-3">4.2</span> <a href="#orga3ca068"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org9917aca" class="outline-3">
+<h3 id="org9917aca"><span class="section-number-3">4.2</span> <a href="#org9917aca"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
-<div id="outline-container-org6e7600a" class="outline-2">
-<h2 id="org6e7600a"><span class="section-number-2">5</span> <a href="#org6e7600a">Computational complexity</a></h2>
+<div id="outline-container-org73d0aa7" class="outline-2">
+<h2 id="org73d0aa7"><span class="section-number-2">5</span> <a href="#org73d0aa7">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared.
@@ -443,8 +451,8 @@ No considerable memory footprints or computational cost bottle necks are expecte
 </div>
 </div>
 
-<div id="outline-container-orga8ee60b" class="outline-2">
-<h2 id="orga8ee60b"><span class="section-number-2">6</span> <a href="#orga8ee60b">Theory</a></h2>
+<div id="outline-container-org14e4ad2" class="outline-2">
+<h2 id="org14e4ad2"><span class="section-number-2">6</span> <a href="#org14e4ad2">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
@@ -465,8 +473,8 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-org7e1e941" class="outline-2">
-<h2 id="org7e1e941"><span class="section-number-2">7</span> <a href="#org7e1e941">Literature</a></h2>
+<div id="outline-container-orgfa99593" class="outline-2">
+<h2 id="orgfa99593"><span class="section-number-2">7</span> <a href="#orgfa99593">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
@@ -476,7 +484,7 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-23 Thu 18:23</p>
+<p class="date">Created: 2021-12-27 Mon 08:59</p>
 </div>
 </body>
 </html>
