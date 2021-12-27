@@ -1,27 +1,27 @@
 #+title: =Cc4s= User Documentation
 #+OPTIONS: toc:nil
 
-#+begin_center
-The following sections explain everything from
-downloading the code to running calculations.
-#+end_center
+# #+begin_center
+# The following sections explain everything from
+# downloading the code to running calculations.
+# #+end_center
 
 * How to get started?
 - [[file:./gettingstarted/gettingstarted.org][Download, compile and run tests]]
 
 * How to run Cc4s calculations?
 
-- [[file:tutorials/Rbn_tutorial.org][Take a walk through a complete CCSD(T) calculation for a periodic BN crystal]]
+- [[file:tutorials/Rbn_tutorial.org][Take a walk through a CCSD(T) calculation for a BN crystal]]
 
 * Interfaces to Cc4s
 
-Currently avaible interfaces are provided by
+Currently avaible interfaces are available for
 - [[file:interfaces/vasp.org][VASP]]
 - [[file:interfaces/fhi-aims.org][FHI-AIMS]]
 
 * Algorithms in Cc4s
 
-The most important Cc4s algorithms include
+The most important algorithms include
 - [[id:CoupledCluster][CoupledCluster]]
 - [[id:PerturbativeTriples][PerturbativeTriples]]
 - [[id:TransitionStructureFactorFiniteSizeCorrection][TransitionStructureFiniteSizeCorrection]]
