@@ -6,7 +6,7 @@
 <!-- 2021-12-28 Tue 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>TensorReader</code></title>
+<title><code>EigenEnergies</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -232,6 +232,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -281,149 +303,48 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>TensorReader</code></h1>
+<h1 class="title"><code>EigenEnergies</code></h1>
 
-<div id="outline-container-orgdc7fe1e" class="outline-2">
-<h2 id="orgdc7fe1e"><span class="section-number-2">1</span> <a href="#orgdc7fe1e">Brief description</a></h2>
+<div id="outline-container-org13510ab" class="outline-2">
+<h2 id="org13510ab"><span class="section-number-2">1</span> <a href="#org13510ab">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-TensorReader reads a cc4s tensor&#x2026;.
+<code>EigenEnergies</code> are one-electron Hartree&#x2013;Fock energies \(\epsilon_p\) for arbitrary states.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7e25096" class="outline-2">
-<h2 id="org7e25096"><span class="section-number-2">2</span> <a href="#org7e25096">Algorithm call</a></h2>
+<div id="outline-container-org8979e64" class="outline-2">
+<h2 id="org8979e64"><span class="section-number-2">2</span> <a href="#org8979e64">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
-A typical input file snippet to call the <a href="TensorReader.html#ID-TensorReader">TensorReader</a>
-algorithm is given below.
+An example <code>EigenEnergies.yaml</code> file is given below
 </p>
-
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
-  <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombVertex.yaml"</span>
-  <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">data</span>: CoulombVertex
+<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: v1.0
+<span style="color: #8b4513;">scalarType</span>: real64
+<span style="color: #8b4513;">indices</span>:
+  <span style="color: #8b4513;">orbital</span>:
+    <span style="color: #8b4513;">type</span>: spatial
+<span style="color: #8b4513;">dimensions</span>:
+  - <span style="color: #8b4513;">length</span>:     96
+    <span style="color: #8b4513;">type</span>: orbital
+<span style="color: #8b4513;">data</span>: EigenEnergies.dat    <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">path to raw data</span>
+<span style="color: #8b4513;">unit</span>: 0.03674932217563878       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">= (Eh/eV)</span>
+<span style="color: #8b4513;">fermiEnergy</span>:  0.517696613235858E+01
+<span style="color: #8b4513;">energies</span>:
+   -   -25.5661014910229     
+   -   -25.0676530819027 
+<span style="color: #a0a1a7;">...</span>
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org385b3d7" class="outline-2">
-<h2 id="org385b3d7"><span class="section-number-2">3</span> <a href="#org385b3d7">Algorithm input</a></h2>
+<div id="outline-container-orga357fd4" class="outline-2">
+<h2 id="orga357fd4"><span class="section-number-2">3</span> <a href="#orga357fd4">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgb79d17a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Keyword</th>
-<th scope="col" class="org-left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>fileName</code></td>
-<td class="org-left"><a href="#what">what</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div id="outline-container-what" class="outline-3">
-<h3 id="what"><span class="section-number-3">3.1</span> <a href="#what">what</a></h3>
-<div class="outline-text-3" id="text-what">
-<p>
-i dont knwo what to write here
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org43bcc6f" class="outline-2">
-<h2 id="org43bcc6f"><span class="section-number-2">4</span> <a href="#org43bcc6f">Algorithm output</a></h2>
-<div class="outline-text-2" id="text-4">
-<table id="org878e4a2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Keyword</th>
-<th scope="col" class="org-left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>data</code></td>
-<td class="org-left"><a href="#data">data</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div id="outline-container-data" class="outline-3">
-<h3 id="data"><span class="section-number-3">4.1</span> <a href="#data">data</a></h3>
-<div class="outline-text-3" id="text-data">
-<p>
-this is data data data
-</p>
-</div>
-</div>
-
-<div id="outline-container-org7ac4ef3" class="outline-3">
-<h3 id="org7ac4ef3"><span class="section-number-3">4.2</span> <a href="#org7ac4ef3">Sample <code>stdout</code></a></h3>
-<div class="outline-text-3" id="text-4-2">
-<p>
-The output of this algorithm reads
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">step: 2, TensorReader
-Reading from binary file CoulombVertex.dat
-realtime 0.045400572 s
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org1f0e4fa" class="outline-3">
-<h3 id="org1f0e4fa"><span class="section-number-3">4.3</span> <a href="#org1f0e4fa"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
-</div>
-</div>
-
-<div id="outline-container-orgf6c8069" class="outline-2">
-<h2 id="orgf6c8069"><span class="section-number-2">5</span> <a href="#orgf6c8069">Computational complexity</a></h2>
-<div class="outline-text-2" id="text-5">
-<ul class="org-ul">
-<li></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org0b8fa21" class="outline-2">
-<h2 id="org0b8fa21"><span class="section-number-2">6</span> <a href="#org0b8fa21">Theory</a></h2>
-<div class="outline-text-2" id="text-6">
-<ul class="org-ul">
-<li></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org4ad4303" class="outline-2">
-<h2 id="org4ad4303"><span class="section-number-2">7</span> <a href="#org4ad4303">Literature</a></h2>
-<div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
 </div>
 </div>

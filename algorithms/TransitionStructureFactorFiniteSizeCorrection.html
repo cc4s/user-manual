@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-27 Mon 12:55 -->
+<!-- 2021-12-28 Tue 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>TransitionStructureFactorFiniteSizeCorrection</code></title>
@@ -258,43 +258,55 @@
 <body>
 <div id="preamble" class="status">
 
-  <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-    <div class='container-fluid'>
-      <a class='navbar-brand' href='#'>
-        Cc4s
-      </a>
-      <button class='navbar-toggler' type='button'
-              data-bs-toggle='collapse'
-              data-bs-target='#navbarSupportedContent'
-              aria-controls='navbarSupportedContent'
-              aria-expanded='false'
-              aria-label='Toggle navigation'>
-        <span class='navbar-toggler-icon'></span>
-      </button>
-      <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-        <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
-          <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='/user-manual/index.html'>
-              <i class='fa fa-home'></i>
-              Home
-            </a>
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='/user-manual/sitemap.html'>
-              <i class='fa fa-sign-out'></i>
-              Sitemap
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+ <nav class='navbar navbar-expand-md navbar-light bg-light'>
+   <div class='container-fluid'>
+     <a class='navbar-brand' href='#'>
+       Cc4s
+     </a>
+     <button class='navbar-toggler' type='button'
+             data-bs-toggle='collapse'
+             data-bs-target='#navbarSupportedContent'
+             aria-controls='navbarSupportedContent'
+             aria-expanded='false'
+             aria-label='Toggle navigation'>
+       <span class='navbar-toggler-icon'></span>
+     </button>
+     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+       <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+         <li class='nav-item'>
+           <a class='nav-link' aria-current='page' href='/user-manual/index.html'>
+             <i class='fa fa-home'></i>
+             Home
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Sitemap
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/algorithms/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Algorithms
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/objects/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Objects
+           </a>
+         </li>
+       </ul>
+     </div>
+   </div>
+ </nav>
 </div>
 <div id="content">
 <h1 class="title"><code>TransitionStructureFactorFiniteSizeCorrection</code></h1>
 
-<div id="outline-container-org90878f9" class="outline-2">
-<h2 id="org90878f9"><span class="section-number-2">1</span> <a href="#org90878f9">Brief description</a></h2>
+<div id="outline-container-org7588501" class="outline-2">
+<h2 id="org7588501"><span class="section-number-2">1</span> <a href="#org7588501">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm calculates the structure factor for (ccsd) amplitudes provided.
@@ -304,8 +316,8 @@ quadrature errors.
 </p>
 </div>
 </div>
-<div id="outline-container-org4cc1d2a" class="outline-2">
-<h2 id="org4cc1d2a"><span class="section-number-2">2</span> <a href="#org4cc1d2a">Algorithm call</a></h2>
+<div id="outline-container-org0cd97b5" class="outline-2">
+<h2 id="org0cd97b5"><span class="section-number-2">2</span> <a href="#org0cd97b5">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>TransitionStructureFactorFiniteSizeCorrection</code> algorithm is given below.
@@ -325,10 +337,10 @@ A typical input file snippet to call the <code>TransitionStructureFactorFiniteSi
 </div>
 </div>
 
-<div id="outline-container-org06ab573" class="outline-2">
-<h2 id="org06ab573"><span class="section-number-2">3</span> <a href="#org06ab573">Algorithm input</a></h2>
+<div id="outline-container-org3a8a175" class="outline-2">
+<h2 id="org3a8a175"><span class="section-number-2">3</span> <a href="#org3a8a175">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orga2cde1c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgad97e81" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -389,10 +401,10 @@ A value of \(N\) for the <code>interpolationGridSize</code> means that \(2 N\) s
 </div>
 
 
-<div id="outline-container-org1ba7525" class="outline-2">
-<h2 id="org1ba7525"><span class="section-number-2">4</span> <a href="#org1ba7525">Algorithm output</a></h2>
+<div id="outline-container-org51a4b2f" class="outline-2">
+<h2 id="org51a4b2f"><span class="section-number-2">4</span> <a href="#org51a4b2f">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="orge4ec0c3" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org42237fb" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -421,8 +433,8 @@ algorithm of the electronic transition structure factor.
 </p>
 </div>
 
-<div id="outline-container-org52a6842" class="outline-3">
-<h3 id="org52a6842"><span class="section-number-3">4.1</span> <a href="#org52a6842">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgb9b0c42" class="outline-3">
+<h3 id="orgb9b0c42"><span class="section-number-3">4.1</span> <a href="#orgb9b0c42">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <b>TransitionStructureFactorFiniteSizeCorrection</b> algorithm run.
@@ -437,13 +449,13 @@ realtime 68.117389991 s
 </div>
 </div>
 
-<div id="outline-container-org65e9216" class="outline-3">
-<h3 id="org65e9216"><span class="section-number-3">4.2</span> <a href="#org65e9216"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-orga5b9cc6" class="outline-3">
+<h3 id="orga5b9cc6"><span class="section-number-3">4.2</span> <a href="#orga5b9cc6"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
-<div id="outline-container-org4b083a0" class="outline-2">
-<h2 id="org4b083a0"><span class="section-number-2">5</span> <a href="#org4b083a0">Computational complexity</a></h2>
+<div id="outline-container-org2561118" class="outline-2">
+<h2 id="org2561118"><span class="section-number-2">5</span> <a href="#org2561118">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared.
@@ -451,8 +463,8 @@ No considerable memory footprints or computational cost bottle necks are expecte
 </div>
 </div>
 
-<div id="outline-container-org964606e" class="outline-2">
-<h2 id="org964606e"><span class="section-number-2">6</span> <a href="#org964606e">Theory</a></h2>
+<div id="outline-container-org3ba215d" class="outline-2">
+<h2 id="org3ba215d"><span class="section-number-2">6</span> <a href="#org3ba215d">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
@@ -473,8 +485,8 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-org666ffd3" class="outline-2">
-<h2 id="org666ffd3"><span class="section-number-2">7</span> <a href="#org666ffd3">Literature</a></h2>
+<div id="outline-container-orgeef35fa" class="outline-2">
+<h2 id="orgeef35fa"><span class="section-number-2">7</span> <a href="#orgeef35fa">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
@@ -484,7 +496,7 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-27 Mon 12:55</p>
+<p class="date">Created: 2021-12-28 Tue 10:57</p>
 </div>
 </body>
 </html>

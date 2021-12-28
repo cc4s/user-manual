@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-27 Mon 12:55 -->
+<!-- 2021-12-28 Tue 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Description of VASP interface to CC4S</title>
@@ -258,37 +258,49 @@
 <body>
 <div id="preamble" class="status">
 
-  <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-    <div class='container-fluid'>
-      <a class='navbar-brand' href='#'>
-        Cc4s
-      </a>
-      <button class='navbar-toggler' type='button'
-              data-bs-toggle='collapse'
-              data-bs-target='#navbarSupportedContent'
-              aria-controls='navbarSupportedContent'
-              aria-expanded='false'
-              aria-label='Toggle navigation'>
-        <span class='navbar-toggler-icon'></span>
-      </button>
-      <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-        <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
-          <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='/user-manual/index.html'>
-              <i class='fa fa-home'></i>
-              Home
-            </a>
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='/user-manual/sitemap.html'>
-              <i class='fa fa-sign-out'></i>
-              Sitemap
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+ <nav class='navbar navbar-expand-md navbar-light bg-light'>
+   <div class='container-fluid'>
+     <a class='navbar-brand' href='#'>
+       Cc4s
+     </a>
+     <button class='navbar-toggler' type='button'
+             data-bs-toggle='collapse'
+             data-bs-target='#navbarSupportedContent'
+             aria-controls='navbarSupportedContent'
+             aria-expanded='false'
+             aria-label='Toggle navigation'>
+       <span class='navbar-toggler-icon'></span>
+     </button>
+     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+       <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+         <li class='nav-item'>
+           <a class='nav-link' aria-current='page' href='/user-manual/index.html'>
+             <i class='fa fa-home'></i>
+             Home
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Sitemap
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/algorithms/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Algorithms
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/objects/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Objects
+           </a>
+         </li>
+       </ul>
+     </div>
+   </div>
+ </nav>
 </div>
 <div id="content">
 <h1 class="title">Description of VASP interface to CC4S</h1>
@@ -296,26 +308,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga66fa17">1. Introduction: the example of solid boron nitride</a></li>
-<li><a href="#org02f17cd">2. Hartree-Fock ground state</a>
+<li><a href="#org9963650">1. Introduction: the example of solid boron nitride</a></li>
+<li><a href="#orgfe06fdc">2. Hartree-Fock ground state</a>
 <ul>
-<li><a href="#org97fc506">2.1. occupied orbitals</a></li>
-<li><a href="#org4f8218d">2.2. unoccupied orbitals</a></li>
+<li><a href="#org36d3d7f">2.1. occupied orbitals</a></li>
+<li><a href="#org92b0d8f">2.2. unoccupied orbitals</a></li>
 </ul>
 </li>
-<li><a href="#orga08f2ff">3. Calculating Coulomb vertices</a></li>
-<li><a href="#orgc71be87">4. Work flow for optional steps</a>
+<li><a href="#org2e0db62">3. Calculating Coulomb vertices</a></li>
+<li><a href="#org5d4b577">4. Work flow for optional steps</a>
 <ul>
-<li><a href="#orgd08dba9">4.1. reducing the number of unoccupied HF orbitals using natural orbitals</a></li>
-<li><a href="#orgccfc2fb">4.2. focal point basis set correction</a></li>
+<li><a href="#orgd4080cc">4.1. reducing the number of unoccupied HF orbitals using natural orbitals</a></li>
+<li><a href="#org85869af">4.2. focal point basis set correction</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga66fa17" class="outline-2">
-<h2 id="orga66fa17"><span class="section-number-2">1</span> <a href="#orga66fa17">Introduction: the example of solid boron nitride</a></h2>
+<div id="outline-container-org9963650" class="outline-2">
+<h2 id="org9963650"><span class="section-number-2">1</span> <a href="#org9963650">Introduction: the example of solid boron nitride</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Here we describe how to use cc4s in combination with the Vienna Ab initio Simulation Package (VASP).
@@ -333,7 +345,7 @@ We use an 8 atom supercell (<code>POSCAR</code> file) of the cubic phase of soli
 &lt;poscar&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="org0b111e3">cBN
+<pre class="src src-sh" id="org94a8ede">cBN
 3.615
 1.000 0.000 0.000
 0.000 1.000 0.000
@@ -359,7 +371,7 @@ We chose a \(\Gamma\) -point only sampling of the Brillouine zone.
 &lt;kpoints&gt;=
 </p>
 <div class="org-src-container">
-<pre class="src src-sh" id="orgaea7191">k-mesh
+<pre class="src src-sh" id="orgb75a0a7">k-mesh
 0
 gamma
 1 1 1
@@ -372,12 +384,12 @@ Please make sure that a correctly merged <code>POTCAR</code> file is available i
 </div>
 </div>
 
-<div id="outline-container-org02f17cd" class="outline-2">
-<h2 id="org02f17cd"><span class="section-number-2">2</span> <a href="#org02f17cd">Hartree-Fock ground state</a></h2>
+<div id="outline-container-orgfe06fdc" class="outline-2">
+<h2 id="orgfe06fdc"><span class="section-number-2">2</span> <a href="#orgfe06fdc">Hartree-Fock ground state</a></h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org97fc506" class="outline-3">
-<h3 id="org97fc506"><span class="section-number-3">2.1</span> <a href="#org97fc506">occupied orbitals</a></h3>
+<div id="outline-container-org36d3d7f" class="outline-3">
+<h3 id="org36d3d7f"><span class="section-number-3">2.1</span> <a href="#org36d3d7f">occupied orbitals</a></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 We initialize the Hartree-Fock (HF) step by a preceding DFT (density functional theory) ground state calculation using the following INCAR file. 
@@ -385,7 +397,7 @@ The individual flags will be explained below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org7bac344">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="orgd4a5d71">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -398,7 +410,7 @@ The produced <code>WAVECAR</code> file is then read in the HF step for which we 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgea581c0">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="orgc088a07">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -425,8 +437,8 @@ Further information to the used tags can be found in the VASP wiki.
 </div>
 
 
-<div id="outline-container-org4f8218d" class="outline-3">
-<h3 id="org4f8218d"><span class="section-number-3">2.2</span> <a href="#org4f8218d">unoccupied orbitals</a></h3>
+<div id="outline-container-org92b0d8f" class="outline-3">
+<h3 id="org92b0d8f"><span class="section-number-3">2.2</span> <a href="#org92b0d8f">unoccupied orbitals</a></h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Since the coupled cluster theory approximates the many-electron wave function by excited Slater determinants (in a style comparible to the configuration interaction method), all unoccupied HF orbitals have to be calclated in the given plane-wave basis.
@@ -434,7 +446,7 @@ The exact number of HF bands is equal to the number of plane-waves and can be fo
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org118b16a"><span style="color: #8b4513;">nplw</span>=<span style="font-weight: bold;">`awk '/number of plane-waves:/ {print $5} ' &lt; OUTCAR # OUTCAR file from HF ground state calculation</span>
+<pre class="src src-sh" id="org1986047"><span style="color: #8b4513;">nplw</span>=<span style="font-weight: bold;">`awk '/number of plane-waves:/ {print $5} ' &lt; OUTCAR # OUTCAR file from HF ground state calculation</span>
 <span style="font-weight: bold;">nbands=$(echo "($nplw * 2 / $mpiranks) + 1" | bc) # include this factor 2 in gamma-only code version</span>
 <span style="font-weight: bold;">nbands=$(echo "$nbands * $mpiranks" | bc)</span>
 </pre>
@@ -450,7 +462,7 @@ Ensure that the <code>WAVECAR</code> stems from the previous HF calculation and 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgfe6c077">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org8bd46d1">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -474,15 +486,15 @@ Please save the <code>WAVECAR</code> file with all unoccupied (virtual) orbitals
 </div>
 
 
-<div id="outline-container-orga08f2ff" class="outline-2">
-<h2 id="orga08f2ff"><span class="section-number-2">3</span> <a href="#orga08f2ff">Calculating Coulomb vertices</a></h2>
+<div id="outline-container-org2e0db62" class="outline-2">
+<h2 id="org2e0db62"><span class="section-number-2">3</span> <a href="#org2e0db62">Calculating Coulomb vertices</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Use the <code>WAVECAR</code> file with the full HF orbitals, e.g. <code>cp WAVECAR.HFV WAVECAR</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org49cfba4">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="orgd5457de">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -500,12 +512,12 @@ ISYM        = -1
 </div>
 
 
-<div id="outline-container-orgc71be87" class="outline-2">
-<h2 id="orgc71be87"><span class="section-number-2">4</span> <a href="#orgc71be87">Work flow for optional steps</a></h2>
+<div id="outline-container-org5d4b577" class="outline-2">
+<h2 id="org5d4b577"><span class="section-number-2">4</span> <a href="#org5d4b577">Work flow for optional steps</a></h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgd08dba9" class="outline-3">
-<h3 id="orgd08dba9"><span class="section-number-3">4.1</span> <a href="#orgd08dba9">reducing the number of unoccupied HF orbitals using natural orbitals</a></h3>
+<div id="outline-container-orgd4080cc" class="outline-3">
+<h3 id="orgd4080cc"><span class="section-number-3">4.1</span> <a href="#orgd4080cc">reducing the number of unoccupied HF orbitals using natural orbitals</a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 TODO
@@ -513,8 +525,8 @@ TODO
 </div>
 </div>
 
-<div id="outline-container-orgccfc2fb" class="outline-3">
-<h3 id="orgccfc2fb"><span class="section-number-3">4.2</span> <a href="#orgccfc2fb">focal point basis set correction</a></h3>
+<div id="outline-container-org85869af" class="outline-3">
+<h3 id="org85869af"><span class="section-number-3">4.2</span> <a href="#org85869af">focal point basis set correction</a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 TODO
@@ -522,7 +534,7 @@ Use the <code>WAVECAR</code> file with the full HF orbitals, e.g. <code>cp WAVEC
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orga051a92">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org215224d">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -557,7 +569,7 @@ this step the following files will be written that are needed for CC4S
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-27 Mon 12:55</p>
+<p class="date">Created: 2021-12-28 Tue 10:57</p>
 </div>
 </body>
 </html>

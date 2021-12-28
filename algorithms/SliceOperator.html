@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-27 Mon 12:55 -->
+<!-- 2021-12-28 Tue 10:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>SliceOperator</code></title>
@@ -258,43 +258,55 @@
 <body>
 <div id="preamble" class="status">
 
-  <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-    <div class='container-fluid'>
-      <a class='navbar-brand' href='#'>
-        Cc4s
-      </a>
-      <button class='navbar-toggler' type='button'
-              data-bs-toggle='collapse'
-              data-bs-target='#navbarSupportedContent'
-              aria-controls='navbarSupportedContent'
-              aria-expanded='false'
-              aria-label='Toggle navigation'>
-        <span class='navbar-toggler-icon'></span>
-      </button>
-      <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-        <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
-          <li class='nav-item'>
-            <a class='nav-link' aria-current='page' href='/user-manual/index.html'>
-              <i class='fa fa-home'></i>
-              Home
-            </a>
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='/user-manual/sitemap.html'>
-              <i class='fa fa-sign-out'></i>
-              Sitemap
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+ <nav class='navbar navbar-expand-md navbar-light bg-light'>
+   <div class='container-fluid'>
+     <a class='navbar-brand' href='#'>
+       Cc4s
+     </a>
+     <button class='navbar-toggler' type='button'
+             data-bs-toggle='collapse'
+             data-bs-target='#navbarSupportedContent'
+             aria-controls='navbarSupportedContent'
+             aria-expanded='false'
+             aria-label='Toggle navigation'>
+       <span class='navbar-toggler-icon'></span>
+     </button>
+     <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+       <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+         <li class='nav-item'>
+           <a class='nav-link' aria-current='page' href='/user-manual/index.html'>
+             <i class='fa fa-home'></i>
+             Home
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Sitemap
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/algorithms/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Algorithms
+           </a>
+         </li>
+         <li class='nav-item'>
+           <a class='nav-link' href='/user-manual/objects/sitemap.html'>
+             <i class='fa fa-sign-out'></i>
+             Objects
+           </a>
+         </li>
+       </ul>
+     </div>
+   </div>
+ </nav>
 </div>
 <div id="content">
 <h1 class="title"><code>SliceOperator</code></h1>
 
-<div id="outline-container-org205c9b7" class="outline-2">
-<h2 id="org205c9b7"><span class="section-number-2">1</span> <a href="#org205c9b7">Brief description</a></h2>
+<div id="outline-container-org0d2f5c4" class="outline-2">
+<h2 id="org0d2f5c4"><span class="section-number-2">1</span> <a href="#org0d2f5c4">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm splits all edges of an input tensor of type orbital and size \(p\)
@@ -307,8 +319,8 @@ the Coulomb Vertex will be processed like
 </div>
 </div>
 
-<div id="outline-container-org8700b11" class="outline-2">
-<h2 id="org8700b11"><span class="section-number-2">2</span> <a href="#org8700b11">Algorithm call</a></h2>
+<div id="outline-container-org3c04b19" class="outline-2">
+<h2 id="org3c04b19"><span class="section-number-2">2</span> <a href="#org3c04b19">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <a href="SliceOperator.html#ID-SliceOperator">SliceOperator</a>
@@ -328,10 +340,10 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-org7f5bc65" class="outline-2">
-<h2 id="org7f5bc65"><span class="section-number-2">3</span> <a href="#org7f5bc65">Algorithm input</a></h2>
+<div id="outline-container-org8978932" class="outline-2">
+<h2 id="org8978932"><span class="section-number-2">3</span> <a href="#org8978932">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orged2bd59" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org960bd5e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -369,10 +381,10 @@ This is a normal tensor ole.
 </div>
 </div>
 
-<div id="outline-container-org9b07df4" class="outline-2">
-<h2 id="org9b07df4"><span class="section-number-2">4</span> <a href="#org9b07df4">Algorithm output</a></h2>
+<div id="outline-container-org94d3fc8" class="outline-2">
+<h2 id="org94d3fc8"><span class="section-number-2">4</span> <a href="#org94d3fc8">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org7b8dd73" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgc9ca60e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -404,8 +416,8 @@ this is a set of tensors&#x2026;.
 </div>
 </div>
 
-<div id="outline-container-orgd13b5ce" class="outline-3">
-<h3 id="orgd13b5ce"><span class="section-number-3">4.2</span> <a href="#orgd13b5ce">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org95792a5" class="outline-3">
+<h3 id="org95792a5"><span class="section-number-3">4.2</span> <a href="#org95792a5">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 The output of this algorithm reads
@@ -419,13 +431,13 @@ realtime 0.000798066 s
 </div>
 </div>
 
-<div id="outline-container-org161a601" class="outline-3">
-<h3 id="org161a601"><span class="section-number-3">4.3</span> <a href="#org161a601"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org48befa8" class="outline-3">
+<h3 id="org48befa8"><span class="section-number-3">4.3</span> <a href="#org48befa8"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
-<div id="outline-container-orgeabf0df" class="outline-2">
-<h2 id="orgeabf0df"><span class="section-number-2">5</span> <a href="#orgeabf0df">Computational complexity</a></h2>
+<div id="outline-container-org3baed80" class="outline-2">
+<h2 id="org3baed80"><span class="section-number-2">5</span> <a href="#org3baed80">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li></li>
@@ -433,8 +445,8 @@ realtime 0.000798066 s
 </div>
 </div>
 
-<div id="outline-container-org5b82f23" class="outline-2">
-<h2 id="org5b82f23"><span class="section-number-2">6</span> <a href="#org5b82f23">Theory</a></h2>
+<div id="outline-container-org2ac98d6" class="outline-2">
+<h2 id="org2ac98d6"><span class="section-number-2">6</span> <a href="#org2ac98d6">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li></li>
@@ -442,8 +454,8 @@ realtime 0.000798066 s
 </div>
 </div>
 
-<div id="outline-container-org7c9d0f7" class="outline-2">
-<h2 id="org7c9d0f7"><span class="section-number-2">7</span> <a href="#org7c9d0f7">Literature</a></h2>
+<div id="outline-container-org3e77d07" class="outline-2">
+<h2 id="org3e77d07"><span class="section-number-2">7</span> <a href="#org3e77d07">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
 </div>
@@ -451,7 +463,7 @@ realtime 0.000798066 s
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-27 Mon 12:55</p>
+<p class="date">Created: 2021-12-28 Tue 10:57</p>
 </div>
 </body>
 </html>
