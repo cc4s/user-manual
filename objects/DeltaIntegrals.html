@@ -6,7 +6,7 @@
 <!-- 2021-12-28 Tue 14:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoulombVertex</code></title>
+<title><code>DeltaIntegrals</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -303,84 +303,30 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoulombVertex</code></h1>
+<h1 class="title"><code>DeltaIntegrals</code></h1>
 
-<div id="outline-container-orgdf3cbe2" class="outline-2">
-<h2 id="orgdf3cbe2"><span class="section-number-2">1</span> <a href="#orgdf3cbe2">Brief description</a></h2>
+
+<div id="outline-container-orgdc50eb9" class="outline-2">
+<h2 id="orgdc50eb9"><span class="section-number-2">1</span> <a href="#orgdc50eb9">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
-<p>
-\[ \tilde{\Gamma}^q_r({\bf G}) :=  \sqrt{\frac{4\pi}{{\bf G}^2}}   \int{\rm d}{\bf x}\,   {\rm e}^{-{\rm i}{\bf G}\cdot{\bf r}}\,   {\psi^\ast}^q({\bf x}) \psi_r({\bf x})\
-\]
-</p>
+\begin{equation}
+\langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
+\end{equation}
 
 <p>
-The <code>CoulombVertex</code> \(\tilde{\Gamma}^q_r({\bf G})\) is computed from the co-density of an orbital pair
-\({\psi^\ast}^q({\bf x})\) and \(\psi_r({\bf x})\), and the square-root of the Coulomb potential
-\(\sqrt{\frac{4\pi}{{\bf G}^2}}\).
-Different representations of the <code>CoulombVertex</code> are possible using; for example,
-singular-value-decomposition techniques as discussed in (<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
-The transformation of the <code>CoulombVertex</code> into a truncated auxilliary field representation
-reduces the memory footprint and is achieved using the
-<a href="CoulombVertexSingularVectors.html#ID-CoulombVertexSingularVectors">CoulombVertexSingularVectors</a>
-\(\left({U^*}^G_F\right)\) :
-\[
-\Gamma^q_r({F}) = \sum_{\bf G}
-  {U^*}^{\bf G}_F \tilde{\Gamma}^q_r({\bf G})
-\]
+with the Dirac delta function \(\delta(\mathbf{r})\) and the interelectronic distance
+\(\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|\). The delta-integrals have to be
+provided and cannot be evaluated within <code>Cc4s</code>. 
+The integrals are needed by the <a href="../algorithms/CcsdFocalPointBasisSetCorrection.html#ID-CcsdFocalPointBasisSetCorrection">CcsdFocalPointBasisSetCorrection</a> algorithm.
 </p>
-
-
-<p>
-The <code>CoulombVertex</code> needs to be provided by an interfaced electronic structure theory package
-and can be read into <code>Cc4s</code> using the <a href="../algorithms/TensorReader.html#ID-TensorReader">TensorReader</a> algorithm.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
-  <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombVertex.yaml"</span>
-  <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">tensor</span>: CoulombVertex
-</pre>
-</div>
 </div>
 </div>
 
-<div id="outline-container-org508ac57" class="outline-2">
-<h2 id="org508ac57"><span class="section-number-2">2</span> <a href="#org508ac57">Specification</a></h2>
+
+<div id="outline-container-orgf4345a6" class="outline-2">
+<h2 id="orgf4345a6"><span class="section-number-2">2</span> <a href="#orgf4345a6">Literature</a></h2>
 <div class="outline-text-2" id="text-2">
-<p>
-An example <code>CoulombVertex.yaml</code> file is given below
-</p>
-
-<div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: v1.0
-<span style="color: #8b4513;">scalarType</span>: complex64
-<span style="color: #8b4513;">indices</span>:
-  <span style="color: #8b4513;">momentum</span>:
-    <span style="color: #8b4513;">type</span>: halfGrid
-  <span style="color: #8b4513;">orbital</span>:
-    <span style="color: #8b4513;">type</span>: spatial
-<span style="color: #8b4513;">dimensions</span>:
-  - <span style="color: #8b4513;">length</span>:   1620
-    <span style="color: #8b4513;">type</span>: momentum
-  - <span style="color: #8b4513;">length</span>:    704
-    <span style="color: #8b4513;">type</span>: orbital
-  - <span style="color: #8b4513;">length</span>:    704
-    <span style="color: #8b4513;">type</span>: orbital
-<span style="color: #8b4513;">data</span>: CoulombVertex.dat    <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">path to raw data</span>
-<span style="color: #8b4513;">binary</span>: 1
-<span style="color: #8b4513;">unit</span>: 0.1917011272153577       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">= sqrt(Eh/eV)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org47d76ad" class="outline-2">
-<h2 id="org47d76ad"><span class="section-number-2">3</span> <a href="#org47d76ad">Literature</a></h2>
-<div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
-  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
 </div>
 </div>
 </div>
