@@ -1,4 +1,7 @@
-#+title: Quick Start
+:PROPERTIES:
+:ID: GettingStarted
+:END:
+#+title: Getting Started
 
 * Download the code
 

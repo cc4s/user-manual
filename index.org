@@ -15,7 +15,7 @@
 
 * Interfaces to Cc4s
 
-Currently avaible interfaces are available for
+Interfaces are available for
 - [[file:interfaces/vasp.org][VASP]]
 - [[file:interfaces/fhi-aims.org][FHI-AIMS]]
 
@@ -36,7 +36,7 @@ The most important objects used by algorithms include
 - [[id:CoulombVertex][CoulombVertex]]
 - [[id:CoulombIntegrals][CoulombIntegrals]]
 
-You can find a complete list of algorithms
+You can find a complete list of objects
 [[file:objects/sitemap.org][here]].
 
 * Contributors and Acknowledgements
