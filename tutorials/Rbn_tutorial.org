@@ -448,6 +448,6 @@ The table below summarizes all computed ground state energy contributions for th
 |------------------------------+-----------------------------------|
 
 Please note that the Hartree--Fock energy contribution was obtained using the preceeding =VASP= calculation. We recommend to
-converge the Hartree--Fock energy contribution to the thermodynamic limit separately using denser $k$-meshes if necessary.
+converge the Hartree--Fock energy contribution to the thermodynamic limit separately using denser $k$ -meshes if necessary.
 The final =CCSD(T) energy + corrections= value can be used to study all accessible physical properties of interest.
 
