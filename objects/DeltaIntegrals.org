@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID: DeltaIntegrals
+:END:
+#+title: =DeltaIntegrals=
+#+OPTIONS: toc:nil
+
+
+* Brief description
+
+\begin{equation}
+\langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
+\end{equation}
+
+with the Dirac delta function $\delta(\mathbf{r})$ and the interelectronic distance
+$\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|$. The delta-integrals have to be
+provided and cannot be evaluated within =Cc4s=. 
+The integrals are needed by the [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]] algorithm.
+
+
+* Literature
+bibliography:../group.bib
+
+

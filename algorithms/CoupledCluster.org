@@ -56,7 +56,7 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
 :END:
 =method: type= specifies the  coupled-cluster approximation for the amplitudes to be used.
 The currently available approximations are:
-  - =Ccsd= :: Coupled Cluster singles and doubles [[cite:&Bartlett2007-cm]].
+  - =Ccsd= :: Coupled Cluster singles and doubles (see [[cite:&Bartlett2007-cm]] and references therin).
   - =CcsdReference= :: Canonical and unoptimized version of the =Ccsd= algorithm.
     This algorithm has the same inputs as =Ccsd= with the exception of the
     [[#integralsslicesize][integralSliceSize]] input argument.
