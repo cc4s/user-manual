@@ -9,7 +9,7 @@
 The =CoulombVertexSingularVectors= object contains the transformation from the auxiliary-field basis to the
 plane-wave basis $U_{G}^{F}$ as input.
 This transformation matrix needs to be provided by the interfaced
-electronic structure code and should be read in from an external file using the
+electronic structure code and should be read from an external file using the
 [[id:TensorReader][TensorReader]] algorithm.
 
 #+begin_src sh
@@ -19,8 +19,6 @@ electronic structure code and should be read in from an external file using the
   out:
     tensor: CoulombVertexSingularVectors
 #+end_src
-
-* TODO Specification
 
 * Literature
 bibliography:../group.bib

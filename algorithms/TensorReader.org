@@ -5,7 +5,7 @@
 #+OPTIONS: toc:nil
 
 * Brief description
-TensorReader reads a cc4s tensor....
+TensorReader reads a cc4s tensor.
 
 * Algorithm call
 
@@ -35,7 +35,6 @@ algorithm is given below.
 :CUSTOM_ID: what
 :END:
 
-i dont knwo what to write here
 
 * Algorithm output
 #+name: reader-output-table
@@ -49,8 +48,6 @@ i dont knwo what to write here
 :CUSTOM_ID: data
 :END:
 
-this is data data data
-
 ** Sample =stdout=
 The output of this algorithm reads
 #+begin_src sh
@@ -61,11 +58,6 @@ realtime 0.045400572 s
 
 ** TODO Sample =yaml= output
 
-* Computational complexity
--
-
-* Theory
--
 
 * Literature
 bibliography:../group.bib

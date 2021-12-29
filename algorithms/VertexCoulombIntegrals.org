@@ -5,7 +5,8 @@
 #+OPTIONS: toc:nil
 
 * Brief description
-Evaluation of Coulomb integrals from provided Coulomb vertex.
+=VertexCoulombIntegrals= prepares a recipe needed for the evaluation of Coulomb integrals.
+
 * Algorithm call
 
 A typical input file snippet to call the =VertexCoulombIntegrals= algorithm is given below.
@@ -49,10 +50,16 @@ realtime 0.001249174 s
 
 
 * Computational complexity
--
+
+Note that the =VertexCoulombIntegrals= algorithm merely defines a recipe to perform the computation of all integrals. The integrals will only be computed once
+their numerical values are needed. Certain types of Coulomb integrals; for example, $V_{cd}^{ab}$ will potentially never be computed if not needed by a later
+algorithm. In this manner potential memory bottle-necks are avoided.
 
 * Theory
--
+
+Coulomb integrals are evaluated using the following expression.
+$$ V^{pq}_{sr} = \sum_{G} {\Gamma^\ast}^{pG}_s \Gamma^q_{rG} $$
+
 
 * Literature
 bibliography:../group.bib

@@ -27,12 +27,10 @@ for example, the following yaml input file.
 #+end_src
 
 We note that the [[id:VertexCoulombIntegrals][VertexCoulombIntegrals]]
-algorithm of =Cc4s= provides a "recipe" for the computation of a set of =CoulombIntegrals=
+algorithm of =Cc4s= provides a recipe for the computation of a set of =CoulombIntegrals=
 $\{V^{ab}_{ij}, V^{ai}_{bj}, V^{ab}_{cd}  ... \}$ .  The respective numerical evaluation of these
 integrals is performed only if the numerical values of the tensors are
 needed by an algorithm.
-
-* TODO Specification
 
 
 * Literature

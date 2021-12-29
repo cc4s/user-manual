@@ -5,9 +5,9 @@
 #+OPTIONS: toc:nil
 
 * Brief description
-This algorithm splits all edges of an input tensor of type orbital and size $p$
-in sizes of $o$ and $v$. It uses =slicedEigenEnergies= to identify
-the number of holes $o$ and particles $v$. The output tensor will be a set of
+This algorithm splits all edges of an input tensor of type orbital and size $N_p$
+in sizes of $N_o$ and $N_v$. It uses =slicedEigenEnergies= to identify
+the number of holes $N_o$ and particles $N_v$. The output tensor will be a set of
 $2^n$ tensors, where n is the number of edges with type orbital. For instance
 the Coulomb Vertex will be processed like
 $\Gamma_p^p(G) \rightarrow \{ \Gamma_o^o(G), \Gamma_o^v(G), \Gamma_v^o(G), \Gamma_v^v(G)\}$.
@@ -42,7 +42,7 @@ algorithm is given below.
 :CUSTOM_ID: operator
 :END:
 
-This is a normal tensor ole.
+This is a single tensor.
 
 * Algorithm output
 #+name: sliceop-output-table
@@ -56,7 +56,7 @@ This is a normal tensor ole.
 :CUSTOM_ID: slicedOperator
 :END:
 
-this is a set of tensors....
+This is a set of tensors.
 
 ** Sample =stdout=
 The output of this algorithm reads
@@ -68,11 +68,6 @@ realtime 0.000798066 s
 
 ** TODO Sample =yaml= output
 
-* Computational complexity
--
-
-* Theory
--
 
 * Literature
 bibliography:../group.bib

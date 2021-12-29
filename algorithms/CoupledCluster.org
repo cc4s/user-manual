@@ -7,6 +7,7 @@
 * Brief description
 This algorithm solves the CCSD amplitude equations using the Coulomb integrals
 and Hartree--Fock eigenenergies.
+
 * Algorithm call
 
 A typical input file snippet to call the =CoupledCluster= algorithm is given below.
@@ -184,7 +185,7 @@ realtime 3463.773373
 
 * Computational complexity
 
-This section contains computational or memory footprints
+This section explains computational or memory footprints
 for the various methods implemented in *CoupledCluster*
 [[#method-type][(see type)]].
 

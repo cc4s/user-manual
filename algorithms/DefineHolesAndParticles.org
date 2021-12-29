@@ -34,7 +34,6 @@ A typical input file snippet to call the =DefineHolesAndParticles= algorithm is 
 :CUSTOM_ID: eigenEnergies
 :END:
 
-The eigenEnergies are super cool
 
 
 * Algorithm output
@@ -43,7 +42,6 @@ The eigenEnergies are super cool
 |-----------------------+-------|
 | =slicedEigenEnergies= | [[id:SlicedEigenEnergies][SlicedEigenEnergies]]     |
 
-was soll das
 ** Sample =stdout=
 The output of the algorithm provides the number of occupied and virtual states
 in the calculation.
@@ -57,11 +55,6 @@ realtime 0.000832881 s
 
 ** TODO Sample =yaml= output
 
-* Computational complexity
--
-
-* Theory
--
 
 * Literature
 bibliography:../group.bib

@@ -5,8 +5,7 @@
 #+OPTIONS: toc:nil
 
 * Brief description
-This algorithm evaluates a contribution for the basis-set-incompeteness
-error.
+This algorithm evaluates a correction to the basis-set-incompeteness error (BSIE) of CCSD correlation energies.
 * Algorithm call
 
 A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algorithm is given below.
@@ -32,8 +31,8 @@ A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algo
 | Keyword               | Value                          |
 |-----------------------+--------------------------------|
 | =amplitudes=          | [[id:Amplitudes][Singles and doubles amplitudes]] |
-| =deltaIntegralsPPHH=  |                                |
-| =deltaIntegralsHH=    |                                |
+| =deltaIntegralsPPHH=  | [[id:DeltaIntegrals][DeltaIntegrals]]   |
+| =deltaIntegralsHH=    | [[id:DeltaIntegrals][DeltaIntegrals]]   |
 | =mp2PairEnergiese=    | [[id:Mp2PairEnergies][MP2 pair energies matrix]]       |
 | =coulombIntegrals=    | [[id:CoulombIntegrals][Coulomb Integrals]]              |
 | =slicedEigenEnergies= | [[id:SlicedEigenEnergies][Sliced one-electron energies]]   |
@@ -41,15 +40,14 @@ A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algo
 
 * Algorithm output
 
-The output of the algorithm is the CCSD-BSIE-energy-correction. This energy contains
-the 2nd-order energy correction and a pair-specific ppl contribution (see theory).
+The output of the algorithm is the CCSD BSIE correction. This energy contains
+the 2nd-order energy correction and a pair-specific contribution that accounts for the BSIE of the particle-particle ladder term (see theory).
 
 ** Sample =stdout=
 Below an example standard output stream is shown for a successful run.
 #+begin_src sh
 step: 10, CcsdFocalPointBasisSetCorrection
-CCSD-BSIE energy correction:      -0.0165423958
-2nd-order energy correction:      -0.0229332012 // will be removed
+Ccsd-BSIE energy correction:      -0.0165423958
 #+end_src
 
 ** TODO Sample =yaml= output
@@ -57,7 +55,7 @@ CCSD-BSIE energy correction:      -0.0165423958
 
 * Computational complexity
 
-This algorithm is basically a post-processing algorithm. However, the 2nd-order
+This algorithm is a post-processing algorithm. However, the 2nd-order
 energy is re-evaluated and other operations of the same computational
 complexity are performed. The memory footprint is also in the order of a 2nd-order
 energy calculation.
@@ -65,29 +63,21 @@ energy calculation.
 
 * Theory
 
-This algorithm evaluates the correction of the basis-set-incompleteness-error
-(BSIE) for CCSD as descibed in Ref. cite:&FocalPointAppIrmler2021. The algorithm
-requires the converged CCSD amplitudes together with \delta-integrals. Futhermore,
-a complete-basis-set estimate for the MP2-pair-energies is needed.
+This algorithm evaluates a correction to the basis-set-incompleteness error (BSIE)
+of CCSD correlation energies as descibed in Ref. cite:&FocalPointAppIrmler2021. The algorithm
+requires the converged CCSD amplitudes together with [[id:DeltaIntegrals][\delta-integrals]]. Futhermore,
+a complete-basis-set-limit estimate of the [[id:Mp2PairEnergies][MP2 pair-correlation-energies]] is needed.
 
-As discussed in the mentioned publication, the CCSD-BSIE in a finite basis-set
+As discussed in  Ref. cite:&FocalPointAppIrmler2021, the CCSD-BSIE in a finite basis-set
 calculation is primarily due to the 2nd-order term, and the so-called
-particle-particle ladder (ppl) term. There exists a variety of algorithms which allow
+particle-particle ladder (ppl) term. 
+There exists a variety of algorithms which allow
 a reliable CBS estimate for the 2nd-order term at modest computational costs
 (compared to a the corresponding CCSD calculation for the same system). The
 missing ppl BSIE contribution is approximated using a pair-specific expression
-which requires the 2nd-order pair-energies, CCSD-amplitudes, as-well-as the
-\delta-integrals which are defined by
-
-\begin{equation}
-\langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
-\end{equation}
-
-with the Dirac delta function $\delta(\mathbf{r})$ and the interelectronic distance
-$\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|$. The delta-integrals have to be
-provided and cannot be evaluated within cc4s. This ppl-correction
-is implemented as given in Eq.(31) in Ref. cite:&FocalPointAppIrmler2021
-
+which requires the [[id:Mp2PairEnergies][MP2 pair-correlation-energies]],
+CCSD amplitudes, as-well-as the [[id:DeltaIntegrals][\delta-integrals]].
+The implemented ppl-correction is defined by Eq.(31) in Ref. cite:&FocalPointAppIrmler2021 .
 The provided CCSD-BSIE energy correction is the sum of the 2nd-order energy
 correction and the ppl-correction-term.
 

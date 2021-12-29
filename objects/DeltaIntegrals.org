@@ -16,6 +16,11 @@ $\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|$. The delta-integrals have to be
 provided and cannot be evaluated within =Cc4s=. 
 The integrals are needed by the [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]] algorithm.
 
+Two types of =DeltaIntegrals= are currently used by the [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]] algorithm:
+=DeltaIntegralsPPHH= ($\langle ab \mid \delta(\mathbf{r}_{12}) \mid ij \rangle$)  and =DeltaIntegralsHH=
+($\langle ij \mid \delta(\mathbf{r}_{12}) \mid ij \rangle$).
+
+
 
 * Literature
 bibliography:../group.bib

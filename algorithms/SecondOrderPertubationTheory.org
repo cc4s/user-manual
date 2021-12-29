@@ -33,14 +33,14 @@ Below an example standard output stream is shown for a successful =SecondOrderPe
 
 
 #+begin_src sh
-dont know yet.
+TODO
 #+end_src
 
 * Computational Complexity and memory footprint
-Two objects of size $\mathcal{O}{(N_o^2 N_v^2)}$ are hold in main memory. The computational complexity should be negligible as is of order $\mathcal{O}{(N_o^2 N_v^2)}$.
-* Theory
-The question is how much will be written here and in ccsd etc...
+Two objects of size $\mathcal{O}{(N_o^2 N_v^2)}$ are stored in main memory. The computational complexity should be negligible as is of order $\mathcal{O}{(N_o^2 N_v^2)}$.
 
+* Theory
+The implemented expression assumes Hartree--Fock one-electron energies and can be found in Ref.[[cite:&Moller]].
 
 * Literature
 bibliography:../group.bib

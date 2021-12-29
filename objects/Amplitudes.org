@@ -9,8 +9,6 @@
 =Amplitudes= are a set of singles $t_i^a$ and doubles $t_{ij}^{ab}$ amplitudes stored as tensors.
 They are generated using the [[id:CoupledCluster][CoupledCluster]] algorithm.
 
-* TODO Specification
-
 
 * Literature
 bibliography:../group.bib

@@ -5,10 +5,9 @@
 #+OPTIONS: toc:nil
 
 * Brief description
-This algorithm calculates the structure factor for (ccsd) amplitudes provided.
-CoulombVertexSingularVectors are needed to transform back to the common reciprocal 
-mesh. Furthermore, a tricubic interpolaton can be performed which reduces
-quadrature errors.
+This algorithm calculates the electronic transition structure factor
+and performs a tricubic interpolaton to estimate a finite size correlation energy correction.
+
 * Algorithm call
 
 A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCorrection= algorithm is given below.
@@ -43,9 +42,10 @@ A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCor
 :CUSTOM_ID: interpolationgridsize
 :END:
 
-The =interpolationGridSize= keyword can be used to control the finesness of the grid used to interpolate the
+The =interpolationGridSize= keyword can be used to control the density of the mesh used to interpolate the
 electronic transition structure factor in each spatial direction.
-A value of $N$ for the =interpolationGridSize= means that $2 N$ sampling points are used to sample the interpolated structure factor in each direction.
+A value of $N$ for the =interpolationGridSize= means that $2 N$ sampling points are used to sample the interpolated structure factor in each direction
+between neighbouring [[id:GridVectors][Grid Vectors]].
 
 
 * Algorithm output
@@ -57,12 +57,12 @@ A value of $N$ for the =interpolationGridSize= means that $2 N$ sampling points 
 | =transitionStructureFactor= | Transition Structure factor |
 |-----------------------------+-----------------------------|
 
-The output of the *TransitionStructureFactorFiniteSizeCorrection* algorithm includes transition structure factor $S(G)$ and
+The output of the =TransitionStructureFactorFiniteSizeCorrection= algorithm includes transition structure factor $S(G)$ and
 an estimate of the finitie size error correction to the correlation energy. The finite size error is estimated using a tricubic interpolation
 algorithm of the electronic transition structure factor.
 
 ** Sample =stdout=
-Below an example standard output stream is shown for a successful *TransitionStructureFactorFiniteSizeCorrection* algorithm run.
+Below an example standard output stream is shown for a successful =TransitionStructureFactorFiniteSizeCorrection= algorithm run.
 #+begin_src sh
 step: 10, TransitionStructureFactorFiniteSizeCorrection
 Uncorrected correlation energy:   -171.7706873818
@@ -74,7 +74,7 @@ realtime 68.117389991 s
 
 * Computational complexity
 
-No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared.
+No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared to preceding Coupled Cluster theory calculations.
 
 * Theory
 

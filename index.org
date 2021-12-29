@@ -17,7 +17,7 @@
 
 Interfaces are available for
 - [[file:interfaces/vasp.org][VASP]]
-- FHI-AIMS
+- FHI-AIMS (under construction)
 
 * Algorithms in Cc4s
 

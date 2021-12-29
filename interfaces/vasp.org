@@ -18,7 +18,9 @@ An example =bash= script performing all following steps for a periodic BN crysta
 # 5. Output files for cc4s
 
 
-* *Step 1* Hartree-Fock: Occupied orbitals
+* *Step 1*: Hartree-Fock: Occupied orbitals
+#+OPTIONS: num:nil
+
 
 In this and all following steps we assume that the required =VASP= input files (=INCAR=, =POSCAR=, =POTCAR= and =KPOINTS=) are present in the same working directory.
 We assume that the =KPOINTS= file samples one $k$ -point of the first Brillouin zone only.
@@ -60,7 +62,8 @@ For properly converged Hartree--Fock orbital energies, we choose a break conditi
 Further information on the used tags can be found in the VASP wiki.
 
 
-* *Step 2* Hartree-Fock: Unoccupied orbitals
+* *Step 2*: Hartree-Fock: Unoccupied orbitals
+#+OPTIONS: num:nil
 
 Coupled cluster theory approximates the many-electron wave function using excited Slater determinants contructed from occupied and unoccupied orbitals.
 We compute all unoccupied HF orbitals in the given plane-wave basis as described below.
@@ -118,13 +121,16 @@ NBANDS   = $nbands
 LSFACTOR = .TRUE.
 #+end_src
 
-At the end of this =VASP= calculation the *Mp2PairEnergies.yaml* and *Mp2PairEnergies.dat* files will be written to disk.
+At the end of this =VASP= calculation the following input files needed by =Cc4s= are written to disk. 
+- [[id:Mp2PairEnergies][Mp2PairEnergies]] ($\epsilon_{ij}$) : =Mp2PairEnergies.yaml=, =Mp2PairEnergies.dat=
 
 * *Optional Step 2-(b)*: Approximate natural orbitals
+#+OPTIONS: num:nil
 
 The convergence of the electronic correlation energy is very slow when using canonical Hartree--Fock orbitals.
 Approximate natural orbitals allow for achieving a more rapid correlation energy convergence to the complete basis set limit.
-Here, we compute these natural orbitals as described below. However, alternative approaches such as =ALGO=RPANO= exist in =VASP=.
+Here, we compute these natural orbitals as described below and using Eq.2 from Ref.[[cite:&grueneis2011natural]].
+However, alternative approaches such as =ALGO=RPANO= exist in =VASP=.
 Make sure to employ the =WAVECAR= file containing all orbitals (=WAVECAR.HFV=).
 
 #+name: hfv-incar
@@ -173,7 +179,8 @@ NELM       = 1
 The =NBANDSHIGH= tag makes sure that exactly the number of orbitals specified by =NBANDS= will be used regardless of the number of MPI ranks.
 Save the =WAVECAR= file containing the re-canonicalized unoccupied natural orbitals, e.g. =mv WAVECAR WAVECAR.CNO=.
 
-* *Step 3* Computing =Cc4s= input files
+* *Step 3*: Computing =Cc4s= input files
+#+OPTIONS: num:nil
 
 In the final step we call =VASP= using the =WAVECAR= file with the desired choice of unoccupied orbitals (e.g. =cp WAVECAR.HFV WAVECAR= or =cp WAVECAR.CNO WAVECAR=) and
 the following =INCAR= file.
@@ -205,5 +212,9 @@ This step produces the following input files needed by =Cc4s=
 - [[id:DeltaIntegrals][DeltaIntegrals]] ($\delta^{ab}_{ij}$) : =DeltaPPHH.yaml=, =DeltaPPHH.dat=
 - [[id:DeltaIntegrals][DeltaIntegrals]] ($\delta_{ij}$) : =DeltaHH.yaml=, =DeltaHH.dat=
 - [[id:CoulombVertexSingularVectors][CoulombVertexSingularVetors]] ($U_{G}^{F}$) : =CoulombVertexSingularVectors.yaml=, =CoulombVertexSingularVectors.dat=
+
+* Literature
+#+OPTIONS: num:nil
+bibliography:../group.bib
 
 
