@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-28 Tue 15:34 -->
+<!-- 2021-12-29 Wed 12:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>DeltaIntegrals</code></title>
@@ -306,8 +306,8 @@
 <h1 class="title"><code>DeltaIntegrals</code></h1>
 
 
-<div id="outline-container-orgb812464" class="outline-2">
-<h2 id="orgb812464"><span class="section-number-2">1</span> <a href="#orgb812464">Brief description</a></h2>
+<div id="outline-container-orgfee27e7" class="outline-2">
+<h2 id="orgfee27e7"><span class="section-number-2">1</span> <a href="#orgfee27e7">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 \begin{equation}
 \langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
@@ -319,12 +319,19 @@ with the Dirac delta function \(\delta(\mathbf{r})\) and the interelectronic dis
 provided and cannot be evaluated within <code>Cc4s</code>. 
 The integrals are needed by the <a href="../algorithms/CcsdFocalPointBasisSetCorrection.html#ID-CcsdFocalPointBasisSetCorrection">CcsdFocalPointBasisSetCorrection</a> algorithm.
 </p>
+
+<p>
+Two types of <code>DeltaIntegrals</code> are currently used by the <a href="../algorithms/CcsdFocalPointBasisSetCorrection.html#ID-CcsdFocalPointBasisSetCorrection">CcsdFocalPointBasisSetCorrection</a> algorithm:
+<code>DeltaIntegralsPPHH</code> (\(\langle ab \mid \delta(\mathbf{r}_{12}) \mid ij \rangle\))  and <code>DeltaIntegralsHH</code>
+(\(\langle ij \mid \delta(\mathbf{r}_{12}) \mid ij \rangle\)).
+</p>
 </div>
 </div>
 
 
-<div id="outline-container-orgdbb4c04" class="outline-2">
-<h2 id="orgdbb4c04"><span class="section-number-2">2</span> <a href="#orgdbb4c04">Literature</a></h2>
+
+<div id="outline-container-org139ce06" class="outline-2">
+<h2 id="org139ce06"><span class="section-number-2">2</span> <a href="#org139ce06">Literature</a></h2>
 <div class="outline-text-2" id="text-2">
 <div class="csl-bib-body">
 </div>
@@ -332,7 +339,7 @@ The integrals are needed by the <a href="../algorithms/CcsdFocalPointBasisSetCor
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-28 Tue 15:34</p>
+<p class="date">Created: 2021-12-29 Wed 12:56</p>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-28 Tue 15:34 -->
+<!-- 2021-12-29 Wed 12:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>VertexCoulombIntegrals</code></title>
@@ -232,6 +232,28 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -283,16 +305,17 @@
 <div id="content">
 <h1 class="title"><code>VertexCoulombIntegrals</code></h1>
 
-<div id="outline-container-org21e7a0a" class="outline-2">
-<h2 id="org21e7a0a"><span class="section-number-2">1</span> <a href="#org21e7a0a">Brief description</a></h2>
+<div id="outline-container-org8622fd8" class="outline-2">
+<h2 id="org8622fd8"><span class="section-number-2">1</span> <a href="#org8622fd8">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Evaluation of Coulomb integrals from provided Coulomb vertex.
+<code>VertexCoulombIntegrals</code> prepares a recipe needed for the evaluation of Coulomb integrals.
 </p>
 </div>
 </div>
-<div id="outline-container-org66ed2b2" class="outline-2">
-<h2 id="org66ed2b2"><span class="section-number-2">2</span> <a href="#org66ed2b2">Algorithm call</a></h2>
+
+<div id="outline-container-org855b081" class="outline-2">
+<h2 id="org855b081"><span class="section-number-2">2</span> <a href="#org855b081">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>VertexCoulombIntegrals</code> algorithm is given below.
@@ -310,10 +333,10 @@ A typical input file snippet to call the <code>VertexCoulombIntegrals</code> alg
 </div>
 
 
-<div id="outline-container-org4abd861" class="outline-2">
-<h2 id="org4abd861"><span class="section-number-2">3</span> <a href="#org4abd861">Algorithm input</a></h2>
+<div id="outline-container-orgd90ee0d" class="outline-2">
+<h2 id="orgd90ee0d"><span class="section-number-2">3</span> <a href="#orgd90ee0d">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org2c5dccc" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org1361376" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
 
 <colgroup>
@@ -338,8 +361,8 @@ A typical input file snippet to call the <code>VertexCoulombIntegrals</code> alg
 </div>
 
 
-<div id="outline-container-org58b532b" class="outline-2">
-<h2 id="org58b532b"><span class="section-number-2">4</span> <a href="#org58b532b">Algorithm output</a></h2>
+<div id="outline-container-orgb8533c3" class="outline-2">
+<h2 id="orgb8533c3"><span class="section-number-2">4</span> <a href="#orgb8533c3">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -364,8 +387,8 @@ A typical input file snippet to call the <code>VertexCoulombIntegrals</code> alg
 </table>
 </div>
 
-<div id="outline-container-orgf301ff4" class="outline-3">
-<h3 id="orgf301ff4"><span class="section-number-3">4.1</span> <a href="#orgf301ff4">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org3f4b2e5" class="outline-3">
+<h3 id="org3f4b2e5"><span class="section-number-3">4.1</span> <a href="#org3f4b2e5">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 The output of this algorithm reads
@@ -379,32 +402,36 @@ realtime 0.001249174 s
 </div>
 </div>
 
-<div id="outline-container-orgf85ca84" class="outline-3">
-<h3 id="orgf85ca84"><span class="section-number-3">4.2</span> <a href="#orgf85ca84"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org349c6a7" class="outline-3">
+<h3 id="org349c6a7"><span class="section-number-3">4.2</span> <a href="#org349c6a7"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
 
-<div id="outline-container-org584a80f" class="outline-2">
-<h2 id="org584a80f"><span class="section-number-2">5</span> <a href="#org584a80f">Computational complexity</a></h2>
+<div id="outline-container-orge48c5ee" class="outline-2">
+<h2 id="orge48c5ee"><span class="section-number-2">5</span> <a href="#orge48c5ee">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
-<ul class="org-ul">
-<li></li>
-</ul>
+<p>
+Note that the <code>VertexCoulombIntegrals</code> algorithm merely defines a recipe to perform the computation of all integrals. The integrals will only be computed once
+their numerical values are needed. Certain types of Coulomb integrals; for example, \(V_{cd}^{ab}\) will potentially never be computed if not needed by a later
+algorithm. In this manner potential memory bottle-necks are avoided.
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgd8c9ec7" class="outline-2">
-<h2 id="orgd8c9ec7"><span class="section-number-2">6</span> <a href="#orgd8c9ec7">Theory</a></h2>
+<div id="outline-container-org1c8ab6a" class="outline-2">
+<h2 id="org1c8ab6a"><span class="section-number-2">6</span> <a href="#org1c8ab6a">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
-<ul class="org-ul">
-<li></li>
-</ul>
+<p>
+Coulomb integrals are evaluated using the following expression.
+\[ V^{pq}_{sr} = \sum_{G} {\Gamma^\ast}^{pG}_s \Gamma^q_{rG} \]
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgb9d6cc3" class="outline-2">
-<h2 id="orgb9d6cc3"><span class="section-number-2">7</span> <a href="#orgb9d6cc3">Literature</a></h2>
+
+<div id="outline-container-org88158d0" class="outline-2">
+<h2 id="org88158d0"><span class="section-number-2">7</span> <a href="#org88158d0">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
 </div>
@@ -412,7 +439,7 @@ realtime 0.001249174 s
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-28 Tue 15:34</p>
+<p class="date">Created: 2021-12-29 Wed 12:56</p>
 </div>
 </body>
 </html>

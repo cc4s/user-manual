@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-28 Tue 15:34 -->
+<!-- 2021-12-29 Wed 12:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>CcsdFocalPointBasisSetCorrection</code></title>
@@ -232,28 +232,6 @@
     /*]]>*///-->
 // @license-end
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -305,17 +283,16 @@
 <div id="content">
 <h1 class="title"><code>CcsdFocalPointBasisSetCorrection</code></h1>
 
-<div id="outline-container-orga0316db" class="outline-2">
-<h2 id="orga0316db"><span class="section-number-2">1</span> <a href="#orga0316db">Brief description</a></h2>
+<div id="outline-container-org3d44e59" class="outline-2">
+<h2 id="org3d44e59"><span class="section-number-2">1</span> <a href="#org3d44e59">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-This algorithm evaluates a contribution for the basis-set-incompeteness
-error.
+This algorithm evaluates a correction to the basis-set-incompeteness error (BSIE) of CCSD correlation energies.
 </p>
 </div>
 </div>
-<div id="outline-container-orge8c35da" class="outline-2">
-<h2 id="orge8c35da"><span class="section-number-2">2</span> <a href="#orge8c35da">Algorithm call</a></h2>
+<div id="outline-container-org245fa41" class="outline-2">
+<h2 id="org245fa41"><span class="section-number-2">2</span> <a href="#org245fa41">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>CcsdFocalPointBasisSetCorrection</code> algorithm is given below.
@@ -338,10 +315,10 @@ A typical input file snippet to call the <code>CcsdFocalPointBasisSetCorrection<
 </div>
 
 
-<div id="outline-container-org002ff1a" class="outline-2">
-<h2 id="org002ff1a"><span class="section-number-2">3</span> <a href="#org002ff1a">Algorithm input</a></h2>
+<div id="outline-container-orgb6df5e1" class="outline-2">
+<h2 id="orgb6df5e1"><span class="section-number-2">3</span> <a href="#orgb6df5e1">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgd904767" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgb19bf50" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
 
 <colgroup>
@@ -363,12 +340,12 @@ A typical input file snippet to call the <code>CcsdFocalPointBasisSetCorrection<
 
 <tr>
 <td class="org-left"><code>deltaIntegralsPPHH</code></td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="../objects/DeltaIntegrals.html#ID-DeltaIntegrals">DeltaIntegrals</a></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>deltaIntegralsHH</code></td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left"><a href="../objects/DeltaIntegrals.html#ID-DeltaIntegrals">DeltaIntegrals</a></td>
 </tr>
 
 <tr>
@@ -391,41 +368,40 @@ A typical input file snippet to call the <code>CcsdFocalPointBasisSetCorrection<
 </div>
 
 
-<div id="outline-container-org56beb09" class="outline-2">
-<h2 id="org56beb09"><span class="section-number-2">4</span> <a href="#org56beb09">Algorithm output</a></h2>
+<div id="outline-container-org24e7b29" class="outline-2">
+<h2 id="org24e7b29"><span class="section-number-2">4</span> <a href="#org24e7b29">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
-The output of the algorithm is the CCSD-BSIE-energy-correction. This energy contains
-the 2nd-order energy correction and a pair-specific ppl contribution (see theory).
+The output of the algorithm is the CCSD BSIE correction. This energy contains
+the 2nd-order energy correction and a pair-specific contribution that accounts for the BSIE of the particle-particle ladder term (see theory).
 </p>
 </div>
 
-<div id="outline-container-org0cc58e5" class="outline-3">
-<h3 id="org0cc58e5"><span class="section-number-3">4.1</span> <a href="#org0cc58e5">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org80fb5ee" class="outline-3">
+<h3 id="org80fb5ee"><span class="section-number-3">4.1</span> <a href="#org80fb5ee">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful run.
 </p>
 <div class="org-src-container">
 <pre class="src src-sh">step: 10, CcsdFocalPointBasisSetCorrection
-CCSD-BSIE energy correction:      -0.0165423958
-2nd-order energy correction:      -0.0229332012 // will be removed
+Ccsd-BSIE energy correction:      -0.0165423958
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7b91e80" class="outline-3">
-<h3 id="org7b91e80"><span class="section-number-3">4.2</span> <a href="#org7b91e80"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-orgad14f0d" class="outline-3">
+<h3 id="orgad14f0d"><span class="section-number-3">4.2</span> <a href="#orgad14f0d"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
 
-<div id="outline-container-org3eb669b" class="outline-2">
-<h2 id="org3eb669b"><span class="section-number-2">5</span> <a href="#org3eb669b">Computational complexity</a></h2>
+<div id="outline-container-orgb9554a2" class="outline-2">
+<h2 id="orgb9554a2"><span class="section-number-2">5</span> <a href="#orgb9554a2">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
-This algorithm is basically a post-processing algorithm. However, the 2nd-order
+This algorithm is a post-processing algorithm. However, the 2nd-order
 energy is re-evaluated and other operations of the same computational
 complexity are performed. The memory footprint is also in the order of a 2nd-order
 energy calculation.
@@ -434,39 +410,27 @@ energy calculation.
 </div>
 
 
-<div id="outline-container-org2df7916" class="outline-2">
-<h2 id="org2df7916"><span class="section-number-2">6</span> <a href="#org2df7916">Theory</a></h2>
+<div id="outline-container-orgafc42f7" class="outline-2">
+<h2 id="orgafc42f7"><span class="section-number-2">6</span> <a href="#orgafc42f7">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
-This algorithm evaluates the correction of the basis-set-incompleteness-error
-(BSIE) for CCSD as descibed in Ref. (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>). The algorithm
-requires the converged CCSD amplitudes together with &delta;-integrals. Futhermore,
-a complete-basis-set estimate for the MP2-pair-energies is needed.
+This algorithm evaluates a correction to the basis-set-incompleteness error (BSIE)
+of CCSD correlation energies as descibed in Ref. (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>). The algorithm
+requires the converged CCSD amplitudes together with <a href="../objects/DeltaIntegrals.html#ID-DeltaIntegrals">&delta;-integrals</a>. Futhermore,
+a complete-basis-set-limit estimate of the <a href="../objects/Mp2PairEnergies.html#ID-Mp2PairEnergies">MP2 pair-correlation-energies</a> is needed.
 </p>
 
 <p>
-As discussed in the mentioned publication, the CCSD-BSIE in a finite basis-set
+As discussed in  Ref. (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>), the CCSD-BSIE in a finite basis-set
 calculation is primarily due to the 2nd-order term, and the so-called
-particle-particle ladder (ppl) term. There exists a variety of algorithms which allow
+particle-particle ladder (ppl) term. 
+There exists a variety of algorithms which allow
 a reliable CBS estimate for the 2nd-order term at modest computational costs
 (compared to a the corresponding CCSD calculation for the same system). The
 missing ppl BSIE contribution is approximated using a pair-specific expression
-which requires the 2nd-order pair-energies, CCSD-amplitudes, as-well-as the
-&delta;-integrals which are defined by
-</p>
-
-\begin{equation}
-\langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
-\end{equation}
-
-<p>
-with the Dirac delta function \(\delta(\mathbf{r})\) and the interelectronic distance
-\(\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|\). The delta-integrals have to be
-provided and cannot be evaluated within cc4s. This ppl-correction
-is implemented as given in Eq.(31) in Ref. (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>)
-</p>
-
-<p>
+which requires the <a href="../objects/Mp2PairEnergies.html#ID-Mp2PairEnergies">MP2 pair-correlation-energies</a>,
+CCSD amplitudes, as-well-as the <a href="../objects/DeltaIntegrals.html#ID-DeltaIntegrals">&delta;-integrals</a>.
+The implemented ppl-correction is defined by Eq.(31) in Ref. (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>) .
 The provided CCSD-BSIE energy correction is the sum of the 2nd-order energy
 correction and the ppl-correction-term.
 </p>
@@ -474,8 +438,8 @@ correction and the ppl-correction-term.
 </div>
 
 
-<div id="outline-container-orgc3772c2" class="outline-2">
-<h2 id="orgc3772c2"><span class="section-number-2">7</span> <a href="#orgc3772c2">Literature</a></h2>
+<div id="outline-container-orgb91f9bb" class="outline-2">
+<h2 id="orgb91f9bb"><span class="section-number-2">7</span> <a href="#orgb91f9bb">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -484,7 +448,7 @@ correction and the ppl-correction-term.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-28 Tue 15:34</p>
+<p class="date">Created: 2021-12-29 Wed 12:56</p>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-12-28 Tue 15:34 -->
+<!-- 2021-12-29 Wed 12:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>PerturbativeTriples</code></title>
@@ -305,16 +305,16 @@
 <div id="content">
 <h1 class="title"><code>PerturbativeTriples</code></h1>
 
-<div id="outline-container-orgb211153" class="outline-2">
-<h2 id="orgb211153"><span class="section-number-2">1</span> <a href="#orgb211153">Brief description</a></h2>
+<div id="outline-container-orgcc57ccc" class="outline-2">
+<h2 id="orgcc57ccc"><span class="section-number-2">1</span> <a href="#orgcc57ccc">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Evaluates the (T) contribution.
 </p>
 </div>
 </div>
-<div id="outline-container-org7d1d2b5" class="outline-2">
-<h2 id="org7d1d2b5"><span class="section-number-2">2</span> <a href="#org7d1d2b5">Algorithm call</a></h2>
+<div id="outline-container-orgbfa10a9" class="outline-2">
+<h2 id="orgbfa10a9"><span class="section-number-2">2</span> <a href="#orgbfa10a9">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>PerturbativeTriples</code> algorithm is given below.
@@ -335,8 +335,8 @@ A typical input file snippet to call the <code>PerturbativeTriples</code> algori
 </div>
 
 
-<div id="outline-container-org4d4c3dd" class="outline-2">
-<h2 id="org4d4c3dd"><span class="section-number-2">3</span> <a href="#org4d4c3dd">Algorithm input</a></h2>
+<div id="outline-container-org313e33e" class="outline-2">
+<h2 id="org313e33e"><span class="section-number-2">3</span> <a href="#org313e33e">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for PerturbativeTriples</caption>
@@ -378,12 +378,12 @@ A typical input file snippet to call the <code>PerturbativeTriples</code> algori
 </div>
 
 
-<div id="outline-container-org7d16953" class="outline-2">
-<h2 id="org7d16953"><span class="section-number-2">4</span> <a href="#org7d16953">Algorithm output</a></h2>
+<div id="outline-container-orgb430adc" class="outline-2">
+<h2 id="orgb430adc"><span class="section-number-2">4</span> <a href="#orgb430adc">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-orgbe14b72" class="outline-3">
-<h3 id="orgbe14b72"><span class="section-number-3">4.1</span> <a href="#orgbe14b72">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgeb1e2c7" class="outline-3">
+<h3 id="orgeb1e2c7"><span class="section-number-3">4.1</span> <a href="#orgeb1e2c7">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <code>PerturbativeTriples</code> algorithm run
@@ -413,52 +413,55 @@ realtime 23297.807220394 s
 </div>
 </div>
 
-<div id="outline-container-org0f075b3" class="outline-3">
-<h3 id="org0f075b3"><span class="section-number-3">4.2</span> <a href="#org0f075b3"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org9927dc1" class="outline-3">
+<h3 id="org9927dc1"><span class="section-number-3">4.2</span> <a href="#org9927dc1"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
-<div id="outline-container-orga42c83a" class="outline-2">
-<h2 id="orga42c83a"><span class="section-number-2">5</span> <a href="#orga42c83a">Computational complexity</a></h2>
+<div id="outline-container-org03c803e" class="outline-2">
+<h2 id="org03c803e"><span class="section-number-2">5</span> <a href="#org03c803e">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 The computational cost is \(\mathcal{O}{(N_o^3 N_v^3(N_o+N_v))}\) with \(N_o\) and 
-\(N_v\) being the number of occupied and virtual orbitals, respecively. The memory
+\(N_v\) being the number of occupied and virtual orbitals, respectively. The memory
 footprint is mainly determined by the storage of the PPPH-integral, which is of 
 size \(\mathcal{O}{N_o N_v^3}\).
 </p>
 </div>
 </div>
-<div id="outline-container-org982df2d" class="outline-2">
-<h2 id="org982df2d"><span class="section-number-2">6</span> <a href="#org982df2d">Theory</a></h2>
+<div id="outline-container-org6496763" class="outline-2">
+<h2 id="org6496763"><span class="section-number-2">6</span> <a href="#org6496763">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
-Its the standard (T) stuff&#x2026;.if you dont know how this works ask juergen gauss&#x2026;
+The implemented expressions of (T) correspond to those from Ref. (<a href="#citeproc_bib_item_2">Raghavachari et al. 1989</a>). For more details see Ref. (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>) and references therin. 
 </p>
 </div>
 </div>
-<div id="outline-container-org480bd7c" class="outline-2">
-<h2 id="org480bd7c"><span class="section-number-2">7</span> <a href="#org480bd7c">Reference implementation</a></h2>
+
+<div id="outline-container-orga6db6ac" class="outline-2">
+<h2 id="orga6db6ac"><span class="section-number-2">7</span> <a href="#orga6db6ac">Reference implementation</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 In addition to the <code>PerturbativeTriples</code> algorithm, there is also a slower
-but reference implementation called <code>PerturbativeTriplesReference</code> which
+reference implementation called <code>PerturbativeTriplesReference</code> which
 is used in the same way as <code>PerturbativeTriples</code>.
 To use it, you should just change the name <code>PerturbativeTriples</code> by <code>PerturbativeTriplesReference</code>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orga8cd137" class="outline-2">
-<h2 id="orga8cd137"><span class="section-number-2">8</span> <a href="#orga8cd137">Literature</a></h2>
+<div id="outline-container-org6c32f19" class="outline-2">
+<h2 id="org6c32f19"><span class="section-number-2">8</span> <a href="#org6c32f19">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bartlett, R.J., and Monika Musiał. 2007. “Coupled-cluster theory in quantum chemistry.” <i>Rev. Mod. Phys.</i> 79 (1). American Physical Society: 291–352. doi:<a href="https://doi.org/10.1103/RevModPhys.79.291">10.1103/RevModPhys.79.291</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Raghavachari, Krishnan, Gary W. Trucks, John A. Pople, and Martin Head-Gordon. 1989. “A Fifth-Order Perturbation Comparison of Electron Correlation Theories.” <i>Chemical Physics Letters</i> 157 (6): 479–83. doi:<a href="https://doi.org/https://doi.org/10.1016/S0009-2614(89)87395-6">https://doi.org/10.1016/S0009-2614(89)87395-6</a>.</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2021-12-28 Tue 15:34</p>
+<p class="date">Created: 2021-12-29 Wed 12:56</p>
 </div>
 </body>
 </html>
