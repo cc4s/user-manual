@@ -48,7 +48,7 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
 | =maxIterations=              | [[#maxiterations][Maximum number of iterations]]      |
 | =energyConvergence=          | [[#energyconvergence][Energy convergence threshold]]      |
 | =amplitudesConvergence=      | [[#amplitudesconvergence][Amplitude convergence threshold]]   |
-| =mixer: type=                | [[#mixer][Mixer type]]                        |
+| =mixer=                      | [[#mixer][Mixer type]]                        |
 |------------------------------+-----------------------------------|
 
 ** type
