@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-10 Mon 11:11 -->
+<!-- 2022-01-14 Fri 10:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>TransitionStructureFactorFiniteSizeCorrection</code></title>
+<title><code>FiniteSizeCorrection</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -303,10 +303,10 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>TransitionStructureFactorFiniteSizeCorrection</code></h1>
+<h1 class="title"><code>FiniteSizeCorrection</code></h1>
 
-<div id="outline-container-orgee57a98" class="outline-2">
-<h2 id="orgee57a98"><span class="section-number-2">1</span> <a href="#orgee57a98">Brief description</a></h2>
+<div id="outline-container-org8aeb3d1" class="outline-2">
+<h2 id="org8aeb3d1"><span class="section-number-2">1</span> <a href="#org8aeb3d1">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm calculates the electronic transition structure factor
@@ -315,14 +315,14 @@ and performs a tricubic interpolaton to estimate a finite size correlation energ
 </div>
 </div>
 
-<div id="outline-container-org552d65f" class="outline-2">
-<h2 id="org552d65f"><span class="section-number-2">2</span> <a href="#org552d65f">Algorithm call</a></h2>
+<div id="outline-container-orgc68d452" class="outline-2">
+<h2 id="orgc68d452"><span class="section-number-2">2</span> <a href="#orgc68d452">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
-A typical input file snippet to call the <code>TransitionStructureFactorFiniteSizeCorrection</code> algorithm is given below.
+A typical input file snippet to call the <code>FiniteSizeCorrection</code> algorithm is given below.
 </p>
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TransitionStructureFactorFiniteSizeCorrection
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: FiniteSizeCorrection
   <span style="color: #8b4513;">in</span>:
     <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
     <span style="color: #8b4513;">amplitudes</span>: Amplitudes
@@ -336,10 +336,10 @@ A typical input file snippet to call the <code>TransitionStructureFactorFiniteSi
 </div>
 </div>
 
-<div id="outline-container-org4273a41" class="outline-2">
-<h2 id="org4273a41"><span class="section-number-2">3</span> <a href="#org4273a41">Algorithm input</a></h2>
+<div id="outline-container-orgb361148" class="outline-2">
+<h2 id="orgb361148"><span class="section-number-2">3</span> <a href="#orgb361148">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgc55e2f6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgb7c75ab" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -401,10 +401,10 @@ between neighbouring <a href="../objects/GridVectors.html#ID-GridVectors">Grid V
 </div>
 
 
-<div id="outline-container-orgcf248a9" class="outline-2">
-<h2 id="orgcf248a9"><span class="section-number-2">4</span> <a href="#orgcf248a9">Algorithm output</a></h2>
+<div id="outline-container-org94f1434" class="outline-2">
+<h2 id="org94f1434"><span class="section-number-2">4</span> <a href="#org94f1434">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="orgd439cb0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org6a0d436" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -427,21 +427,20 @@ between neighbouring <a href="../objects/GridVectors.html#ID-GridVectors">Grid V
 </table>
 
 <p>
-The output of the <code>TransitionStructureFactorFiniteSizeCorrection</code> algorithm includes transition structure factor \(S(G)\) and
+The output of the <code>FiniteSizeCorrection</code> algorithm includes transition structure factor \(S(G)\) and
 an estimate of the finitie size error correction to the correlation energy. The finite size error is estimated using a tricubic interpolation
 algorithm of the electronic transition structure factor.
 </p>
 </div>
 
-<div id="outline-container-orgf1437ad" class="outline-3">
-<h3 id="orgf1437ad"><span class="section-number-3">4.1</span> <a href="#orgf1437ad">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org0da7d0a" class="outline-3">
+<h3 id="org0da7d0a"><span class="section-number-3">4.1</span> <a href="#org0da7d0a">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-Below an example standard output stream is shown for a successful <code>TransitionStructureFactorFiniteSizeCorrection</code> algorithm run.
+Below an example standard output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">step: 10, TransitionStructureFactorFiniteSizeCorrection
-Uncorrected correlation energy:   -171.7706873818
+<pre class="src src-sh">step: 10, FiniteSizeCorrection
 Finite-size energy correction:    -0.8222012413
 realtime 68.117389991 s
 </pre>
@@ -449,13 +448,13 @@ realtime 68.117389991 s
 </div>
 </div>
 
-<div id="outline-container-orgd63d5b6" class="outline-3">
-<h3 id="orgd63d5b6"><span class="section-number-3">4.2</span> <a href="#orgd63d5b6"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org0c346a0" class="outline-3">
+<h3 id="org0c346a0"><span class="section-number-3">4.2</span> <a href="#org0c346a0"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
 </div>
 </div>
 
-<div id="outline-container-org1fb8709" class="outline-2">
-<h2 id="org1fb8709"><span class="section-number-2">5</span> <a href="#org1fb8709">Computational complexity</a></h2>
+<div id="outline-container-orgad0f680" class="outline-2">
+<h2 id="orgad0f680"><span class="section-number-2">5</span> <a href="#orgad0f680">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared to preceding Coupled Cluster theory calculations.
@@ -463,8 +462,8 @@ No considerable memory footprints or computational cost bottle necks are expecte
 </div>
 </div>
 
-<div id="outline-container-orgbf29678" class="outline-2">
-<h2 id="orgbf29678"><span class="section-number-2">6</span> <a href="#orgbf29678">Theory</a></h2>
+<div id="outline-container-org0ff2e7d" class="outline-2">
+<h2 id="org0ff2e7d"><span class="section-number-2">6</span> <a href="#org0ff2e7d">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
@@ -485,8 +484,8 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-org4aed51c" class="outline-2">
-<h2 id="org4aed51c"><span class="section-number-2">7</span> <a href="#org4aed51c">Literature</a></h2>
+<div id="outline-container-org63792b9" class="outline-2">
+<h2 id="org63792b9"><span class="section-number-2">7</span> <a href="#org63792b9">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
@@ -496,7 +495,7 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-01-10 Mon 11:11</p>
+<p class="date">Created: 2022-01-14 Fri 10:18</p>
 </div>
 </body>
 </html>

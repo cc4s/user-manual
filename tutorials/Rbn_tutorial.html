@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-10 Mon 11:11 -->
+<!-- 2022-01-14 Fri 10:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How to run <code>Cc4s</code> calculations?</title>
@@ -308,11 +308,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge308c14"><b>Step 1</b>: Coupled cluster singles and doubles theory calculations</a></li>
-<li><a href="#orge06f4cc"><b>Step 2</b>: Perturbative triples calculations</a></li>
-<li><a href="#orgdf26b31"><b>Step 3</b>: Basis-set incompleteness error correction</a></li>
-<li><a href="#orgf057405"><b>Step 4</b>: Finite-size correction</a></li>
-<li><a href="#org0840045"><b>Final energy</b></a></li>
+<li><a href="#org380e57a"><b>Step 1</b>: Coupled cluster singles and doubles theory calculations</a></li>
+<li><a href="#org73fc458"><b>Step 2</b>: Perturbative triples calculations</a></li>
+<li><a href="#orga42afbe"><b>Step 3</b>: Basis-set incompleteness error correction</a></li>
+<li><a href="#orgc3aeca8"><b>Step 4</b>: Finite-size correction</a></li>
+<li><a href="#org57e2453"><b>Final energy</b></a></li>
 </ul>
 </div>
 </div>
@@ -357,9 +357,9 @@ are located in the same directory.
 The <code>cc4s.in</code> YAML input file is described in the following section in detail.
 </p>
 
-<div id="outline-container-orge308c14" class="outline-2">
-<h2 id="orge308c14"><a href="#orge308c14"><b>Step 1</b>: Coupled cluster singles and doubles theory calculations</a></h2>
-<div class="outline-text-2" id="text-orge308c14">
+<div id="outline-container-org380e57a" class="outline-2">
+<h2 id="org380e57a"><a href="#org380e57a"><b>Step 1</b>: Coupled cluster singles and doubles theory calculations</a></h2>
+<div class="outline-text-2" id="text-org380e57a">
 <p>
 We start this tutorial by taking the first steps in <code>Cc4s</code> needed to compute the CCSD correlation energy.
 For this purpose essential data files have to be read from disk using the <code>TensorReader</code> algorithm.
@@ -448,9 +448,8 @@ The <a href="../algorithms/VertexCoulombIntegrals.html#ID-VertexCoulombIntegrals
 <div class="org-src-container">
 <pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: CoupledCluster
   <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">method</span>:
-      <span style="color: #8b4513;">type</span>: Ccsd
-      <span style="color: #8b4513;">integralsSliceSize</span>: 100
+    <span style="color: #8b4513;">method</span>: Ccsd
+    <span style="color: #8b4513;">integralsSliceSize</span>: 100
     <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
     <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
     <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
@@ -481,43 +480,44 @@ In the present example we run the calculations in parallel using 48 compute core
 If all algorithms work successfully, the following output stream will appear on the terminal
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">                __ __      
+<pre class="src src-sh">
+                __ __      
      __________/ // / _____
     / ___/ ___/ // /_/ ___/
    / /__/ /__/__  __(__  ) 
    <span style="color: #50a14f;">\_</span>__/<span style="color: #50a14f;">\_</span>__/  /_/ /____/  
   Coupled Cluster for Solids
 
-version: heads/develop-0-g3c7f382, date: Fri Dec 17 16:11:36 2021 +0100
-build date: Dec 21 2021 18:00:10
+version: heads/develop-0-g09d6c85, date: Wed Jan 12 16:33:15 2022 +0100
+build date: Jan 14 2022 09:26:31
 compiler: icc (ICC) 19.1.0.166 20191121
 total processes: 48
-calculation started on: Wed Dec 22 19:47:55 2021
+calculation started on: Fri Jan 14 11:04:29 2022
 
 
 execution plan read, steps: 6
 
 step: 1, TensorReader
 Reading from binary file CoulombVertex.dat
-realtime 0.078560298 s
+realtime 0.087069237 s
 --
 step: 2, TensorReader
 Reading from text file EigenEnergies.dat
-realtime 0.003298238 s
+realtime 0.004593638 s
 --
 step: 3, DefineHolesAndParticles
 number of holes     No: 16
 number of particles Nv: 80
 number of states    Np: 96
-realtime 0.000931083 s
+realtime 0.012452197 s
 --
 step: 4, SliceOperator
 Slicing CoulombVertex.dat into holes and particles.
-realtime 0.000822282 s
+realtime 0.009216783 s
 --
 step: 5, VertexCoulombIntegrals
 number of field variables NF: 356
-realtime 0.003224221 s
+realtime 0.009395501 s
 --
 step: 6, CoupledCluster
 Using method Ccsd. integralsSliceSize: 100
@@ -526,26 +526,26 @@ Maximum number of iterations: 30
 Unless reaching energy convergence dE: 1e-05
 and amplitudes convergence dR: 1e-05
 Iter         Energy         dE           dR         time   GF/s/core
-   1  -2.43605043e+01  -2.4361e+01   4.3924e-01      0.2    2.5
-   2  -2.47577534e+01  -3.9725e-01   7.4733e-02      1.3    3.1
-   3  -2.53776918e+01  -6.1994e-01   1.8674e-02      1.1    3.4
-   4  -2.54455925e+01  -6.7901e-02   6.4132e-03      1.1    3.5
-   5  -2.54445080e+01   1.0845e-03   2.2120e-03      1.1    3.5
-   6  -2.54458312e+01  -1.3232e-03   1.0304e-03      1.1    3.5
-   7  -2.54448941e+01   9.3705e-04   5.0727e-04      1.1    3.5
-   8  -2.54452894e+01  -3.9521e-04   1.9694e-04      1.1    3.5
-   9  -2.54454262e+01  -1.3682e-04   7.7180e-05      1.1    3.5
-  10  -2.54455328e+01  -1.0663e-04   3.0247e-05      1.1    3.5
-  11  -2.54455929e+01  -6.0110e-05   1.1758e-05      1.1    3.5
-  12  -2.54456151e+01  -2.2218e-05   5.0053e-06      1.1    3.5
-  13  -2.54456249e+01  -9.7454e-06   2.2689e-06      1.1    3.5
+   1  -2.43605043e+01  -2.4361e+01   4.3924e-01      0.5    1.0
+   2  -2.47577534e+01  -3.9725e-01   7.4733e-02      0.8    4.8
+   3  -2.53776918e+01  -6.1994e-01   1.8674e-02      0.7    5.4
+   4  -2.54455925e+01  -6.7901e-02   6.4132e-03      0.7    5.5
+   5  -2.54445080e+01   1.0845e-03   2.2120e-03      0.7    5.4
+   6  -2.54458312e+01  -1.3232e-03   1.0304e-03      0.7    5.4
+   7  -2.54448941e+01   9.3705e-04   5.0727e-04      0.7    5.4
+   8  -2.54452894e+01  -3.9521e-04   1.9694e-04      0.7    5.4
+   9  -2.54454262e+01  -1.3682e-04   7.7180e-05      0.7    5.4
+  10  -2.54455328e+01  -1.0663e-04   3.0247e-05      0.7    5.4
+  11  -2.54455929e+01  -6.0110e-05   1.1758e-05      0.7    5.4
+  12  -2.54456151e+01  -2.2218e-05   5.0053e-06      0.7    5.4
+  13  -2.54456249e+01  -9.7454e-06   2.2689e-06      0.7    5.4
 
-CCSD correlation energy:          -25.4456248862
+Ccsd correlation energy:          -25.4456248862
 2nd-order correlation energy:     -24.3605043096
-realtime 13.653374348 s
+realtime 9.189542891 s
 --
-total realtime: 13.753230265 s
-total operations: 2267.4 GFLOPS, speed: 3.4 GFLOPS/s/core
+total realtime: 9.329827330 s
+total operations: 2267.4 GFLOPS, speed: 5.1 GFLOPS/s/core
 </pre>
 </div>
 
@@ -555,15 +555,17 @@ directly from the standard output stream or the <code>cc4s.out</code> YAML file,
 as the correlation energy. The corresponding block of <code>cc4s.out</code> reads
 </p>
 <div class="org-src-container">
-<pre class="src src-yaml">    <span style="color: #8b4513;">out</span>:
-      <span style="color: #8b4513;">amplitudes</span>: 0x2682218
+<pre class="src src-yaml">    <span style="color: #8b4513;">name</span>: CoupledCluster
+    <span style="color: #8b4513;">out</span>:
+      <span style="color: #8b4513;">amplitudes</span>: 0x26e4758
       <span style="color: #8b4513;">convergenceReached</span>: 1
       <span style="color: #8b4513;">energy</span>:
+        <span style="color: #8b4513;">correlation</span>: -25.445624886202758
         <span style="color: #8b4513;">direct</span>: -38.822491455744313
-        <span style="color: #8b4513;">exchange</span>: 13.376866569541551
+        <span style="color: #8b4513;">exchange</span>: 13.376866569541555
         <span style="color: #8b4513;">secondOrder</span>: -24.360504309639897
         <span style="color: #8b4513;">unit</span>: 0.036749322175638782
-        <span style="color: #8b4513;">correlation</span>: -25.445624886202761
+    <span style="color: #8b4513;">realtime</span>: 9.189542891
 </pre>
 </div>
 <p>
@@ -573,9 +575,9 @@ input files and always correspond to eV in the case of input files generated by 
 </div>
 </div>
 
-<div id="outline-container-orge06f4cc" class="outline-2">
-<h2 id="orge06f4cc"><a href="#orge06f4cc"><b>Step 2</b>: Perturbative triples calculations</a></h2>
-<div class="outline-text-2" id="text-orge06f4cc">
+<div id="outline-container-org73fc458" class="outline-2">
+<h2 id="org73fc458"><a href="#org73fc458"><b>Step 2</b>: Perturbative triples calculations</a></h2>
+<div class="outline-text-2" id="text-org73fc458">
 <p>
 We now proceed with the CCSD(T) energy calculation and seek to compute the (T) contribution,
 which has to be added to the CCSD correlation energy contribution estimated in the
@@ -606,22 +608,21 @@ If we append the above code block to the <code>cc4s.in</code> file described in 
 the following additional standard output stream should appear.
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">--
-step: 7, PerturbativeTriples
+<pre class="src src-sh">step: 7, PerturbativeTriples
 <span style="color: #0184bc;">Progress</span>(%)  <span style="color: #a626a4;">time</span>(s)   GFLOP/s      
-1            0         3.850        
-10           0         5.376        
-20           0         5.531        
-30           0         5.625        
-40           0         5.618        
-50           0         5.643        
-60           0         5.664        
-70           0         5.696        
-80           0         5.704        
-90           0         5.731        
-100          0         5.730        
+1            0         4.187        
+10           0         5.657        
+20           0         5.789        
+30           0         5.919        
+40           0         5.916        
+50           0         5.938        
+60           0         5.913        
+70           0         5.877        
+80           0         5.850        
+90           0         5.857        
+100          0         5.845        
 (T) correlation energy:      -0.822530510989498
-realtime 2.855223959 s
+realtime 2.592587863 s
 --
 </pre>
 </div>
@@ -635,16 +636,17 @@ as the correlation energy contribution. The corresponding block of <code>cc4s.ou
 <pre class="src src-yaml">    <span style="color: #8b4513;">name</span>: PerturbativeTriples
     <span style="color: #8b4513;">out</span>:
       <span style="color: #8b4513;">energy</span>:
-        <span style="color: #8b4513;">triples</span>: -0.82253051098949814
-    <span style="color: #8b4513;">realtime</span>: 2.856075204
+        <span style="color: #8b4513;">correlation</span>: -0.82253051098949848
+        <span style="color: #8b4513;">unit</span>: 0.036749322175638782
+    <span style="color: #8b4513;">realtime</span>: 2.592587863
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgdf26b31" class="outline-2">
-<h2 id="orgdf26b31"><a href="#orgdf26b31"><b>Step 3</b>: Basis-set incompleteness error correction</a></h2>
-<div class="outline-text-2" id="text-orgdf26b31">
+<div id="outline-container-orga42afbe" class="outline-2">
+<h2 id="orga42afbe"><a href="#orga42afbe"><b>Step 3</b>: Basis-set incompleteness error correction</a></h2>
+<div class="outline-text-2" id="text-orga42afbe">
 <p>
 We note that in the present case, the CCSD correlation energy is computed using a set of truncated
 approximate natural orbitals. Increasing this basis set size yields correlation energies that
@@ -654,10 +656,10 @@ energies with respect to the number virtual orbitals.
 </p>
 
 <p>
-The <a href="../algorithms/CcsdFocalPointBasisSetCorrection.html#ID-CcsdFocalPointBasisSetCorrection">CcsdFocalPointBasisSetCorrection</a> computes a BSIE correction for
+The <a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">BasisSetCorrection</a> computes a BSIE correction for
 CCSD theory and requires a set of additional input files that are also provided using the <code>VASP</code> interface.
 Reading the corresponding input files and calling the
-<a href="../algorithms/CcsdFocalPointBasisSetCorrection.html#ID-CcsdFocalPointBasisSetCorrection">CcsdFocalPointBasisSetCorrection</a> algorithm is achieved using the
+<a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">BasisSetCorrection</a> algorithm is achieved using the
 following code block in <code>cc4s.in</code>
 </p>
 <div class="org-src-container">
@@ -679,7 +681,7 @@ following code block in <code>cc4s.in</code>
   <span style="color: #8b4513;">out</span>:
     <span style="color: #8b4513;">tensor</span>: Mp2PairEnergies
 
-- <span style="color: #8b4513;">name</span>: CcsdFocalPointBasisSetCorrection
+- <span style="color: #8b4513;">name</span>: BasisSetCorrection
   <span style="color: #8b4513;">in</span>:
     <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
     <span style="color: #8b4513;">amplitudes</span>: Amplitudes
@@ -697,28 +699,21 @@ Appending the code block above to the <code>cc4s.in</code> file described in all
 yields the following additional standard output stream.
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">--
-step: 8, TensorReader
+<pre class="src src-sh">step: 8, TensorReader
 Reading from text file DeltaIntegralsHH.dat
-realtime 0.011865465 s
+realtime 0.002371191 s
 --
 step: 9, TensorReader
 Reading from binary file DeltaIntegralsPPHH.dat
-realtime 0.063157853 s
+realtime 0.034857223 s
 --
 step: 10, TensorReader
 Reading from text file Mp2PairEnergies.dat
-realtime 0.016661099 s
+realtime 0.002062628 s
 --
-step: 11, CcsdFocalPointBasisSetCorrection
-CCSD correlation energy:          -25.4456248862
-CCSD-FP correlation energy:       -30.7454273364
-2nd-order-CBS correlation energy: -30.8616919387
-==================================
-CCSD-BSIE energy correction:      -5.2998024502
-2nd-order energy correction :     -6.5011876290
-PS-PPL-BSIE energy correction:    1.2013851788
-realtime 0.079432832 s
+step: 11, BasisSetCorrection
+Ccsd-Bsie energy correction:      -5.2998024502
+realtime 0.080797438 s
 --
 </pre>
 </div>
@@ -729,15 +724,23 @@ directly from the standard output stream or the <code>cc4s.out</code> YAML file,
 as the correction. The corresponding block of <code>cc4s.out</code> reads
 </p>
 <div class="org-src-container">
-<pre class="src src-yaml">????
+<pre class="src src-yaml">    <span style="color: #8b4513;">name</span>: BasisSetCorrection
+    <span style="color: #8b4513;">out</span>:
+      <span style="color: #8b4513;">energy</span>:
+        <span style="color: #8b4513;">correction</span>: -5.2998024502064709
+        <span style="color: #8b4513;">pplCorrection</span>: 1.2013851788124801
+        <span style="color: #8b4513;">secondOrderCorrection</span>: -6.5011876290189505
+        <span style="color: #8b4513;">uncorrectedCorrelation</span>: -25.445624886202786
+        <span style="color: #8b4513;">unit</span>: 0.036749322175638782
+    <span style="color: #8b4513;">realtime</span>: 0.080797438
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf057405" class="outline-2">
-<h2 id="orgf057405"><a href="#orgf057405"><b>Step 4</b>: Finite-size correction</a></h2>
-<div class="outline-text-2" id="text-orgf057405">
+<div id="outline-container-orgc3aeca8" class="outline-2">
+<h2 id="orgc3aeca8"><a href="#orgc3aeca8"><b>Step 4</b>: Finite-size correction</a></h2>
+<div class="outline-text-2" id="text-orgc3aeca8">
 <p>
 In the present example the CCSD correlation energy is computed for a finite periodic simulation cell.
 Increasing the size of the employed periodic simulation cell
@@ -748,11 +751,11 @@ energies per atom with respect to the simulation cell size.
 </p>
 
 <p>
-The <a href="../algorithms/TransitionStructureFactorFiniteSizeCorrection.html#ID-TransitionStructureFactorFiniteSizeCorrection">TransitionStructureFactorFiniteSizeCorrection</a> algorithm computes
+The <a href="../algorithms/FiniteSizeCorrection.html#ID-FiniteSizeCorrection">FiniteSizeCorrection</a> algorithm computes
 a finite-size correction for CCSD theory and requires a set of additional input files that are also
 provided by the <code>VASP</code> interface.
 Reading the corresponding input files and calling the
-<a href="../algorithms/TransitionStructureFactorFiniteSizeCorrection.html#ID-TransitionStructureFactorFiniteSizeCorrection">TransitionStructureFactorFiniteSizeCorrection</a>
+<a href="../algorithms/FiniteSizeCorrection.html#ID-FiniteSizeCorrection">FiniteSizeCorrection</a>
 algorithm is achieved using the following code block in <code>cc4s.in</code>
 </p>
 <div class="org-src-container">
@@ -774,7 +777,7 @@ algorithm is achieved using the following code block in <code>cc4s.in</code>
   <span style="color: #8b4513;">out</span>:
     <span style="color: #8b4513;">tensor</span>: CoulombPotential
 
-- <span style="color: #8b4513;">name</span>: TransitionStructureFactorFiniteSizeCorrection
+- <span style="color: #8b4513;">name</span>: FiniteSizeCorrection
   <span style="color: #8b4513;">in</span>:
     <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
     <span style="color: #8b4513;">amplitudes</span>: Amplitudes
@@ -793,23 +796,21 @@ Appending the code block above to the <code>cc4s.in</code> file described in all
 yields the following additional standard output stream.
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">--
-step: 12, TensorReader
+<pre class="src src-sh">step: 12, TensorReader
 Reading from binary file CoulombVertexSingularVectors.dat
-realtime 0.009562659 s
+realtime 0.010027331 s
 --
 step: 13, TensorReader
 Reading from text file GridVectors.dat
-realtime 0.003062648 s
+realtime 0.003340052 s
 --
 step: 14, TensorReader
 Reading from text file CoulombPotential.dat
-realtime 0.002374490 s
+realtime 0.002240675 s
 --
-step: 15, TransitionStructureFactorFiniteSizeCorrection
-Uncorrected correlation energy:   -25.4453762360
+step: 15, FiniteSizeCorrection
 Finite-size energy correction:    -1.1152868081
-realtime 0.452425713 s
+realtime 0.373321931 s
 --
 </pre>
 </div>
@@ -820,22 +821,30 @@ directly from the standard output stream or the <code>cc4s.out</code> YAML file,
 as the correction. The corresponding block of <code>cc4s.out</code> reads
 </p>
 <div class="org-src-container">
-<pre class="src src-yaml">TODO
+<pre class="src src-yaml">    <span style="color: #8b4513;">name</span>: FiniteSizeCorrection
+    <span style="color: #8b4513;">out</span>:
+      <span style="color: #8b4513;">energy</span>:
+        <span style="color: #8b4513;">corrected</span>: -26.560663044130632
+        <span style="color: #8b4513;">correction</span>: -1.1152868080903175
+        <span style="color: #8b4513;">uncorrected</span>: -25.445376236040314
+        <span style="color: #8b4513;">unit</span>: 0.03674932217686841
+      <span style="color: #8b4513;">transitionStructureFactor</span>: 0x2bb8ff8
+    <span style="color: #8b4513;">realtime</span>: 0.373321931
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0840045" class="outline-2">
-<h2 id="org0840045"><a href="#org0840045"><b>Final energy</b></a></h2>
-<div class="outline-text-2" id="text-org0840045">
+<div id="outline-container-org57e2453" class="outline-2">
+<h2 id="org57e2453"><a href="#org57e2453"><b>Final energy</b></a></h2>
+<div class="outline-text-2" id="text-org57e2453">
 <p>
 We now discuss how to combine all energy contributions from above to obtain the final estimate of the
 ground state energy in the thermodynamic and complete basis-set limit.
 The table below summarizes all computed ground state energy contributions for the present example.
 </p>
 
-<table id="org96f0f89" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org1cf7f49" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Ground state energy summary for present example. All energies in eV.</caption>
 
 <colgroup>
@@ -892,7 +901,7 @@ The final <code>CCSD(T) energy + corrections</code> value can be used to study a
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-01-10 Mon 11:11</p>
+<p class="date">Created: 2022-01-14 Fri 10:18</p>
 </div>
 </body>
 </html>
