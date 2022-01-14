@@ -11,7 +11,7 @@ All required =Cc4s= input files have been created using the =VASP= interface.
 This input file consists of a list of calls to algorithms with input arguments and output objects.
 Here, we will walk you through all employed algorithms used to compute the CCSD(T) correlation energy.
 However, if you want to skip the detailed  explanations below and proceed directly to performing
-CCSD(T) calculations, you might as well download the complete =cc4s.in= file (here, TODO add link).
+CCSD(T) calculations, you might as well download the complete =cc4s.in= file [[file:../data/cc4s.in][here]].
 
 The following files are needed to reproduce all calculations of this tutorial.
 
