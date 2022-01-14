@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-14 Fri 10:18 -->
+<!-- 2022-01-14 Fri 10:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>FiniteSizeCorrection</code></title>
@@ -305,8 +305,8 @@
 <div id="content">
 <h1 class="title"><code>FiniteSizeCorrection</code></h1>
 
-<div id="outline-container-org8aeb3d1" class="outline-2">
-<h2 id="org8aeb3d1"><span class="section-number-2">1</span> <a href="#org8aeb3d1">Brief description</a></h2>
+<div id="outline-container-orgd29584f" class="outline-2">
+<h2 id="orgd29584f"><span class="section-number-2">1</span> <a href="#orgd29584f">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm calculates the electronic transition structure factor
@@ -315,8 +315,8 @@ and performs a tricubic interpolaton to estimate a finite size correlation energ
 </div>
 </div>
 
-<div id="outline-container-orgc68d452" class="outline-2">
-<h2 id="orgc68d452"><span class="section-number-2">2</span> <a href="#orgc68d452">Algorithm call</a></h2>
+<div id="outline-container-org2133191" class="outline-2">
+<h2 id="org2133191"><span class="section-number-2">2</span> <a href="#org2133191">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>FiniteSizeCorrection</code> algorithm is given below.
@@ -336,10 +336,10 @@ A typical input file snippet to call the <code>FiniteSizeCorrection</code> algor
 </div>
 </div>
 
-<div id="outline-container-orgb361148" class="outline-2">
-<h2 id="orgb361148"><span class="section-number-2">3</span> <a href="#orgb361148">Algorithm input</a></h2>
+<div id="outline-container-org334c8ba" class="outline-2">
+<h2 id="org334c8ba"><span class="section-number-2">3</span> <a href="#org334c8ba">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgb7c75ab" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgd11da9c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -401,10 +401,10 @@ between neighbouring <a href="../objects/GridVectors.html#ID-GridVectors">Grid V
 </div>
 
 
-<div id="outline-container-org94f1434" class="outline-2">
-<h2 id="org94f1434"><span class="section-number-2">4</span> <a href="#org94f1434">Algorithm output</a></h2>
+<div id="outline-container-org449ce2a" class="outline-2">
+<h2 id="org449ce2a"><span class="section-number-2">4</span> <a href="#org449ce2a">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org6a0d436" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org9d665ea" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -433,38 +433,58 @@ algorithm of the electronic transition structure factor.
 </p>
 </div>
 
-<div id="outline-container-org0da7d0a" class="outline-3">
-<h3 id="org0da7d0a"><span class="section-number-3">4.1</span> <a href="#org0da7d0a">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org04426ba" class="outline-3">
+<h3 id="org04426ba"><span class="section-number-3">4.1</span> <a href="#org04426ba">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">step: 10, FiniteSizeCorrection
-Finite-size energy correction:    -0.8222012413
-realtime 68.117389991 s
+<pre class="src src-sh">step: 15, FiniteSizeCorrection
+Finite-size energy correction:    -1.1152868081
+realtime 0.373321931 s
+--
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc669e93" class="outline-2">
+<h2 id="orgc669e93"><span class="section-number-2">5</span> <a href="#orgc669e93">Sample <code>yaml</code> output</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Below an example <code>yaml</code> output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">    <span style="color: #8b4513;">name</span>: FiniteSizeCorrection
+    <span style="color: #8b4513;">out</span>:
+      <span style="color: #8b4513;">energy</span>:
+        <span style="color: #8b4513;">corrected</span>: -26.560663044130632
+        <span style="color: #8b4513;">correction</span>: -1.1152868080903175
+        <span style="color: #8b4513;">uncorrected</span>: -25.445376236040314
+        <span style="color: #8b4513;">unit</span>: 0.03674932217686841
+      <span style="color: #8b4513;">transitionStructureFactor</span>: 0x2bb8ff8
+    <span style="color: #8b4513;">realtime</span>: 0.373321931
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org0c346a0" class="outline-3">
-<h3 id="org0c346a0"><span class="section-number-3">4.2</span> <a href="#org0c346a0"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
-</div>
-</div>
 
-<div id="outline-container-orgad0f680" class="outline-2">
-<h2 id="orgad0f680"><span class="section-number-2">5</span> <a href="#orgad0f680">Computational complexity</a></h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org2a8e1fe" class="outline-2">
+<h2 id="org2a8e1fe"><span class="section-number-2">6</span> <a href="#org2a8e1fe">Computational complexity</a></h2>
+<div class="outline-text-2" id="text-6">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared to preceding Coupled Cluster theory calculations.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0ff2e7d" class="outline-2">
-<h2 id="org0ff2e7d"><span class="section-number-2">6</span> <a href="#org0ff2e7d">Theory</a></h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org0781ca9" class="outline-2">
+<h2 id="org0781ca9"><span class="section-number-2">7</span> <a href="#org0781ca9">Theory</a></h2>
+<div class="outline-text-2" id="text-7">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
 We employ a tricubic interpolation technique to reduce
@@ -484,9 +504,9 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-org63792b9" class="outline-2">
-<h2 id="org63792b9"><span class="section-number-2">7</span> <a href="#org63792b9">Literature</a></h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgbdbee5b" class="outline-2">
+<h2 id="orgbdbee5b"><span class="section-number-2">8</span> <a href="#orgbdbee5b">Literature</a></h2>
+<div class="outline-text-2" id="text-8">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Liao, Ke, and Andreas Grüneis. 2016. “Communication: Finite Size Correction in Periodic Coupled Cluster Theory Calculations of Solids.” <i>The Journal of Chemical Physics</i> 145 (14). AIP Publishing: 141102. <a href="http://doi.org/10.1063/1.4964307">http://doi.org/10.1063/1.4964307</a>.</div>
@@ -495,7 +515,7 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-01-14 Fri 10:18</p>
+<p class="date">Created: 2022-01-14 Fri 10:29</p>
 </div>
 </body>
 </html>
