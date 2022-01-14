@@ -50,7 +50,21 @@ step: 10, BasisSetCorrection
 Ccsd-BSIE energy correction:      -0.0165423958
 #+end_src
 
-** TODO Sample =yaml= output
+* Sample =yaml= output
+
+Below an example =yaml= output stream is shown for a successful run.
+
+#+begin_src yaml
+    name: BasisSetCorrection
+    out:
+      energy:
+        correction: -5.2998024502064709
+        pplCorrection: 1.2013851788124801
+        secondOrderCorrection: -6.5011876290189505
+        uncorrectedCorrelation: -25.445624886202786
+        unit: 0.036749322175638782
+    realtime: 0.080797438
+#+end_src
 
 
 * Computational complexity

@@ -158,30 +158,52 @@ and the basis set incompleteness errors (*BasisSetCorrection*).
 ** Sample =stdout=
 Below an example standard output stream is shown for a successful *CoupledCluster* algorithm run.
 #+begin_src sh
-step: 9, CoupledCluster
-Using method Ccsd. integralsSliceSize: 96
+step: 6, CoupledCluster
+Using method Ccsd. integralsSliceSize: 100
 Using mixer DiisMixer. maxResidua: 5
 Maximum number of iterations: 30
-Unless reaching energy convergence dE: 0.0001
-and amplitudes convergence dR: 0.0001
+Unless reaching energy convergence dE: 1e-05
+and amplitudes convergence dR: 1e-05
 Iter         Energy         dE           dR         time   GF/s/core
-   1  -1.51995933e+02  -1.5200e+02   1.0108e+00     32.6    5.6
-   2  -1.48908010e+02   3.0879e+00   1.8077e-01    381.6    9.3
-   3  -1.51620340e+02  -2.7123e+00   3.8331e-02    381.7    9.3
-   4  -1.52039881e+02  -4.1954e-01   1.2254e-02    380.1    9.3
-   5  -1.52001191e+02   3.8690e-02   2.6566e-03    381.7    9.3
-   6  -1.51996162e+02   5.0293e-03   9.0534e-04    381.3    9.3
-   7  -1.51998504e+02  -2.3416e-03   2.6783e-04    382.1    9.3
-   8  -1.51997751e+02   7.5305e-04   8.5906e-05    383.2    9.2
-   9  -1.51998116e+02  -3.6568e-04   2.4672e-05    380.0    9.3
-  10  -1.51998173e+02  -5.7065e-05   9.5722e-06    376.6    9.4
+   1  -2.43605043e+01  -2.4361e+01   4.3924e-01      0.5    1.0
+   2  -2.47577534e+01  -3.9725e-01   7.4733e-02      0.8    4.8
+   3  -2.53776918e+01  -6.1994e-01   1.8674e-02      0.7    5.4
+   4  -2.54455925e+01  -6.7901e-02   6.4132e-03      0.7    5.5
+   5  -2.54445080e+01   1.0845e-03   2.2120e-03      0.7    5.4
+   6  -2.54458312e+01  -1.3232e-03   1.0304e-03      0.7    5.4
+   7  -2.54448941e+01   9.3705e-04   5.0727e-04      0.7    5.4
+   8  -2.54452894e+01  -3.9521e-04   1.9694e-04      0.7    5.4
+   9  -2.54454262e+01  -1.3682e-04   7.7180e-05      0.7    5.4
+  10  -2.54455328e+01  -1.0663e-04   3.0247e-05      0.7    5.4
+  11  -2.54455929e+01  -6.0110e-05   1.1758e-05      0.7    5.4
+  12  -2.54456151e+01  -2.2218e-05   5.0053e-06      0.7    5.4
+  13  -2.54456249e+01  -9.7454e-06   2.2689e-06      0.7    5.4
 
-Ccsd correlation energy:          -151.9981733061
-2nd-order correlation energy:     -151.9959332292
-realtime 3463.773373
+Ccsd correlation energy:          -25.4456248862
+2nd-order correlation energy:     -24.3605043096
+realtime 9.189542891 s
+--
 #+end_src
 
-** TODO Sample =yaml= output
+* Sample =yaml= output
+
+Below an example =yaml= output stream is shown for a successful *CoupledCluster* algorithm run.
+
+#+begin_src yaml
+    name: CoupledCluster
+    out:
+      amplitudes: 0x26e4758
+      convergenceReached: 1
+      energy:
+        correlation: -25.445624886202758
+        direct: -38.822491455744313
+        exchange: 13.376866569541555
+        secondOrder: -24.360504309639897
+        unit: 0.036749322175638782
+    realtime: 9.189542891
+#+end_src
+
+
 
 * Computational complexity
 
