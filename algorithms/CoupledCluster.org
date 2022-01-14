@@ -152,8 +152,8 @@ mixer:
 
 The output of the *CoupledCluster* algorithm includes =energy= and =amplitudes= . The =amplitudes= output contains
 the converged singles and doubles amplitude tensors. The amplitudes can be used as input for algorithms
-that estimate the finite simulation cell size error (*TransitionStructureFactorFiniteSizeCorrection*)
-and the basis set incompleteness errors (*CcsdFocalPointBasisSetCorrection*).
+that estimate the finite simulation cell size error (*FiniteSizeCorrection*)
+and the basis set incompleteness errors (*BasisSetCorrection*).
 
 ** Sample =stdout=
 Below an example standard output stream is shown for a successful *CoupledCluster* algorithm run.

@@ -15,7 +15,7 @@ the total MP2 correlation energy is given by its full contraction, i.e.
 E_c^{\mathrm{MP2}} = \sum_{ij} \epsilon_{ij}.
 \end{equation}
 \( \epsilon_{ij} \) is used by the
-[[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]] algorithm and
+[[id:BasisSetCorrection][BasisSetCorrection]] algorithm and
 in the context of the theory
 CCSD(T*) [[cite:&FocalPointAppIrmler2021]].
 =Mp2PairEnergies= needs to be provided by an interfaced electronic structure theory package

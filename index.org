@@ -24,8 +24,8 @@ Interfaces are available for
 The most important algorithms include
 - [[id:CoupledCluster][CoupledCluster]]
 - [[id:PerturbativeTriples][PerturbativeTriples]]
-- [[id:TransitionStructureFactorFiniteSizeCorrection][TransitionStructureFiniteSizeCorrection]]
-- [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]]
+- [[id:FiniteSizeCorrection][FiniteSizeCorrection]]
+- [[id:BasisSetCorrection][BasisSetCorrection]]
 
 You can find a complete list of algorithms
 [[file:algorithms/sitemap.org][here]].

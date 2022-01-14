@@ -1,17 +1,17 @@
 :PROPERTIES:
-:ID: CcsdFocalPointBasisSetCorrection
+:ID: BasisSetCorrection
 :END:
-#+title: =CcsdFocalPointBasisSetCorrection=
+#+title: =BasisSetCorrection=
 #+OPTIONS: toc:nil
 
 * Brief description
 This algorithm evaluates a correction to the basis-set-incompeteness error (BSIE) of CCSD correlation energies.
 * Algorithm call
 
-A typical input file snippet to call the =CcsdFocalPointBasisSetCorrection= algorithm is given below.
+A typical input file snippet to call the =BasisSetCorrection= algorithm is given below.
 
 #+begin_src yaml
-- name: CcsdFocalPointBasisSetCorrection
+- name: BasisSetCorrection
   in:
     slicedEigenEnergies: EigenEnergies
     amplitudes: Amplitudes
@@ -46,7 +46,7 @@ the 2nd-order energy correction and a pair-specific contribution that accounts f
 ** Sample =stdout=
 Below an example standard output stream is shown for a successful run.
 #+begin_src sh
-step: 10, CcsdFocalPointBasisSetCorrection
+step: 10, BasisSetCorrection
 Ccsd-BSIE energy correction:      -0.0165423958
 #+end_src
 

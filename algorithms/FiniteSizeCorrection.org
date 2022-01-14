@@ -1,7 +1,7 @@
 :PROPERTIES:
-:ID: TransitionStructureFactorFiniteSizeCorrection
+:ID: FiniteSizeCorrection
 :END:
-#+title: =TransitionStructureFactorFiniteSizeCorrection=
+#+title: =FiniteSizeCorrection=
 #+OPTIONS: toc:nil
 
 * Brief description
@@ -10,9 +10,9 @@ and performs a tricubic interpolaton to estimate a finite size correlation energ
 
 * Algorithm call
 
-A typical input file snippet to call the =TransitionStructureFactorFiniteSizeCorrection= algorithm is given below.
+A typical input file snippet to call the =FiniteSizeCorrection= algorithm is given below.
 #+begin_src yaml
-- name: TransitionStructureFactorFiniteSizeCorrection
+- name: FiniteSizeCorrection
   in:
     slicedCoulombVertex: CoulombVertex
     amplitudes: Amplitudes
@@ -57,15 +57,14 @@ between neighbouring [[id:GridVectors][Grid Vectors]].
 | =transitionStructureFactor= | Transition Structure factor |
 |-----------------------------+-----------------------------|
 
-The output of the =TransitionStructureFactorFiniteSizeCorrection= algorithm includes transition structure factor $S(G)$ and
+The output of the =FiniteSizeCorrection= algorithm includes transition structure factor $S(G)$ and
 an estimate of the finitie size error correction to the correlation energy. The finite size error is estimated using a tricubic interpolation
 algorithm of the electronic transition structure factor.
 
 ** Sample =stdout=
-Below an example standard output stream is shown for a successful =TransitionStructureFactorFiniteSizeCorrection= algorithm run.
+Below an example standard output stream is shown for a successful =FiniteSizeCorrection= algorithm run.
 #+begin_src sh
-step: 10, TransitionStructureFactorFiniteSizeCorrection
-Uncorrected correlation energy:   -171.7706873818
+step: 10, FiniteSizeCorrection
 Finite-size energy correction:    -0.8222012413
 realtime 68.117389991 s
 #+end_src

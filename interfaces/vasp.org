@@ -101,7 +101,7 @@ Save the =WAVECAR= file containing all unoccupied (virtual) orbitals, e.g. =mv W
 
 * *Optional Step 2-(a)*: MP2 for focal-point basis-set correction
 
-For the [[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]] algorithm the [[id:Mp2PairEnergies][MP2 pair energies matrix]]
+For the [[id:BasisSetCorrection][BasisSetCorrection]] algorithm the [[id:Mp2PairEnergies][MP2 pair energies matrix]]
 is needed. This input file can be obtained along with the MP2 correlation energy in the complete basis set limit using an automated extrapolation procedure
 by runnning the following =VASP= calculation.
 Make sure to employ the =WAVECAR= file from the previous calculation (=WAVECAR.HFV=) that contains all orbitals.
@@ -149,7 +149,7 @@ LAPPROX = .TRUE.
 
 This =VASP= calculation will produce the =WAVECAR.FNO= file containing all unoccupied natural orbitals.
 We choose to work with a small subset of these natural orbitals. We recommend to use 10 unoccupied natural orbitals per occupied orbital in combination with the
-[[id:CcsdFocalPointBasisSetCorrection][CcsdFocalPointBasisSetCorrection]] algorithm of =Cc4s=. The corresponding number of orbitals can be obtained
+[[id:BasisSetCorrection][BasisSetCorrection]] algorithm of =Cc4s=. The corresponding number of orbitals can be obtained
 using the following command.
 
 #+begin_src sh
