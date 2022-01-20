@@ -102,12 +102,12 @@ Save the =WAVECAR= file containing all unoccupied (virtual) orbitals, e.g. =mv W
 * *Optional Step 2-(a)*: MP2 for focal-point basis-set correction
 
 For the [[id:BasisSetCorrection][BasisSetCorrection]] algorithm the [[id:Mp2PairEnergies][MP2 pair energies matrix]]
-is needed. This input file can be obtained along with the MP2 correlation energy in the complete basis set limit using an automated extrapolation procedure
-by runnning the following =VASP= calculation.
+is needed. This input file can be obtained from VASP using automated extrapolation techniques for MP2 pair energies.
 Make sure to employ the =WAVECAR= file from the previous calculation (=WAVECAR.HFV=) that contains all orbitals.
-The MP2 calculation can be performed using the following =INCAR= file.
+In dependence of the system size, two VASP algorithms are available.
+For small systems (e.g. less than 50 occupied orbitals with =NBANDS= < 20 * occupied orbitals) the following =INCAR= can be used
 
-#+name: mp2-incar
+#+name: mp2_1-incar
 #+begin_src sh
 ENCUT    = $encut
 ISMEAR   = 0
@@ -120,6 +120,31 @@ AEXX     = 1.0
 NBANDS   = $nbands
 LSFACTOR = .TRUE.
 #+end_src
+
+For larger systems, the low-scaling algorithm might be faster and less memory consuming:
+
+#+name: mp2_2-incar
+#+begin_src sh
+ENCUT    = $encut
+ISMEAR   = 0
+SIGMA    = 0.001
+ISYM     = -1
+
+LMP2LT     = .TRUE.
+ALGO       = ACFDTRK
+NOMEGA     = 6
+KPAR       = 32
+LDUMPMP2IJ = .TRUE.
+LHFCALC    = .TRUE.
+AEXX       = 1.0
+NBANDS     = $nbands
+#+end_src
+This algorithm is based on a Laplace transformed (LT) MP2 formulation using =NOMEGA = 6= sampling points for the Laplace integration. This setting is sufficient for large gap systems. For small gap systems try with =NOMEGA = 8= or even higher. 
+For an efficient parallelization, set =KPAR= to a divisor of the number of mpi-ranks (optimally half of the number of mpi-ranks).
+In case of memory issues, reduce =KPAR=.
+
+NOTE: This low-scaling algorithm heavily relies on FFTs. For efficiency reasons, please use =PRECFOCK = Fast= consistently in all post-HF or post-DFT VASP runs. 
+For further details, please check the [[https://www.vasp.at/wiki/index.php/LTMP2_-_Tutorial][LTMP2 - Tutorial]] in the VASP wiki.
 
 At the end of this =VASP= calculation the following input files needed by =Cc4s= are written to disk. 
 - [[id:Mp2PairEnergies][Mp2PairEnergies]] ($\epsilon_{ij}$) : =Mp2PairEnergies.yaml=, =Mp2PairEnergies.dat=
