@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-14 Fri 10:51 -->
+<!-- 2022-01-20 Thu 11:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>BasisSetCorrection</code></title>
@@ -283,16 +283,16 @@
 <div id="content">
 <h1 class="title"><code>BasisSetCorrection</code></h1>
 
-<div id="outline-container-org620ca8c" class="outline-2">
-<h2 id="org620ca8c"><span class="section-number-2">1</span> <a href="#org620ca8c">Brief description</a></h2>
+<div id="outline-container-org44c80ec" class="outline-2">
+<h2 id="org44c80ec"><span class="section-number-2">1</span> <a href="#org44c80ec">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm evaluates a correction to the basis-set-incompeteness error (BSIE) of CCSD correlation energies.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd751976" class="outline-2">
-<h2 id="orgd751976"><span class="section-number-2">2</span> <a href="#orgd751976">Algorithm call</a></h2>
+<div id="outline-container-org962fc33" class="outline-2">
+<h2 id="org962fc33"><span class="section-number-2">2</span> <a href="#org962fc33">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>BasisSetCorrection</code> algorithm is given below.
@@ -315,10 +315,10 @@ A typical input file snippet to call the <code>BasisSetCorrection</code> algorit
 </div>
 
 
-<div id="outline-container-org20bac0e" class="outline-2">
-<h2 id="org20bac0e"><span class="section-number-2">3</span> <a href="#org20bac0e">Algorithm input</a></h2>
+<div id="outline-container-org0c92273" class="outline-2">
+<h2 id="org0c92273"><span class="section-number-2">3</span> <a href="#org0c92273">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgded3e02" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org9d6d0f0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
 
 <colgroup>
@@ -368,8 +368,8 @@ A typical input file snippet to call the <code>BasisSetCorrection</code> algorit
 </div>
 
 
-<div id="outline-container-orgdbd07a1" class="outline-2">
-<h2 id="orgdbd07a1"><span class="section-number-2">4</span> <a href="#orgdbd07a1">Algorithm output</a></h2>
+<div id="outline-container-orgf913166" class="outline-2">
+<h2 id="orgf913166"><span class="section-number-2">4</span> <a href="#orgf913166">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The output of the algorithm is the CCSD BSIE correction. This energy contains
@@ -377,8 +377,8 @@ the 2nd-order energy correction and a pair-specific contribution that accounts f
 </p>
 </div>
 
-<div id="outline-container-org061e9a6" class="outline-3">
-<h3 id="org061e9a6"><span class="section-number-3">4.1</span> <a href="#org061e9a6">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org83e628f" class="outline-3">
+<h3 id="org83e628f"><span class="section-number-3">4.1</span> <a href="#org83e628f">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful run.
@@ -394,8 +394,8 @@ realtime 0.080797438 s
 </div>
 </div>
 
-<div id="outline-container-org5e3da05" class="outline-2">
-<h2 id="org5e3da05"><span class="section-number-2">5</span> <a href="#org5e3da05">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-org5ff2e5e" class="outline-2">
+<h2 id="org5ff2e5e"><span class="section-number-2">5</span> <a href="#org5ff2e5e">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Below an example <code>yaml</code> output stream is shown for a successful run.
@@ -417,8 +417,8 @@ Below an example <code>yaml</code> output stream is shown for a successful run.
 </div>
 
 
-<div id="outline-container-org58b6c33" class="outline-2">
-<h2 id="org58b6c33"><span class="section-number-2">6</span> <a href="#org58b6c33">Computational complexity</a></h2>
+<div id="outline-container-orgf73ba50" class="outline-2">
+<h2 id="orgf73ba50"><span class="section-number-2">6</span> <a href="#orgf73ba50">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This algorithm is a post-processing algorithm. However, the 2nd-order
@@ -430,8 +430,8 @@ energy calculation.
 </div>
 
 
-<div id="outline-container-org769dfdc" class="outline-2">
-<h2 id="org769dfdc"><span class="section-number-2">7</span> <a href="#org769dfdc">Theory</a></h2>
+<div id="outline-container-orgb6295fc" class="outline-2">
+<h2 id="orgb6295fc"><span class="section-number-2">7</span> <a href="#orgb6295fc">Theory</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 This algorithm evaluates a correction to the basis-set-incompleteness error (BSIE)
@@ -458,8 +458,8 @@ correction and the ppl-correction-term.
 </div>
 
 
-<div id="outline-container-org51c71eb" class="outline-2">
-<h2 id="org51c71eb"><span class="section-number-2">8</span> <a href="#org51c71eb">Literature</a></h2>
+<div id="outline-container-org6541f30" class="outline-2">
+<h2 id="org6541f30"><span class="section-number-2">8</span> <a href="#org6541f30">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June). AIP Publishing: 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -468,7 +468,7 @@ correction and the ppl-correction-term.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-01-14 Fri 10:51</p>
+<p class="date">Created: 2022-01-20 Thu 11:23</p>
 </div>
 </body>
 </html>
