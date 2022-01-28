@@ -63,12 +63,18 @@ realtime 2.592587863 s
 Below an example =yaml= output stream is shown for a successful =PerturbativeTriples= algorithm run.
 
 #+begin_src yaml
-    name: PerturbativeTriples
-    out:
-      energy:
-        correlation: -0.82253051098949848
-        unit: 0.036749322175638782
-    realtime: 2.592587863
+floatingPointOperations: 11703705600
+flops: 729564426.2969619
+in:
+  amplitudes: 0x24cd038
+  coulombIntegrals: 0x247f2b8
+  slicedEigenEnergies: 0x2487f38
+name: PerturbativeTriples
+out:
+  energy:
+    correlation: -0.82253051098949848
+    unit: 0.036749322175638782
+realtime: 2.592587863
 #+end_src
 
 

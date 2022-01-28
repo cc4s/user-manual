@@ -39,15 +39,27 @@ A typical input file snippet to call the =VertexCoulombIntegrals= algorithm is g
 
 ** Sample =stdout=
 
-The output of this algorithm reads
+A sample output of this algorithm reads
 #+begin_src sh
 step: 8, VertexCoulombIntegrals
 number of field variables NF: 2092
 realtime 0.001249174 s
 #+end_src
 
-** TODO Sample =yaml= output
+** Sample =yaml= output
 
+A sample =yaml= output of this algorithm reads
+
+#+begin_src yaml
+floatingPointOperations: 0
+flops: 0
+in:
+  slicedCoulombVertex: 0x24aee28
+name: VertexCoulombIntegrals
+out:
+  coulombIntegrals: 0x247f2b8
+realtime: 0.001078910
+#+end_src
 
 * Computational complexity
 

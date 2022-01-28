@@ -9,10 +9,10 @@
 =CoulombPotential= stores the Coulomb potential $\tilde{v}(G)$  used for the calculation of the
 [[id:CoulombVertex][CoulombVertex]] in a plane-wave basis set representation.
 The =CoulombPotential= needs to be provided by an interfaced electronic structure theory package
-and can be read into =Cc4s= using the [[id:TensorReader][TensorReader]] algorithm.
+and can be read into =Cc4s= using the [[id:Read][Read]] algorithm.
 
 #+begin_src yaml
-- name: TensorReader
+- name: Read
   in:
     fileName: "CoulombPotential.yaml"
   out:

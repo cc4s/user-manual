@@ -53,8 +53,18 @@ number of states    Np: 40
 realtime 0.000832881 s
 #+end_src
 
-** TODO Sample =yaml= output
+* Sample =yaml= output
 
+#+begin_src yaml
+floatingPointOperations: 0
+flops: 0
+in:
+  eigenEnergies: 0x246b298
+name: DefineHolesAndParticles
+out:
+  slicedEigenEnergies: 0x1668178
+realtime: 0.001512765
+#+end_src
 
 * Literature
 bibliography:../group.bib

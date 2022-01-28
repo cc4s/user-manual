@@ -33,7 +33,14 @@ Below an example standard output stream is shown for a successful =SecondOrderPe
 
 
 #+begin_src sh
-TODO
+step: 9, SecondOrderPerturbationTheory
+Contracting second order energy...
+correlation energy: -24.3605
+  singles:  0
+  direct:   -35.3032
+  exchange: 10.9427
+realtime 0.170357500 s
+--
 #+end_src
 
 * Computational Complexity and memory footprint

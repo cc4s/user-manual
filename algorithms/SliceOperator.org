@@ -66,8 +66,19 @@ Slicing CoulombVertex.dat into holes and particles.
 realtime 0.000798066 s
 #+end_src
 
-** TODO Sample =yaml= output
+** Sample =yaml= output
 
+#+begin_src yaml
+floatingPointOperations: 0
+flops: 0
+in:
+  operator: 0x24878e8
+  slicedEigenEnergies: 0x2487f38
+name: SliceOperator
+out:
+  slicedOperator: 0x24aee28
+realtime: 0.002082513
+#+end_src
 
 * Literature
 bibliography:../group.bib

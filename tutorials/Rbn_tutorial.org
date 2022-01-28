@@ -36,7 +36,7 @@ The =cc4s.in= YAML input file is described in the following section in detail.
 
 
 We start this tutorial by taking the first steps in =Cc4s= needed to compute the CCSD correlation energy.
-For this purpose essential data files have to be read from disk using the =TensorReader= algorithm.
+For this purpose essential data files have to be read from disk using the =Read= algorithm.
 This aglorithm can be executed employing the following  =cc4s.in= YAML input which controls =Cc4s=
 
 #+begin_src yaml
@@ -47,16 +47,16 @@ This aglorithm can be executed employing the following  =cc4s.in= YAML input whi
     tensor: CoulombVertex
 #+end_src
 
-The above call to the [[id:TensorReader][TensorReader]] algorithm reads the
+The above call to the [[id:Read][Read]] algorithm reads the
 *CoulombVertex.yaml* file that contains all meta-information associated with the
 {{{CV}}} tensor in a human-readable format.
 =Cc4s= will follow the link in *CoulombVertex.yaml* specified by =data:= to *CoulombVertex.dat* and read all numerical data of
 the corresponding {{{CV}}} tensor from disk.
-The output of [[id:TensorReader][TensorReader]] algorithm is the {{{CV}}} tensor object, which can
+The output of [[id:Read][Read]] algorithm is the {{{CV}}} tensor object, which can
 be used as input for all subsequent =Cc4s= algorithms.
 
 In addition, we use =Cc4s= to read the *EigenEnergies.yaml* and
-*EigenEnergies.dat* files by including the following [[id:TensorReader][TensorReader]] call in =cc4s.in=
+*EigenEnergies.dat* files by including the following [[id:Read][Read]] call in =cc4s.in=
 #+begin_src yaml
 - name: TensorReader
   in:

@@ -1,23 +1,23 @@
 :PROPERTIES:
-:ID: TensorReader
+:ID: Read
 :END:
-#+title: =TensorReader=
+#+title: =Read=
 #+OPTIONS: toc:nil
 
 * Brief description
-TensorReader reads a cc4s tensor.
+=Read= reads a cc4s tensor or set of tensors.
 
 * Algorithm call
 
-A typical input file snippet to call the [[id:TensorReader][TensorReader]]
+A typical input file snippet to call the [[id:Read][Read]]
 algorithm is given below.
 
 #+begin_src yaml
-- name: TensorReader
+- name: Read
   in:
     fileName: "CoulombVertex.yaml"
   out:
-    data: CoulombVertex
+    destination: CoulombVertex
 #+end_src
 
 
@@ -37,10 +37,10 @@ algorithm is given below.
 
 
 * Algorithm output
-#+name: reader-output-table
+#+name: read-output-table
 | Keyword          | Value |
 |------------------+-------|
-| =data=           | [[#data][data]]      |
+| =destination=           | [[#data][data]]      |
 |------------------+-------|
 
 ** data
@@ -51,13 +51,23 @@ algorithm is given below.
 ** Sample =stdout=
 The output of this algorithm reads
 #+begin_src sh
-step: 2, TensorReader
-Reading from binary file CoulombVertex.dat
-realtime 0.045400572 s
+step: 2, Read
+Reading from binary file CoulombVertex.elements
+realtime 0.292085915 s
 #+end_src
 
-** TODO Sample =yaml= output
+** Sample =yaml= output
 
+#+begin_src
+floatingPointOperations: 0
+flops: 0
+in:
+  fileName: CoulombVertex.yaml
+name: Read
+out:
+  destination: 0x24878e8
+realtime: 0.292085915
+#+end_src
 
 * Literature
 bibliography:../group.bib

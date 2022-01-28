@@ -9,10 +9,10 @@
 The =GridVectors= object contains the grid vectors of the employed plane-wave
 basis set $\{ G_1, ...,G_n \}$.
 The set of grid vectors needs to be provided by an interfaced electronic structure theory package
-and can be read in using the [[id:TensorReader][TensorReader]] algorithm.
+and can be read in using the [[id:Read][Read]] algorithm.
 
 #+begin_src yaml
-- name: TensorReader
+- name: Read
   in:
     fileName: "GridVectors.yaml"
   out:

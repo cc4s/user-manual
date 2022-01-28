@@ -189,17 +189,17 @@ realtime 9.189542891 s
 Below an example =yaml= output stream is shown for a successful *CoupledCluster* algorithm run.
 
 #+begin_src yaml
-    name: CoupledCluster
-    out:
-      amplitudes: 0x26e4758
-      convergenceReached: 1
-      energy:
-        correlation: -25.445624886202758
-        direct: -38.822491455744313
-        exchange: 13.376866569541555
-        secondOrder: -24.360504309639897
-        unit: 0.036749322175638782
-    realtime: 9.189542891
+name: CoupledCluster
+out:
+  amplitudes: 0x26e4758
+  convergenceReached: 1
+  energy:
+    correlation: -25.445624886202758
+    direct: -38.822491455744313
+    exchange: 13.376866569541555
+    secondOrder: -24.360504309639897
+    unit: 0.036749322175638782
+realtime: 9.189542891
 #+end_src
 
 
