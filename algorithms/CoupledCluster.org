@@ -14,9 +14,8 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
 #+begin_src yaml :noweb yes
 - name: CoupledCluster
   in:
-    method:
-      type: Ccsd
-      integralsSliceSize: 100
+    method: Ccsd
+    integralsSliceSize: 100
     slicedEigenEnergies: EigenEnergies
     coulombIntegrals: CoulombIntegrals
     slicedCoulombVertex: CoulombVertex
