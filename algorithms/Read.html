@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-20 Thu 11:23 -->
+<!-- 2022-01-28 Fri 17:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>TensorReader</code></title>
+<title><code>Read</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -281,41 +281,41 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>TensorReader</code></h1>
+<h1 class="title"><code>Read</code></h1>
 
-<div id="outline-container-orga852a0c" class="outline-2">
-<h2 id="orga852a0c"><span class="section-number-2">1</span> <a href="#orga852a0c">Brief description</a></h2>
+<div id="outline-container-orge3bd089" class="outline-2">
+<h2 id="orge3bd089"><span class="section-number-2">1</span> <a href="#orge3bd089">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-TensorReader reads a cc4s tensor.
+<code>Read</code> reads a cc4s tensor or set of tensors.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org090ad58" class="outline-2">
-<h2 id="org090ad58"><span class="section-number-2">2</span> <a href="#org090ad58">Algorithm call</a></h2>
+<div id="outline-container-org68e659f" class="outline-2">
+<h2 id="org68e659f"><span class="section-number-2">2</span> <a href="#org68e659f">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
-A typical input file snippet to call the <a href="TensorReader.html#ID-TensorReader">TensorReader</a>
+A typical input file snippet to call the <a href="Read.html#ID-Read">Read</a>
 algorithm is given below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: Read
   <span style="color: #8b4513;">in</span>:
     <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombVertex.yaml"</span>
   <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">data</span>: CoulombVertex
+    <span style="color: #8b4513;">destination</span>: CoulombVertex
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orga789a77" class="outline-2">
-<h2 id="orga789a77"><span class="section-number-2">3</span> <a href="#orga789a77">Algorithm input</a></h2>
+<div id="outline-container-org7575213" class="outline-2">
+<h2 id="org7575213"><span class="section-number-2">3</span> <a href="#org7575213">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org9a6f087" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgb32850d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -346,10 +346,10 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-org3e5726e" class="outline-2">
-<h2 id="org3e5726e"><span class="section-number-2">4</span> <a href="#org3e5726e">Algorithm output</a></h2>
+<div id="outline-container-orged86a2d" class="outline-2">
+<h2 id="orged86a2d"><span class="section-number-2">4</span> <a href="#orged86a2d">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="orgd65d37e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orga666314" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -365,7 +365,7 @@ algorithm is given below.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>data</code></td>
+<td class="org-left"><code>destination</code></td>
 <td class="org-left"><a href="#data">data</a></td>
 </tr>
 </tbody>
@@ -378,29 +378,40 @@ algorithm is given below.
 </div>
 </div>
 
-<div id="outline-container-org47ae0fc" class="outline-3">
-<h3 id="org47ae0fc"><span class="section-number-3">4.2</span> <a href="#org47ae0fc">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org718631a" class="outline-3">
+<h3 id="org718631a"><span class="section-number-3">4.2</span> <a href="#org718631a">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 The output of this algorithm reads
 </p>
 <div class="org-src-container">
-<pre class="src src-sh">step: 2, TensorReader
-Reading from binary file CoulombVertex.dat
-realtime 0.045400572 s
+<pre class="src src-sh">step: 2, Read
+Reading from binary file CoulombVertex.elements
+realtime 0.292085915 s
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9db0459" class="outline-3">
-<h3 id="org9db0459"><span class="section-number-3">4.3</span> <a href="#org9db0459"><span class="todo TODO">TODO</span> Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-orgf730c58" class="outline-3">
+<h3 id="orgf730c58"><span class="section-number-3">4.3</span> <a href="#orgf730c58">Sample <code>yaml</code> output</a></h3>
+<div class="outline-text-3" id="text-4-3">
+<pre class="example">
+floatingPointOperations: 0
+flops: 0
+in:
+  fileName: CoulombVertex.yaml
+name: Read
+out:
+  destination: 0x24878e8
+realtime: 0.292085915
+</pre>
+</div>
 </div>
 </div>
 
-
-<div id="outline-container-org2eb0344" class="outline-2">
-<h2 id="org2eb0344"><span class="section-number-2">5</span> <a href="#org2eb0344">Literature</a></h2>
+<div id="outline-container-org293f486" class="outline-2">
+<h2 id="org293f486"><span class="section-number-2">5</span> <a href="#org293f486">Literature</a></h2>
 <div class="outline-text-2" id="text-5">
 <div class="csl-bib-body">
 </div>
@@ -408,7 +419,7 @@ realtime 0.045400572 s
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-01-20 Thu 11:23</p>
+<p class="date">Created: 2022-01-28 Fri 17:23</p>
 </div>
 </body>
 </html>

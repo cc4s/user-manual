@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-20 Thu 11:23 -->
+<!-- 2022-01-28 Fri 17:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>FiniteSizeCorrection</code></title>
@@ -305,8 +305,8 @@
 <div id="content">
 <h1 class="title"><code>FiniteSizeCorrection</code></h1>
 
-<div id="outline-container-org8d0450d" class="outline-2">
-<h2 id="org8d0450d"><span class="section-number-2">1</span> <a href="#org8d0450d">Brief description</a></h2>
+<div id="outline-container-org35132ae" class="outline-2">
+<h2 id="org35132ae"><span class="section-number-2">1</span> <a href="#org35132ae">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm calculates the electronic transition structure factor
@@ -315,8 +315,8 @@ and performs a tricubic interpolaton to estimate a finite size correlation energ
 </div>
 </div>
 
-<div id="outline-container-orgb345c41" class="outline-2">
-<h2 id="orgb345c41"><span class="section-number-2">2</span> <a href="#orgb345c41">Algorithm call</a></h2>
+<div id="outline-container-org117883b" class="outline-2">
+<h2 id="org117883b"><span class="section-number-2">2</span> <a href="#org117883b">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>FiniteSizeCorrection</code> algorithm is given below.
@@ -336,10 +336,10 @@ A typical input file snippet to call the <code>FiniteSizeCorrection</code> algor
 </div>
 </div>
 
-<div id="outline-container-org8c378c1" class="outline-2">
-<h2 id="org8c378c1"><span class="section-number-2">3</span> <a href="#org8c378c1">Algorithm input</a></h2>
+<div id="outline-container-org5e4e391" class="outline-2">
+<h2 id="org5e4e391"><span class="section-number-2">3</span> <a href="#org5e4e391">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org42fee04" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org03fb045" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -401,10 +401,10 @@ between neighbouring <a href="../objects/GridVectors.html#ID-GridVectors">Grid V
 </div>
 
 
-<div id="outline-container-org94b0a61" class="outline-2">
-<h2 id="org94b0a61"><span class="section-number-2">4</span> <a href="#org94b0a61">Algorithm output</a></h2>
+<div id="outline-container-org54b9c42" class="outline-2">
+<h2 id="org54b9c42"><span class="section-number-2">4</span> <a href="#org54b9c42">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org1c7c92a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org2a3aeba" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -433,8 +433,8 @@ algorithm of the electronic transition structure factor.
 </p>
 </div>
 
-<div id="outline-container-org1bb261f" class="outline-3">
-<h3 id="org1bb261f"><span class="section-number-3">4.1</span> <a href="#org1bb261f">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgf58910a" class="outline-3">
+<h3 id="orgf58910a"><span class="section-number-3">4.1</span> <a href="#orgf58910a">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
@@ -450,31 +450,40 @@ realtime 0.373321931 s
 </div>
 </div>
 
-<div id="outline-container-org94d1b59" class="outline-2">
-<h2 id="org94d1b59"><span class="section-number-2">5</span> <a href="#org94d1b59">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-orgfcf186b" class="outline-2">
+<h2 id="orgfcf186b"><span class="section-number-2">5</span> <a href="#orgfcf186b">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Below an example <code>yaml</code> output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">    <span style="color: #8b4513;">name</span>: FiniteSizeCorrection
-    <span style="color: #8b4513;">out</span>:
-      <span style="color: #8b4513;">energy</span>:
-        <span style="color: #8b4513;">corrected</span>: -26.560663044130632
-        <span style="color: #8b4513;">correction</span>: -1.1152868080903175
-        <span style="color: #8b4513;">uncorrected</span>: -25.445376236040314
-        <span style="color: #8b4513;">unit</span>: 0.03674932217686841
-      <span style="color: #8b4513;">transitionStructureFactor</span>: 0x2bb8ff8
-    <span style="color: #8b4513;">realtime</span>: 0.373321931
+<pre class="src src-yaml"><span style="color: #8b4513;">floatingPointOperations</span>: 49641291048
+<span style="color: #8b4513;">flops</span>: 38600052331.414169
+<span style="color: #8b4513;">in</span>:
+  <span style="color: #8b4513;">amplitudes</span>: 0x24cd038
+  <span style="color: #8b4513;">coulombPotential</span>: 0x2487fa8
+  <span style="color: #8b4513;">coulombVertexSingularVectors</span>: 0x248b168
+  <span style="color: #8b4513;">gridVectors</span>: 0x2474ce8
+  <span style="color: #8b4513;">interpolationGridSize</span>: 20
+  <span style="color: #8b4513;">slicedCoulombVertex</span>: 0x24aee28
+<span style="color: #8b4513;">name</span>: FiniteSizeCorrection
+<span style="color: #8b4513;">out</span>:
+  <span style="color: #8b4513;">energy</span>:
+    <span style="color: #8b4513;">corrected</span>: -26.560663044130632
+    <span style="color: #8b4513;">correction</span>: -1.1152868080903175
+    <span style="color: #8b4513;">uncorrected</span>: -25.445376236040314
+    <span style="color: #8b4513;">unit</span>: 0.03674932217686841
+  <span style="color: #8b4513;">transitionStructureFactor</span>: 0x2bb8ff8
+<span style="color: #8b4513;">realtime</span>: 0.373321931
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-org81be63a" class="outline-2">
-<h2 id="org81be63a"><span class="section-number-2">6</span> <a href="#org81be63a">Computational complexity</a></h2>
+<div id="outline-container-org36757d0" class="outline-2">
+<h2 id="org36757d0"><span class="section-number-2">6</span> <a href="#org36757d0">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared to preceding Coupled Cluster theory calculations.
@@ -482,8 +491,8 @@ No considerable memory footprints or computational cost bottle necks are expecte
 </div>
 </div>
 
-<div id="outline-container-org6e62757" class="outline-2">
-<h2 id="org6e62757"><span class="section-number-2">7</span> <a href="#org6e62757">Theory</a></h2>
+<div id="outline-container-org7f3ebdd" class="outline-2">
+<h2 id="org7f3ebdd"><span class="section-number-2">7</span> <a href="#org7f3ebdd">Theory</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
@@ -504,8 +513,8 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-org9f8d99a" class="outline-2">
-<h2 id="org9f8d99a"><span class="section-number-2">8</span> <a href="#org9f8d99a">Literature</a></h2>
+<div id="outline-container-orgbf50543" class="outline-2">
+<h2 id="orgbf50543"><span class="section-number-2">8</span> <a href="#orgbf50543">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
@@ -515,7 +524,7 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-01-20 Thu 11:23</p>
+<p class="date">Created: 2022-01-28 Fri 17:23</p>
 </div>
 </body>
 </html>

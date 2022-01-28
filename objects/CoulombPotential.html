@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-01-20 Thu 11:23 -->
+<!-- 2022-01-28 Fri 17:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>CoulombPotential</code></title>
@@ -305,18 +305,18 @@
 <div id="content">
 <h1 class="title"><code>CoulombPotential</code></h1>
 
-<div id="outline-container-org76776d2" class="outline-2">
-<h2 id="org76776d2"><span class="section-number-2">1</span> <a href="#org76776d2">Brief description</a></h2>
+<div id="outline-container-orga34adb9" class="outline-2">
+<h2 id="orga34adb9"><span class="section-number-2">1</span> <a href="#orga34adb9">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>CoulombPotential</code> stores the Coulomb potential \(\tilde{v}(G)\)  used for the calculation of the
 <a href="CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a> in a plane-wave basis set representation.
 The <code>CoulombPotential</code> needs to be provided by an interfaced electronic structure theory package
-and can be read into <code>Cc4s</code> using the <a href="../algorithms/TensorReader.html#ID-TensorReader">TensorReader</a> algorithm.
+and can be read into <code>Cc4s</code> using the <a href="../algorithms/Read.html#ID-Read">Read</a> algorithm.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: TensorReader
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: Read
   <span style="color: #8b4513;">in</span>:
     <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombPotential.yaml"</span>
   <span style="color: #8b4513;">out</span>:
@@ -328,8 +328,8 @@ and can be read into <code>Cc4s</code> using the <a href="../algorithms/TensorRe
 
 
 
-<div id="outline-container-orgfea4048" class="outline-2">
-<h2 id="orgfea4048"><span class="section-number-2">2</span> <a href="#orgfea4048">Specification</a></h2>
+<div id="outline-container-orgd4a9625" class="outline-2">
+<h2 id="orgd4a9625"><span class="section-number-2">2</span> <a href="#orgd4a9625">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 An example <code>CoulombPotential.yaml</code> file is given below
@@ -350,8 +350,8 @@ An example <code>CoulombPotential.yaml</code> file is given below
 </div>
 </div>
 
-<div id="outline-container-org720a716" class="outline-2">
-<h2 id="org720a716"><span class="section-number-2">3</span> <a href="#org720a716">Literature</a></h2>
+<div id="outline-container-orgd7fa94e" class="outline-2">
+<h2 id="orgd7fa94e"><span class="section-number-2">3</span> <a href="#orgd7fa94e">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
 </div>
@@ -359,7 +359,7 @@ An example <code>CoulombPotential.yaml</code> file is given below
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-01-20 Thu 11:23</p>
+<p class="date">Created: 2022-01-28 Fri 17:23</p>
 </div>
 </body>
 </html>
