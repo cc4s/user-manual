@@ -40,23 +40,21 @@ and can be read into =Cc4s= using the [[id:Read][Read]] algorithm.
 An example =CoulombVertex.yaml= file is given below
 
 #+begin_src yaml
-version: v1.0
-scalarType: complex64
-indices:
-  momentum:
-    type: halfGrid
-  orbital:
-    type: spatial
+version: 100
+type: Tensor
+scalarType: Complex64
 dimensions:
-  - length:   1620
-    type: momentum
-  - length:    704
-    type: orbital
-  - length:    704
-    type: orbital
-destination: CoulombVertex.elements    # path to raw data
-binary: 1
+- length:    356
+  type: AuxiliaryField
+- length:     96
+  type: State
+- length:     96
+  type: State
+elements:
+  type: IeeeBinaryFile
 unit: 0.1917011272153577       # = sqrt(Eh/eV)
+metaData:
+  halfGrid: 1
 #+end_src
 
 * Literature

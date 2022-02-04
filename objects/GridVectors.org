@@ -23,23 +23,21 @@ and can be read in using the [[id:Read][Read]] algorithm.
 
 An example =GridVectors.yaml= file is given below.
 #+begin_src yaml
-version: v1.0
-scalarType: real64
-indices:
-  vector:
-    type: cartesian
-  momentum:
-    type: fullGrid
+version: 100
+type: Tensor
+scalarType: Real64
 dimensions:
-  - length:      3
-    type: vector
-  - length:   9511
-    type: momentum
-destination: GridVectors.elements    # path to raw data
+  - length: 3
+    type: Vector
+  - length:    819
+    type: Momentum
+elements:
+  type: TextFile
 unit: 0.529177249       # =(Bohr^-1/Angstrom^-1)
-Gi: [ 0.526962350567279E+00, 0.451407472722934E-05, 0.427322112424627E+00]
-Gj: [-0.263486852553329E+00, 0.456369723460547E+00, 0.427306695377370E+00]
-Gk: [-0.263495162680460E+00,-0.456375083174006E+00, 0.427310866668647E+00]
+metaData:
+  Gi: [ 0.252561935025589E+01, 0.000000000000000E+00, 0.000000000000000E+00]
+  Gj: [ 0.000000000000000E+00, 0.145816657115789E+01,-0.324282236706067E+00]
+  Gk: [ 0.000000000000000E+00, 0.000000000000000E+00, 0.972847656107296E+00]
 #+end_src
 
 The last three lines correspond to the reciprocal lattice vectors
