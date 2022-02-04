@@ -2,7 +2,7 @@
 :ID: SlicedCoulombVertex
 :END:
 #+title: =SlicedCoulombVertex=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 

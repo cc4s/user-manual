@@ -2,7 +2,7 @@
 :ID: DefineHolesAndParticles
 :END:
 #+title: =DefineHolesAndParticles=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 The algorithm takes a sorted vector of eigenenergies and splits it into a set of

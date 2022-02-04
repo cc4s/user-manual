@@ -2,7 +2,7 @@
 :ID: VertexCoulombIntegrals
 :END:
 #+title: =VertexCoulombIntegrals=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 =VertexCoulombIntegrals= prepares a recipe needed for the evaluation of Coulomb integrals.

@@ -2,7 +2,7 @@
 :ID: SliceOperator
 :END:
 #+title: =SliceOperator=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 This algorithm splits all edges of an input tensor of type orbital and size $N_p$

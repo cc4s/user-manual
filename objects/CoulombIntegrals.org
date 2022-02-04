@@ -2,7 +2,7 @@
 :ID: CoulombIntegrals
 :END:
 #+title: =CoulombIntegrals=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 
 * Brief description

@@ -1,5 +1,4 @@
 #+title: =Cc4s= User Documentation
-#+OPTIONS: toc:nil
 
 # #+begin_center
 # The following sections explain everything from

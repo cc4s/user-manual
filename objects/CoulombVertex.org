@@ -2,7 +2,7 @@
 :ID: CoulombVertex
 :END:
 #+title: =CoulombVertex=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 

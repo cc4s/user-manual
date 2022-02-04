@@ -2,7 +2,7 @@
 :ID: BasisSetCorrection
 :END:
 #+title: =BasisSetCorrection=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 This algorithm evaluates a correction to the basis-set-incompeteness error (BSIE) of CCSD correlation energies.

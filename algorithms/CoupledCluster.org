@@ -2,7 +2,7 @@
 :ID: CoupledCluster
 :END:
 #+title: =CoupledCluster=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 This algorithm solves the CCSD amplitude equations using the Coulomb integrals

@@ -2,7 +2,7 @@
 :ID: SecondOrderPerturbationTheory
 :END:
 #+title: =SecondOrderPerturbationTheory=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Example =Cc4s= input
 

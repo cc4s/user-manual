@@ -2,7 +2,7 @@
 :ID: GridVectors
 :END:
 #+title: =GridVectors=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 

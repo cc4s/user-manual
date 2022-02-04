@@ -2,7 +2,7 @@
 :ID: FiniteSizeCorrection
 :END:
 #+title: =FiniteSizeCorrection=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 This algorithm calculates the electronic transition structure factor

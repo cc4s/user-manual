@@ -2,7 +2,7 @@
 :ID: EigenEnergies
 :END:
 #+title: =EigenEnergies=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 

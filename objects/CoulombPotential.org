@@ -2,7 +2,7 @@
 :ID: CoulombPotential
 :END:
 #+title: =CoulombPotential=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 

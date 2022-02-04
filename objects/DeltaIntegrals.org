@@ -2,7 +2,7 @@
 :ID: DeltaIntegrals
 :END:
 #+title: =DeltaIntegrals=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 
 * Brief description

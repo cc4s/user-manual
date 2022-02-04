@@ -84,11 +84,19 @@
 (load-theme 'tsdh-light)
 (!!done)
 
+(defvar cc4s/root "/user-manual/")
+
 (defvar cc4s/html-head-libs
-  "
+  (format "
     <meta charset='UTF-8'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <script
+      src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js\"
+      integrity=\"sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A==\"
+      crossorigin=\"anonymous\"
+      referrerpolicy=\"no-referrer\"></script>
     <link
       href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css'
       rel='stylesheet'
@@ -98,18 +106,17 @@
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js'
       integrity='sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ'
       crossorigin='anonymous'></script>
-    <style>
-       #content {
-          padding: 5%;
-       }
-    </style>
-  ")
 
-(defvar cc4s/root "/user-manual/")
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"%1$sdata/css/htmlize.css\"/>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"%1$sdata/css/readtheorg.css\"/>
+    <link rel=\"stylesheet\" type=\"text/css\" href=\"%1$sdata/css/rtd-full.css\"/>
+
+    <script type=\"text/javascript\" src=\"%1$sdata/js/readtheorg.js\"></script>
+  " cc4s/root))
 
 (defvar cc4s/navigation-bar
   (format "
- <nav class='navbar navbar-expand-md navbar-light bg-light'>
+ <nav id=\"cc4s-navbar\" class='navbar fixed-top navbar-expand-md navbar-light bg-light'>
    <div class='container-fluid'>
      <a class='navbar-brand' href='#'>
        Cc4s

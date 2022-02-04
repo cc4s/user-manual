@@ -2,7 +2,7 @@
 :ID: CoulombVertexSingularVectors
 :END:
 #+title: =CoulombVertexSingularVectors=
-#+OPTIONS: toc:nil
+# #+OPTIONS: toc:nil
 
 * Brief description
 
