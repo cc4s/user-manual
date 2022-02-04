@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-04 Fri 13:48 -->
+<!-- 2022-02-04 Fri 15:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Description of <code>VASP</code> interface to <code>Cc4s</code></title>
@@ -308,12 +308,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7198778"><b>Step 1</b>: Hartree-Fock: Occupied orbitals</a></li>
-<li><a href="#org73edf8b"><b>Step 2</b>: Hartree-Fock: Unoccupied orbitals</a></li>
-<li><a href="#org5eb0574"><b>Optional Step 2-(a)</b>: MP2 for focal-point basis-set correction</a></li>
-<li><a href="#orga89968c"><b>Optional Step 2-(b)</b>: Approximate natural orbitals</a></li>
-<li><a href="#org91be4bd"><b>Step 3</b>: Computing <code>Cc4s</code> input files</a></li>
-<li><a href="#org91966f9">Literature</a></li>
+<li><a href="#org3d8df2b"><b>Step 1</b>: Hartree-Fock: Occupied orbitals</a></li>
+<li><a href="#org9698d48"><b>Step 2</b>: Hartree-Fock: Unoccupied orbitals</a></li>
+<li><a href="#orgacfb2ec"><b>Optional Step 2-(a)</b>: MP2 for focal-point basis-set correction</a></li>
+<li><a href="#orgb82af0d"><b>Optional Step 2-(b)</b>: Approximate natural orbitals</a></li>
+<li><a href="#orgee617eb"><b>Step 3</b>: Computing <code>Cc4s</code> input files</a></li>
+<li><a href="#org1e29929">Literature</a></li>
 </ul>
 </div>
 </div>
@@ -328,9 +328,9 @@ An example <code>bash</code> script performing all following steps for a periodi
 </p>
 
 
-<div id="outline-container-org7198778" class="outline-2">
-<h2 id="org7198778"><a href="#org7198778"><b>Step 1</b>: Hartree-Fock: Occupied orbitals</a></h2>
-<div class="outline-text-2" id="text-org7198778">
+<div id="outline-container-org3d8df2b" class="outline-2">
+<h2 id="org3d8df2b"><a href="#org3d8df2b"><b>Step 1</b>: Hartree-Fock: Occupied orbitals</a></h2>
+<div class="outline-text-2" id="text-org3d8df2b">
 <p>
 In this and all following steps we assume that the required <code>VASP</code> input files (<code>INCAR</code>, <code>POSCAR</code>, <code>POTCAR</code> and <code>KPOINTS</code>) are present in the same working directory.
 We assume that the <code>KPOINTS</code> file samples one \(k\) -point of the first Brillouin zone only.
@@ -339,7 +339,7 @@ The individual flags will be explained below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org76a2ece">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org954c3a7">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -353,7 +353,7 @@ The produced <code>WAVECAR</code> file is then read in the HF step for which we 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org2635ee4">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org09e2b3a">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -379,9 +379,9 @@ Further information on the used tags can be found in the VASP wiki.
 </div>
 
 
-<div id="outline-container-org73edf8b" class="outline-2">
-<h2 id="org73edf8b"><a href="#org73edf8b"><b>Step 2</b>: Hartree-Fock: Unoccupied orbitals</a></h2>
-<div class="outline-text-2" id="text-org73edf8b">
+<div id="outline-container-org9698d48" class="outline-2">
+<h2 id="org9698d48"><a href="#org9698d48"><b>Step 2</b>: Hartree-Fock: Unoccupied orbitals</a></h2>
+<div class="outline-text-2" id="text-org9698d48">
 <p>
 Coupled cluster theory approximates the many-electron wave function using excited Slater determinants contructed from occupied and unoccupied orbitals.
 We compute all unoccupied HF orbitals in the given plane-wave basis as described below.
@@ -389,7 +389,7 @@ The total number of HF orbitals/bands is equal to the number of plane-waves and 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orga2e40a4"><span style="color: #8b4513;">nbands</span>=<span style="font-weight: bold;">`awk '/number of plane-waves:/ {print $5*2 -1} ' &lt; OUTCAR # OUTCAR file from HF ground state calculation using gamma-only code</span>
+<pre class="src src-sh" id="org8420a02"><span style="color: #8b4513;">nbands</span>=<span style="font-weight: bold;">`awk '/number of plane-waves:/ {print $5*2 -1} ' &lt; OUTCAR # OUTCAR file from HF ground state calculation using gamma-only code</span>
 <span style="font-weight: bold;">#nbands=`</span>awk <span style="color: #50a14f;">'/number of plane-waves:/ {print $5} '</span> &lt; OUTCAR <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">OUTCAR file from HF ground state calculation using complex code</span>
 </pre>
 </div>
@@ -404,7 +404,7 @@ Ensure that the <code>WAVECAR</code> file contains all converged occupied HF orb
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgdac8cf0">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org93dd565">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -426,9 +426,9 @@ Save the <code>WAVECAR</code> file containing all unoccupied (virtual) orbitals,
 </div>
 </div>
 
-<div id="outline-container-org5eb0574" class="outline-2">
-<h2 id="org5eb0574"><a href="#org5eb0574"><b>Optional Step 2-(a)</b>: MP2 for focal-point basis-set correction</a></h2>
-<div class="outline-text-2" id="text-org5eb0574">
+<div id="outline-container-orgacfb2ec" class="outline-2">
+<h2 id="orgacfb2ec"><a href="#orgacfb2ec"><b>Optional Step 2-(a)</b>: MP2 for focal-point basis-set correction</a></h2>
+<div class="outline-text-2" id="text-orgacfb2ec">
 <p>
 For the <a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">BasisSetCorrection</a> algorithm the <a href="../objects/Mp2PairEnergies.html#ID-Mp2PairEnergies">MP2 pair energies matrix</a>
 is needed. This input file can be obtained from VASP using automated extrapolation techniques for MP2 pair energies.
@@ -438,7 +438,7 @@ For small systems (e.g. less than 50 occupied orbitals with <code>NBANDS</code> 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orga0d405f">ENCUT    = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org55c920a">ENCUT    = $<span style="color: #8b4513;">encut</span>
 ISMEAR   = 0
 SIGMA    = 0.001
 ISYM     = -1
@@ -456,7 +456,7 @@ For larger systems, the low-scaling algorithm (<a href="#citeproc_bib_item_2">Sc
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="orgaceb2f2">ENCUT    = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org1f50bb9">ENCUT    = $<span style="color: #8b4513;">encut</span>
 ISMEAR   = 0
 SIGMA    = 0.001
 ISYM     = -1
@@ -491,9 +491,9 @@ At the end of this <code>VASP</code> calculation the following input files neede
 </div>
 </div>
 
-<div id="outline-container-orga89968c" class="outline-2">
-<h2 id="orga89968c"><a href="#orga89968c"><b>Optional Step 2-(b)</b>: Approximate natural orbitals</a></h2>
-<div class="outline-text-2" id="text-orga89968c">
+<div id="outline-container-orgb82af0d" class="outline-2">
+<h2 id="orgb82af0d"><a href="#orgb82af0d"><b>Optional Step 2-(b)</b>: Approximate natural orbitals</a></h2>
+<div class="outline-text-2" id="text-orgb82af0d">
 <p>
 The convergence of the electronic correlation energy is very slow when using canonical Hartree&#x2013;Fock orbitals.
 Approximate natural orbitals allow for achieving a more rapid correlation energy convergence to the complete basis set limit.
@@ -503,7 +503,7 @@ Make sure to employ the <code>WAVECAR</code> file containing all orbitals (<code
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org77e2cde">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org23bff5d">ENCUT   = $<span style="color: #8b4513;">encut</span>
 ISMEAR  = 0
 SIGMA   = 0.001
 ISYM    = -1
@@ -535,7 +535,7 @@ Make sure to use the <code>WAVECAR.FNO</code> file as input, <code>cp WAVECAR.FN
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org17fe91c">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org4597384">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -557,16 +557,16 @@ Save the <code>WAVECAR</code> file containing the re-canonicalized unoccupied na
 </div>
 </div>
 
-<div id="outline-container-org91be4bd" class="outline-2">
-<h2 id="org91be4bd"><a href="#org91be4bd"><b>Step 3</b>: Computing <code>Cc4s</code> input files</a></h2>
-<div class="outline-text-2" id="text-org91be4bd">
+<div id="outline-container-orgee617eb" class="outline-2">
+<h2 id="orgee617eb"><a href="#orgee617eb"><b>Step 3</b>: Computing <code>Cc4s</code> input files</a></h2>
+<div class="outline-text-2" id="text-orgee617eb">
 <p>
 In the final step we call <code>VASP</code> using the <code>WAVECAR</code> file with the desired choice of unoccupied orbitals (e.g. <code>cp WAVECAR.HFV WAVECAR</code> or <code>cp WAVECAR.CNO WAVECAR</code>) and
 the following <code>INCAR</code> file.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-sh" id="org96ffd04">ENCUT   = $<span style="color: #8b4513;">encut</span>
+<pre class="src src-sh" id="org8b95f7c">ENCUT   = $<span style="color: #8b4513;">encut</span>
 NCORE   = $<span style="color: #8b4513;">ncore</span>
 ISMEAR  = 0
 SIGMA   = 0.001
@@ -599,9 +599,9 @@ This step produces the following input files needed by <code>Cc4s</code>
 </div>
 </div>
 
-<div id="outline-container-org91966f9" class="outline-2">
-<h2 id="org91966f9"><a href="#org91966f9">Literature</a></h2>
-<div class="outline-text-2" id="text-org91966f9">
+<div id="outline-container-org1e29929" class="outline-2">
+<h2 id="org1e29929"><a href="#org1e29929">Literature</a></h2>
+<div class="outline-text-2" id="text-org1e29929">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Grüneis, Andreas, George H Booth, Martijn Marsman, James Spencer, Ali Alavi, and Georg Kresse. 2011. “Natural Orbitals for Wave Function Based Correlated Calculations Using a Plane Wave Basis Set.” <i>Journal of Chemical Theory and Computation</i> 7 (9). ACS Publications: 2780–85. <a href="https://doi.org/10.1021/ct200263g">https://doi.org/10.1021/ct200263g</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Schäfer, Tobias, Benjamin Ramberger, and Georg Kresse. 2017. “Quartic scaling MP2 for solids: A highly parallelized algorithm in the plane wave basis.” <i>The Journal of Chemical Physics</i> 146 (10): 104101. doi:<a href="https://doi.org/10.1063/1.4976937">10.1063/1.4976937</a>.</div>
@@ -610,7 +610,7 @@ This step produces the following input files needed by <code>Cc4s</code>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-04 Fri 13:48</p>
+<p class="date">Created: 2022-02-04 Fri 15:42</p>
 </div>
 </body>
 </html>

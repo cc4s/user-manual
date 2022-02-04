@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-04 Fri 13:48 -->
+<!-- 2022-02-04 Fri 15:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>CoulombVertex</code></title>
@@ -305,8 +305,8 @@
 <div id="content">
 <h1 class="title"><code>CoulombVertex</code></h1>
 
-<div id="outline-container-org871a55a" class="outline-2">
-<h2 id="org871a55a"><span class="section-number-2">1</span> <a href="#org871a55a">Brief description</a></h2>
+<div id="outline-container-orga4636d8" class="outline-2">
+<h2 id="orga4636d8"><span class="section-number-2">1</span> <a href="#orga4636d8">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 \[ \tilde{\Gamma}^q_r({\bf G}) :=  \sqrt{\frac{4\pi}{{\bf G}^2}}   \int{\rm d}{\bf x}\,   {\rm e}^{-{\rm i}{\bf G}\cdot{\bf r}}\,   {\psi^\ast}^q({\bf x}) \psi_r({\bf x})\
@@ -346,38 +346,36 @@ and can be read into <code>Cc4s</code> using the <a href="../algorithms/Read.htm
 </div>
 </div>
 
-<div id="outline-container-org721e052" class="outline-2">
-<h2 id="org721e052"><span class="section-number-2">2</span> <a href="#org721e052">Specification</a></h2>
+<div id="outline-container-org092d81c" class="outline-2">
+<h2 id="org092d81c"><span class="section-number-2">2</span> <a href="#org092d81c">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 An example <code>CoulombVertex.yaml</code> file is given below
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: v1.0
-<span style="color: #8b4513;">scalarType</span>: complex64
-<span style="color: #8b4513;">indices</span>:
-  <span style="color: #8b4513;">momentum</span>:
-    <span style="color: #8b4513;">type</span>: halfGrid
-  <span style="color: #8b4513;">orbital</span>:
-    <span style="color: #8b4513;">type</span>: spatial
+<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: 100
+<span style="color: #8b4513;">type</span>: Tensor
+<span style="color: #8b4513;">scalarType</span>: Complex64
 <span style="color: #8b4513;">dimensions</span>:
-  - <span style="color: #8b4513;">length</span>:   1620
-    <span style="color: #8b4513;">type</span>: momentum
-  - <span style="color: #8b4513;">length</span>:    704
-    <span style="color: #8b4513;">type</span>: orbital
-  - <span style="color: #8b4513;">length</span>:    704
-    <span style="color: #8b4513;">type</span>: orbital
-<span style="color: #8b4513;">destination</span>: CoulombVertex.elements    <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">path to raw data</span>
-<span style="color: #8b4513;">binary</span>: 1
+- <span style="color: #8b4513;">length</span>:    356
+  <span style="color: #8b4513;">type</span>: AuxiliaryField
+- <span style="color: #8b4513;">length</span>:     96
+  <span style="color: #8b4513;">type</span>: State
+- <span style="color: #8b4513;">length</span>:     96
+  <span style="color: #8b4513;">type</span>: State
+<span style="color: #8b4513;">elements</span>:
+  <span style="color: #8b4513;">type</span>: IeeeBinaryFile
 <span style="color: #8b4513;">unit</span>: 0.1917011272153577       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">= sqrt(Eh/eV)</span>
+<span style="color: #8b4513;">metaData</span>:
+  <span style="color: #8b4513;">halfGrid</span>: 1
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org232c755" class="outline-2">
-<h2 id="org232c755"><span class="section-number-2">3</span> <a href="#org232c755">Literature</a></h2>
+<div id="outline-container-orge7d5de3" class="outline-2">
+<h2 id="orge7d5de3"><span class="section-number-2">3</span> <a href="#orge7d5de3">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12). AIP Publishing: 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
@@ -386,7 +384,7 @@ An example <code>CoulombVertex.yaml</code> file is given below
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-04 Fri 13:48</p>
+<p class="date">Created: 2022-02-04 Fri 15:42</p>
 </div>
 </body>
 </html>
