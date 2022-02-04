@@ -33,7 +33,7 @@ indices:
 dimensions:
   - length:   9511
     type: momentum
-data: CoulombPotential.dat    # path to raw data
+destination: CoulombPotential.elements    # path to raw data
 unit: 0.2479966649373453       # =(Eh/eV*Bohr^3/Angstrom^3)
 #+end_src
 

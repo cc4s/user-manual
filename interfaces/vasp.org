@@ -121,7 +121,7 @@ NBANDS   = $nbands
 LSFACTOR = .TRUE.
 #+end_src
 
-For larger systems, the low-scaling algorithm might be faster and less memory consuming:
+For larger systems, the low-scaling algorithm [[cite:&Schafer2016]] might be faster and less memory consuming:
 
 #+name: mp2_2-incar
 #+begin_src sh

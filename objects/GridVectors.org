@@ -35,7 +35,7 @@ dimensions:
     type: vector
   - length:   9511
     type: momentum
-data: GridVectors.dat    # path to raw data
+destination: GridVectors.elements    # path to raw data
 unit: 0.529177249       # =(Bohr^-1/Angstrom^-1)
 Gi: [ 0.526962350567279E+00, 0.451407472722934E-05, 0.427322112424627E+00]
 Gj: [-0.263486852553329E+00, 0.456369723460547E+00, 0.427306695377370E+00]

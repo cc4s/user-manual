@@ -54,7 +54,7 @@ dimensions:
     type: orbital
   - length:    704
     type: orbital
-data: CoulombVertex.dat    # path to raw data
+destination: CoulombVertex.elements    # path to raw data
 binary: 1
 unit: 0.1917011272153577       # = sqrt(Eh/eV)
 #+end_src

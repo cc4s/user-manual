@@ -13,7 +13,7 @@ electronic structure code and should be read from an external file using the
 [[id:Read][Read]] algorithm.
 
 #+begin_src sh
-- name: TensorReader
+- name: Read
   in:
     fileName: "CoulombVertexSingularVectors.yaml"
   out:
