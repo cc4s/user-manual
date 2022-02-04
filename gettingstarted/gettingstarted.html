@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-04 Fri 15:42 -->
+<!-- 2022-02-04 Fri 17:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Getting Started</title>
@@ -196,6 +196,12 @@
     <meta charset='UTF-8'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js"
+      integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
     <link
       href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css'
       rel='stylesheet'
@@ -205,11 +211,12 @@
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js'
       integrity='sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ'
       crossorigin='anonymous'></script>
-    <style>
-       #content {
-          padding: 5%;
-       }
-    </style>
+
+    <link rel="stylesheet" type="text/css" href="/user-manual/data/css/htmlize.css"/>
+    <link rel="stylesheet" type="text/css" href="/user-manual/data/css/readtheorg.css"/>
+    <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
+
+    <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -236,7 +243,7 @@
 <body>
 <div id="preamble" class="status">
 
- <nav class='navbar navbar-expand-md navbar-light bg-light'>
+ <nav id="cc4s-navbar" class='navbar fixed-top navbar-expand-md navbar-light bg-light'>
    <div class='container-fluid'>
      <a class='navbar-brand' href='#'>
        Cc4s
@@ -286,26 +293,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org06f3367">1. Download the code</a></li>
-<li><a href="#org53155f0">2. Compilation</a></li>
-<li><a href="#orgb7d4687">3. Running tests</a>
+<li><a href="#org1313168">1. Download the code</a></li>
+<li><a href="#org492c837">2. Compilation</a></li>
+<li><a href="#org9a0b8e6">3. Running tests</a>
 <ul>
-<li><a href="#org6c58f98">3.1. Quick start</a>
+<li><a href="#org618a134">3.1. Quick start</a>
 <ul>
-<li><a href="#orgb0e5a9b">3.1.1. Python Dependencies</a></li>
+<li><a href="#org1ddbd03">3.1.1. Python Dependencies</a></li>
 </ul>
 </li>
-<li><a href="#orgdafee0d">3.2. Test failed, what now?</a></li>
-<li><a href="#org1d1912c">3.3. Running additional tests</a></li>
-<li><a href="#org7885f15">3.4. Fetching data in network-constrained environments</a></li>
+<li><a href="#orga0edff5">3.2. Test failed, what now?</a></li>
+<li><a href="#orgccea10f">3.3. Running additional tests</a></li>
+<li><a href="#orgb19f69c">3.4. Fetching data in network-constrained environments</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org06f3367" class="outline-2">
-<h2 id="org06f3367"><span class="section-number-2">1</span> <a href="#org06f3367">Download the code</a></h2>
+<div id="outline-container-org1313168" class="outline-2">
+<h2 id="org1313168"><span class="section-number-2">1</span> <a href="#org1313168">Download the code</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 You can download the CC4S code by typing
@@ -321,8 +328,8 @@ This will create a new folder named ./cc4s/ where the complete source code will 
 </div>
 </div>
 
-<div id="outline-container-org53155f0" class="outline-2">
-<h2 id="org53155f0"><span class="section-number-2">2</span> <a href="#org53155f0">Compilation</a></h2>
+<div id="outline-container-org492c837" class="outline-2">
+<h2 id="org492c837"><span class="section-number-2">2</span> <a href="#org492c837">Compilation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Building the CC4S binary is done in two steps.
@@ -372,12 +379,12 @@ in the main directory.
 </div>
 
 
-<div id="outline-container-orgb7d4687" class="outline-2">
-<h2 id="orgb7d4687"><span class="section-number-2">3</span> <a href="#orgb7d4687">Running tests</a></h2>
+<div id="outline-container-org9a0b8e6" class="outline-2">
+<h2 id="org9a0b8e6"><span class="section-number-2">3</span> <a href="#org9a0b8e6">Running tests</a></h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org6c58f98" class="outline-3">
-<h3 id="org6c58f98"><span class="section-number-3">3.1</span> <a href="#org6c58f98">Quick start</a></h3>
+<div id="outline-container-org618a134" class="outline-3">
+<h3 id="org618a134"><span class="section-number-3">3.1</span> <a href="#org618a134">Quick start</a></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 You can test your CC4S binary for a set of test systems.
@@ -406,8 +413,8 @@ by doing
 </div>
 </div>
 
-<div id="outline-container-orgb0e5a9b" class="outline-4">
-<h4 id="orgb0e5a9b"><span class="section-number-4">3.1.1</span> <a href="#orgb0e5a9b">Python Dependencies</a></h4>
+<div id="outline-container-org1ddbd03" class="outline-4">
+<h4 id="org1ddbd03"><span class="section-number-4">3.1.1</span> <a href="#org1ddbd03">Python Dependencies</a></h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Please note that <code>testis.py</code> depends on <code>python3.3</code> or newer.
@@ -438,8 +445,8 @@ your system administrator.
 </div>
 </div>
 
-<div id="outline-container-orgdafee0d" class="outline-3">
-<h3 id="orgdafee0d"><span class="section-number-3">3.2</span> <a href="#orgdafee0d">Test failed, what now?</a></h3>
+<div id="outline-container-orga0edff5" class="outline-3">
+<h3 id="orga0edff5"><span class="section-number-3">3.2</span> <a href="#orga0edff5">Test failed, what now?</a></h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 If a test failed, you can go to the directory
@@ -463,8 +470,8 @@ the test with
 </div>
 </div>
 
-<div id="outline-container-org1d1912c" class="outline-3">
-<h3 id="org1d1912c"><span class="section-number-3">3.3</span> <a href="#org1d1912c">Running additional tests</a></h3>
+<div id="outline-container-orgccea10f" class="outline-3">
+<h3 id="orgccea10f"><span class="section-number-3">3.3</span> <a href="#orgccea10f">Running additional tests</a></h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Every test in <code>cc4s</code> has some tags assigned to it.
@@ -487,8 +494,8 @@ the following command
 </div>
 
 
-<div id="outline-container-org7885f15" class="outline-3">
-<h3 id="org7885f15"><span class="section-number-3">3.4</span> <a href="#org7885f15">Fetching data in network-constrained environments</a></h3>
+<div id="outline-container-orgb19f69c" class="outline-3">
+<h3 id="orgb19f69c"><span class="section-number-3">3.4</span> <a href="#orgb19f69c">Fetching data in network-constrained environments</a></h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Some tests depend on dependencies such as coulomb integrals
@@ -526,7 +533,7 @@ You can then copy this folder to the required computer
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-04 Fri 15:42</p>
+<p class="date">Created: 2022-02-04 Fri 17:17</p>
 </div>
 </body>
 </html>

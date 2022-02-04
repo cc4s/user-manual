@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-04 Fri 15:42 -->
+<!-- 2022-02-04 Fri 17:17 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>Read</code></title>
@@ -196,6 +196,12 @@
     <meta charset='UTF-8'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js"
+      integrity="sha512-6ORWJX/LrnSjBzwefdNUyLCMTIsGoNP6NftMy2UAm1JBm6PRZCO1d7OHBStWpVFZLO+RerTvqX/Z9mBFfCJZ4A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"></script>
     <link
       href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css'
       rel='stylesheet'
@@ -205,11 +211,12 @@
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js'
       integrity='sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ'
       crossorigin='anonymous'></script>
-    <style>
-       #content {
-          padding: 5%;
-       }
-    </style>
+
+    <link rel="stylesheet" type="text/css" href="/user-manual/data/css/htmlize.css"/>
+    <link rel="stylesheet" type="text/css" href="/user-manual/data/css/readtheorg.css"/>
+    <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
+
+    <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -236,7 +243,7 @@
 <body>
 <div id="preamble" class="status">
 
- <nav class='navbar navbar-expand-md navbar-light bg-light'>
+ <nav id="cc4s-navbar" class='navbar fixed-top navbar-expand-md navbar-light bg-light'>
    <div class='container-fluid'>
      <a class='navbar-brand' href='#'>
        Cc4s
@@ -282,9 +289,31 @@
 </div>
 <div id="content">
 <h1 class="title"><code>Read</code></h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgfa025cf">1. Brief description</a></li>
+<li><a href="#org6ba8a19">2. Algorithm call</a></li>
+<li><a href="#org62950bd">3. Algorithm input</a>
+<ul>
+<li><a href="#what">3.1. what</a></li>
+</ul>
+</li>
+<li><a href="#orga558297">4. Algorithm output</a>
+<ul>
+<li><a href="#data">4.1. data</a></li>
+<li><a href="#orga9598ca">4.2. Sample <code>stdout</code></a></li>
+<li><a href="#orgb7cc764">4.3. Sample <code>yaml</code> output</a></li>
+</ul>
+</li>
+<li><a href="#orgb70633d">5. Literature</a></li>
+</ul>
+</div>
+</div>
 
-<div id="outline-container-orgbd635f7" class="outline-2">
-<h2 id="orgbd635f7"><span class="section-number-2">1</span> <a href="#orgbd635f7">Brief description</a></h2>
+<div id="outline-container-orgfa025cf" class="outline-2">
+<h2 id="orgfa025cf"><span class="section-number-2">1</span> <a href="#orgfa025cf">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>Read</code> reads a cc4s tensor or set of tensors.
@@ -292,8 +321,8 @@
 </div>
 </div>
 
-<div id="outline-container-org03fd394" class="outline-2">
-<h2 id="org03fd394"><span class="section-number-2">2</span> <a href="#org03fd394">Algorithm call</a></h2>
+<div id="outline-container-org6ba8a19" class="outline-2">
+<h2 id="org6ba8a19"><span class="section-number-2">2</span> <a href="#org6ba8a19">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <a href="Read.html#ID-Read">Read</a>
@@ -312,10 +341,10 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-orgc6a6582" class="outline-2">
-<h2 id="orgc6a6582"><span class="section-number-2">3</span> <a href="#orgc6a6582">Algorithm input</a></h2>
+<div id="outline-container-org62950bd" class="outline-2">
+<h2 id="org62950bd"><span class="section-number-2">3</span> <a href="#org62950bd">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org786fb7c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orga3c5e39" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -346,10 +375,10 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-org1d8f66b" class="outline-2">
-<h2 id="org1d8f66b"><span class="section-number-2">4</span> <a href="#org1d8f66b">Algorithm output</a></h2>
+<div id="outline-container-orga558297" class="outline-2">
+<h2 id="orga558297"><span class="section-number-2">4</span> <a href="#orga558297">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org3316d00" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgcd06cfd" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -378,8 +407,8 @@ algorithm is given below.
 </div>
 </div>
 
-<div id="outline-container-orgd3857f6" class="outline-3">
-<h3 id="orgd3857f6"><span class="section-number-3">4.2</span> <a href="#orgd3857f6">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orga9598ca" class="outline-3">
+<h3 id="orga9598ca"><span class="section-number-3">4.2</span> <a href="#orga9598ca">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 The output of this algorithm reads
@@ -393,8 +422,8 @@ realtime 0.292085915 s
 </div>
 </div>
 
-<div id="outline-container-org6b8f315" class="outline-3">
-<h3 id="org6b8f315"><span class="section-number-3">4.3</span> <a href="#org6b8f315">Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-orgb7cc764" class="outline-3">
+<h3 id="orgb7cc764"><span class="section-number-3">4.3</span> <a href="#orgb7cc764">Sample <code>yaml</code> output</a></h3>
 <div class="outline-text-3" id="text-4-3">
 <pre class="example">
 floatingPointOperations: 0
@@ -410,8 +439,8 @@ realtime: 0.292085915
 </div>
 </div>
 
-<div id="outline-container-org359a096" class="outline-2">
-<h2 id="org359a096"><span class="section-number-2">5</span> <a href="#org359a096">Literature</a></h2>
+<div id="outline-container-orgb70633d" class="outline-2">
+<h2 id="orgb70633d"><span class="section-number-2">5</span> <a href="#orgb70633d">Literature</a></h2>
 <div class="outline-text-2" id="text-5">
 <div class="csl-bib-body">
 </div>
@@ -419,7 +448,7 @@ realtime: 0.292085915
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-04 Fri 15:42</p>
+<p class="date">Created: 2022-02-04 Fri 17:17</p>
 </div>
 </body>
 </html>
