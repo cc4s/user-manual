@@ -38,7 +38,9 @@ The most important objects used by algorithms include
 You can find a complete list of objects
 [[file:objects/sitemap.org][here]].
 
-* Contributors and Acknowledgements
+* Contributors, Acknowledgements and Citation
+
+- [[file:./acknowledgements/acknowledgements.org][Acknowledgements and how to cite?]]
 
 * Documentation guide
 If you are writing documentation for =cc4s=, read the
