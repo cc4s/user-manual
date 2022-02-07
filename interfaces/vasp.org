@@ -8,7 +8,7 @@ This section explains the =VASP= workflow to calculate occupied and unoccupied o
 Basic knowledge with VASP is assumed.
 In addition, we refer to the [[https://www.vasp.at/wiki][Wiki page of VASP]].
 
-An example =bash= script performing all following steps for a periodic BN crystal is available here (TODO: add link).
+An example =bash= script performing all following steps for a periodic BN crystal is available here [[file:../data/run_vasp.sh][here]].
 
 # Essentially, 
 # 1. Grundzustand
