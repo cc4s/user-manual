@@ -6,7 +6,7 @@
 <!-- 2022-02-07 Mon 10:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>VertexCoulombIntegrals</code></title>
+<title><code>Acknowledgements, Contributors and Citation</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -239,28 +239,6 @@
     /*]]>*///-->
 // @license-end
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -310,172 +288,76 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>VertexCoulombIntegrals</code></h1>
+<h1 class="title"><code>Acknowledgements, Contributors and Citation</code></h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org13eb714">1. Brief description</a></li>
-<li><a href="#orgaf41808">2. Algorithm call</a></li>
-<li><a href="#orgea6dce0">3. Algorithm input</a></li>
-<li><a href="#orgbb619af">4. Algorithm output</a>
-<ul>
-<li><a href="#org6909eba">4.1. Sample <code>stdout</code></a></li>
-<li><a href="#org9990a04">4.2. Sample <code>yaml</code> output</a></li>
-</ul>
-</li>
-<li><a href="#org5168323">5. Computational complexity</a></li>
-<li><a href="#org30100aa">6. Theory</a></li>
-<li><a href="#org38354f0">7. Literature</a></li>
+<li><a href="#orge9c21b8">Acknowledgements</a></li>
+<li><a href="#org58e6de5">Contributors</a></li>
+<li><a href="#orgd7ac9be">Citation</a></li>
+<li><a href="#orgc08ba9e">Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org13eb714" class="outline-2">
-<h2 id="org13eb714"><span class="section-number-2">1</span> <a href="#org13eb714">Brief description</a></h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orge9c21b8" class="outline-2">
+<h2 id="orge9c21b8"><a href="#orge9c21b8">Acknowledgements</a></h2>
+<div class="outline-text-2" id="text-orge9c21b8">
 <p>
-<code>VertexCoulombIntegrals</code> prepares a recipe needed for the evaluation of Coulomb integrals.
+The development of the CC4S software package was supported by the European Research Council (ERC) under the European Unions Horizon 2020 research and innovation program (Grant Agreement No 715594).
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgaf41808" class="outline-2">
-<h2 id="orgaf41808"><span class="section-number-2">2</span> <a href="#orgaf41808">Algorithm call</a></h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-org58e6de5" class="outline-2">
+<h2 id="org58e6de5"><a href="#org58e6de5">Contributors</a></h2>
+<div class="outline-text-2" id="text-org58e6de5">
 <p>
-A typical input file snippet to call the <code>VertexCoulombIntegrals</code> algorithm is given below.
+The following authors have contributed to developing the methods and code implemented in the <code>Cc4s</code> software package.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: VertexCoulombIntegrals
-  <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">slicedCoulombVertex</span>: CoulombVertex
-  <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
-</pre>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgea6dce0" class="outline-2">
-<h2 id="orgea6dce0"><span class="section-number-2">3</span> <a href="#orgea6dce0">Algorithm input</a></h2>
-<div class="outline-text-2" id="text-3">
-<table id="org9a3a235" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Keyword</th>
-<th scope="col" class="org-left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>slicedCoulombVertex</code></td>
-<td class="org-left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-
-<div id="outline-container-orgbb619af" class="outline-2">
-<h2 id="orgbb619af"><span class="section-number-2">4</span> <a href="#orgbb619af">Algorithm output</a></h2>
-<div class="outline-text-2" id="text-4">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Keyword</th>
-<th scope="col" class="org-left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>coulombIntegrals</code></td>
-<td class="org-left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div id="outline-container-org6909eba" class="outline-3">
-<h3 id="org6909eba"><span class="section-number-3">4.1</span> <a href="#org6909eba">Sample <code>stdout</code></a></h3>
-<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Felix Hummel</li>
+<li>Andreas Irmler</li>
+<li>Alejandro Gallo</li>
+<li>Ke Liao</li>
+<li>Theodoros Tsatsoulis</li>
+<li>Tobias Schäfer</li>
+<li>Andreas Grüneis</li>
+</ul>
 <p>
-A sample output of this algorithm reads
-</p>
-<div class="org-src-container">
-<pre class="src src-sh">step: 8, VertexCoulombIntegrals
-number of field variables NF: 2092
-realtime 0.001249174 s
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org9990a04" class="outline-3">
-<h3 id="org9990a04"><span class="section-number-3">4.2</span> <a href="#org9990a04">Sample <code>yaml</code> output</a></h3>
-<div class="outline-text-3" id="text-4-2">
-<p>
-A sample <code>yaml</code> output of this algorithm reads
-</p>
-
-<div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #8b4513;">floatingPointOperations</span>: 0
-<span style="color: #8b4513;">flops</span>: 0
-<span style="color: #8b4513;">in</span>:
-  <span style="color: #8b4513;">slicedCoulombVertex</span>: 0x24aee28
-<span style="color: #8b4513;">name</span>: VertexCoulombIntegrals
-<span style="color: #8b4513;">out</span>:
-  <span style="color: #8b4513;">coulombIntegrals</span>: 0x247f2b8
-<span style="color: #8b4513;">realtime</span>: 0.001078910
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org5168323" class="outline-2">
-<h2 id="org5168323"><span class="section-number-2">5</span> <a href="#org5168323">Computational complexity</a></h2>
-<div class="outline-text-2" id="text-5">
-<p>
-Note that the <code>VertexCoulombIntegrals</code> algorithm merely defines a recipe to perform the computation of all integrals. The integrals will only be computed once
-their numerical values are needed. Certain types of Coulomb integrals; for example, \(V_{cd}^{ab}\) will potentially never be computed if not needed by a later
-algorithm. In this manner potential memory bottle-necks are avoided.
+<br />
 </p>
 </div>
 </div>
 
-<div id="outline-container-org30100aa" class="outline-2">
-<h2 id="org30100aa"><span class="section-number-2">6</span> <a href="#org30100aa">Theory</a></h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgd7ac9be" class="outline-2">
+<h2 id="orgd7ac9be"><a href="#orgd7ac9be">Citation</a></h2>
+<div class="outline-text-2" id="text-orgd7ac9be">
 <p>
-Coulomb integrals are evaluated using the following expression.
-\[ V^{pq}_{sr} = \sum_{G} {\Gamma^\ast}^{pG}_s \Gamma^q_{rG} \]
+A paper containing more inforamtion about the implemented algorithms will be published soon.
+For the time being we recommend referring to following articles if appropriate
+</p>
+<ul class="org-ul">
+<li>Auxiliary-field representation: (<a href="#citeproc_bib_item_2">Hummel, Tsatsoulis, and Grüneis 2017</a>)</li>
+<li>Finite-size error corrections: (<a href="#citeproc_bib_item_4">Liao and Grüneis 2016</a>) (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>)</li>
+<li>Basis-set error corrections: (<a href="#citeproc_bib_item_3">Irmler, Gallo, and Grüneis 2021</a>)</li>
+</ul>
+<p>
+<br />
 </p>
 </div>
 </div>
 
-
-<div id="outline-container-org38354f0" class="outline-2">
-<h2 id="org38354f0"><span class="section-number-2">7</span> <a href="#org38354f0">Literature</a></h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgc08ba9e" class="outline-2">
+<h2 id="orgc08ba9e"><a href="#orgc08ba9e">Literature</a></h2>
+<div class="outline-text-2" id="text-orgc08ba9e">
 <div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12): 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June): 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Liao, Ke, and Andreas Grüneis. 2016. “Communication: Finite Size Correction in Periodic Coupled Cluster Theory Calculations of Solids.” <i>The Journal of Chemical Physics</i> 145 (14): 141102. <a href="http://doi.org/10.1063/1.4964307">http://doi.org/10.1063/1.4964307</a>.</div>
 </div>
 </div>
 </div>
