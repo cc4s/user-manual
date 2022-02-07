@@ -1,0 +1,35 @@
+:PROPERTIES:
+:ID: Acknowledgements
+:END:
+#+title: =Acknowledgements, Contributors and Citation=
+
+* Acknowledgements
+
+The development of the CC4S software package was supported by the European Research Council (ERC) under the European Unions Horizon 2020 research and innovation program (Grant Agreement No 715594).
+
+* Contributors
+The following authors have contributed to developing the methods and code implemented in the =Cc4s= software package.
+
+- Felix Hummel
+- Andreas Irmler
+- Alejandro Gallo
+- Ke Liao 
+- Theodoros Tsatsoulis
+- Tobias Schäfer
+- Andreas Grüneis
+\\
+
+* Citation
+
+A paper containing more inforamtion about the implemented algorithms will be published soon.
+For the time being we recommend referring to following articles if appropriate
+- Auxiliary-field representation: cite:&hummel2017low
+- Finite-size error corrections: cite:&liao2016communication cite:&gruber2018applying
+- Basis-set error corrections: cite:&FocalPointAppIrmler2021
+\\
+
+* Literature
+#+OPTIONS: num:nil
+bibliography:../group.bib
+
+
