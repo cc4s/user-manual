@@ -1,0 +1,80 @@
+:PROPERTIES:
+:ID: Write
+:END:
+#+title: =Write=
+# #+OPTIONS: toc:nil
+
+* Brief description
+=Write= writes a cc4s tensor or set of tensors.
+
+* Algorithm call
+
+A typical input file snippet to call the [[id:Write][Write]]
+algorithm is given below.
+
+#+begin_src yaml
+- name: Write
+  in:
+    fileName: "StructureFactor.yaml"
+    source: SF
+  out: {}
+#+end_src
+
+
+* Algorithm input
+
+# #+caption: Input keywords
+#+name: reader-input-table
+| Keyword               | Value |
+|-----------------------+-------|
+| =fileName=            | [[#what][what]]      |
+| =source=              | [[#data][data]]      |
+|-----------------------+-------|
+
+** what
+:PROPERTIES:
+:CUSTOM_ID: what
+:END:
+
+** data
+:PROPERTIES:
+:CUSTOM_ID: data
+:END:
+
+** Sample =stdout=
+The output of this algorithm reads
+#+begin_src sh
+step: 11, Write
+Writing to text file StructureFactor.elements
+realtime 0.011545188 s
+--
+#+end_src
+
+** Sample =yaml= output
+
+#+begin_src
+floatingPointOperations: 0
+flops: 0
+in:
+  binary: 0
+  fileName: StructureFactor.yaml
+  source: 0x2f315f8
+name: Write
+out:
+  persitentSource:
+    dimensions:
+      0:
+        length: 819
+    elements:
+      type: TextFile
+    scalarType: Real64
+    type: Tensor
+    unit: 1
+    version: 100
+realtime: 0.011545188
+#+end_src
+
+* Literature
+bibliography:../group.bib
+
+
