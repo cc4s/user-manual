@@ -6,7 +6,7 @@
 <!-- 2022-02-07 Mon 09:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>SlicedCoulombVertex</code></title>
+<title><code>Write</code></title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -239,28 +239,6 @@
     /*]]>*///-->
 // @license-end
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -310,47 +288,151 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>SlicedCoulombVertex</code></h1>
+<h1 class="title"><code>Write</code></h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8cd2a17">1. Brief description</a></li>
-<li><a href="#org5d0ea5d">2. <span class="todo TODO">TODO</span> Specification</a></li>
-<li><a href="#org131be8b">3. Literature</a></li>
+<li><a href="#org11233b2">1. Brief description</a></li>
+<li><a href="#org121276e">2. Algorithm call</a></li>
+<li><a href="#orgc77d8ee">3. Algorithm input</a>
+<ul>
+<li><a href="#what">3.1. what</a></li>
+<li><a href="#data">3.2. data</a></li>
+<li><a href="#org6baf2b0">3.3. Sample <code>stdout</code></a></li>
+<li><a href="#org73e92b4">3.4. Sample <code>yaml</code> output</a></li>
+</ul>
+</li>
+<li><a href="#org0e54742">4. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8cd2a17" class="outline-2">
-<h2 id="org8cd2a17"><span class="section-number-2">1</span> <a href="#org8cd2a17">Brief description</a></h2>
+<div id="outline-container-org11233b2" class="outline-2">
+<h2 id="org11233b2"><span class="section-number-2">1</span> <a href="#org11233b2">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-<code>SlicedCoulombVertex</code> is a set of Coulomb vertices partitioned
-into particle and hole index channels: \(\{ \Gamma_i^j(G), \Gamma_i^a(G), \Gamma_a^i(G), \Gamma_a^b(G)\}\).
-The <code>SlicedCoulombVertex</code> is used to compute different types of two-electron integrals; for example \(V_{ij}^{ab}\) and can be
-generated using the <a href="../algorithms/SliceOperator.html#ID-SliceOperator">SliceOperator</a> algorithm.
+<code>Write</code> writes a cc4s tensor or set of tensors.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org121276e" class="outline-2">
+<h2 id="org121276e"><span class="section-number-2">2</span> <a href="#org121276e">Algorithm call</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+A typical input file snippet to call the <a href="Write.html#ID-Write">Write</a>
+algorithm is given below.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: SliceOperator
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: Write
   <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
-    <span style="color: #8b4513;">operator</span>: CoulombVertex
-  <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">slicedOperator</span>: SlicedCoulombVertex
+    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"StructureFactor.yaml"</span>
+    <span style="color: #8b4513;">source</span>: SF
+  <span style="color: #8b4513;">out</span>: {}
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org5d0ea5d" class="outline-2">
-<h2 id="org5d0ea5d"><span class="section-number-2">2</span> <a href="#org5d0ea5d"><span class="todo TODO">TODO</span> Specification</a></h2>
+
+<div id="outline-container-orgc77d8ee" class="outline-2">
+<h2 id="orgc77d8ee"><span class="section-number-2">3</span> <a href="#orgc77d8ee">Algorithm input</a></h2>
+<div class="outline-text-2" id="text-3">
+<table id="orgd27bc1a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keyword</th>
+<th scope="col" class="org-left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>fileName</code></td>
+<td class="org-left"><a href="#what">what</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>source</code></td>
+<td class="org-left"><a href="#data">data</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 
-<div id="outline-container-org131be8b" class="outline-2">
-<h2 id="org131be8b"><span class="section-number-2">3</span> <a href="#org131be8b">Literature</a></h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-what" class="outline-3">
+<h3 id="what"><span class="section-number-3">3.1</span> <a href="#what">what</a></h3>
+<div class="outline-text-3" id="text-what">
+<p>
+Defines the yaml file name where the tensor or sets of tensors are written to.
+</p>
+</div>
+</div>
+
+<div id="outline-container-data" class="outline-3">
+<h3 id="data"><span class="section-number-3">3.2</span> <a href="#data">data</a></h3>
+<div class="outline-text-3" id="text-data">
+<p>
+Defines the tensor or sets of tensors that should be written to disk.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6baf2b0" class="outline-3">
+<h3 id="org6baf2b0"><span class="section-number-3">3.3</span> <a href="#org6baf2b0">Sample <code>stdout</code></a></h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+A typical output of this algorithm reads
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">step: 11, Write
+Writing to text file StructureFactor.elements
+realtime 0.011545188 s
+--
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org73e92b4" class="outline-3">
+<h3 id="org73e92b4"><span class="section-number-3">3.4</span> <a href="#org73e92b4">Sample <code>yaml</code> output</a></h3>
+<div class="outline-text-3" id="text-3-4">
+<pre class="example">
+floatingPointOperations: 0
+flops: 0
+in:
+  binary: 0
+  fileName: StructureFactor.yaml
+  source: 0x2f315f8
+name: Write
+out:
+  persitentSource:
+    dimensions:
+      0:
+        length: 819
+    elements:
+      type: TextFile
+    scalarType: Real64
+    type: Tensor
+    unit: 1
+    version: 100
+realtime: 0.011545188
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e54742" class="outline-2">
+<h2 id="org0e54742"><span class="section-number-2">4</span> <a href="#org0e54742">Literature</a></h2>
+<div class="outline-text-2" id="text-4">
 <div class="csl-bib-body">
 </div>
 </div>

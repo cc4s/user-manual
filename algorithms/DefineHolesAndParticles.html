@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-04 Fri 17:17 -->
+<!-- 2022-02-07 Mon 09:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>DefineHolesAndParticles</code></title>
@@ -293,26 +293,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgff4d908">1. Brief description</a></li>
-<li><a href="#org7e8bfa2">2. Algorithm call</a></li>
-<li><a href="#org4589530">3. Algorithm input</a>
+<li><a href="#org89d1525">1. Brief description</a></li>
+<li><a href="#org5fc7d3e">2. Algorithm call</a></li>
+<li><a href="#orgc1411e7">3. Algorithm input</a>
 <ul>
 <li><a href="#eigenEnergies">3.1. eigenEnergies</a></li>
 </ul>
 </li>
-<li><a href="#orgf9f43b0">4. Algorithm output</a>
+<li><a href="#org5f7a51b">4. Algorithm output</a>
 <ul>
-<li><a href="#org05ba45f">4.1. Sample <code>stdout</code></a></li>
+<li><a href="#orgf09828b">4.1. Sample <code>stdout</code></a></li>
 </ul>
 </li>
-<li><a href="#org16c4d11">5. Sample <code>yaml</code> output</a></li>
-<li><a href="#org4c7bd55">6. Literature</a></li>
+<li><a href="#org9cd1cb9">5. Sample <code>yaml</code> output</a></li>
+<li><a href="#org4b438f3">6. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgff4d908" class="outline-2">
-<h2 id="orgff4d908"><span class="section-number-2">1</span> <a href="#orgff4d908">Brief description</a></h2>
+<div id="outline-container-org89d1525" class="outline-2">
+<h2 id="org89d1525"><span class="section-number-2">1</span> <a href="#org89d1525">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The algorithm takes a sorted vector of eigenenergies and splits it into a set of
@@ -321,8 +321,8 @@ two tensors, according to the provided fermiEnergy.
 </div>
 </div>
 
-<div id="outline-container-org7e8bfa2" class="outline-2">
-<h2 id="org7e8bfa2"><span class="section-number-2">2</span> <a href="#org7e8bfa2">Algorithm call</a></h2>
+<div id="outline-container-org5fc7d3e" class="outline-2">
+<h2 id="org5fc7d3e"><span class="section-number-2">2</span> <a href="#org5fc7d3e">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>DefineHolesAndParticles</code> algorithm is given below.
@@ -340,10 +340,10 @@ A typical input file snippet to call the <code>DefineHolesAndParticles</code> al
 </div>
 
 
-<div id="outline-container-org4589530" class="outline-2">
-<h2 id="org4589530"><span class="section-number-2">3</span> <a href="#org4589530">Algorithm input</a></h2>
+<div id="outline-container-orgc1411e7" class="outline-2">
+<h2 id="orgc1411e7"><span class="section-number-2">3</span> <a href="#orgc1411e7">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgd8fabfd" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org203a371" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -375,10 +375,10 @@ A typical input file snippet to call the <code>DefineHolesAndParticles</code> al
 
 
 
-<div id="outline-container-orgf9f43b0" class="outline-2">
-<h2 id="orgf9f43b0"><span class="section-number-2">4</span> <a href="#orgf9f43b0">Algorithm output</a></h2>
+<div id="outline-container-org5f7a51b" class="outline-2">
+<h2 id="org5f7a51b"><span class="section-number-2">4</span> <a href="#org5f7a51b">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org637ad49" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgb6c2f5c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -401,8 +401,8 @@ A typical input file snippet to call the <code>DefineHolesAndParticles</code> al
 </table>
 </div>
 
-<div id="outline-container-org05ba45f" class="outline-3">
-<h3 id="org05ba45f"><span class="section-number-3">4.1</span> <a href="#org05ba45f">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgf09828b" class="outline-3">
+<h3 id="orgf09828b"><span class="section-number-3">4.1</span> <a href="#orgf09828b">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 The output of the algorithm provides the number of occupied and virtual states
@@ -420,8 +420,8 @@ realtime 0.000832881 s
 </div>
 </div>
 
-<div id="outline-container-org16c4d11" class="outline-2">
-<h2 id="org16c4d11"><span class="section-number-2">5</span> <a href="#org16c4d11">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-org9cd1cb9" class="outline-2">
+<h2 id="org9cd1cb9"><span class="section-number-2">5</span> <a href="#org9cd1cb9">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #8b4513;">floatingPointOperations</span>: 0
@@ -437,8 +437,8 @@ realtime 0.000832881 s
 </div>
 </div>
 
-<div id="outline-container-org4c7bd55" class="outline-2">
-<h2 id="org4c7bd55"><span class="section-number-2">6</span> <a href="#org4c7bd55">Literature</a></h2>
+<div id="outline-container-org4b438f3" class="outline-2">
+<h2 id="org4b438f3"><span class="section-number-2">6</span> <a href="#org4b438f3">Literature</a></h2>
 <div class="outline-text-2" id="text-6">
 <div class="csl-bib-body">
 </div>
@@ -446,7 +446,7 @@ realtime 0.000832881 s
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-04 Fri 17:17</p>
+<p class="date">Created: 2022-02-07 Mon 09:24</p>
 </div>
 </body>
 </html>

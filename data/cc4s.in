@@ -1,14 +1,14 @@
-- name: TensorReader
+- name: Read
   in:
     fileName: "CoulombVertex.yaml"
   out:
-    tensor: CoulombVertex
+    destination: CoulombVertex
 
-- name: TensorReader
+- name: Read
   in:
     fileName: "EigenEnergies.yaml"
   out:
-    tensor: EigenEnergies
+    destination: EigenEnergies
 
 - name: DefineHolesAndParticles
   in:
@@ -32,10 +32,10 @@
 - name: CoupledCluster
   in:
     method: Ccsd
-    integralsSliceSize: 100
     slicedEigenEnergies: EigenEnergies
     coulombIntegrals: CoulombIntegrals
     slicedCoulombVertex: CoulombVertex
+    integralsSliceSize: 100
     maxIterations: 30
     energyConvergence: 1.0E-5
     amplitudesConvergence: 1.0E-5
@@ -43,6 +43,7 @@
       type: DiisMixer
       maxResidua: 5
   out:
+    energy: CcsdEnergy
     amplitudes: Amplitudes
 
 - name: PerturbativeTriples
@@ -51,25 +52,26 @@
     amplitudes: Amplitudes
     coulombIntegrals: CoulombIntegrals
   out:
-    {}
+    energy: AtripEnergy
 
-- name: TensorReader
+
+- name: Read
   in:
     fileName: "DeltaIntegralsHH.yaml"
   out:
-    tensor: Nij
+    destination: Nij
 
-- name: TensorReader
+- name: Read
   in:
     fileName: "DeltaIntegralsPPHH.yaml"
   out:
-    tensor: DeltaIntegrals
+    destination: DeltaIntegrals
 
-- name: TensorReader
+- name: Read
   in:
     fileName: "Mp2PairEnergies.yaml"
   out:
-    tensor: Mp2PairEnergies
+    destination: Mp2PairEnergies
 
 - name: BasisSetCorrection
   in:
@@ -83,23 +85,23 @@
     {}
 
 
-- name: TensorReader
+- name: Read
   in:
     fileName: "CoulombVertexSingularVectors.yaml"
   out:
-    tensor: CoulombVertexSingularVectors
+    destination: CoulombVertexSingularVectors
 
-- name: TensorReader
+- name: Read
   in:
     fileName: "GridVectors.yaml"
   out:
-    tensor: GridVectors
+    destination: GridVectors
 
-- name: TensorReader
+- name: Read
   in:
     fileName: "CoulombPotential.yaml"
   out:
-    tensor: CoulombPotential
+    destination: CoulombPotential
 
 - name: FiniteSizeCorrection
   in:
@@ -110,4 +112,3 @@
     gridVectors: GridVectors
   out:
     transitionStructureFactor: SF
-
