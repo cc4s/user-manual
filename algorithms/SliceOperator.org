@@ -62,7 +62,7 @@ This is a set of tensors.
 The output of this algorithm reads
 #+begin_src sh
 step: 4, SliceOperator
-Slicing CoulombVertex.dat into holes and particles.
+Slicing CoulombVertex.elements into holes and particles.
 realtime 0.000798066 s
 #+end_src
 

@@ -36,13 +36,17 @@ algorithm is given below.
 :CUSTOM_ID: what
 :END:
 
+Defines the yaml file name where the tensor or sets of tensors are written to.
+
 ** data
 :PROPERTIES:
 :CUSTOM_ID: data
 :END:
 
+Defines the tensor or sets of tensors that should be written to disk.
+
 ** Sample =stdout=
-The output of this algorithm reads
+A typical output of this algorithm reads
 #+begin_src sh
 step: 11, Write
 Writing to text file StructureFactor.elements

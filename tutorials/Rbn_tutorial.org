@@ -50,13 +50,13 @@ This aglorithm can be executed employing the following  =cc4s.in= YAML input whi
 The above call to the [[id:Read][Read]] algorithm reads the
 *CoulombVertex.yaml* file that contains all meta-information associated with the
 {{{CV}}} tensor in a human-readable format.
-=Cc4s= will follow the link in *CoulombVertex.yaml* specified by =data:= to *CoulombVertex.dat* and read all numerical data of
-the corresponding {{{CV}}} tensor from disk.
+=Cc4s= will read all numerical data belonging to
+the corresponding {{{CV}}} tensor from the *CoulombVertex.elements* binary file stored on disk.
 The output of [[id:Read][Read]] algorithm is the {{{CV}}} tensor object, which can
 be used as input for all subsequent =Cc4s= algorithms.
 
 In addition, we use =Cc4s= to read the *EigenEnergies.yaml* and
-*EigenEnergies.dat* files by including the following [[id:Read][Read]] call in =cc4s.in=
+*EigenEnergies.elements* files by including the following [[id:Read][Read]] call in =cc4s.in=
 #+begin_src yaml
 - name: Read
   in:
@@ -460,7 +460,7 @@ The table below summarizes all computed ground state energy contributions for th
 | =CCSD(T) energy + corrections= |  -149.109311                      |
 |------------------------------+-----------------------------------|
 
-Please note that the Hartree--Fock energy contribution was obtained using the preceeding =VASP= calculation. We recommend to
+Please note that the Hartree--Fock energy contribution was obtained using a preceeding =VASP= calculation. We recommend to
 converge the Hartree--Fock energy contribution to the thermodynamic limit separately using denser $k$ -meshes.
 The final =CCSD(T) energy + corrections= value can be used to study all accessible physical properties of interest.
 

@@ -147,7 +147,7 @@ NOTE: This low-scaling algorithm heavily relies on FFTs. For efficiency reasons,
 For further details, please check the [[https://www.vasp.at/wiki/index.php/LTMP2_-_Tutorial][LTMP2 - Tutorial]] in the VASP wiki.
 
 At the end of this =VASP= calculation the following input files needed by =Cc4s= are written to disk. 
-- [[id:Mp2PairEnergies][Mp2PairEnergies]] ($\epsilon_{ij}$) : =Mp2PairEnergies.yaml=, =Mp2PairEnergies.dat=
+- [[id:Mp2PairEnergies][Mp2PairEnergies]] ($\epsilon_{ij}$) : =Mp2PairEnergies.yaml=, =Mp2PairEnergies.elements=
 
 * *Optional Step 2-(b)*: Approximate natural orbitals
 #+OPTIONS: num:nil
@@ -230,13 +230,13 @@ ISYM        = -1
 
 This step produces the following input files needed by =Cc4s= 
 
-- [[id:EigenEnergies][Eigenenergies]] ($\epsilon_{p}$) : =EigenEnergies.yaml=, =EigenEnergies.dat=
-- [[id:CoulombVertex][CoulombVertex]] ($\Gamma^{pG}_{q}$) :  =CoulombVertex.yaml=, =CoulombVertex.dat=
-- [[id:GridVectors][GridVectors]] ($\vec G$) : =GridVectors.yaml=, =GridVectors.dat=
-- [[id:CoulombPotential][CoulombPotential]] ($V(\vec G)$) : =CoulombPotential.yaml=, =CoulombPotential.dat=
-- [[id:DeltaIntegrals][DeltaIntegrals]] ($\delta^{ab}_{ij}$) : =DeltaPPHH.yaml=, =DeltaPPHH.dat=
-- [[id:DeltaIntegrals][DeltaIntegrals]] ($\delta_{ij}$) : =DeltaHH.yaml=, =DeltaHH.dat=
-- [[id:CoulombVertexSingularVectors][CoulombVertexSingularVetors]] ($U_{G}^{F}$) : =CoulombVertexSingularVectors.yaml=, =CoulombVertexSingularVectors.dat=
+- [[id:EigenEnergies][Eigenenergies]] ($\epsilon_{p}$) : =EigenEnergies.yaml=, =EigenEnergies.elements=
+- [[id:CoulombVertex][CoulombVertex]] ($\Gamma^{pG}_{q}$) :  =CoulombVertex.yaml=, =CoulombVertex.elements=
+- [[id:GridVectors][GridVectors]] ($\vec G$) : =GridVectors.yaml=, =GridVectors.elements=
+- [[id:CoulombPotential][CoulombPotential]] ($V(\vec G)$) : =CoulombPotential.yaml=, =CoulombPotential.elements=
+- [[id:DeltaIntegrals][DeltaIntegrals]] ($\delta^{ab}_{ij}$) : =DeltaPPHH.yaml=, =DeltaPPHH.elements=
+- [[id:DeltaIntegrals][DeltaIntegrals]] ($\delta_{ij}$) : =DeltaHH.yaml=, =DeltaHH.elements=
+- [[id:CoulombVertexSingularVectors][CoulombVertexSingularVetors]] ($U_{G}^{F}$) : =CoulombVertexSingularVectors.yaml=, =CoulombVertexSingularVectors.elements=
 
 * Literature
 #+OPTIONS: num:nil
