@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-07 Mon 09:32 -->
+<!-- 2022-02-07 Mon 10:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>VertexCoulombIntegrals</code></title>
@@ -315,24 +315,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org87d2221">1. Brief description</a></li>
-<li><a href="#orgaaaee1e">2. Algorithm call</a></li>
-<li><a href="#orgf5556c4">3. Algorithm input</a></li>
-<li><a href="#orgce43328">4. Algorithm output</a>
+<li><a href="#orgc9384ab">1. Brief description</a></li>
+<li><a href="#org62062df">2. Algorithm call</a></li>
+<li><a href="#org556e819">3. Algorithm input</a></li>
+<li><a href="#org50db03a">4. Algorithm output</a>
 <ul>
-<li><a href="#orgfa20252">4.1. Sample <code>stdout</code></a></li>
-<li><a href="#org910ad23">4.2. Sample <code>yaml</code> output</a></li>
+<li><a href="#org601bce9">4.1. Sample <code>stdout</code></a></li>
+<li><a href="#org2dbbd3a">4.2. Sample <code>yaml</code> output</a></li>
 </ul>
 </li>
-<li><a href="#org0b54596">5. Computational complexity</a></li>
-<li><a href="#orgcda1e90">6. Theory</a></li>
-<li><a href="#org5ed783b">7. Literature</a></li>
+<li><a href="#org5b268f3">5. Computational complexity</a></li>
+<li><a href="#org679cc6c">6. Theory</a></li>
+<li><a href="#org5f7efb7">7. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org87d2221" class="outline-2">
-<h2 id="org87d2221"><span class="section-number-2">1</span> <a href="#org87d2221">Brief description</a></h2>
+<div id="outline-container-orgc9384ab" class="outline-2">
+<h2 id="orgc9384ab"><span class="section-number-2">1</span> <a href="#orgc9384ab">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>VertexCoulombIntegrals</code> prepares a recipe needed for the evaluation of Coulomb integrals.
@@ -340,8 +340,8 @@
 </div>
 </div>
 
-<div id="outline-container-orgaaaee1e" class="outline-2">
-<h2 id="orgaaaee1e"><span class="section-number-2">2</span> <a href="#orgaaaee1e">Algorithm call</a></h2>
+<div id="outline-container-org62062df" class="outline-2">
+<h2 id="org62062df"><span class="section-number-2">2</span> <a href="#org62062df">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>VertexCoulombIntegrals</code> algorithm is given below.
@@ -359,10 +359,10 @@ A typical input file snippet to call the <code>VertexCoulombIntegrals</code> alg
 </div>
 
 
-<div id="outline-container-orgf5556c4" class="outline-2">
-<h2 id="orgf5556c4"><span class="section-number-2">3</span> <a href="#orgf5556c4">Algorithm input</a></h2>
+<div id="outline-container-org556e819" class="outline-2">
+<h2 id="org556e819"><span class="section-number-2">3</span> <a href="#org556e819">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org5d96f13" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org8e7f107" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
 
 <colgroup>
@@ -387,8 +387,8 @@ A typical input file snippet to call the <code>VertexCoulombIntegrals</code> alg
 </div>
 
 
-<div id="outline-container-orgce43328" class="outline-2">
-<h2 id="orgce43328"><span class="section-number-2">4</span> <a href="#orgce43328">Algorithm output</a></h2>
+<div id="outline-container-org50db03a" class="outline-2">
+<h2 id="org50db03a"><span class="section-number-2">4</span> <a href="#org50db03a">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -413,8 +413,8 @@ A typical input file snippet to call the <code>VertexCoulombIntegrals</code> alg
 </table>
 </div>
 
-<div id="outline-container-orgfa20252" class="outline-3">
-<h3 id="orgfa20252"><span class="section-number-3">4.1</span> <a href="#orgfa20252">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org601bce9" class="outline-3">
+<h3 id="org601bce9"><span class="section-number-3">4.1</span> <a href="#org601bce9">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 A sample output of this algorithm reads
@@ -428,8 +428,8 @@ realtime 0.001249174 s
 </div>
 </div>
 
-<div id="outline-container-org910ad23" class="outline-3">
-<h3 id="org910ad23"><span class="section-number-3">4.2</span> <a href="#org910ad23">Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org2dbbd3a" class="outline-3">
+<h3 id="org2dbbd3a"><span class="section-number-3">4.2</span> <a href="#org2dbbd3a">Sample <code>yaml</code> output</a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 A sample <code>yaml</code> output of this algorithm reads
@@ -450,8 +450,8 @@ A sample <code>yaml</code> output of this algorithm reads
 </div>
 </div>
 
-<div id="outline-container-org0b54596" class="outline-2">
-<h2 id="org0b54596"><span class="section-number-2">5</span> <a href="#org0b54596">Computational complexity</a></h2>
+<div id="outline-container-org5b268f3" class="outline-2">
+<h2 id="org5b268f3"><span class="section-number-2">5</span> <a href="#org5b268f3">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Note that the <code>VertexCoulombIntegrals</code> algorithm merely defines a recipe to perform the computation of all integrals. The integrals will only be computed once
@@ -461,8 +461,8 @@ algorithm. In this manner potential memory bottle-necks are avoided.
 </div>
 </div>
 
-<div id="outline-container-orgcda1e90" class="outline-2">
-<h2 id="orgcda1e90"><span class="section-number-2">6</span> <a href="#orgcda1e90">Theory</a></h2>
+<div id="outline-container-org679cc6c" class="outline-2">
+<h2 id="org679cc6c"><span class="section-number-2">6</span> <a href="#org679cc6c">Theory</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Coulomb integrals are evaluated using the following expression.
@@ -472,8 +472,8 @@ Coulomb integrals are evaluated using the following expression.
 </div>
 
 
-<div id="outline-container-org5ed783b" class="outline-2">
-<h2 id="org5ed783b"><span class="section-number-2">7</span> <a href="#org5ed783b">Literature</a></h2>
+<div id="outline-container-org5f7efb7" class="outline-2">
+<h2 id="org5f7efb7"><span class="section-number-2">7</span> <a href="#org5f7efb7">Literature</a></h2>
 <div class="outline-text-2" id="text-7">
 <div class="csl-bib-body">
 </div>
@@ -481,7 +481,7 @@ Coulomb integrals are evaluated using the following expression.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-07 Mon 09:32</p>
+<p class="date">Created: 2022-02-07 Mon 10:14</p>
 </div>
 </body>
 </html>

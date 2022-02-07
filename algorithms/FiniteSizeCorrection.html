@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-07 Mon 09:32 -->
+<!-- 2022-02-07 Mon 10:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title><code>FiniteSizeCorrection</code></title>
@@ -315,28 +315,28 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org6dd6034">1. Brief description</a></li>
-<li><a href="#org0963e30">2. Algorithm call</a></li>
-<li><a href="#org0c8575b">3. Algorithm input</a>
+<li><a href="#orgb6d9abf">1. Brief description</a></li>
+<li><a href="#org5522208">2. Algorithm call</a></li>
+<li><a href="#orgb3d381e">3. Algorithm input</a>
 <ul>
 <li><a href="#interpolationgridsize">3.1. interpolationGridSize</a></li>
 </ul>
 </li>
-<li><a href="#org01be15a">4. Algorithm output</a>
+<li><a href="#orgd3281ec">4. Algorithm output</a>
 <ul>
-<li><a href="#org039c807">4.1. Sample <code>stdout</code></a></li>
+<li><a href="#orgb0f202d">4.1. Sample <code>stdout</code></a></li>
 </ul>
 </li>
-<li><a href="#org8e4d871">5. Sample <code>yaml</code> output</a></li>
-<li><a href="#orgd7c3895">6. Computational complexity</a></li>
-<li><a href="#org8766948">7. Theory</a></li>
-<li><a href="#org6e87ff1">8. Literature</a></li>
+<li><a href="#orgeef4c31">5. Sample <code>yaml</code> output</a></li>
+<li><a href="#org06090b8">6. Computational complexity</a></li>
+<li><a href="#orgdfee6c6">7. Theory</a></li>
+<li><a href="#orgfef73ef">8. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org6dd6034" class="outline-2">
-<h2 id="org6dd6034"><span class="section-number-2">1</span> <a href="#org6dd6034">Brief description</a></h2>
+<div id="outline-container-orgb6d9abf" class="outline-2">
+<h2 id="orgb6d9abf"><span class="section-number-2">1</span> <a href="#orgb6d9abf">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm calculates the electronic transition structure factor
@@ -345,8 +345,8 @@ and performs a tricubic interpolaton to estimate a finite size correlation energ
 </div>
 </div>
 
-<div id="outline-container-org0963e30" class="outline-2">
-<h2 id="org0963e30"><span class="section-number-2">2</span> <a href="#org0963e30">Algorithm call</a></h2>
+<div id="outline-container-org5522208" class="outline-2">
+<h2 id="org5522208"><span class="section-number-2">2</span> <a href="#org5522208">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>FiniteSizeCorrection</code> algorithm is given below.
@@ -366,10 +366,10 @@ A typical input file snippet to call the <code>FiniteSizeCorrection</code> algor
 </div>
 </div>
 
-<div id="outline-container-org0c8575b" class="outline-2">
-<h2 id="org0c8575b"><span class="section-number-2">3</span> <a href="#org0c8575b">Algorithm input</a></h2>
+<div id="outline-container-orgb3d381e" class="outline-2">
+<h2 id="orgb3d381e"><span class="section-number-2">3</span> <a href="#orgb3d381e">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org8fe9954" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgee6532e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -431,10 +431,10 @@ between neighbouring <a href="../objects/GridVectors.html#ID-GridVectors">Grid V
 </div>
 
 
-<div id="outline-container-org01be15a" class="outline-2">
-<h2 id="org01be15a"><span class="section-number-2">4</span> <a href="#org01be15a">Algorithm output</a></h2>
+<div id="outline-container-orgd3281ec" class="outline-2">
+<h2 id="orgd3281ec"><span class="section-number-2">4</span> <a href="#orgd3281ec">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="orgae1125a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org07761cb" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -463,8 +463,8 @@ algorithm of the electronic transition structure factor.
 </p>
 </div>
 
-<div id="outline-container-org039c807" class="outline-3">
-<h3 id="org039c807"><span class="section-number-3">4.1</span> <a href="#org039c807">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgb0f202d" class="outline-3">
+<h3 id="orgb0f202d"><span class="section-number-3">4.1</span> <a href="#orgb0f202d">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
@@ -480,8 +480,8 @@ realtime 0.373321931 s
 </div>
 </div>
 
-<div id="outline-container-org8e4d871" class="outline-2">
-<h2 id="org8e4d871"><span class="section-number-2">5</span> <a href="#org8e4d871">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-orgeef4c31" class="outline-2">
+<h2 id="orgeef4c31"><span class="section-number-2">5</span> <a href="#orgeef4c31">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Below an example <code>yaml</code> output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
@@ -512,8 +512,8 @@ Below an example <code>yaml</code> output stream is shown for a successful <code
 </div>
 
 
-<div id="outline-container-orgd7c3895" class="outline-2">
-<h2 id="orgd7c3895"><span class="section-number-2">6</span> <a href="#orgd7c3895">Computational complexity</a></h2>
+<div id="outline-container-org06090b8" class="outline-2">
+<h2 id="org06090b8"><span class="section-number-2">6</span> <a href="#org06090b8">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared to preceding Coupled Cluster theory calculations.
@@ -521,8 +521,8 @@ No considerable memory footprints or computational cost bottle necks are expecte
 </div>
 </div>
 
-<div id="outline-container-org8766948" class="outline-2">
-<h2 id="org8766948"><span class="section-number-2">7</span> <a href="#org8766948">Theory</a></h2>
+<div id="outline-container-orgdfee6c6" class="outline-2">
+<h2 id="orgdfee6c6"><span class="section-number-2">7</span> <a href="#orgdfee6c6">Theory</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
@@ -543,18 +543,18 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-org6e87ff1" class="outline-2">
-<h2 id="org6e87ff1"><span class="section-number-2">8</span> <a href="#org6e87ff1">Literature</a></h2>
+<div id="outline-container-orgfef73ef" class="outline-2">
+<h2 id="orgfef73ef"><span class="section-number-2">8</span> <a href="#orgfef73ef">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
-  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Liao, Ke, and Andreas Grüneis. 2016. “Communication: Finite Size Correction in Periodic Coupled Cluster Theory Calculations of Solids.” <i>The Journal of Chemical Physics</i> 145 (14). AIP Publishing: 141102. <a href="http://doi.org/10.1063/1.4964307">http://doi.org/10.1063/1.4964307</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Liao, Ke, and Andreas Grüneis. 2016. “Communication: Finite Size Correction in Periodic Coupled Cluster Theory Calculations of Solids.” <i>The Journal of Chemical Physics</i> 145 (14): 141102. <a href="http://doi.org/10.1063/1.4964307">http://doi.org/10.1063/1.4964307</a>.</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-07 Mon 09:32</p>
+<p class="date">Created: 2022-02-07 Mon 10:14</p>
 </div>
 </body>
 </html>
