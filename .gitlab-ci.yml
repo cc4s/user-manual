@@ -1,0 +1,21 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - make clean
+    - make publish
+  artifacts:
+    paths:
+      - "data/*"
+      - "user-manual/*"
+
+deploy:
+  stage: deploy
+  needs:
+    - job: build
+      artifacts: true
+  script:
+    - make deploy

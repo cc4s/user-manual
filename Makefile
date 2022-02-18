@@ -1,5 +1,6 @@
 -include config.mk
 BUILD_DIR = user-manual/
+PATHSVR=/var/www/user-manual.cc4s.org
 
 PORT = 8888
 
@@ -58,6 +59,10 @@ vim:
 				-O ~/.vim/ftdetect/org.vim
 	wget https://raw.githubusercontent.com/alejandrogallo/org-syntax.vim/main/syntax/org.vim \
 				-O ~/.vim/syntax/org.vim
+
+deploy: user-manual
+	rsync --recursive --itemize-changes --delete user-manual $(PATHSVR)
+	rsync --recursive --itemize-changes --delete data $(PATHSVR)
 
 .PHONY: sitemaps
 .PHONY: init serve publish tangle refresh clean clean-emacs clean-all force vim
