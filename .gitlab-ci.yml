@@ -5,7 +5,6 @@ stages:
 build:
   stage: build
   script:
-    - make clean
     - make publish
   artifacts:
     paths:
