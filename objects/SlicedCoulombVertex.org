@@ -6,11 +6,13 @@
 
 * Brief description
 
-=SlicedCoulombVertex= is a set of Coulomb vertices partitioned
-into particle and hole index channels: $\{ \Gamma^i_{jF}, \Gamma_i^{aF}, \Gamma_a^{iF}, \Gamma_a^{bF}\}$.
+=SlicedCoulombVertex= is a set of Coulomb vertices, sliced
+into particle and hole index channels:
+$\{ \Gamma^i_{jF}, \Gamma_i^{aF}, \Gamma_a^{iF}, \Gamma_a^{bF}\}$.
 The =SlicedCoulombVertex= is used to compute the different types of two-electron
-integrals, such as $V_{ij}^{ab}$. It can be generated from
-the entire =CoulombVertex= $\Gamma^q_{rF}$ using the
+integrals, such as $V_{ij}^{ab}=\sum_F{\Gamma^\ast}^{aF}_i\Gamma^b_{jF}$.
+It can be generated from
+the entire =CoulombVertex= $\Gamma^q_{rF}$, defined below, using the
 [[id:SliceOperator][SliceOperator]] algorithm:
 
 #+begin_src yaml
@@ -24,7 +26,40 @@ the entire =CoulombVertex= $\Gamma^q_{rF}$ using the
 
 * Specification
 The entire =CoulombVertex= $\Gamma^q_{rF}$ is found from
-the Fourier transformed overlap densities.
+the Fourier transformation $\tilde\Gamma^q_{rG}$ of the
+right vertex of the Coulomb interaction
+\begin{equation}
+  \tilde\Gamma^q_{rG}
+  = \int_\Omega dr\, \sqrt{w_G} \sqrt{\frac{4\pi}{\mathbf{G}^2}}\,
+    e^{-i \mathbf{r}\cdot \mathbf{G}}\,
+    {\psi^\ast}^q(\mathbf{r})\, \psi_r(\mathbf{r}),
+\end{equation}
+where $\mathbf{G}$ denotes the momentum vector associated to the momentum
+index $G$.
+Note, that the square root of the numerical integration weight $w_G$
+and of the Coulomb kernel $4\pi/\mathbf{G}^2$
+are contained in the above definition, such that
+the electron repulsion integrals decompose into two identical factors
+\begin{equation}
+  V^{pq}_{sr} = \sum_G {\tilde\Gamma^\ast}^{pG}_s \tilde\Gamma^q_{rG},
+\end{equation}
+analogous to a resolution-of-identity decomposition.
+
+To reduce the size of the =CoulombVertex= while minimizing the
+error of the above factorization, the
+singular value decomposition of the Fourier transformed
+Coulomb interaction vertex
+$\tilde\Gamma^q_{rG} = {V^\ast}^q_{rF}\Sigma^F_F U^F_G$ is
+considered.
+The =CoulombVertex= is finally defined using only
+the $N_\mathrm{F}$ largest singular values $\Sigma^F_F$ and their respective
+right singular vectors $U^F_G$
+\begin{equation}
+\Gamma^q_{rF} = \sum_G \tilde\Gamma^q_{qG}{U^\ast}^G_F.
+\end{equation}
+The coefficients $U_F^G$ are needed by the =FiniteSizeCorrection= algorithm
+and they are contained in the object =CoulombVertexSingularVectors=.
+For more details, see cite:hummel2017low.
 
 * Literature
 bibliography:../group.bib

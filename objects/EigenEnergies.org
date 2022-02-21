@@ -6,9 +6,17 @@
 
 * Brief description
 
-=EigenEnergies= are one-electron Hartree--Fock energies $\epsilon_p$ for arbitrary states.
+=EigenEnergies= are one-electron Hartree--Fock energies $\varepsilon_p$
+for the states $p$. The states $p$ must be ordered such that their
+energies $\varepsilon_p$ are non-descending. All objects with
+indices referring to states $p$ must be in the same order.
 
 * Specification
+Unlike in other objects, the Fermi energy $\varepsilon_\mathrm{F}$ and
+all energies $\varepsilon_p$ must
+also be listed in the =metaData= section such that =cc4s=
+can determine the number of occupied and virtual states during
+a dry-run without reading the content file =EigenEnergies.elements=.
 
 An example =EigenEnergies.yaml= file is given below
 #+begin_src yaml
@@ -26,7 +34,7 @@ metaData:
   energies:
    -   -25.5661014910229     
    -   -25.0676530819027     
-...
+   ...
 #+end_src
 
 
