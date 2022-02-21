@@ -39,28 +39,45 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
 #+name: ccsd-input-table
 | Keyword                      | Value                             |
 |------------------------------+-----------------------------------|
-| =method: type=               | [[#method-type][Type of coupled cluster algorithm]] |
-| =method: integralsSliceSize= | [[#integralsslicesize][Integral slice size]]               |
+| =method=                     | [[#method][Type of coupled cluster algorithm]] |
+| =linearized=                 | [[#linearized][Use linearized or fully non-linear coupled cluster]] |
+| =integralsSliceSize=         | [[#integralsslicesize][Integral slice size]]               |
 | =slicedEigenEnergies=        | [[id:SlicedEigenEnergies][Sliced one-electron energies]]      |
 | =coulombIntegrals=           | [[id:CoulombIntegrals][Coulomb Integrals]]                 |
 | =slicedCoulombVertex=        | [[id:SlicedCoulombVertex][Sliced Coulomb vertex]]             |
 | =maxIterations=              | [[#maxiterations][Maximum number of iterations]]      |
 | =energyConvergence=          | [[#energyconvergence][Energy convergence threshold]]      |
 | =amplitudesConvergence=      | [[#amplitudesconvergence][Amplitude convergence threshold]]   |
-| =mixer=                      | [[#mixer][Mixer type]]                        |
+| =mixer=                      | [[#mixer][Mixer type and parameters]]                        |
 |------------------------------+-----------------------------------|
 
-** type
+** method
 :PROPERTIES:
-:CUSTOM_ID: method-type
+:CUSTOM_ID: method
 :END:
-=method: type= specifies the  coupled-cluster approximation for the amplitudes to be used.
+=method= specifies the  coupled-cluster approximation for the amplitudes to be used.
 The currently available approximations are:
   - =Ccsd= :: Coupled Cluster singles and doubles (see [[cite:&Bartlett2007-cm]] and references therin).
   - =CcsdReference= :: Canonical and unoptimized version of the =Ccsd= algorithm.
-    This algorithm has the same inputs as =Ccsd= with the exception of the
-    [[#integralsslicesize][integralSliceSize]] input argument.
-  - =Drccsd= :: Direct-Ring Coupled Cluster singles and doubles [[cite:&paier2012assessment]].
+    This algorithm has the same inputs as =Ccsd= with the exception that the
+    arguments
+    [[#integralsslicesize][integralSliceSize]] and
+    [[id:SlicedCoulombVertex][slicedCoulombVertex]] and
+    are ignored.
+  - =Drccsd= :: Unoptimized implementation of Direct-Ring Coupled Cluster
+    singles and doubles [[cite:&freeman_coupled-cluster_1977]]
+    [[cite:&paier2012assessment]].
+
+** linearzied
+:PROPERTIES:
+:CUSTOM_ID: linearized
+:END:
+=linearized= A non-zero value indicates that the linearized
+coupled-cluster amplitude equations should be solved, rather
+than the fully non-linear ones.
+The default is =linearized: 0=.
+Note: currently only =method: Drccd= supports linearized
+amplitude equations.
 
 ** integralsSliceSize
 :PROPERTIES:
@@ -208,7 +225,7 @@ realtime: 9.189542891
 
 This section explains computational or memory footprints
 for the various methods implemented in *CoupledCluster*
-[[#method-type][(see type)]].
+[[#method][(see method)]].
 
 ** =Ccsd method=
 The computational bottle neck of a typical Ccsd calculation originates from the following contraction, which is
@@ -220,9 +237,12 @@ the =integralsSliceSize= keyword.
 
 We note that required storage of a set of doubles amplitudes adds substantially to the memory footprint in Ccsd calculations.
 The Diis algorithm requires the storage of both doubles residua and amplitudes =maxResidua= times. We recommend to choose the
-type of mixer and its parameters carefully to reduce the memory fottprint if necessary.
+type of mixer and its parameters carefully to reduce the memory footprint if necessary.
 
-** TODO =Drccd method=
+** =Drccd method=
+The computational complexity is $\mathcal O(N_\mathrm{o}^3N_\mathrm{v}^3)$.
+The implementation is not optimized for large systems. The memory requirement
+scales as $\mathcal O(N_\mathrm{o} N_\mathrm{v})$ 
 
 * Theory
 
