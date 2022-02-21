@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: VaspInterface
 :END:
-#+title: Description of =VASP= interface to =Cc4s=
+#+title: Description of VASP interface to Cc4s
 
 
 This section explains the =VASP= workflow to calculate occupied and unoccupied one-electron orbitals, as well as all necessary input files for =Cc4s=.
@@ -11,8 +11,8 @@ In addition, we refer to the [[https://www.vasp.at/wiki][Wiki page of VASP]].
 An example =bash= script performing all following steps for a periodic BN crystal is available here [[file:../data/run_vasp.sh][here]].
 
 # Essentially, 
-# 1. Grundzustand
-# 2. Virtuelle Orbitale
+# 1. Groundstate
+# 2. Virtual orbitals
 # 3. Natural orbitals
 # 4. Low-rank
 # 5. Output files for cc4s

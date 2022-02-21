@@ -7,9 +7,11 @@
 * Brief description
 
 =SlicedCoulombVertex= is a set of Coulomb vertices partitioned
-into particle and hole index channels: $\{ \Gamma_i^j(G), \Gamma_i^a(G), \Gamma_a^i(G), \Gamma_a^b(G)\}$.
-The =SlicedCoulombVertex= is used to compute different types of two-electron integrals; for example $V_{ij}^{ab}$ and can be
-generated using the [[id:SliceOperator][SliceOperator]] algorithm.
+into particle and hole index channels: $\{ \Gamma^i_{jF}, \Gamma_i^{aF}, \Gamma_a^{iF}, \Gamma_a^{bF}\}$.
+The =SlicedCoulombVertex= is used to compute the different types of two-electron
+integrals, such as $V_{ij}^{ab}$. It can be generated from
+the entire =CoulombVertex= $\Gamma^q_{rF}$ using the
+[[id:SliceOperator][SliceOperator]] algorithm:
 
 #+begin_src yaml
 - name: SliceOperator
@@ -20,7 +22,9 @@ generated using the [[id:SliceOperator][SliceOperator]] algorithm.
     slicedOperator: SlicedCoulombVertex
 #+end_src
 
-* TODO Specification
+* Specification
+The entire =CoulombVertex= $\Gamma^q_{rF}$ is found from
+the Fourier transformed overlap densities.
 
 * Literature
 bibliography:../group.bib
