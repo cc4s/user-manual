@@ -1,4 +1,4 @@
-#+title: How to run =Cc4s= calculations?
+#+title: How to run Cc4s calculations?
 
 #+macro: CV [[id:CoulombVertex][=CoulombVertex=]]
 

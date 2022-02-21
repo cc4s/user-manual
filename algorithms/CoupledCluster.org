@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: CoupledCluster
 :END:
-#+title: =CoupledCluster=
+#+title: CoupledCluster
 # #+OPTIONS: toc:nil
 
 * Brief description
@@ -242,7 +242,7 @@ type of mixer and its parameters carefully to reduce the memory footprint if nec
 ** =Drccd method=
 The computational complexity is $\mathcal O(N_\mathrm{o}^3N_\mathrm{v}^3)$.
 The implementation is not optimized for large systems. The memory requirement
-scales as $\mathcal O(N_\mathrm{o} N_\mathrm{v})$ 
+scales as $\mathcal O(N_\mathrm{o}^2 N_\mathrm{v}^2)$ 
 
 * Theory
 

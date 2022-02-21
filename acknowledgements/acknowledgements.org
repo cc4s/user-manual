@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: Acknowledgements
 :END:
-#+title: =Acknowledgements, Contributors and Citation=
+#+title: Acknowledgements, Contributors and Citation
 
 * Acknowledgements
 

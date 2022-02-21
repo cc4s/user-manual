@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: FiniteSizeCorrection
 :END:
-#+title: =FiniteSizeCorrection=
+#+title: FiniteSizeCorrection
 # #+OPTIONS: toc:nil
 
 * Brief description

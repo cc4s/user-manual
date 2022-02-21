@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: CoulombVertexSingularVectors
 :END:
-#+title: =CoulombVertexSingularVectors=
+#+title: CoulombVertexSingularVectors
 # #+OPTIONS: toc:nil
 
 * Brief description

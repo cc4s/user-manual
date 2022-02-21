@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: Read
 :END:
-#+title: =Read=
+#+title: Read
 # #+OPTIONS: toc:nil
 
 * Brief description

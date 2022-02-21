@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: Mp2PairEnergies
 :END:
-#+title: =Mp2PairEnergies=
+#+title: Mp2PairEnergies
 # #+OPTIONS: toc:nil
 
 * Brief description

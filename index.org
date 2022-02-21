@@ -1,4 +1,4 @@
-#+title: =Cc4s= User Documentation
+#+title: Cc4s User Documentation
 
 # #+begin_center
 # The following sections explain everything from

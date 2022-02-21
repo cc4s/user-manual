@@ -1,7 +1,7 @@
 :PROPERTIES:
 :ID: VertexCoulombIntegrals
 :END:
-#+title: =VertexCoulombIntegrals=
+#+title: VertexCoulombIntegrals
 # #+OPTIONS: toc:nil
 
 * Brief description
