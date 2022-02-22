@@ -121,7 +121,7 @@ NBANDS   = $nbands
 LSFACTOR = .TRUE.
 #+end_src
 
-For larger systems, the low-scaling algorithm [[cite:&Schafer2016]] might be faster and less memory consuming:
+For larger systems, the low-scaling algorithm [[cite:&Schafer2016]] might be faster and less memory consuming.
 
 #+name: mp2_2-incar
 #+begin_src sh
@@ -133,15 +133,18 @@ ISYM     = -1
 LMP2LT     = .TRUE.
 ALGO       = ACFDTRK
 NOMEGA     = 6
-KPAR       = 32
 LDUMPMP2IJ = .TRUE.
 LHFCALC    = .TRUE.
 AEXX       = 1.0
 NBANDS     = $nbands
 #+end_src
 This algorithm is based on a Laplace transformed (LT) MP2 formulation using =NOMEGA = 6= sampling points for the Laplace integration. This setting is sufficient for large gap systems. For small gap systems try with =NOMEGA = 8= or even higher. 
-For an efficient parallelization, set =KPAR= to a divisor of the number of mpi-ranks (optimally half of the number of mpi-ranks).
+For an efficient parallelization, use the =KPAR= flag and set it to a divisor of the number of mpi-ranks (optimally half of the number of mpi-ranks).
 In case of memory issues, reduce =KPAR=.
+
+NOTE: The basis-set extrapolation procedures between the different MP2 algorithms in VASP
+differ and for consistency reasons one should not compare extrapolated correlation
+energy estimates between different algorithms.
 
 NOTE: This low-scaling algorithm heavily relies on FFTs. For efficiency reasons, please use =PRECFOCK = Fast= consistently in all post-HF or post-DFT VASP runs. 
 For further details, please check the [[https://www.vasp.at/wiki/index.php/LTMP2_-_Tutorial][LTMP2 - Tutorial]] in the VASP wiki.
