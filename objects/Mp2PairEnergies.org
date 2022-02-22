@@ -9,11 +9,17 @@
 =Mp2PairEnergies= is a matrix \( \epsilon_{ij} \)
 of dimensions \( N_{\rm o} \times N_{\rm o}  \).
 \( \epsilon_{ij} \) is the electron-pair resolved MP2 correlation energy in the 
-complete basis set limig such that
-the total MP2 correlation energy is given by its full contraction, i.e.
+complete basis set limig
 \begin{equation}
-E_c^{\mathrm{MP2}} = \sum_{ij} \epsilon_{ij}.
+  \epsilon_{ij} = \sum_{AB} \frac{
+    V^{AB}_{ij}(2V^{ij}_{AB}-V^{ji}_{AB})
+  } {
+    \varepsilon_i + \varepsilon_j
+    - \varepsilon_A - \varepsilon_B
+  },
 \end{equation}
+where $A$ and $B$ refer to a virtual orbitals in a basis set that
+can be considered complete.
 \( \epsilon_{ij} \) is used by the
 [[id:BasisSetCorrection][BasisSetCorrection]] algorithm and
 in the context of the theory
