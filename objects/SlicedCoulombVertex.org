@@ -12,7 +12,8 @@ $\{ \Gamma^i_{jF}, \Gamma_i^{aF}, \Gamma_a^{iF}, \Gamma_a^{bF}\}$.
 The =SlicedCoulombVertex= is used to compute the different types of two-electron
 integrals, such as $V_{ij}^{ab}=\sum_F{\Gamma^\ast}^{aF}_i\Gamma^b_{jF}$.
 It can be generated from
-the entire =CoulombVertex= $\Gamma^q_{rF}$, defined below, using the
+the entire [[id:CoulombVertex][CoulombVertex]]
+$\Gamma^q_{rF}$ using the
 [[id:SliceOperator][SliceOperator]] algorithm:
 
 #+begin_src yaml
@@ -25,41 +26,22 @@ the entire =CoulombVertex= $\Gamma^q_{rF}$, defined below, using the
 #+end_src
 
 * Specification
-The entire =CoulombVertex= $\Gamma^q_{rF}$ is found from
-the Fourier transformation $\tilde\Gamma^q_{rG}$ of the
-right vertex of the Coulomb interaction
+The hole-particle slice $\Gamma^i_{aF}$ is for instance found
+by restricting the outgoing (upstairs) states of the entire Coulomb
+Vertex to hole states $i$ while
+restricting the incoming (downstairs) states
+to particle states $a$:
 \begin{equation}
-  \tilde\Gamma^q_{rG}
-  = \int_\Omega dr\, \sqrt{w_G} \sqrt{\frac{4\pi}{\mathbf{G}^2}}\,
-    e^{-i \mathbf{r}\cdot \mathbf{G}}\,
-    {\psi^\ast}^q(\mathbf{r})\, \psi_r(\mathbf{r}),
+  \Gamma^i_{aF}: \varepsilon_i < \varepsilon_\mathrm{F}<\varepsilon_a
 \end{equation}
-where $\mathbf{G}$ denotes the momentum vector associated to the momentum
-index $G$.
-Note, that the square root of the numerical integration weight $w_G$
-and of the Coulomb kernel $4\pi/\mathbf{G}^2$
-are contained in the above definition, such that
-the electron repulsion integrals decompose into two identical factors
-\begin{equation}
-  V^{pq}_{sr} = \sum_G {\tilde\Gamma^\ast}^{pG}_s \tilde\Gamma^q_{rG},
-\end{equation}
-analogous to a resolution-of-identity decomposition.
-
-To reduce the size of the =CoulombVertex= while minimizing the
-error of the above factorization, the
-singular value decomposition of the Fourier transformed
-Coulomb interaction vertex
-$\tilde\Gamma^q_{rG} = {V^\ast}^q_{rF}\Sigma^F_F U^F_G$ is
-considered.
-The =CoulombVertex= is finally defined using only
-the $N_\mathrm{F}$ largest singular values $\Sigma^F_F$ and their respective
-right singular vectors $U^F_G$
-\begin{equation}
-\Gamma^q_{rF} = \sum_G \tilde\Gamma^q_{qG}{U^\ast}^G_F.
-\end{equation}
-The coefficients $U_F^G$ are needed by the =FiniteSizeCorrection= algorithm
-and they are contained in the object =CoulombVertexSingularVectors=.
-For more details, see cite:hummel2017low.
+The index order in =cc4s= is identical to the index order of the entire
+Coulomb Vertex. For the above example it is =Gamma[Fia]=.
+Note that all indices start with 0, thus the particle indices
+$a=0\ldots N_\mathrm{v}-1$
+refer to the state indices
+$p=N_\mathrm{p}-N_\mathrm{v} \ldots N_\mathrm{p}-1$,
+where $N_\mathrm{p}$ denotes the total number of closed-shell
+orbitals and $N_\mathrm{v}$ denotes the number of virtual orbitals.
 
 * Literature
 bibliography:../group.bib

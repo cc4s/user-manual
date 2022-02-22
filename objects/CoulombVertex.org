@@ -5,26 +5,20 @@
 # #+OPTIONS: toc:nil
 
 * Brief description
+The =CoulombVertex= $\Gamma^q_{rF}$
+is a resolution-of-identiy decomposition of the
+electron repulsion integrals of the form
+\begin{equation}
+  V^{pq}_{sr} = \sum_F {\tilde\Gamma^\ast}^{pF}_s \tilde\Gamma^q_{rF}.
+\end{equation}
+For periodic systems it is computed from the Fourier transform of the
+co-density of an orbital pair ${\psi^\ast}^q(\mathrm{r})$ and
+$\psi_r(\mathrm{r})$, and the square-root of the Coulomb potential
+$\sqrt{4\pi/\mathrm{G}^2}$, as specified below.
+The index order of $\Gamma^q_{rF}$ in a =Cc4s= tensor is $(F,q,r)$.
 
-$$ \tilde{\Gamma}^q_r({\bf G}) :=  \sqrt{\frac{4\pi}{{\bf G}^2}}   \int{\rm d}{\bf x}\,   {\rm e}^{-{\rm i}{\bf G}\cdot{\bf r}}\,   {\psi^\ast}^q({\bf x}) \psi_r({\bf x})\
-$$
-
-The =CoulombVertex= $\tilde{\Gamma}^q_r({\bf G})$ is computed from the co-density of an orbital pair
-${\psi^\ast}^q({\bf x})$ and $\psi_r({\bf x})$, and the square-root of the Coulomb potential
-$\sqrt{\frac{4\pi}{{\bf G}^2}}$.
-Different representations of the =CoulombVertex= are possible using; for example,
-singular-value-decomposition techniques as discussed in cite:&hummel2017low.
-The transformation of the =CoulombVertex= into a truncated auxilliary field representation
-reduces the memory footprint and is achieved using the
-[[id:CoulombVertexSingularVectors][CoulombVertexSingularVectors]]
-$\left({U^*}^G_F\right)$ :
-$$
-\Gamma^q_r({F}) = \sum_{\bf G}
-  {U^*}^{\bf G}_F \tilde{\Gamma}^q_r({\bf G})
-$$
-
-
-The =CoulombVertex= needs to be provided by an interfaced electronic structure theory package
+The =CoulombVertex= needs to be provided by an interfaced electronic
+structure theory package
 and can be read into =Cc4s= using the [[id:Read][Read]] algorithm.
 
 #+begin_src yaml
@@ -36,6 +30,47 @@ and can be read into =Cc4s= using the [[id:Read][Read]] algorithm.
 #+end_src
 
 * Specification
+For periodic systems the =CoulombVertex= $\Gamma^q_{rF}$ is computed from
+the Fourier transform $\tilde\Gamma^q_{rG}$ of the
+right vertex of the Coulomb interaction
+\begin{equation}
+  \tilde\Gamma^q_{rG}
+  = \int_\Omega dr\, \sqrt{w_G} \sqrt{\frac{4\pi}{\mathbf{G}^2}}\,
+    e^{-i \mathbf{r}\cdot \mathbf{G}}\,
+    {\psi^\ast}^q(\mathbf{r})\, \psi_r(\mathbf{r}),
+\end{equation}
+where $\mathbf{G}$ denotes the momentum vector associated to the momentum
+index $G$ and where the indices $q$ and $r$ refer to the outgoing
+and incoming states at the right interaction vertex, respectively.
+Note, that the square root of the numerical integration weight $w_G$
+and of the Coulomb kernel $4\pi/\mathbf{G}^2$
+are contained in the above definition, such that
+the desired resolution-of-identity factorization of of the
+electron repulsion integrals holds
+\begin{equation}
+  V^{pq}_{sr} = \sum_G {\tilde\Gamma^\ast}^{pG}_s \tilde\Gamma^q_{rG}.
+\end{equation}
+
+To reduce the size of the employed =CoulombVertex= while minimizing the
+error of the above factorization, the
+singular value decomposition of the Fourier transformed
+Coulomb interaction vertex
+$\tilde\Gamma^q_{rG} = U^F_G \Sigma^F_F {W^\ast}^q_{rF}$ is
+considered.
+The =CoulombVertex= used by =Cc4s= is finally defined using only
+the $N_\mathrm{F}$ largest singular values $\Sigma^F_F$ and their respective
+left singular vectors $U^F_G$
+\begin{equation}
+\Gamma^q_{rF} = \sum_G {U^\ast}^G_F \tilde\Gamma^q_{qG}.
+\end{equation}
+The singular value index $F$ is called =AuxiliaryField= index in =Cc4s=,
+as indicated by =type= field in the =dimensions= section of the
+=CoulombVertex= tensor specification.
+The coefficients $U_F^G$ are needed by the
+[[id:FiniteSizeCorrection][=FiniteSizeCorrection=]] algorithm
+and they are contained in the object
+[[id:CoulombVertexSingularVectors][=CoulombVertexSingularVectors=]].
+For more details, see cite:hummel2017low.
 
 An example =CoulombVertex.yaml= file is given below
 
