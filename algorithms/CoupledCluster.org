@@ -318,11 +318,11 @@ Only five terms remain in a canonical calculation and they read
 \end{equation}
 with
 $\Delta^{ab}_{ij} = \varepsilon_a+\varepsilon_b-\varepsilon_i-\varepsilon_j$
-and where a sum over all indices that occurr only on the right-hand-side
+and where a sum over all indices that occurr only on the left-hand-side
 is implied. These terms are the dominant terms of coupled-cluster singles
 doubles in the hight-density limit cite:gell-mann_correlation_1957.
 The direct correlation contribution of the =Drccd= method
-$\sum_{abij} 2t^{ab}_{ij}V^{ij}_{ab}$ gives Random Phase Approximation (RPA),
+$\sum_{abij} 2t^{ab}_{ij}V^{ij}_{ab}$ gives the Random Phase Approximation (RPA),
 the remaining exchange contribution is often termed Second Order
 Screened Exchange (SOSEX) correction
 cite:freeman_coupled-cluster_1977,gruneis_making_2009.
