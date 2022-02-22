@@ -133,7 +133,6 @@ ISYM     = -1
 LMP2LT     = .TRUE.
 ALGO       = ACFDTRK
 NOMEGA     = 6
-KPAR       = 32
 LDUMPMP2IJ = .TRUE.
 LHFCALC    = .TRUE.
 AEXX       = 1.0
