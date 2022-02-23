@@ -1,6 +1,6 @@
 -include config.mk
 BUILD_DIR = user-manual/
-PATHSVR=/var/www/user-manual.cc4s.org
+PATHSVR=/var/www/manuals.cc4s.org
 
 PORT = 8888
 
@@ -62,7 +62,7 @@ vim:
 
 deploy: user-manual
 	rsync --recursive --itemize-changes --delete user-manual $(PATHSVR)
-	rsync --recursive --itemize-changes --delete data $(PATHSVR)
+#	rsync --recursive --itemize-changes --delete data $(PATHSVR)
 
 .PHONY: sitemaps
 .PHONY: init serve publish tangle refresh clean clean-emacs clean-all force vim
