@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-07 Mon 10:14 -->
+<!-- 2022-03-01 Tue 14:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoulombVertex</code></title>
+<title>CoulombVertex</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -310,45 +310,40 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoulombVertex</code></h1>
+<h1 class="title">CoulombVertex</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4417006">1. Brief description</a></li>
-<li><a href="#orgce037fe">2. Specification</a></li>
-<li><a href="#orga3a0edd">3. Literature</a></li>
+<li><a href="#orgd3a806d">1. Brief description</a></li>
+<li><a href="#org1b70261">2. Specification</a></li>
+<li><a href="#org1d1e494">3. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4417006" class="outline-2">
-<h2 id="org4417006"><span class="section-number-2">1</span> <a href="#org4417006">Brief description</a></h2>
+<div id="outline-container-orgd3a806d" class="outline-2">
+<h2 id="orgd3a806d"><span class="section-number-2">1</span> <a href="#orgd3a806d">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-\[ \tilde{\Gamma}^q_r({\bf G}) :=  \sqrt{\frac{4\pi}{{\bf G}^2}}   \int{\rm d}{\bf x}\,   {\rm e}^{-{\rm i}{\bf G}\cdot{\bf r}}\,   {\psi^\ast}^q({\bf x}) \psi_r({\bf x})\
-\]
+The <code>CoulombVertex</code> \(\Gamma^q_{rF}\)
+is a resolution-of-identiy decomposition of the
+electron repulsion integrals of the form
+</p>
+\begin{equation}
+  V^{pq}_{sr} = \sum_F {\tilde\Gamma^\ast}^{pF}_s \tilde\Gamma^q_{rF}.
+\end{equation}
+<p>
+For periodic systems it is computed from the Fourier transform of the
+co-density of an orbital pair \({\psi^\ast}^q(\mathrm{r})\) and
+\(\psi_r(\mathrm{r})\), and the square-root of the Coulomb potential
+\(\sqrt{4\pi/\mathrm{G}^2}\), as specified below.
+The index order of \(\Gamma^q_{rF}\) in a <code>Cc4s</code> tensor is \((F,q,r)\).
 </p>
 
 <p>
-The <code>CoulombVertex</code> \(\tilde{\Gamma}^q_r({\bf G})\) is computed from the co-density of an orbital pair
-\({\psi^\ast}^q({\bf x})\) and \(\psi_r({\bf x})\), and the square-root of the Coulomb potential
-\(\sqrt{\frac{4\pi}{{\bf G}^2}}\).
-Different representations of the <code>CoulombVertex</code> are possible using; for example,
-singular-value-decomposition techniques as discussed in (<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
-The transformation of the <code>CoulombVertex</code> into a truncated auxilliary field representation
-reduces the memory footprint and is achieved using the
-<a href="CoulombVertexSingularVectors.html#ID-CoulombVertexSingularVectors">CoulombVertexSingularVectors</a>
-\(\left({U^*}^G_F\right)\) :
-\[
-\Gamma^q_r({F}) = \sum_{\bf G}
-  {U^*}^{\bf G}_F \tilde{\Gamma}^q_r({\bf G})
-\]
-</p>
-
-
-<p>
-The <code>CoulombVertex</code> needs to be provided by an interfaced electronic structure theory package
+The <code>CoulombVertex</code> needs to be provided by an interfaced electronic
+structure theory package
 and can be read into <code>Cc4s</code> using the <a href="../algorithms/Read.html#ID-Read">Read</a> algorithm.
 </p>
 
@@ -363,9 +358,59 @@ and can be read into <code>Cc4s</code> using the <a href="../algorithms/Read.htm
 </div>
 </div>
 
-<div id="outline-container-orgce037fe" class="outline-2">
-<h2 id="orgce037fe"><span class="section-number-2">2</span> <a href="#orgce037fe">Specification</a></h2>
+<div id="outline-container-org1b70261" class="outline-2">
+<h2 id="org1b70261"><span class="section-number-2">2</span> <a href="#org1b70261">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
+<p>
+For periodic systems the <code>CoulombVertex</code> \(\Gamma^q_{rF}\) is computed from
+the Fourier transform \(\tilde\Gamma^q_{rG}\) of the
+right vertex of the Coulomb interaction
+</p>
+\begin{equation}
+  \tilde\Gamma^q_{rG}
+  = \int_\Omega dr\, \sqrt{w_G} \sqrt{\frac{4\pi}{\mathbf{G}^2}}\,
+    e^{-i \mathbf{r}\cdot \mathbf{G}}\,
+    {\psi^\ast}^q(\mathbf{r})\, \psi_r(\mathbf{r}),
+\end{equation}
+<p>
+where \(\mathbf{G}\) denotes the momentum vector associated to the momentum
+index \(G\) and where the indices \(q\) and \(r\) refer to the outgoing
+and incoming states at the right interaction vertex, respectively.
+Note, that the square root of the numerical integration weight \(w_G\)
+and of the Coulomb kernel \(4\pi/\mathbf{G}^2\)
+are contained in the above definition, such that
+the desired resolution-of-identity factorization of of the
+electron repulsion integrals holds
+</p>
+\begin{equation}
+  V^{pq}_{sr} = \sum_G {\tilde\Gamma^\ast}^{pG}_s \tilde\Gamma^q_{rG}.
+\end{equation}
+
+<p>
+To reduce the size of the employed <code>CoulombVertex</code> while minimizing the
+error of the above factorization, the
+singular value decomposition of the Fourier transformed
+Coulomb interaction vertex
+\(\tilde\Gamma^q_{rG} = U^F_G \Sigma^F_F {W^\ast}^q_{rF}\) is
+considered.
+The <code>CoulombVertex</code> used by <code>Cc4s</code> is finally defined using only
+the \(N_\mathrm{F}\) largest singular values \(\Sigma^F_F\) and their respective
+left singular vectors \(U^F_G\)
+</p>
+\begin{equation}
+\Gamma^q_{rF} = \sum_G {U^\ast}^G_F \tilde\Gamma^q_{qG}.
+\end{equation}
+<p>
+The singular value index \(F\) is called <code>AuxiliaryField</code> index in <code>Cc4s</code>,
+as indicated by <code>type</code> field in the <code>dimensions</code> section of the
+<code>CoulombVertex</code> tensor specification.
+The coefficients \(U_F^G\) are needed by the
+<a href="../algorithms/FiniteSizeCorrection.html#ID-FiniteSizeCorrection"><code>FiniteSizeCorrection</code></a> algorithm
+and they are contained in the object
+<a href="CoulombVertexSingularVectors.html#ID-CoulombVertexSingularVectors"><code>CoulombVertexSingularVectors</code></a>.
+For more details, see (<a href="#citeproc_bib_item_1">Hummel, Tsatsoulis, and Grüneis 2017</a>).
+</p>
+
 <p>
 An example <code>CoulombVertex.yaml</code> file is given below
 </p>
@@ -391,17 +436,17 @@ An example <code>CoulombVertex.yaml</code> file is given below
 </div>
 </div>
 
-<div id="outline-container-orga3a0edd" class="outline-2">
-<h2 id="orga3a0edd"><span class="section-number-2">3</span> <a href="#orga3a0edd">Literature</a></h2>
+<div id="outline-container-org1d1e494" class="outline-2">
+<h2 id="org1d1e494"><span class="section-number-2">3</span> <a href="#org1d1e494">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
-<div class="csl-bib-body">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12): 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-07 Mon 10:14</p>
+<p class="date">Created: 2022-03-01 Tue 14:01</p>
 </div>
 </body>
 </html>

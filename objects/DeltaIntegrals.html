@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-07 Mon 10:14 -->
+<!-- 2022-03-01 Tue 14:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>DeltaIntegrals</code></title>
+<title>DeltaIntegrals</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -310,52 +310,58 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>DeltaIntegrals</code></h1>
+<h1 class="title">DeltaIntegrals</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga828b0a">1. Brief description</a></li>
-<li><a href="#org2047080">2. Literature</a></li>
+<li><a href="#org2af154e">1. Brief description</a></li>
+<li><a href="#orgf5ef3ac">2. Literature</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orga828b0a" class="outline-2">
-<h2 id="orga828b0a"><span class="section-number-2">1</span> <a href="#orga828b0a">Brief description</a></h2>
+<div id="outline-container-org2af154e" class="outline-2">
+<h2 id="org2af154e"><span class="section-number-2">1</span> <a href="#org2af154e">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 \begin{equation}
-\langle pq \mid \delta(\mathbf{r}_{12}) \mid rs \rangle = \int \int d\mathbf{r}_1 d\mathbf{r}_2  \phi_p^*(\mathbf{r}_1) \phi_q^*(\mathbf{r}_2) \delta(\mathbf{r}_{12}) \phi_r (\mathbf{r}_1) \phi_s (\mathbf{r}_2)
+\langle pq \mid \delta(r_{12}) \mid rs \rangle
+  = \int \int d\mathbf{r}_1 d\mathbf{r}_2
+    \psi_p^*(\mathbf{r}_1) \psi_q^*(\mathbf{r}_2)
+    \delta(r_{12})
+    \psi_r (\mathbf{r}_1) \psi_s (\mathbf{r}_2)
 \end{equation}
 
 <p>
-with the Dirac delta function \(\delta(\mathbf{r})\) and the interelectronic distance
-\(\mathbf{r}_{12}=|\mathbf{r}_1-\mathbf{r}_2|\). The delta-integrals have to be
+with the one-dimensional Dirac delta function \(\delta(r)\) and the
+interelectronic distance
+\(r_{12}=|\mathbf{r}_1-\mathbf{r}_2|\). The delta-integrals have to be
 provided and cannot be evaluated within <code>Cc4s</code>. 
 The integrals are needed by the <a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">BasisSetCorrection</a> algorithm.
 </p>
 
 <p>
-Two types of <code>DeltaIntegrals</code> are currently used by the <a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">BasisSetCorrection</a> algorithm:
-<code>DeltaIntegralsPPHH</code> (\(\langle ab \mid \delta(\mathbf{r}_{12}) \mid ij \rangle\))  and <code>DeltaIntegralsHH</code>
-(\(\langle ij \mid \delta(\mathbf{r}_{12}) \mid ij \rangle\)).
+Only two slices of the <code>DeltaIntegrals</code> are currently needed by the
+<a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">BasisSetCorrection</a> algorithm:
+<code>DeltaIntegralsPPHH</code> (\(\langle ab \mid \delta(r_{12}) \mid ij \rangle\))
+and <code>DeltaIntegralsHH</code>
+(\(\langle ij \mid \delta(r_{12}) \mid ij \rangle\)).
 </p>
 </div>
 </div>
 
 
-
-<div id="outline-container-org2047080" class="outline-2">
-<h2 id="org2047080"><span class="section-number-2">2</span> <a href="#org2047080">Literature</a></h2>
+<div id="outline-container-orgf5ef3ac" class="outline-2">
+<h2 id="orgf5ef3ac"><span class="section-number-2">2</span> <a href="#orgf5ef3ac">Literature</a></h2>
 <div class="outline-text-2" id="text-2">
-<div class="csl-bib-body">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-07 Mon 10:14</p>
+<p class="date">Created: 2022-03-01 Tue 14:01</p>
 </div>
 </body>
 </html>

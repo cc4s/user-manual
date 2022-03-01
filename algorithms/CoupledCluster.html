@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-07 Mon 10:14 -->
+<!-- 2022-03-01 Tue 14:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>CoupledCluster</code></title>
+<title>CoupledCluster</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -310,48 +310,49 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>CoupledCluster</code></h1>
+<h1 class="title">CoupledCluster</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org12a29e6">1. Brief description</a></li>
-<li><a href="#org3567ce6">2. Algorithm call</a></li>
-<li><a href="#orgff3d697">3. Algorithm input</a>
+<li><a href="#org4b62829">1. Brief description</a></li>
+<li><a href="#org51fcfc2">2. Algorithm call</a></li>
+<li><a href="#org1170e15">3. Algorithm input</a>
 <ul>
-<li><a href="#method-type">3.1. type</a></li>
-<li><a href="#integralsslicesize">3.2. integralsSliceSize</a></li>
-<li><a href="#maxiterations">3.3. maxIterations</a></li>
-<li><a href="#energyconvergence">3.4. energyConvergence</a></li>
-<li><a href="#amplitudesconvergence">3.5. amplitudesConvergence</a></li>
-<li><a href="#mixer">3.6. mixer</a>
+<li><a href="#method">3.1. method</a></li>
+<li><a href="#linearized">3.2. linearzied</a></li>
+<li><a href="#integralsslicesize">3.3. integralsSliceSize</a></li>
+<li><a href="#maxiterations">3.4. maxIterations</a></li>
+<li><a href="#energyconvergence">3.5. energyConvergence</a></li>
+<li><a href="#amplitudesconvergence">3.6. amplitudesConvergence</a></li>
+<li><a href="#mixer">3.7. mixer</a>
 <ul>
-<li><a href="#org47fa44a">3.6.1. DiisMixer</a></li>
-<li><a href="#org06be133">3.6.2. LinearMixer</a></li>
+<li><a href="#org6a8fd5c">3.7.1. DiisMixer</a></li>
+<li><a href="#org7c90a46">3.7.2. LinearMixer</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org1a88011">4. Algorithm output</a>
+<li><a href="#orgc0dd590">4. Algorithm output</a>
 <ul>
-<li><a href="#org42efbe0">4.1. Sample <code>stdout</code></a></li>
+<li><a href="#org04aa133">4.1. Sample <code>stdout</code></a></li>
 </ul>
 </li>
-<li><a href="#org75cb418">5. Sample <code>yaml</code> output</a></li>
-<li><a href="#org3a0de2c">6. Computational complexity</a>
+<li><a href="#org17fd3a7">5. Sample <code>yaml</code> output</a></li>
+<li><a href="#org9548b42">6. Computational complexity</a></li>
+<li><a href="#org2d85101">7. Theory</a>
 <ul>
-<li><a href="#orgbc5d467">6.1. <code>Ccsd method</code></a></li>
-<li><a href="#org9576668">6.2. <span class="todo TODO">TODO</span> <code>Drccd method</code></a></li>
+<li><a href="#org984736d">7.1. Coupled-Cluster Singles Doubles (<code>Ccsd</code>)</a></li>
+<li><a href="#orgda76748">7.2. Direct-Ring Couple-Cluster Doubles (<code>Drccd</code>)</a></li>
 </ul>
 </li>
-<li><a href="#orgb4de505">7. Theory</a></li>
-<li><a href="#org5014499">8. Literature</a></li>
+<li><a href="#org7afe3b6">8. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org12a29e6" class="outline-2">
-<h2 id="org12a29e6"><span class="section-number-2">1</span> <a href="#org12a29e6">Brief description</a></h2>
+<div id="outline-container-org4b62829" class="outline-2">
+<h2 id="org4b62829"><span class="section-number-2">1</span> <a href="#org4b62829">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm solves the CCSD amplitude equations using the Coulomb integrals
@@ -360,8 +361,8 @@ and Hartree&#x2013;Fock eigenenergies.
 </div>
 </div>
 
-<div id="outline-container-org3567ce6" class="outline-2">
-<h2 id="org3567ce6"><span class="section-number-2">2</span> <a href="#org3567ce6">Algorithm call</a></h2>
+<div id="outline-container-org51fcfc2" class="outline-2">
+<h2 id="org51fcfc2"><span class="section-number-2">2</span> <a href="#org51fcfc2">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>CoupledCluster</code> algorithm is given below.
@@ -391,10 +392,10 @@ A typical input file snippet to call the <code>CoupledCluster</code> algorithm i
 </div>
 </div>
 
-<div id="outline-container-orgff3d697" class="outline-2">
-<h2 id="orgff3d697"><span class="section-number-2">3</span> <a href="#orgff3d697">Algorithm input</a></h2>
+<div id="outline-container-org1170e15" class="outline-2">
+<h2 id="org1170e15"><span class="section-number-2">3</span> <a href="#org1170e15">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgbfd418c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgabb188a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
 
 <colgroup>
@@ -410,12 +411,17 @@ A typical input file snippet to call the <code>CoupledCluster</code> algorithm i
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>method: type</code></td>
-<td class="org-left"><a href="#method-type">Type of coupled cluster algorithm</a></td>
+<td class="org-left"><code>method</code></td>
+<td class="org-left"><a href="#method">Type of coupled cluster algorithm</a></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>method: integralsSliceSize</code></td>
+<td class="org-left"><code>linearized</code></td>
+<td class="org-left"><a href="#linearized">Use linearized or fully non-linear coupled cluster</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>integralsSliceSize</code></td>
 <td class="org-left"><a href="#integralsslicesize">Integral slice size</a></td>
 </tr>
 
@@ -451,31 +457,54 @@ A typical input file snippet to call the <code>CoupledCluster</code> algorithm i
 
 <tr>
 <td class="org-left"><code>mixer</code></td>
-<td class="org-left"><a href="#mixer">Mixer type</a></td>
+<td class="org-left"><a href="#mixer">Mixer type and parameters</a></td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-method-type" class="outline-3">
-<h3 id="method-type"><span class="section-number-3">3.1</span> <a href="#method-type">type</a></h3>
-<div class="outline-text-3" id="text-method-type">
+<div id="outline-container-method" class="outline-3">
+<h3 id="method"><span class="section-number-3">3.1</span> <a href="#method">method</a></h3>
+<div class="outline-text-3" id="text-method">
 <p>
-<code>method: type</code> specifies the  coupled-cluster approximation for the amplitudes to be used.
+<code>method</code> specifies which approximation of the coupled-cluster
+<a href="../objects/Amplitudes.html#ID-Amplitudes"><code>Amplitudes</code></a> should be used. See the
+<a href="../objects/Amplitudes.html#ID-Amplitudes"><code>Amplitudes</code></a> for the specification of
+each approximation.
 The currently available approximations are:
 </p>
 <dl class="org-dl">
-<dt><code>Ccsd</code></dt><dd>Coupled Cluster singles and doubles (see (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>) and references therin).</dd>
+<dt><code>Ccsd</code></dt><dd>Coupled Cluster singles and doubles. See (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>) and references therin.</dd>
 <dt><code>CcsdReference</code></dt><dd>Canonical and unoptimized version of the <code>Ccsd</code> algorithm.
-This algorithm has the same inputs as <code>Ccsd</code> with the exception of the
-<a href="#integralsslicesize">integralSliceSize</a> input argument.</dd>
-<dt><code>Drccsd</code></dt><dd>Direct-Ring Coupled Cluster singles and doubles (<a href="#citeproc_bib_item_2">Paier et al. 2012</a>).</dd>
+This algorithm has the same inputs as <code>Ccsd</code> with the exception that the
+arguments
+<a href="#integralsslicesize">integralSliceSize</a> and
+<a href="../objects/SlicedCoulombVertex.html#ID-SlicedCoulombVertex">slicedCoulombVertex</a> and
+are ignored.</dd>
+<dt><code>Drccd</code></dt><dd>Unoptimized implementation of Direct-Ring Coupled Cluster
+singles and doubles giving the Random Phase Approximation (RPA)
+with the Second Order Screened Exchange (SOSEX) correction
+(<a href="#citeproc_bib_item_4">Freeman 1977</a>; <a href="#citeproc_bib_item_7">Grüneis et al. 2009</a>).</dd>
 </dl>
 </div>
 </div>
 
+<div id="outline-container-linearized" class="outline-3">
+<h3 id="linearized"><span class="section-number-3">3.2</span> <a href="#linearized">linearzied</a></h3>
+<div class="outline-text-3" id="text-linearized">
+<p>
+<code>linearized</code> A non-zero value indicates that the linearized
+coupled-cluster amplitude equations should be solved, rather
+than the fully non-linear ones.
+The default is <code>linearized: 0</code>.
+Note: currently only <code>method: Drccd</code> supports linearized
+amplitude equations.
+</p>
+</div>
+</div>
+
 <div id="outline-container-integralsslicesize" class="outline-3">
-<h3 id="integralsslicesize"><span class="section-number-3">3.2</span> <a href="#integralsslicesize">integralsSliceSize</a></h3>
+<h3 id="integralsslicesize"><span class="section-number-3">3.3</span> <a href="#integralsslicesize">integralsSliceSize</a></h3>
 <div class="outline-text-3" id="text-integralsslicesize">
 <p>
 <code>integralsSliceSize</code> controls the slice size of the \(V_{cd}^{ab}\) integrals, which are computed on-the-fly to
@@ -487,7 +516,7 @@ computational efficency with memory usage. Smaller/larger values reduce/increase
 </div>
 
 <div id="outline-container-maxiterations" class="outline-3">
-<h3 id="maxiterations"><span class="section-number-3">3.3</span> <a href="#maxiterations">maxIterations</a></h3>
+<h3 id="maxiterations"><span class="section-number-3">3.4</span> <a href="#maxiterations">maxIterations</a></h3>
 <div class="outline-text-3" id="text-maxiterations">
 <p>
 <code>maxIterations</code> controls the maximum number of iterations allowed to solve the  \(t_{ij}^{ab}\) and \(t_i^a\) amplitude equations.
@@ -501,7 +530,7 @@ thresholds.
 </div>
 
 <div id="outline-container-energyconvergence" class="outline-3">
-<h3 id="energyconvergence"><span class="section-number-3">3.4</span> <a href="#energyconvergence">energyConvergence</a></h3>
+<h3 id="energyconvergence"><span class="section-number-3">3.5</span> <a href="#energyconvergence">energyConvergence</a></h3>
 <div class="outline-text-3" id="text-energyconvergence">
 <p>
 <code>energyConvergence</code> specifies the convergence threshold for the correlation energy.
@@ -511,7 +540,7 @@ If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achi
 </div>
 
 <div id="outline-container-amplitudesconvergence" class="outline-3">
-<h3 id="amplitudesconvergence"><span class="section-number-3">3.5</span> <a href="#amplitudesconvergence">amplitudesConvergence</a></h3>
+<h3 id="amplitudesconvergence"><span class="section-number-3">3.6</span> <a href="#amplitudesconvergence">amplitudesConvergence</a></h3>
 <div class="outline-text-3" id="text-amplitudesconvergence">
 <p>
 <code>amplitudesConvergence</code> specifies the convergence threshold for the residual vector of the singles and doubles amplitude equations.
@@ -521,7 +550,7 @@ If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achi
 </div>
 
 <div id="outline-container-mixer" class="outline-3">
-<h3 id="mixer"><span class="section-number-3">3.6</span> <a href="#mixer">mixer</a></h3>
+<h3 id="mixer"><span class="section-number-3">3.7</span> <a href="#mixer">mixer</a></h3>
 <div class="outline-text-3" id="text-mixer">
 <p>
 <code>mixer</code> specifies mixer-specific parameters used to solve the amplitude equations iteratively.
@@ -531,9 +560,9 @@ iterations to improve the guess for the next iteration.
 </p>
 </div>
 
-<div id="outline-container-org47fa44a" class="outline-4">
-<h4 id="org47fa44a"><span class="section-number-4">3.6.1</span> <a href="#org47fa44a">DiisMixer</a></h4>
-<div class="outline-text-4" id="text-3-6-1">
+<div id="outline-container-org6a8fd5c" class="outline-4">
+<h4 id="org6a8fd5c"><span class="section-number-4">3.7.1</span> <a href="#org6a8fd5c">DiisMixer</a></h4>
+<div class="outline-text-4" id="text-3-7-1">
 <p>
 For <code>mixer: type: DissMixer</code>, it is possible to specify <code>mixer: maxResidua</code>, which controls the number of residual
 vectors used by the Diis mixer.
@@ -554,9 +583,9 @@ More residual vectors result in a larger memory footprint.
 </div>
 
 
-<div id="outline-container-org06be133" class="outline-4">
-<h4 id="org06be133"><span class="section-number-4">3.6.2</span> <a href="#org06be133">LinearMixer</a></h4>
-<div class="outline-text-4" id="text-3-6-2">
+<div id="outline-container-org7c90a46" class="outline-4">
+<h4 id="org7c90a46"><span class="section-number-4">3.7.2</span> <a href="#org7c90a46">LinearMixer</a></h4>
+<div class="outline-text-4" id="text-3-7-2">
 <p>
 For <code>mixer: type: LinearMixer</code> it is possible to specify <code>mixer: ratio</code>, which controls the mixing ratio used
 to update the new guess of the amplitudes based on estimates from the previous and current iteration.
@@ -569,7 +598,7 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 <dt>Example</dt><dd></dd>
 </dl>
 <div class="org-src-container">
-<pre class="src src-yaml" id="org7436390"><span style="color: #8b4513;">mixer</span>:
+<pre class="src src-yaml" id="org7666721"><span style="color: #8b4513;">mixer</span>:
   <span style="color: #8b4513;">type</span>: LinearMixer
   <span style="color: #8b4513;">ratio</span>: 1.0
 </pre>
@@ -579,10 +608,10 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 </div>
 </div>
 
-<div id="outline-container-org1a88011" class="outline-2">
-<h2 id="org1a88011"><span class="section-number-2">4</span> <a href="#org1a88011">Algorithm output</a></h2>
+<div id="outline-container-orgc0dd590" class="outline-2">
+<h2 id="orgc0dd590"><span class="section-number-2">4</span> <a href="#orgc0dd590">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org660f2e0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org88f38e8" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -612,8 +641,8 @@ and the basis set incompleteness errors (<b>BasisSetCorrection</b>).
 </p>
 </div>
 
-<div id="outline-container-org42efbe0" class="outline-3">
-<h3 id="org42efbe0"><span class="section-number-3">4.1</span> <a href="#org42efbe0">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org04aa133" class="outline-3">
+<h3 id="org04aa133"><span class="section-number-3">4.1</span> <a href="#org04aa133">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <b>CoupledCluster</b> algorithm run.
@@ -650,8 +679,8 @@ realtime 9.189542891 s
 </div>
 </div>
 
-<div id="outline-container-org75cb418" class="outline-2">
-<h2 id="org75cb418"><span class="section-number-2">5</span> <a href="#org75cb418">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-org17fd3a7" class="outline-2">
+<h2 id="org17fd3a7"><span class="section-number-2">5</span> <a href="#org17fd3a7">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Below an example <code>yaml</code> output stream is shown for a successful <b>CoupledCluster</b> algorithm run.
@@ -676,62 +705,171 @@ Below an example <code>yaml</code> output stream is shown for a successful <b>Co
 
 
 
-<div id="outline-container-org3a0de2c" class="outline-2">
-<h2 id="org3a0de2c"><span class="section-number-2">6</span> <a href="#org3a0de2c">Computational complexity</a></h2>
+<div id="outline-container-org9548b42" class="outline-2">
+<h2 id="org9548b42"><span class="section-number-2">6</span> <a href="#org9548b42">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This section explains computational or memory footprints
 for the various methods implemented in <b>CoupledCluster</b>
-<a href="#method-type">(see type)</a>.
+<a href="#method">(see method)</a>.
 </p>
-</div>
 
-<div id="outline-container-orgbc5d467" class="outline-3">
-<h3 id="orgbc5d467"><span class="section-number-3">6.1</span> <a href="#orgbc5d467"><code>Ccsd method</code></a></h3>
-<div class="outline-text-3" id="text-6-1">
-<p>
-The computational bottle neck of a typical Ccsd calculation originates from the following contraction, which is
-part of the doubles amplitude equations: \(V_{cd}^{ab} t_{ij}^{cd}\). The computational cost for evaluating this expression scales
-as \(\mathcal{O}(N_{\rm o}^2 N_{\rm v}^4)\). To avoid a memory footprint of \(\mathcal{O}(N_{\rm v}^4)\) in storing
-\(V_{cd}^{ab}\), slices \(V_{cd}^{xy}\) are computed on-the-fly and used in the contraction, reducing
-the corresponding memory footprint to \(\mathcal{O}(N_{\rm v}^2 N_{\rm s}^2)\), where \(N_{\rm s}\) is controlled using
+<dl class="org-dl">
+<dt><code>Ccsd</code></dt><dd><p>
+The computational bottle neck of a typical Ccsd calculation originates
+from the following contraction, which is
+part of the doubles amplitude equations: \(V_{cd}^{ab} t_{ij}^{cd}\).
+The computational cost for evaluating this expression scales
+as \(\mathcal{O}(N_{\rm o}^2 N_{\rm v}^4)\). To avoid a memory
+footprint of \(\mathcal{O}(N_{\rm v}^4)\) in storing
+\(V_{cd}^{ab}\), slices \(V_{cd}^{xy}\) are computed on-the-fly and used
+in the contraction, reducing the corresponding memory footprint to
+\(\mathcal{O}(N_{\rm v}^2 N_{\rm s}^2)\),
+where \(N_{\rm s}\) is controlled using
 the <code>integralsSliceSize</code> keyword.
 </p>
 
 <p>
-We note that required storage of a set of doubles amplitudes adds substantially to the memory footprint in Ccsd calculations.
-The Diis algorithm requires the storage of both doubles residua and amplitudes <code>maxResidua</code> times. We recommend to choose the
-type of mixer and its parameters carefully to reduce the memory fottprint if necessary.
+We note that required storage of a set of doubles amplitudes adds
+substantially to the memory footprint in Ccsd calculations.
+The Diis algorithm requires the storage of both doubles residua and amplitudes
+<code>maxResidua</code> times. We recommend to choose the
+type of mixer and its parameters carefully to reduce the memory
+footprint if necessary.
+</p></dd>
+
+<dt><code>Drccd</code></dt><dd>The computational complexity is \(\mathcal O(N_\mathrm{o}^3N_\mathrm{v}^3)\).
+The implementation is not optimized for large systems. The memory requirement
+scales as \(\mathcal O(N_\mathrm{o}^2 N_\mathrm{v}^2)\)</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org2d85101" class="outline-2">
+<h2 id="org2d85101"><span class="section-number-2">7</span> <a href="#org2d85101">Theory</a></h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Coupled-cluster employs the exponential Ansatz for the correlated wave function
+</p>
+\begin{equation}
+  | \Psi \rangle = e^{\hat T} | \Phi \rangle,
+\end{equation}
+<p>
+where \(|\Phi\rangle\) denotes the single Hartree&#x2013;Fock slater determinant.
+The cluster operator \(\hat T = \hat T_1 + \hat T_2 + \ldots\) is
+expanded in increasing number of excitation levels. The single and
+double exciation parts of the cluster operator are given by
+</p>
+\begin{eqnarray}
+  \hat T_1 = \sum_{ai} t^a_i \hat\tau^a_i, \\
+  \hat T_2 = \sum_{abij} t^{ab}_{ij} \hat\tau^{ab}_{ij},
+\end{eqnarray}
+<p>
+where \(\hat \tau^{a\ldots}_{i\ldots} = \hat c^\dagger_a\ldots \hat c_i\ldots\)
+denotes the exciation operator.
+The coefficients \(t^a_i\), \(t^{ab}_{ij}\), \(\ldots\) are called coupled-cluster
+<code>Amplitudes</code>.
+They are found by projecting the stationary Schrödinger equation for the
+coupled-cluster Ansatz \(E|\Psi\rangle = \hat H|\Psi\rangle\)
+on \(\langle \Phi|e^{-\hat T}\).
+The resulting over-determined set of equations is truncated at the
+same level as the cluster-operator \(\hat T\), giving as many equations
+as there are coefficients in \(\hat T\).
+The <code>Amplitudes</code> are generated by the <a href="CoupledCluster.html#ID-CoupledCluster"><code>CoupledCluster</code></a>
+algorithm by solving the amplitude equation of the employed
+coupled-cluster method, described below:
+</p>
+</div>
+
+<div id="outline-container-org984736d" class="outline-3">
+<h3 id="org984736d"><span class="section-number-3">7.1</span> <a href="#org984736d">Coupled-Cluster Singles Doubles (<code>Ccsd</code>)</a></h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+The cluster-operator is truncated containing only single and double
+excitations. The projections on the singly and doubly excited
+slater-determinants \(\langle \Phi^a_i|\) and \(\langle \Phi^{ab}_{ij}|\) give
+</p>
+\begin{align}
+  \big\langle \Phi^{a}_{i} \big| e^{-\hat T} \hat H e^{\hat T}
+    \big| \Phi \big\rangle &= 0 \quad \forall ai, \\
+  \label{eqn:t2}
+  \big\langle \Phi^{ab}_{ij} \big| e^{-\hat T} \hat H e^{\hat T}
+    \big| \Phi \big\rangle &= 0 \quad \forall abij.
+\end{align}
+<p>
+The above equations expand to a finite set of a few dozens of, in general,
+non-linear algebraic contractions of \(t^a_i\) and \(t^{ab}_{ij}\) with
+\(\varepsilon_p\) and \(V^{pq}_{sr}\). See (<a href="#citeproc_bib_item_10">Shavitt and Bartlett 2009</a>) for
+a text-book introduction of the original works of
+(<a href="#citeproc_bib_item_3">Coester and Kümmel 1960</a>) and (<a href="#citeproc_bib_item_11">Čížek 1969</a>).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9576668" class="outline-3">
-<h3 id="org9576668"><span class="section-number-3">6.2</span> <a href="#org9576668"><span class="todo TODO">TODO</span> <code>Drccd method</code></a></h3>
-</div>
-</div>
+<div id="outline-container-orgda76748" class="outline-3">
+<h3 id="orgda76748"><span class="section-number-3">7.2</span> <a href="#orgda76748">Direct-Ring Couple-Cluster Doubles (<code>Drccd</code>)</a></h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+This method uses only the double
+excitation part of the cluster-operator. From
+the full doubles amplitude equations in Eq. (\ref{eqn:t2}) only
+those contractions are considered where pairs of particle and hole
+contractions originate from a common vertex and terminate in another
+common vertex,
+forming direct-rings in the diagrammatic notation.
+Only five terms remain in a canonical calculation and they read
+</p>
+\begin{equation}
+  \Delta^{ab}_{ij} t^{ab}_{ij}
+  + V^{ab}_{ij}
+  + V^{kb}_{cj} t^{ac}_{ik}
+  + V^{al}_{id} t^{db}_{lj}
+  + V^{kl}_{cd} t^{ac}_{ik} t^{db}_{lj} = 0 \quad \forall abij,
+\end{equation}
+<p>
+with
+\(\Delta^{ab}_{ij} = \varepsilon_a+\varepsilon_b-\varepsilon_i-\varepsilon_j\)
+and where a sum over all indices that occurr only on the left-hand-side
+is implied. These terms are the dominant terms of coupled-cluster singles
+doubles in the hight-density limit (<a href="#citeproc_bib_item_6">Gell-Mann and Brueckner 1957</a>).
+The direct correlation contribution of the <code>Drccd</code> method
+\(\sum_{abij} 2t^{ab}_{ij}V^{ij}_{ab}\) gives the Random Phase Approximation (RPA),
+the remaining exchange contribution is often termed Second Order
+Screened Exchange (SOSEX) correction
+(<a href="#citeproc_bib_item_4">Freeman 1977</a>; <a href="#citeproc_bib_item_7">Grüneis et al. 2009</a>).
+See (<a href="#citeproc_bib_item_5">Furche 2008</a>; <a href="#citeproc_bib_item_2">Chen, Agee, and Furche 2018</a>) for a review on the RPA and its corrections,
+as well as (<a href="#citeproc_bib_item_8">Macke 1950</a>; <a href="#citeproc_bib_item_9">Pines and Bohm 1952</a>) for the
+original work on the RPA.
+</p>
 
-<div id="outline-container-orgb4de505" class="outline-2">
-<h2 id="orgb4de505"><span class="section-number-2">7</span> <a href="#orgb4de505">Theory</a></h2>
-<div class="outline-text-2" id="text-7">
 <p>
 We recommend the following review article and references therein to get started with coupled-cluster theory (<a href="#citeproc_bib_item_1">Bartlett and Musiał 2007</a>) .
 </p>
 </div>
 </div>
+</div>
 
-<div id="outline-container-org5014499" class="outline-2">
-<h2 id="org5014499"><span class="section-number-2">8</span> <a href="#org5014499">Literature</a></h2>
+<div id="outline-container-org7afe3b6" class="outline-2">
+<h2 id="org7afe3b6"><span class="section-number-2">8</span> <a href="#org7afe3b6">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
-<div class="csl-bib-body">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bartlett, R.J., and Monika Musiał. 2007. “Coupled-cluster theory in quantum chemistry.” <i>Rev. Mod. Phys.</i> 79 (1): 291–352. doi:<a href="https://doi.org/10.1103/RevModPhys.79.291">10.1103/RevModPhys.79.291</a>.</div>
-  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Paier, Joachim, Xinguo Ren, Patrick Rinke, Gustavo E Scuseria, Andreas Grüneis, Georg Kresse, and Matthias Scheffler. 2012. “Assessment of Correlation Energies Based on the Random-Phase Approximation.” <i>New Journal of Physics</i> 14 (4): 043002. <a href="http://doi.org/10.1088/1367-2630/14/4/043002">http://doi.org/10.1088/1367-2630/14/4/043002</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Chen, Guo P., Matthew M. Agee, and Filipp Furche. 2018. “Performance and Scope of Perturbative Corrections to Random-Phase Approximation Energies.” <i>J. Chem. Theory Comput.</i> 14: 5701–14. doi:<a href="https://doi.org/10.1021/acs.jctc.8b00777">10.1021/acs.jctc.8b00777</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Coester, F., and H. Kümmel. 1960. “Short-Range Correlations in Nuclear Wave Functions.” <i>Nucl. Phys.</i> 17 (June): 477–85. doi:<a href="https://doi.org/10.1016/0029-5582(60)90140-1">10.1016/0029-5582(60)90140-1</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Freeman, David. 1977. “Coupled-Cluster Expansion Applied to the Electron Gas: Inclusion of Ring and Exchange Effects.” <i>Physical Review B</i> 15 (12): 5512–21. doi:<a href="https://doi.org/10.1103/PhysRevB.15.5512">10.1103/PhysRevB.15.5512</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Furche, Filipp. 2008. “Developing the Random Phase Approximation into a Practical Post-Kohnsham Correlation Model.” <i>J. Chem. Phys.</i> 129: 114105. doi:<a href="https://doi.org/10.1063/1.2977789">10.1063/1.2977789</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_6"></a>Gell-Mann, Murray, and Keith A. Brueckner. 1957. “Correlation Energy of an Electron Gas at High Density.” <i>Phys. Rev.</i> 106 (2): 364–68. doi:<a href="https://doi.org/10.1103/PhysRev.106.364">10.1103/PhysRev.106.364</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_7"></a>Grüneis, Andreas, Martijn Marsman, Judith Harl, Laurids Schimka, and Georg Kresse. 2009. “Making the Random Phase Approximation to Electronic Correlation Accurate.” <i>J. Chem. Phys.</i> 131 (15): 154115. doi:<a href="https://doi.org/10.1063/1.3250347">10.1063/1.3250347</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_8"></a>Macke, W. 1950. “Über Die Wechselwirkungen Im Fermi-Gas, Polarisationserscheinungen, Correlationsenergie, Elektronenkondensation.” <i>Z. Naturforsch.</i> 5a (8): 192–208. <a href="http://zfn.mpdl.mpg.de/data/Reihe_A/5/ZNA-1950-5a-0192.pdf">http://zfn.mpdl.mpg.de/data/Reihe_A/5/ZNA-1950-5a-0192.pdf</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_9"></a>Pines, David, and David Bohm. 1952. “A Collective Description of Electron Interactions: II. Collective Vs Individual Particle Aspects of the Interactions.” <i>Phys. Rev.</i> 85 (2): 338–53. doi:<a href="https://doi.org/10.1103/PhysRev.85.338">10.1103/PhysRev.85.338</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_10"></a>Shavitt, Isaiah, and Rodney J Bartlett. 2009. <i>Many-Body Methods in Chemistry and Physics: MBPT and Coupled-Cluster Theory</i>. Cambridge; New York: Cambridge University Press.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_11"></a>Čížek, Jirí. 1969. “On the Use of the Cluster Expansion and the Technique of Diagrams in Calculations of Correlation Effects in Atoms and Molecules.” In <i>Advances in Chemical Physics</i>, edited by R. LeFebvre and C. Moser, 35–89. John Wiley &#38; Sons, Inc.</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-07 Mon 10:14</p>
+<p class="date">Created: 2022-03-01 Tue 14:01</p>
 </div>
 </body>
 </html>

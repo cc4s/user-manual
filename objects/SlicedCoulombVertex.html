@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-07 Mon 10:14 -->
+<!-- 2022-03-01 Tue 14:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>SlicedCoulombVertex</code></title>
+<title>SlicedCoulombVertex</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -310,26 +310,31 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>SlicedCoulombVertex</code></h1>
+<h1 class="title">SlicedCoulombVertex</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgff896d0">1. Brief description</a></li>
-<li><a href="#org90b0a9c">2. <span class="todo TODO">TODO</span> Specification</a></li>
-<li><a href="#org2d7c952">3. Literature</a></li>
+<li><a href="#org972d762">1. Brief description</a></li>
+<li><a href="#orge78453b">2. Specification</a></li>
+<li><a href="#orgf6ec28c">3. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgff896d0" class="outline-2">
-<h2 id="orgff896d0"><span class="section-number-2">1</span> <a href="#orgff896d0">Brief description</a></h2>
+<div id="outline-container-org972d762" class="outline-2">
+<h2 id="org972d762"><span class="section-number-2">1</span> <a href="#org972d762">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-<code>SlicedCoulombVertex</code> is a set of Coulomb vertices partitioned
-into particle and hole index channels: \(\{ \Gamma_i^j(G), \Gamma_i^a(G), \Gamma_a^i(G), \Gamma_a^b(G)\}\).
-The <code>SlicedCoulombVertex</code> is used to compute different types of two-electron integrals; for example \(V_{ij}^{ab}\) and can be
-generated using the <a href="../algorithms/SliceOperator.html#ID-SliceOperator">SliceOperator</a> algorithm.
+<code>SlicedCoulombVertex</code> is a set of Coulomb vertices, sliced
+into particle and hole index channels:
+\(\{ \Gamma^i_{jF}, \Gamma_i^{aF}, \Gamma_a^{iF}, \Gamma_a^{bF}\}\).
+The <code>SlicedCoulombVertex</code> is used to compute the different types of two-electron
+integrals, such as \(V_{ij}^{ab}=\sum_F{\Gamma^\ast}^{aF}_i\Gamma^b_{jF}\).
+It can be generated from
+the entire <a href="CoulombVertex.html#ID-CoulombVertex">CoulombVertex</a>
+\(\Gamma^q_{rF}\) using the
+<a href="../algorithms/SliceOperator.html#ID-SliceOperator">SliceOperator</a> algorithm:
 </p>
 
 <div class="org-src-container">
@@ -344,20 +349,42 @@ generated using the <a href="../algorithms/SliceOperator.html#ID-SliceOperator">
 </div>
 </div>
 
-<div id="outline-container-org90b0a9c" class="outline-2">
-<h2 id="org90b0a9c"><span class="section-number-2">2</span> <a href="#org90b0a9c"><span class="todo TODO">TODO</span> Specification</a></h2>
+<div id="outline-container-orge78453b" class="outline-2">
+<h2 id="orge78453b"><span class="section-number-2">2</span> <a href="#orge78453b">Specification</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The hole-particle slice \(\Gamma^i_{aF}\) is for instance found
+by restricting the outgoing (upstairs) states of the entire Coulomb
+Vertex to hole states \(i\) while
+restricting the incoming (downstairs) states
+to particle states \(a\):
+</p>
+\begin{equation}
+  \Gamma^i_{aF}: \varepsilon_i < \varepsilon_\mathrm{F}<\varepsilon_a
+\end{equation}
+<p>
+The index order in <code>cc4s</code> is identical to the index order of the entire
+Coulomb Vertex. For the above example it is <code>Gamma[Fia]</code>.
+Note that all indices start with 0, thus the particle indices
+\(a=0\ldots N_\mathrm{v}-1\)
+refer to the state indices
+\(p=N_\mathrm{p}-N_\mathrm{v} \ldots N_\mathrm{p}-1\),
+where \(N_\mathrm{p}\) denotes the total number of closed-shell
+orbitals and \(N_\mathrm{v}\) denotes the number of virtual orbitals.
+</p>
+</div>
 </div>
 
-<div id="outline-container-org2d7c952" class="outline-2">
-<h2 id="org2d7c952"><span class="section-number-2">3</span> <a href="#org2d7c952">Literature</a></h2>
+<div id="outline-container-orgf6ec28c" class="outline-2">
+<h2 id="orgf6ec28c"><span class="section-number-2">3</span> <a href="#orgf6ec28c">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
-<div class="csl-bib-body">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-07 Mon 10:14</p>
+<p class="date">Created: 2022-03-01 Tue 14:01</p>
 </div>
 </body>
 </html>

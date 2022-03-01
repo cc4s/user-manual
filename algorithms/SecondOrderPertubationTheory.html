@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-07 Mon 10:14 -->
+<!-- 2022-03-01 Tue 14:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>SecondOrderPerturbationTheory</code></title>
+<title>SecondOrderPerturbationTheory</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -310,23 +310,23 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>SecondOrderPerturbationTheory</code></h1>
+<h1 class="title">SecondOrderPerturbationTheory</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2ee82ce">1. Example <code>Cc4s</code> input</a></li>
-<li><a href="#orgaec6a1f">2. Input Description</a></li>
-<li><a href="#org48f39e2">3. Output</a></li>
-<li><a href="#org0db3067">4. Computational Complexity and memory footprint</a></li>
-<li><a href="#org1e813e9">5. Theory</a></li>
-<li><a href="#org7578442">6. Literature</a></li>
+<li><a href="#orgdf02ab0">1. Example <code>Cc4s</code> input</a></li>
+<li><a href="#orgd5b9843">2. Input Description</a></li>
+<li><a href="#orge96518e">3. Output</a></li>
+<li><a href="#org1809108">4. Computational Complexity and memory footprint</a></li>
+<li><a href="#org9f882b8">5. Theory</a></li>
+<li><a href="#orgb776bf8">6. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2ee82ce" class="outline-2">
-<h2 id="org2ee82ce"><span class="section-number-2">1</span> <a href="#org2ee82ce">Example <code>Cc4s</code> input</a></h2>
+<div id="outline-container-orgdf02ab0" class="outline-2">
+<h2 id="orgdf02ab0"><span class="section-number-2">1</span> <a href="#orgdf02ab0">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A typical input file snippet to call the <code>SecondOrderPerturbationTheory</code> algorithm is given below.
@@ -345,8 +345,8 @@ A typical input file snippet to call the <code>SecondOrderPerturbationTheory</co
 </div>
 
 
-<div id="outline-container-orgaec6a1f" class="outline-2">
-<h2 id="orgaec6a1f"><span class="section-number-2">2</span> <a href="#orgaec6a1f">Input Description</a></h2>
+<div id="outline-container-orgd5b9843" class="outline-2">
+<h2 id="orgd5b9843"><span class="section-number-2">2</span> <a href="#orgd5b9843">Input Description</a></h2>
 <div class="outline-text-2" id="text-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for PerturbativeTriples</caption>
@@ -383,8 +383,8 @@ A typical input file snippet to call the <code>SecondOrderPerturbationTheory</co
 </div>
 
 
-<div id="outline-container-org48f39e2" class="outline-2">
-<h2 id="org48f39e2"><span class="section-number-2">3</span> <a href="#org48f39e2">Output</a></h2>
+<div id="outline-container-orge96518e" class="outline-2">
+<h2 id="orge96518e"><span class="section-number-2">3</span> <a href="#orge96518e">Output</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Below an example standard output stream is shown for a successful <code>SecondOrderPerturbationTheory</code> algorithm run
@@ -405,17 +405,17 @@ realtime 0.170357500 s
 </div>
 </div>
 
-<div id="outline-container-org0db3067" class="outline-2">
-<h2 id="org0db3067"><span class="section-number-2">4</span> <a href="#org0db3067">Computational Complexity and memory footprint</a></h2>
+<div id="outline-container-org1809108" class="outline-2">
+<h2 id="org1809108"><span class="section-number-2">4</span> <a href="#org1809108">Computational Complexity and memory footprint</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
-Two objects of size \(\mathcal{O}{(N_o^2 N_v^2)}\) are stored in main memory. The computational complexity should be negligible as is of order \(\mathcal{O}{(N_o^2 N_v^2)}\).
+Two objects of size \(\mathcal{O}{(N_\mathrm{o}^2 N_\mathrm{v}^2)}\) are stored in main memory. The computational complexity should be negligible as is of order \(\mathcal{O}{(N_o^2 N_v^2)}\).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org1e813e9" class="outline-2">
-<h2 id="org1e813e9"><span class="section-number-2">5</span> <a href="#org1e813e9">Theory</a></h2>
+<div id="outline-container-org9f882b8" class="outline-2">
+<h2 id="org9f882b8"><span class="section-number-2">5</span> <a href="#org9f882b8">Theory</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 The implemented expression assumes Hartree&#x2013;Fock one-electron energies and can be found in Ref.(<a href="#citeproc_bib_item_1">Moller and Plesset 1934</a>).
@@ -423,17 +423,17 @@ The implemented expression assumes Hartree&#x2013;Fock one-electron energies and
 </div>
 </div>
 
-<div id="outline-container-org7578442" class="outline-2">
-<h2 id="org7578442"><span class="section-number-2">6</span> <a href="#org7578442">Literature</a></h2>
+<div id="outline-container-orgb776bf8" class="outline-2">
+<h2 id="orgb776bf8"><span class="section-number-2">6</span> <a href="#orgb776bf8">Literature</a></h2>
 <div class="outline-text-2" id="text-6">
-<div class="csl-bib-body">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Moller, C, and MS Plesset. 1934. “Note on an Approximation Treatment for Many-Electron Systems.” <i>Phys. Rev.</i> 46 (7): 0618–22.</div>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-07 Mon 10:14</p>
+<p class="date">Created: 2022-03-01 Tue 14:01</p>
 </div>
 </body>
 </html>

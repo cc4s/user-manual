@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-02-07 Mon 10:14 -->
+<!-- 2022-03-01 Tue 14:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title><code>SliceOperator</code></title>
+<title>SliceOperator</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -310,32 +310,32 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title"><code>SliceOperator</code></h1>
+<h1 class="title">SliceOperator</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org1ddbc56">1. Brief description</a></li>
-<li><a href="#orga9a6c42">2. Algorithm call</a></li>
-<li><a href="#org0aa8af5">3. Algorithm input</a>
+<li><a href="#orgadb46fe">1. Brief description</a></li>
+<li><a href="#orgca9b02d">2. Algorithm call</a></li>
+<li><a href="#org5c4141c">3. Algorithm input</a>
 <ul>
 <li><a href="#operator">3.1. operator</a></li>
 </ul>
 </li>
-<li><a href="#org6054a25">4. Algorithm output</a>
+<li><a href="#org951af57">4. Algorithm output</a>
 <ul>
 <li><a href="#slicedOperator">4.1. slicedOperator</a></li>
-<li><a href="#org77a9ec8">4.2. Sample <code>stdout</code></a></li>
-<li><a href="#org1ef6e33">4.3. Sample <code>yaml</code> output</a></li>
+<li><a href="#orgbee7c48">4.2. Sample <code>stdout</code></a></li>
+<li><a href="#org7831df3">4.3. Sample <code>yaml</code> output</a></li>
 </ul>
 </li>
-<li><a href="#org07c3d44">5. Literature</a></li>
+<li><a href="#org2622655">5. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org1ddbc56" class="outline-2">
-<h2 id="org1ddbc56"><span class="section-number-2">1</span> <a href="#org1ddbc56">Brief description</a></h2>
+<div id="outline-container-orgadb46fe" class="outline-2">
+<h2 id="orgadb46fe"><span class="section-number-2">1</span> <a href="#orgadb46fe">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm splits all edges of an input tensor of type orbital and size \(N_p\)
@@ -348,8 +348,8 @@ the Coulomb Vertex will be processed like
 </div>
 </div>
 
-<div id="outline-container-orga9a6c42" class="outline-2">
-<h2 id="orga9a6c42"><span class="section-number-2">2</span> <a href="#orga9a6c42">Algorithm call</a></h2>
+<div id="outline-container-orgca9b02d" class="outline-2">
+<h2 id="orgca9b02d"><span class="section-number-2">2</span> <a href="#orgca9b02d">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <a href="SliceOperator.html#ID-SliceOperator">SliceOperator</a>
@@ -369,10 +369,10 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-org0aa8af5" class="outline-2">
-<h2 id="org0aa8af5"><span class="section-number-2">3</span> <a href="#org0aa8af5">Algorithm input</a></h2>
+<div id="outline-container-org5c4141c" class="outline-2">
+<h2 id="org5c4141c"><span class="section-number-2">3</span> <a href="#org5c4141c">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org4d70eeb" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org816d1ba" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -410,10 +410,10 @@ This is a single tensor.
 </div>
 </div>
 
-<div id="outline-container-org6054a25" class="outline-2">
-<h2 id="org6054a25"><span class="section-number-2">4</span> <a href="#org6054a25">Algorithm output</a></h2>
+<div id="outline-container-org951af57" class="outline-2">
+<h2 id="org951af57"><span class="section-number-2">4</span> <a href="#org951af57">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="orgcf147e5" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org4583efe" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -445,8 +445,8 @@ This is a set of tensors.
 </div>
 </div>
 
-<div id="outline-container-org77a9ec8" class="outline-3">
-<h3 id="org77a9ec8"><span class="section-number-3">4.2</span> <a href="#org77a9ec8">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgbee7c48" class="outline-3">
+<h3 id="orgbee7c48"><span class="section-number-3">4.2</span> <a href="#orgbee7c48">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 The output of this algorithm reads
@@ -460,8 +460,8 @@ realtime 0.000798066 s
 </div>
 </div>
 
-<div id="outline-container-org1ef6e33" class="outline-3">
-<h3 id="org1ef6e33"><span class="section-number-3">4.3</span> <a href="#org1ef6e33">Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org7831df3" class="outline-3">
+<h3 id="org7831df3"><span class="section-number-3">4.3</span> <a href="#org7831df3">Sample <code>yaml</code> output</a></h3>
 <div class="outline-text-3" id="text-4-3">
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #8b4513;">floatingPointOperations</span>: 0
@@ -479,16 +479,16 @@ realtime 0.000798066 s
 </div>
 </div>
 
-<div id="outline-container-org07c3d44" class="outline-2">
-<h2 id="org07c3d44"><span class="section-number-2">5</span> <a href="#org07c3d44">Literature</a></h2>
+<div id="outline-container-org2622655" class="outline-2">
+<h2 id="org2622655"><span class="section-number-2">5</span> <a href="#org2622655">Literature</a></h2>
 <div class="outline-text-2" id="text-5">
-<div class="csl-bib-body">
+<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-02-07 Mon 10:14</p>
+<p class="date">Created: 2022-03-01 Tue 14:01</p>
 </div>
 </body>
 </html>
