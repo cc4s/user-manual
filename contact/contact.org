@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID: Contact
+:END:
+#+title: Contact
+
+The code is mainly developed in the group of Andreas Grüneis at the Technical
+University Vienna https://cqc.itp.tuwien.ac.at/.
+
+If you have questions about installing or applying cc4s, you can open an issue
+on gitlab https://gitlab.cc4s.org/cc4s/cc4s/-/issues. You can also write an
+email to any of the [[id:Acknowledgements][developers]], but we would recommend the
+use of gitlab.
+
+
+

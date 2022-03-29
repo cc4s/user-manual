@@ -46,3 +46,6 @@ You can find a complete list of objects
 * Documentation guide
 If you are writing documentation for =Cc4s=, read the
 [[file:how-to-write.org][documentation writing manual]].
+
+* Contact
+[[file:./contact/contact.org][Contacting the developers]].
