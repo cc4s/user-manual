@@ -4,6 +4,8 @@
 # The following sections explain everything from
 # downloading the code to running calculations.
 # #+end_center
+* What is Cc4s?
+- [[file:./what/what.org][About the code]]
 
 * How to get started?
 - [[file:./gettingstarted/gettingstarted.org][Download, compile and run tests]]

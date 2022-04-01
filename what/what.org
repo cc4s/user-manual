@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID: What
+:END:
+#+title: About the code
+
+
+Cc4s is a high-performance open-source coupled cluster simulation code.  The
+coupled cluster approach is used as so-called post Hartree--Fock method for
+solving the electronic Schrödinger equation
+(https://en.wikipedia.org/wiki/Coupled_cluster). The main application of cc4s
+is to study the electronic properties of solid-state systems.  Solving the
+coupled cluster equations for these systems is computationally demanding.
+Therefore ctf (https://github.com/cyclops-community/ctf), an efficient parallel
+tensor contraction library,  is used to solve the underlying coupled cluster
+equations.
