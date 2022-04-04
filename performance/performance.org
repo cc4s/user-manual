@@ -118,7 +118,7 @@ mpirun -np $ranks $Cc4s -i cc4s.in
 We have examined the performance of =cc4s= on two different clusters both using
 different Intel Xeon CPUs.
 For the weak scaling benchmark the number of occupied orbitals was increased with growing node count. The number of virtuals per occupied was always 12 in all calculations. The number of field variables was kept almost constant at a value of around 3.5.
-#+caption: Weak scaling on Irene with Intel Skylake 8168 CPUs.
+#+caption: Weak scaling of CCSD on Irene with Intel Skylake 8168 CPUs.
 #+name: irene-tab
 | #Nodes | #Cores | $N_o$  | Memory (GB/core) | Performance (GFLOPS/core/s) |
 |------------------------------+-----------------------------------|
@@ -130,7 +130,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 | 100    | 4800   | 128    |  1.4             | 19.4               |
 |------------------------------+-----------------------------------|
 
-#+caption: Weak scaling on raven with Intel CascadeLake 9242 CPUs.
+#+caption: Weak scaling of CCSD on raven with Intel CascadeLake 9242 CPUs.
 #+name: raven-weak-tab
 | #Nodes | #Cores | $N_o$  | Memory (GB/core) | Performance (GFLOPS/core/s) |
 |------------------------------+-----------------------------------|
@@ -144,7 +144,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 |  80    | 5760   | 152    |  2.0             | 29.8               |
 |------------------------------+-----------------------------------|
 
-#+caption: Strong scaling on raven $N_o=123$, $N_v=1114$, $N_F=2000$
+#+caption: Strong scaling on of CCSD raven $N_o=123$, $N_v=1114$, $N_F=2000$
 #+name: raven-strong-tab
 | #Nodes | #Cores |   Memory (GB/core) | Performance (GFLOPS/core/s) |
 |-----------------------+-----------------------------------|
