@@ -6,7 +6,7 @@
 <!-- 2022-04-04 Mon 17:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Read</title>
+<title>Contact</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -288,164 +288,18 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title">Read</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org0817f0d">1. Brief description</a></li>
-<li><a href="#org2039a69">2. Algorithm call</a></li>
-<li><a href="#orgfc1adaf">3. Algorithm input</a>
-<ul>
-<li><a href="#what">3.1. what</a></li>
-</ul>
-</li>
-<li><a href="#orgea169a1">4. Algorithm output</a>
-<ul>
-<li><a href="#data">4.1. data</a></li>
-<li><a href="#org594ed78">4.2. Sample <code>stdout</code></a></li>
-<li><a href="#orgc312e21">4.3. Sample <code>yaml</code> output</a></li>
-</ul>
-</li>
-<li><a href="#orgb38de41">5. Literature</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org0817f0d" class="outline-2">
-<h2 id="org0817f0d"><span class="section-number-2">1</span> <a href="#org0817f0d">Brief description</a></h2>
-<div class="outline-text-2" id="text-1">
+<h1 class="title">Contact</h1>
 <p>
-<code>Read</code> reads a cc4s tensor or set of tensors.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org2039a69" class="outline-2">
-<h2 id="org2039a69"><span class="section-number-2">2</span> <a href="#org2039a69">Algorithm call</a></h2>
-<div class="outline-text-2" id="text-2">
-<p>
-A typical input file snippet to call the <a href="Read.html#ID-Read">Read</a>
-algorithm is given below.
+The code is mainly developed in the group of Andreas Grüneis at the Technical
+University Vienna <a href="https://cqc.itp.tuwien.ac.at/">https://cqc.itp.tuwien.ac.at/</a>.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: Read
-  <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"CoulombVertex.yaml"</span>
-  <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">destination</span>: CoulombVertex
-</pre>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgfc1adaf" class="outline-2">
-<h2 id="orgfc1adaf"><span class="section-number-2">3</span> <a href="#orgfc1adaf">Algorithm input</a></h2>
-<div class="outline-text-2" id="text-3">
-<table id="orgdde33e8" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Keyword</th>
-<th scope="col" class="org-left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>fileName</code></td>
-<td class="org-left"><a href="#what">what</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div id="outline-container-what" class="outline-3">
-<h3 id="what"><span class="section-number-3">3.1</span> <a href="#what">what</a></h3>
-<div class="outline-text-3" id="text-what">
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgea169a1" class="outline-2">
-<h2 id="orgea169a1"><span class="section-number-2">4</span> <a href="#orgea169a1">Algorithm output</a></h2>
-<div class="outline-text-2" id="text-4">
-<table id="org1fc4680" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Keyword</th>
-<th scope="col" class="org-left">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>destination</code></td>
-<td class="org-left"><a href="#data">data</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<div id="outline-container-data" class="outline-3">
-<h3 id="data"><span class="section-number-3">4.1</span> <a href="#data">data</a></h3>
-<div class="outline-text-3" id="text-data">
-</div>
-</div>
-
-<div id="outline-container-org594ed78" class="outline-3">
-<h3 id="org594ed78"><span class="section-number-3">4.2</span> <a href="#org594ed78">Sample <code>stdout</code></a></h3>
-<div class="outline-text-3" id="text-4-2">
 <p>
-The output of this algorithm reads
+If you have questions about installing or applying cc4s, you can open an issue
+on gitlab <a href="https://gitlab.cc4s.org/cc4s/cc4s/-/issues">https://gitlab.cc4s.org/cc4s/cc4s/-/issues</a>. You can also write an
+email to any of the <a href="../acknowledgements/acknowledgements.html#ID-Acknowledgements">developers</a>, but we would recommend the
+use of gitlab.
 </p>
-<div class="org-src-container">
-<pre class="src src-sh">step: 2, Read
-Reading from binary file CoulombVertex.elements
-realtime 0.292085915 s
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc312e21" class="outline-3">
-<h3 id="orgc312e21"><span class="section-number-3">4.3</span> <a href="#orgc312e21">Sample <code>yaml</code> output</a></h3>
-<div class="outline-text-3" id="text-4-3">
-<pre class="example">
-floatingPointOperations: 0
-flops: 0
-in:
-  fileName: CoulombVertex.yaml
-name: Read
-out:
-  destination: 0x24878e8
-realtime: 0.292085915
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb38de41" class="outline-2">
-<h2 id="orgb38de41"><span class="section-number-2">5</span> <a href="#orgb38de41">Literature</a></h2>
-<div class="outline-text-2" id="text-5">
-<style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
-</div>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Created: 2022-04-04 Mon 17:07</p>

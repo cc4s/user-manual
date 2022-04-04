@@ -6,7 +6,7 @@
 <!-- 2022-04-04 Mon 17:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mp2PairEnergies</title>
+<title>Performance and compute resources</title>
 <meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
@@ -310,85 +310,427 @@
  </nav>
 </div>
 <div id="content">
-<h1 class="title">Mp2PairEnergies</h1>
+<h1 class="title">Performance and compute resources</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd0c89ed">1. Brief description</a></li>
-<li><a href="#orgd4f118c">2. Specification</a></li>
-<li><a href="#orgd1e4a41">3. Literature</a></li>
+<li><a href="#orgf14e0fc">1. Generating the input file</a></li>
+<li><a href="#orgde01f1b">2. Dry and full calculation</a></li>
+<li><a href="#org4632dc9">3. Exploited benchmarks</a></li>
+<li><a href="#org0aa9bd6">4. Literature</a></li>
 </ul>
 </div>
 </div>
+<p>
+Cc4s is designed to run highly parallel coupled cluster calculations.  It
+allows calculations with far more than 100 electrons on modern high performance
+computing clusters. Currently, cc4s can not benefit from GPUs or other
+accelerators.
+Note: although OpenMP threading is generally supported it is recommended to set
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #e44649;">export</span> <span style="color: #8b4513;">OMP_NUM_THREADS</span>=1
+</pre>
+</div>
 
-<div id="outline-container-orgd0c89ed" class="outline-2">
-<h2 id="orgd0c89ed"><span class="section-number-2">1</span> <a href="#orgd0c89ed">Brief description</a></h2>
+<p>
+In the following we present a way to estimate the required compute resources
+for a model system.  It is only necessary to download and compile cc4s. The
+computational complexity can now be estimated on two levels. First, a dry
+calculation can be performed which gives a first overview of the time and
+memory consumptions of the calculation. Thereafter, a full calculation can be
+performed to examine the performance on the target system. Note that the
+performance depends heavily on the hardware, network, compilers, and libraries.
+</p>
+
+<div id="outline-container-orgf14e0fc" class="outline-2">
+<h2 id="orgf14e0fc"><span class="section-number-2">1</span> <a href="#orgf14e0fc">Generating the input file</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-<code>Mp2PairEnergies</code> is a matrix \( \epsilon_{ij} \)
-of dimensions \( N_{\rm o} \times N_{\rm o}  \).
-\( \epsilon_{ij} \) is the electron-pair resolved MP2 correlation energy in the 
-complete basis set limig
+As input required are only the dimensions of the desired calculation.  It is
+important to note that the performance depends only on the dimensions of the
+system as given below. Physical properties (periodic vs. molecular system, low
+bandgap vs.  high bandgap, etc.) have no impact.
 </p>
-\begin{equation}
-  \epsilon_{ij} = \sum_{AB} \frac{
-    V^{AB}_{ij}(2V^{ij}_{AB}-V^{ji}_{AB})
-  } {
-    \varepsilon_i + \varepsilon_j
-    - \varepsilon_A - \varepsilon_B
-  },
-\end{equation}
+
 <p>
-where \(A\) and \(B\) refer to a virtual orbitals in a basis set that
-can be considered complete.
-\( \epsilon_{ij} \) is used by the
-<a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">BasisSetCorrection</a> algorithm and
-in the context of the theory
-CCSD(T*) (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>).
-<code>Mp2PairEnergies</code> needs to be provided by an interfaced electronic structure theory package
-and can be read in using the <a href="../algorithms/Read.html#ID-Read">Read</a> algorithm.
+Most important system parameter is the number of electrons used in the post
+Hartree&#x2013;Fock calculation (core electrons are typically not concidered).  In
+<code>vasp</code> the number of valence electrons of a given  atom is given in the POTCAR
+file (ZVAL); the other electrons are treated within the pseudopotential approach
+(<a href="https://www.vasp.at/wiki/index.php/POTCAR">https://www.vasp.at/wiki/index.php/POTCAR</a>).  In a closed-shell calculation the
+number of occupied orbitals \(N_o\) is half the number of valence electrons
+\(N_\text{elec}\).  When using the <a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">basis-set
+correction</a> typically 8-16 virtual orbitals per occupied orbital are needed to
+obtain converged results (see Ref. (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>)).  Further
+input parameter is the number of field variables of the vertex \(N_\text{F}\). It
+has been shown that for convergent results this number can be chosen as small
+as 2-3 times \(N_v\).
+</p>
+
+<p>
+An exemplary snipped of the algorithm creating the required vertex reads
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: Read
+<pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: UegVertexGenerator
   <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">fileName</span>: <span style="color: #50a14f;">"Mp2PairEnergies.yaml"</span>
+    <span style="color: #8b4513;">No</span>: 123
+    <span style="color: #8b4513;">Nv</span>: 1114
+    <span style="color: #8b4513;">NF</span>: 2000
+    <span style="color: #8b4513;">halfGrid</span>: 1
+    <span style="color: #8b4513;">rs</span>: 2
   <span style="color: #8b4513;">out</span>:
-    <span style="color: #8b4513;">tensor</span>: Mp2PairEnergies
+    <span style="color: #8b4513;">eigenEnergies</span>: EigenEnergies
+    <span style="color: #8b4513;">coulombVertex</span>: CoulombVertex
 </pre>
 </div>
+
+<p>
+The value for \(r_s\) can be chosen to be any positiv real number (it will be
+irrelevant for the performance  analysis). The pseudo-boolean variable
+<code>halfGrid</code> is chosen to be \(1\) for $&Gamma;$-point or molecular calculations,
+and \(0\) for arbitrary $k$-point calculations where the wavefunctions is
+complex.
+</p>
+
+
+<p>
+A full input file for a CCSD calculation can be found at
+(<a href="https://gitlab.cc4s.org/cc4s/cc4s/-/raw/master/test/tests/ueg/rs1.0-123occ-1114virt/cc4s.in">https://gitlab.cc4s.org/cc4s/cc4s/-/raw/master/test/tests/ueg/rs1.0-123occ-1114virt/cc4s.in</a>).
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgd4f118c" class="outline-2">
-<h2 id="orgd4f118c"><span class="section-number-2">2</span> <a href="#orgd4f118c">Specification</a></h2>
+<div id="outline-container-orgde01f1b" class="outline-2">
+<h2 id="orgde01f1b"><span class="section-number-2">2</span> <a href="#orgde01f1b">Dry and full calculation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
-An example <code>Mp2PairEnergies.yaml</code> file is given below.
+The generated input file can be either used in a dry calculation (running a
+few seconds on a laptop device), or in a real calculation on the desired
+target machine.
+</p>
+
+<p>
+The dry calculation is called with the following command:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #8b4513;">version</span>: 100
-<span style="color: #8b4513;">type</span>: Tensor
-<span style="color: #8b4513;">scalarType</span>: Real64
-<span style="color: #8b4513;">dimensions</span>:
-- <span style="color: #8b4513;">length</span>:     16
-  <span style="color: #8b4513;">type</span>: State
-- <span style="color: #8b4513;">length</span>:     16
-  <span style="color: #8b4513;">type</span>: State
-<span style="color: #8b4513;">elements</span>:
-  <span style="color: #8b4513;">type</span>: TextFile
-<span style="color: #8b4513;">unit</span>: 0.03674932217563878       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">= (Eh/eV)</span>
+<pre class="src src-sh">$<span style="color: #8b4513;">Cc4s</span> -i cc4s.in -d 1536
+</pre>
+</div>
+
+<p>
+In this example we obtain an output for 1536 mpi ranks. The output stream reads
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">                __ __
+     __________/ // / _____
+    / ___/ ___/ // /_/ ___/
+   / /__/ /__/__  __(__  )
+   <span style="color: #50a14f;">\_</span>__/<span style="color: #50a14f;">\_</span>__/  /_/ /____/
+  Coupled Cluster for Solids
+
+version: heads/develop-0-g3467f0ad-dirty, date: Mon Mar 28 11:40:04 2022 +0200
+build date: Mar 29 2022 16:27:07
+compiler: g++ (Ubuntu 10.3.0-1ubuntu1~20.10) 10.3.0
+total processes: 1
+calculation started on: Mon Apr  4 11:16:08 2022
+
+Dry run finished. Estimates provided for 1536 ranks.
+Memory estimate (per Rank/Total): 1.51836 / 2332.2 GB
+Operations estimate (per Rank/Total): 912374 / 1.40141e+09 GFLOPS
+Time estimate with assumed performance of 10 GFLOPS/core/s: 91237.4 s (25.3437 h)
+--
+</pre>
+</div>
+
+<p>
+The number of mpi ranks can be adjusted based on the memory/walltime
+constrains.  Note that the given memory and time estimates can differ in the
+real calculation and should only be used as an educated guess. The obtained
+performance depends heavily on the hardware (CPU, network, &#x2026;). The actual
+memory requirements can be higher than estimated. Using only 50-75% of the
+total available memory has shown to be a reasonable choice.
+</p>
+
+<p>
+The full calculation is called by the following command:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">mpirun -np $<span style="color: #8b4513;">ranks</span> $<span style="color: #8b4513;">Cc4s</span> -i cc4s.in
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgd1e4a41" class="outline-2">
-<h2 id="orgd1e4a41"><span class="section-number-2">3</span> <a href="#orgd1e4a41">Literature</a></h2>
+<div id="outline-container-org4632dc9" class="outline-2">
+<h2 id="org4632dc9"><span class="section-number-2">3</span> <a href="#org4632dc9">Exploited benchmarks</a></h2>
 <div class="outline-text-2" id="text-3">
+<p>
+We have examined the performance of <code>cc4s</code> on two different clusters both using
+different Intel Xeon CPUs.
+For the weak scaling benchmark the number of occupied orbitals was increased with growing node count. The number of virtuals per occupied was always 12 in all calculations. The number of field variables was kept almost constant at a value of around 3.5.
+</p>
+<table id="orgb288c7d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Weak scaling of CCSD on Irene with Intel Skylake 8168 CPUs.</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">#Nodes</th>
+<th scope="col" class="org-right">#Cores</th>
+<th scope="col" class="org-right">\(N_o\)</th>
+<th scope="col" class="org-right">Memory (GB/core)</th>
+<th scope="col" class="org-right">Performance (GFLOPS/core/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">48</td>
+<td class="org-right">40</td>
+<td class="org-right">2.0</td>
+<td class="org-right">18.7</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">192</td>
+<td class="org-right">64</td>
+<td class="org-right">2.4</td>
+<td class="org-right">20.1</td>
+</tr>
+
+<tr>
+<td class="org-right">16</td>
+<td class="org-right">768</td>
+<td class="org-right">80</td>
+<td class="org-right">1.4</td>
+<td class="org-right">21.4</td>
+</tr>
+
+<tr>
+<td class="org-right">20</td>
+<td class="org-right">960</td>
+<td class="org-right">96</td>
+<td class="org-right">2.0</td>
+<td class="org-right">21.4</td>
+</tr>
+
+<tr>
+<td class="org-right">50</td>
+<td class="org-right">1296</td>
+<td class="org-right">108</td>
+<td class="org-right">1.4</td>
+<td class="org-right">20.2</td>
+</tr>
+
+<tr>
+<td class="org-right">100</td>
+<td class="org-right">4800</td>
+<td class="org-right">128</td>
+<td class="org-right">1.4</td>
+<td class="org-right">19.4</td>
+</tr>
+</tbody>
+</table>
+
+<table id="org402cb39" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Weak scaling of CCSD on raven with Intel CascadeLake 9242 CPUs.</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">#Nodes</th>
+<th scope="col" class="org-right">#Cores</th>
+<th scope="col" class="org-right">\(N_o\)</th>
+<th scope="col" class="org-right">Memory (GB/core)</th>
+<th scope="col" class="org-right">Performance (GFLOPS/core/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">72</td>
+<td class="org-right">40</td>
+<td class="org-right">1.3</td>
+<td class="org-right">19.8</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">288</td>
+<td class="org-right">64</td>
+<td class="org-right">1.6</td>
+<td class="org-right">22.3</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-right">576</td>
+<td class="org-right">80</td>
+<td class="org-right">1.9</td>
+<td class="org-right">25.1</td>
+</tr>
+
+<tr>
+<td class="org-right">16</td>
+<td class="org-right">1152</td>
+<td class="org-right">96</td>
+<td class="org-right">1.7</td>
+<td class="org-right">20.2</td>
+</tr>
+
+<tr>
+<td class="org-right">32</td>
+<td class="org-right">2304</td>
+<td class="org-right">108</td>
+<td class="org-right">1.5</td>
+<td class="org-right">27.1</td>
+</tr>
+
+<tr>
+<td class="org-right">48</td>
+<td class="org-right">3456</td>
+<td class="org-right">128</td>
+<td class="org-right">1.9</td>
+<td class="org-right">26.1</td>
+</tr>
+
+<tr>
+<td class="org-right">64</td>
+<td class="org-right">4608</td>
+<td class="org-right">140</td>
+<td class="org-right">1.8</td>
+<td class="org-right">22.0</td>
+</tr>
+
+<tr>
+<td class="org-right">80</td>
+<td class="org-right">5760</td>
+<td class="org-right">152</td>
+<td class="org-right">2.0</td>
+<td class="org-right">29.8</td>
+</tr>
+</tbody>
+</table>
+
+<table id="org1bfe4fe" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 3:</span> Strong scaling on of CCSD raven \(N_o=123\), \(N_v=1114\), \(N_F=2000\)</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">#Nodes</th>
+<th scope="col" class="org-right">#Cores</th>
+<th scope="col" class="org-right">Memory (GB/core)</th>
+<th scope="col" class="org-right">Performance (GFLOPS/core/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">12</td>
+<td class="org-right">864</td>
+<td class="org-right">1.40</td>
+<td class="org-right">31.1</td>
+</tr>
+
+<tr>
+<td class="org-right">16</td>
+<td class="org-right">1152</td>
+<td class="org-right">1.05</td>
+<td class="org-right">29.7</td>
+</tr>
+
+<tr>
+<td class="org-right">24</td>
+<td class="org-right">1728</td>
+<td class="org-right">0.70</td>
+<td class="org-right">23.9</td>
+</tr>
+
+<tr>
+<td class="org-right">30</td>
+<td class="org-right">2160</td>
+<td class="org-right">0.56</td>
+<td class="org-right">21.1</td>
+</tr>
+
+<tr>
+<td class="org-right">40</td>
+<td class="org-right">2880</td>
+<td class="org-right">0.42</td>
+<td class="org-right">20.8</td>
+</tr>
+
+<tr>
+<td class="org-right">48</td>
+<td class="org-right">3456</td>
+<td class="org-right">0.35</td>
+<td class="org-right">18.6</td>
+</tr>
+
+<tr>
+<td class="org-right">64</td>
+<td class="org-right">4608</td>
+<td class="org-right">0.26</td>
+<td class="org-right">16.0</td>
+</tr>
+
+<tr>
+<td class="org-right">72</td>
+<td class="org-right">5184</td>
+<td class="org-right">0.23</td>
+<td class="org-right">17.2</td>
+</tr>
+
+<tr>
+<td class="org-right">80</td>
+<td class="org-right">5760</td>
+<td class="org-right">0.21</td>
+<td class="org-right">14.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-org0aa9bd6" class="outline-2">
+<h2 id="org0aa9bd6"><span class="section-number-2">4</span> <a href="#org0aa9bd6">Literature</a></h2>
+<div class="outline-text-2" id="text-4">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June): 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
 </div>
