@@ -62,7 +62,8 @@ and $0$ for arbitrary $k$-point calculations where the wavefunctions is
 complex.
 
 
-A full input file for a ccsd calculation can be found at (TODO GITLAB-LINK).
+A full input file for a CCSD calculation can be found at
+(https://gitlab.cc4s.org/cc4s/cc4s/-/raw/master/test/tests/ueg/rs1.0-123occ-1114virt/cc4s.in).
 
 * Dry and full calculation
 
