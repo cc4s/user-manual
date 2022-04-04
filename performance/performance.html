@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-04-04 Mon 17:07 -->
+<!-- 2022-04-04 Mon 17:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Performance and compute resources</title>
@@ -315,10 +315,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf14e0fc">1. Generating the input file</a></li>
-<li><a href="#orgde01f1b">2. Dry and full calculation</a></li>
-<li><a href="#org4632dc9">3. Exploited benchmarks</a></li>
-<li><a href="#org0aa9bd6">4. Literature</a></li>
+<li><a href="#org2ba87a0">1. Generating the input file</a></li>
+<li><a href="#org51833f1">2. Dry and full calculation</a></li>
+<li><a href="#orgd9bc965">3. Exploited benchmarks</a></li>
+<li><a href="#orgc4206ae">4. Literature</a></li>
 </ul>
 </div>
 </div>
@@ -344,8 +344,8 @@ performed to examine the performance on the target system. Note that the
 performance depends heavily on the hardware, network, compilers, and libraries.
 </p>
 
-<div id="outline-container-orgf14e0fc" class="outline-2">
-<h2 id="orgf14e0fc"><span class="section-number-2">1</span> <a href="#orgf14e0fc">Generating the input file</a></h2>
+<div id="outline-container-org2ba87a0" class="outline-2">
+<h2 id="org2ba87a0"><span class="section-number-2">1</span> <a href="#org2ba87a0">Generating the input file</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 As input required are only the dimensions of the desired calculation.  It is
@@ -403,8 +403,8 @@ A full input file for a CCSD calculation can be found at
 </div>
 </div>
 
-<div id="outline-container-orgde01f1b" class="outline-2">
-<h2 id="orgde01f1b"><span class="section-number-2">2</span> <a href="#orgde01f1b">Dry and full calculation</a></h2>
+<div id="outline-container-org51833f1" class="outline-2">
+<h2 id="org51833f1"><span class="section-number-2">2</span> <a href="#org51833f1">Dry and full calculation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 The generated input file can be either used in a dry calculation (running a
@@ -467,15 +467,15 @@ The full calculation is called by the following command:
 </div>
 
 
-<div id="outline-container-org4632dc9" class="outline-2">
-<h2 id="org4632dc9"><span class="section-number-2">3</span> <a href="#org4632dc9">Exploited benchmarks</a></h2>
+<div id="outline-container-orgd9bc965" class="outline-2">
+<h2 id="orgd9bc965"><span class="section-number-2">3</span> <a href="#orgd9bc965">Exploited benchmarks</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 We have examined the performance of <code>cc4s</code> on two different clusters both using
 different Intel Xeon CPUs.
 For the weak scaling benchmark the number of occupied orbitals was increased with growing node count. The number of virtuals per occupied was always 12 in all calculations. The number of field variables was kept almost constant at a value of around 3.5.
 </p>
-<table id="orgb288c7d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org6fcbe08" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Weak scaling of CCSD on Irene with Intel Skylake 8168 CPUs.</caption>
 
 <colgroup>
@@ -549,7 +549,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 </tbody>
 </table>
 
-<table id="org402cb39" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgb214c94" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Weak scaling of CCSD on raven with Intel CascadeLake 9242 CPUs.</caption>
 
 <colgroup>
@@ -639,7 +639,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 </tbody>
 </table>
 
-<table id="org1bfe4fe" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org64de6e6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 3:</span> Strong scaling on of CCSD raven \(N_o=123\), \(N_v=1114\), \(N_F=2000\)</caption>
 
 <colgroup>
@@ -728,8 +728,8 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 </div>
 
 
-<div id="outline-container-org0aa9bd6" class="outline-2">
-<h2 id="org0aa9bd6"><span class="section-number-2">4</span> <a href="#org0aa9bd6">Literature</a></h2>
+<div id="outline-container-orgc4206ae" class="outline-2">
+<h2 id="orgc4206ae"><span class="section-number-2">4</span> <a href="#orgc4206ae">Literature</a></h2>
 <div class="outline-text-2" id="text-4">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June): 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -738,7 +738,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-04-04 Mon 17:07</p>
+<p class="date">Created: 2022-04-04 Mon 17:20</p>
 </div>
 </body>
 </html>

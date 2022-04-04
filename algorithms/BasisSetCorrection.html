@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-04-04 Mon 17:07 -->
+<!-- 2022-04-04 Mon 17:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>BasisSetCorrection</title>
@@ -293,32 +293,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge423935">1. Brief description</a></li>
-<li><a href="#orgf36621e">2. Algorithm call</a></li>
-<li><a href="#org6dccef6">3. Algorithm input</a></li>
-<li><a href="#org6d71d7d">4. Algorithm output</a>
+<li><a href="#org033f4dd">1. Brief description</a></li>
+<li><a href="#org484d891">2. Algorithm call</a></li>
+<li><a href="#org67b8c54">3. Algorithm input</a></li>
+<li><a href="#orgb452655">4. Algorithm output</a>
 <ul>
-<li><a href="#org925e8cf">4.1. Sample <code>stdout</code></a></li>
+<li><a href="#org504ab10">4.1. Sample <code>stdout</code></a></li>
 </ul>
 </li>
-<li><a href="#org9334245">5. Sample <code>yaml</code> output</a></li>
-<li><a href="#orgaa2e3c4">6. Computational complexity</a></li>
-<li><a href="#org7dfb01d">7. Theory</a></li>
-<li><a href="#org816b365">8. Literature</a></li>
+<li><a href="#org2907e0d">5. Sample <code>yaml</code> output</a></li>
+<li><a href="#org759a6af">6. Computational complexity</a></li>
+<li><a href="#orgbf0e80f">7. Theory</a></li>
+<li><a href="#org892ba6b">8. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge423935" class="outline-2">
-<h2 id="orge423935"><span class="section-number-2">1</span> <a href="#orge423935">Brief description</a></h2>
+<div id="outline-container-org033f4dd" class="outline-2">
+<h2 id="org033f4dd"><span class="section-number-2">1</span> <a href="#org033f4dd">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm evaluates a correction to the basis-set-incompeteness error (BSIE) of CCSD correlation energies.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf36621e" class="outline-2">
-<h2 id="orgf36621e"><span class="section-number-2">2</span> <a href="#orgf36621e">Algorithm call</a></h2>
+<div id="outline-container-org484d891" class="outline-2">
+<h2 id="org484d891"><span class="section-number-2">2</span> <a href="#org484d891">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>BasisSetCorrection</code> algorithm is given below.
@@ -341,10 +341,10 @@ A typical input file snippet to call the <code>BasisSetCorrection</code> algorit
 </div>
 
 
-<div id="outline-container-org6dccef6" class="outline-2">
-<h2 id="org6dccef6"><span class="section-number-2">3</span> <a href="#org6dccef6">Algorithm input</a></h2>
+<div id="outline-container-org67b8c54" class="outline-2">
+<h2 id="org67b8c54"><span class="section-number-2">3</span> <a href="#org67b8c54">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgec20ee7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org51b63e0" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
 
 <colgroup>
@@ -394,8 +394,8 @@ A typical input file snippet to call the <code>BasisSetCorrection</code> algorit
 </div>
 
 
-<div id="outline-container-org6d71d7d" class="outline-2">
-<h2 id="org6d71d7d"><span class="section-number-2">4</span> <a href="#org6d71d7d">Algorithm output</a></h2>
+<div id="outline-container-orgb452655" class="outline-2">
+<h2 id="orgb452655"><span class="section-number-2">4</span> <a href="#orgb452655">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 The output of the algorithm is the CCSD BSIE correction. This energy contains
@@ -403,8 +403,8 @@ the 2nd-order energy correction and a pair-specific contribution that accounts f
 </p>
 </div>
 
-<div id="outline-container-org925e8cf" class="outline-3">
-<h3 id="org925e8cf"><span class="section-number-3">4.1</span> <a href="#org925e8cf">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org504ab10" class="outline-3">
+<h3 id="org504ab10"><span class="section-number-3">4.1</span> <a href="#org504ab10">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful run.
@@ -420,8 +420,8 @@ realtime 0.080797438 s
 </div>
 </div>
 
-<div id="outline-container-org9334245" class="outline-2">
-<h2 id="org9334245"><span class="section-number-2">5</span> <a href="#org9334245">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-org2907e0d" class="outline-2">
+<h2 id="org2907e0d"><span class="section-number-2">5</span> <a href="#org2907e0d">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Below an example <code>yaml</code> output stream is shown for a successful run.
@@ -443,8 +443,8 @@ Below an example <code>yaml</code> output stream is shown for a successful run.
 </div>
 
 
-<div id="outline-container-orgaa2e3c4" class="outline-2">
-<h2 id="orgaa2e3c4"><span class="section-number-2">6</span> <a href="#orgaa2e3c4">Computational complexity</a></h2>
+<div id="outline-container-org759a6af" class="outline-2">
+<h2 id="org759a6af"><span class="section-number-2">6</span> <a href="#org759a6af">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This algorithm is a post-processing algorithm. However, the 2nd-order
@@ -456,8 +456,8 @@ energy calculation.
 </div>
 
 
-<div id="outline-container-org7dfb01d" class="outline-2">
-<h2 id="org7dfb01d"><span class="section-number-2">7</span> <a href="#org7dfb01d">Theory</a></h2>
+<div id="outline-container-orgbf0e80f" class="outline-2">
+<h2 id="orgbf0e80f"><span class="section-number-2">7</span> <a href="#orgbf0e80f">Theory</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 This algorithm evaluates a correction to the basis-set-incompleteness error (BSIE)
@@ -484,8 +484,8 @@ correction and the ppl-correction-term.
 </div>
 
 
-<div id="outline-container-org816b365" class="outline-2">
-<h2 id="org816b365"><span class="section-number-2">8</span> <a href="#org816b365">Literature</a></h2>
+<div id="outline-container-org892ba6b" class="outline-2">
+<h2 id="org892ba6b"><span class="section-number-2">8</span> <a href="#org892ba6b">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June): 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -494,7 +494,7 @@ correction and the ppl-correction-term.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-04-04 Mon 17:07</p>
+<p class="date">Created: 2022-04-04 Mon 17:20</p>
 </div>
 </body>
 </html>

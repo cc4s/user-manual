@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-04-04 Mon 17:07 -->
+<!-- 2022-04-04 Mon 17:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>About the code</title>
@@ -290,21 +290,33 @@
 <div id="content">
 <h1 class="title">About the code</h1>
 <p>
-Cc4s is a high-performance open-source coupled cluster simulation code.  The
-coupled cluster approach is used as so-called post Hartree&#x2013;Fock method for
-solving the electronic Schrödinger equation
-(<a href="https://en.wikipedia.org/wiki/Coupled_cluster">https://en.wikipedia.org/wiki/Coupled_cluster</a>). The main application of cc4s
-is to study the electronic properties of solid-state systems.  Solving the
-coupled cluster equations for these systems is computationally demanding.
-Therefore ctf (<a href="https://github.com/cyclops-community/ctf">https://github.com/cyclops-community/ctf</a>), an efficient parallel
-tensor contraction library,  is used to solve the underlying coupled cluster
-equations.  Cc4s needs on input a reference wavefunction, typically obtained
-from a Hartree&#x2013;Fock calculation. Currently, interfaces are available  for
-<code>vasp</code> and <code>fhi-aims</code>.
+Cc4s is a <b>high-performance</b> open-source coupled cluster simulation code.
+</p>
+
+<p>
+The coupled cluster method is used as a so-called post Hartree-Fock method for
+solving the electronic Schrödinger equation (<a href="https://en.wikipedia.org/wiki/Coupled_cluster">wikipedia</a>).
+</p>
+
+<p>
+The main application of cc4s is to study the electronic properties of
+solid-state systems.
+Solving the coupled cluster equations for these systems is
+computationally extremely demanding.
+Therefore we make use of state-of-the-art high-performance libraries
+such as <a href="https://github.com/cyclops-community/ctf">CTF</a>, an efficient parallel tensor contraction engine,
+and leverage computational paradigms such as MPI
+and OpenMP based parallelization.
+</p>
+
+<p>
+In general terms, <code>cc4s</code> takes as input a reference wavefunction
+together with a description of the Coulomb integrals.
+Currently, interfaces are available for the codes <a href="https://vasp.at"><code>vasp</code></a> and <a href="https://fhi-aims.org/"><code>fhi-aims</code></a>.
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-04-04 Mon 17:07</p>
+<p class="date">Created: 2022-04-04 Mon 17:20</p>
 </div>
 </body>
 </html>
