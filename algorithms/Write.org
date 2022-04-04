@@ -29,6 +29,7 @@ algorithm is given below.
 |-----------------------+-------|
 | =fileName=            | [[#what][what]]      |
 | =source=              | [[#data][data]]      |
+| =binary=              | [[#binary][binary]]  |
 |-----------------------+-------|
 
 ** what
@@ -44,6 +45,14 @@ Defines the yaml file name where the tensor or sets of tensors are written to.
 :END:
 
 Defines the tensor or sets of tensors that should be written to disk.
+
+** binary
+:PROPERTIES:
+:CUSTOM_ID: binary
+:END:
+
+Pseudo-boolean (i.e. use 0 or 1) flag determines writing a text- or binary-file.
+
 
 ** Sample =stdout=
 A typical output of this algorithm reads

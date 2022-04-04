@@ -12,4 +12,6 @@ is to study the electronic properties of solid-state systems.  Solving the
 coupled cluster equations for these systems is computationally demanding.
 Therefore ctf (https://github.com/cyclops-community/ctf), an efficient parallel
 tensor contraction library,  is used to solve the underlying coupled cluster
-equations.
+equations.  Cc4s needs on input a reference wavefunction, typically obtained
+from a Hartree--Fock calculation. Currently, interfaces are available  for
+=vasp= and =fhi-aims=.

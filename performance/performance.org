@@ -1,0 +1,164 @@
+:PROPERTIES:
+:ID: Performance
+:END:
+#+title: Performance and compute resources
+
+Cc4s is designed to run highly parallel coupled cluster calculations.  It
+allows calculations with far more than 100 electrons on modern high performance
+computing clusters. Currently, cc4s can not benefit from GPUs or other
+accelerators.
+Note: although OpenMP threading is generally supported it is recommended to set
+#+begin_src sh
+export OMP_NUM_THREADS=1
+#+end_src
+
+In the following we present a way to estimate the required compute resources
+for a model system.  It is only necessary to download and compile cc4s. The
+computational complexity can now be estimated on two levels. First, a dry
+calculation can be performed which gives a first overview of the time and
+memory consumptions of the calculation. Thereafter, a full calculation can be
+performed to examine the performance on the target system. Note that the
+performance depends heavily on the hardware, network, compilers, and libraries.
+
+* Generating the input file
+
+As input required are only the dimensions of the desired calculation.  It is
+important to note that the performance depends only on the dimensions of the
+system as given below. Physical properties (periodic vs. molecular system, low
+bandgap vs.  high bandgap, etc.) have no impact.
+
+Most important system parameter is the number of electrons used in the post
+Hartree--Fock calculation (core electrons are typically not concidered).  In
+=vasp= the number of valence electrons of a given  atom is given in the POTCAR
+file (ZVAL); the other electrons are treated within the pseudopotential approach
+(https://www.vasp.at/wiki/index.php/POTCAR).  In a closed-shell calculation the
+number of occupied orbitals $N_o$ is half the number of valence electrons
+$N_\text{elec}$.  When using the [[id:BasisSetCorrection][basis-set
+correction]] typically 8-16 virtual orbitals per occupied orbital are needed to
+obtain converged results (see Ref. cite:&FocalPointAppIrmler2021).  Further
+input parameter is the number of field variables of the vertex $N_\text{F}$. It
+has been shown that for convergent results this number can be chosen as small
+as 2-3 times $N_v$.
+
+An exemplary snipped of the algorithm creating the required vertex reads
+
+#+begin_src yaml
+- name: UegVertexGenerator
+  in:
+    No: 123
+    Nv: 1114
+    NF: 2000
+    halfGrid: 1
+    rs: 2
+  out:
+    eigenEnergies: EigenEnergies
+    coulombVertex: CoulombVertex
+#+end_src
+
+The value for $r_s$ can be chosen to be any positiv real number (it will be
+irrelevant for the performance  analysis). The pseudo-boolean variable
+=halfGrid= is chosen to be $1$ for $\Gamma$-point or molecular calculations,
+and $0$ for arbitrary $k$-point calculations where the wavefunctions is
+complex.
+
+
+A full input file for a ccsd calculation can be found at (TODO GITLAB-LINK).
+
+* Dry and full calculation
+
+The generated input file can be either used in a dry calculation (running a
+few seconds on a laptop device), or in a real calculation on the desired
+target machine.
+
+The dry calculation is called with the following command:
+
+#+begin_src sh
+$Cc4s -i cc4s.in -d 1536
+#+end_src
+
+In this example we obtain an output for 1536 mpi ranks. The output stream reads
+
+#+begin_src sh
+                __ __
+     __________/ // / _____
+    / ___/ ___/ // /_/ ___/
+   / /__/ /__/__  __(__  )
+   \___/\___/  /_/ /____/
+  Coupled Cluster for Solids
+
+version: heads/develop-0-g3467f0ad-dirty, date: Mon Mar 28 11:40:04 2022 +0200
+build date: Mar 29 2022 16:27:07
+compiler: g++ (Ubuntu 10.3.0-1ubuntu1~20.10) 10.3.0
+total processes: 1
+calculation started on: Mon Apr  4 11:16:08 2022
+
+Dry run finished. Estimates provided for 1536 ranks.
+Memory estimate (per Rank/Total): 1.51836 / 2332.2 GB
+Operations estimate (per Rank/Total): 912374 / 1.40141e+09 GFLOPS
+Time estimate with assumed performance of 10 GFLOPS/core/s: 91237.4 s (25.3437 h)
+--
+#+end_src
+
+The number of mpi ranks can be adjusted based on the memory/walltime
+constrains.  Note that the given memory and time estimates can differ in the
+real calculation and should only be used as an educated guess. The obtained
+performance depends heavily on the hardware (CPU, network, ...). The actual
+memory requirements can be higher than estimated. Using only 50-75% of the
+total available memory has shown to be a reasonable choice.
+
+The full calculation is called by the following command:
+#+begin_src sh
+mpirun -np $ranks $Cc4s -i cc4s.in
+#+end_src
+
+
+* Exploited benchmarks
+
+We have examined the performance of =cc4s= on two different clusters both using
+different Intel Xeon CPUs.
+For the weak scaling benchmark the number of occupied orbitals was increased with growing node count. The number of virtuals per occupied was always 12 in all calculations. The number of field variables was kept almost constant at a value of around 3.5.
+#+caption: Weak scaling on Irene with Intel Skylake 8168 CPUs.
+#+name: irene-tab
+| #Nodes | #Cores | $N_o$  | Memory (GB/core) | Performance (GFLOPS/core/s) |
+|------------------------------+-----------------------------------|
+|   1    |   48   |  40    |  2.0             | 18.7               |
+|   4    |  192   |  64    |  2.4             | 20.1               |
+|  16    |  768   |  80    |  1.4             | 21.4               |
+|  20    |  960   |  96    |  2.0             | 21.4               |
+|  50    | 1296   | 108    |  1.4             | 20.2               |
+| 100    | 4800   | 128    |  1.4             | 19.4               |
+|------------------------------+-----------------------------------|
+
+#+caption: Weak scaling on raven with Intel CascadeLake 9242 CPUs.
+#+name: raven-weak-tab
+| #Nodes | #Cores | $N_o$  | Memory (GB/core) | Performance (GFLOPS/core/s) |
+|------------------------------+-----------------------------------|
+|   1    |   72   |  40    |  1.3             | 19.8               |
+|   4    |  288   |  64    |  1.6             | 22.3               |
+|   8    |  576   |  80    |  1.9             | 25.1               |
+|  16    | 1152   |  96    |  1.7             | 20.2               |
+|  32    | 2304   | 108    |  1.5             | 27.1               |
+|  48    | 3456   | 128    |  1.9             | 26.1               |
+|  64    | 4608   | 140    |  1.8             | 22.0               |
+|  80    | 5760   | 152    |  2.0             | 29.8               |
+|------------------------------+-----------------------------------|
+
+#+caption: Strong scaling on raven $N_o=123$, $N_v=1114$, $N_F=2000$
+#+name: raven-strong-tab
+| #Nodes | #Cores |   Memory (GB/core) | Performance (GFLOPS/core/s) |
+|-----------------------+-----------------------------------|
+|  12    |  864   |    1.40             | 31.1           |
+|  16    | 1152   |    1.05             | 29.7           |
+|  24    | 1728   |    0.70             | 23.9           |
+|  30    | 2160   |    0.56             | 21.1           |
+|  40    | 2880   |    0.42             | 20.8           |
+|  48    | 3456   |    0.35             | 18.6           |
+|  64    | 4608   |    0.26             | 16.0           |
+|  72    | 5184   |    0.23             | 17.2           |
+|  80    | 5760   |    0.21             | 14.8           |
+|------------------------------+-----------------------------------|
+
+
+* Literature
+bibliography:../group.bib
+
