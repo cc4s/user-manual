@@ -7,7 +7,7 @@
 
 You can download the CC4S code by typing
 #+begin_src sh
-  git clone git@gitlab.cc4s.org:cc4s/cc4s.git
+  git clone https://gitlab.cc4s.org/cc4s/cc4s.git
 #+end_src
 
 This will create a new folder named ./cc4s/ where the complete source code will be downloaded.
