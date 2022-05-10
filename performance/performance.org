@@ -3,9 +3,9 @@
 :END:
 #+title: Performance and compute resources
 
-Cc4s is designed to run highly parallel coupled cluster calculations.  It
+=Cc4s= is designed to run highly parallel coupled cluster calculations.  It
 allows calculations with far more than 100 electrons on modern high performance
-computing clusters. Currently, cc4s can not benefit from GPUs or other
+computing clusters. Currently, =Cc4s= can not benefit from GPUs or other
 accelerators.
 Note: although OpenMP threading is generally supported it is recommended to set
 #+begin_src sh
@@ -13,8 +13,11 @@ export OMP_NUM_THREADS=1
 #+end_src
 
 In the following we present a way to estimate the required compute resources
-for a model system.  It is only necessary to download and compile cc4s. The
-computational complexity can now be estimated on two levels. First, a dry
+for models with arbitrary system sizes that can be chosen to reflect the dimensions
+of any targeted ab initio system. 
+In this manner =Cc4s= does not require actual input files for the specific ab initio
+system.
+The computational complexity can be estimated on two levels. First, a dry
 calculation can be performed which gives a first overview of the time and
 memory consumptions of the calculation. Thereafter, a full calculation can be
 performed to examine the performance on the target system. Note that the
@@ -22,25 +25,26 @@ performance depends heavily on the hardware, network, compilers, and libraries.
 
 * Generating the input file
 
-As input required are only the dimensions of the desired calculation.  It is
+The only input required are the dimensions of the desired calculation.  It is
 important to note that the performance depends only on the dimensions of the
 system as given below. Physical properties (periodic vs. molecular system, low
 bandgap vs.  high bandgap, etc.) have no impact.
 
-Most important system parameter is the number of electrons used in the post
-Hartree--Fock calculation (core electrons are typically not concidered).  In
+The most important system parameter is the number of electrons used in the post
+Hartree--Fock calculation (core electrons are typically not considered).  In
 =vasp= the number of valence electrons of a given  atom is given in the POTCAR
-file (ZVAL); the other electrons are treated within the pseudopotential approach
-(https://www.vasp.at/wiki/index.php/POTCAR).  In a closed-shell calculation the
+file (ZVAL); the other electrons are treated within the frozen-core approximation
+(https://www.vasp.at/wiki/index.php/POTCAR). 
+In a closed-shell calculation the
 number of occupied orbitals $N_o$ is half the number of valence electrons
 $N_\text{elec}$.  When using the [[id:BasisSetCorrection][basis-set
 correction]] typically 8-16 virtual orbitals per occupied orbital are needed to
 obtain converged results (see Ref. cite:&FocalPointAppIrmler2021).  Further
 input parameter is the number of field variables of the vertex $N_\text{F}$. It
-has been shown that for convergent results this number can be chosen as small
+has been shown that for converged results this number can be chosen as small
 as 2-3 times $N_v$.
 
-An exemplary snipped of the algorithm creating the required vertex reads
+An exemplary snippet of the algorithm creating the required vertex reads
 
 #+begin_src yaml
 - name: UegVertexGenerator
@@ -67,7 +71,7 @@ A full input file for a CCSD calculation can be found at
 
 * Dry and full calculation
 
-The generated input file can be either used in a dry calculation (running a
+The generated input file can either be used in a dry calculation (running a
 few seconds on a laptop device), or in a real calculation on the desired
 target machine.
 
@@ -115,9 +119,11 @@ mpirun -np $ranks $Cc4s -i cc4s.in
 
 * Exploited benchmarks
 
-We have examined the performance of =cc4s= on two different clusters both using
+We have examined the performance of =Cc4s= on two different clusters both using
 different Intel Xeon CPUs.
-For the weak scaling benchmark the number of occupied orbitals was increased with growing node count. The number of virtuals per occupied was always 12 in all calculations. The number of field variables was kept almost constant at a value of around 3.5.
+For the weak scaling benchmark the number of occupied orbitals was increased with growing node count.
+The number of virtuals per occupied was set to 12 in all calculations. The number of field variables per virtual
+was kept almost constant at a value of around 3.5.
 #+caption: Weak scaling of CCSD on Irene with Intel Skylake 8168 CPUs.
 #+name: irene-tab
 | #Nodes | #Cores | $N_o$  | Memory (GB/core) | Performance (GFLOPS/core/s) |
