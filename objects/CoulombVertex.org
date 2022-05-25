@@ -9,7 +9,7 @@ The =CoulombVertex= $\Gamma^q_{rF}$
 is a resolution-of-identiy decomposition of the
 electron repulsion integrals of the form
 \begin{equation}
-  V^{pq}_{sr} = \sum_F {\tilde\Gamma^\ast}^{pF}_s \tilde\Gamma^q_{rF}.
+  V^{pq}_{sr} = \sum_F {\Gamma^\ast}^{pF}_s \Gamma^q_{rF}.
 \end{equation}
 For periodic systems it is computed from the Fourier transform of the
 co-density of an orbital pair ${\psi^\ast}^q(\mathrm{r})$ and
