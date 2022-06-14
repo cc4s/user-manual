@@ -49,6 +49,7 @@ A typical input file snippet to call the =CoupledCluster= algorithm is given bel
 | =energyConvergence=          | [[#energyconvergence][Energy convergence threshold]]      |
 | =amplitudesConvergence=      | [[#amplitudesconvergence][Amplitude convergence threshold]]   |
 | =mixer=                      | [[#mixer][Mixer type and parameters]]                        |
+| =initialAmplitudes=          | [[id:Amplitudes][initial Amplitudes to begin the iterations]] |
 |------------------------------+-----------------------------------|
 
 ** method
@@ -120,6 +121,15 @@ If =energyConvergence= and =amplitudesConvergence= is achieved, the iterative so
 
 =amplitudesConvergence= specifies the convergence threshold for the residual vector of the singles and doubles amplitude equations.
 If =energyConvergence= and =amplitudesConvergence= is achieved, the iterative solution was successful and the algorithm will stop.
+
+** initialAmplitudes
+:PROPERTIES:
+:CUSTOM_ID: initialAmplitude
+:END:
+
+=initialAmplitudes= specifies amplitudes from a precedent calculations. This allows restarting a self consistent calculation from a former checkpoint.
+
+
 
 ** mixer
 :PROPERTIES:
