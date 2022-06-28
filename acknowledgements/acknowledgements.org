@@ -7,6 +7,8 @@
 
 The development of the CC4S software package was supported by the European Research Council (ERC) under the European Unions Horizon 2020 research and innovation program (Grant Agreement No 715594).
 
+Andreas Grüneis and Andreas Irmler acknowledge support from the European Union’s Horizon 2020 research and innovation program under Grant Agreement No. 951786 (The NOMAD CoE). 
+
 * Contributors
 The following authors have contributed to developing the methods and code implemented in the =Cc4s= software package.
 
