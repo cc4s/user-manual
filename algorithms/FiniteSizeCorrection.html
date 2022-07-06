@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-04-04 Mon 17:20 -->
+<!-- 2022-07-06 Wed 11:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FiniteSizeCorrection</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -30,8 +30,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,21 +41,21 @@
   pre.src {
     position: relative;
     overflow: auto;
-    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -190,7 +191,6 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 
     <meta charset='UTF-8'>
@@ -217,28 +217,6 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -259,8 +237,7 @@
              }
 });
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -309,34 +286,34 @@
    </div>
  </nav>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">FiniteSizeCorrection</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org165e2e4">1. Brief description</a></li>
-<li><a href="#orga0a061c">2. Algorithm call</a></li>
-<li><a href="#org7fedd18">3. Algorithm input</a>
+<li><a href="#org68522b0">1. Brief description</a></li>
+<li><a href="#orga202e03">2. Algorithm call</a></li>
+<li><a href="#orgf3f8887">3. Algorithm input</a>
 <ul>
 <li><a href="#interpolationgridsize">3.1. interpolationGridSize</a></li>
 </ul>
 </li>
-<li><a href="#org88db978">4. Algorithm output</a>
+<li><a href="#org7fd6a50">4. Algorithm output</a>
 <ul>
-<li><a href="#org402f02c">4.1. Sample <code>stdout</code></a></li>
+<li><a href="#orgfc7dae7">4.1. Sample <code>stdout</code></a></li>
 </ul>
 </li>
-<li><a href="#org62e5c04">5. Sample <code>yaml</code> output</a></li>
-<li><a href="#orgb1aad8b">6. Computational complexity</a></li>
-<li><a href="#org7f6aef4">7. Theory</a></li>
-<li><a href="#org7aa52a2">8. Literature</a></li>
+<li><a href="#orgc2957b5">5. Sample <code>yaml</code> output</a></li>
+<li><a href="#orgeb9ceaf">6. Computational complexity</a></li>
+<li><a href="#orge229a6b">7. Theory</a></li>
+<li><a href="#org59cdd0a">8. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org165e2e4" class="outline-2">
-<h2 id="org165e2e4"><span class="section-number-2">1</span> <a href="#org165e2e4">Brief description</a></h2>
+<div id="outline-container-org68522b0" class="outline-2">
+<h2 id="org68522b0"><span class="section-number-2">1.</span> <a href="#org68522b0">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm calculates the electronic transition structure factor
@@ -345,8 +322,8 @@ and performs a tricubic interpolaton to estimate a finite size correlation energ
 </div>
 </div>
 
-<div id="outline-container-orga0a061c" class="outline-2">
-<h2 id="orga0a061c"><span class="section-number-2">2</span> <a href="#orga0a061c">Algorithm call</a></h2>
+<div id="outline-container-orga202e03" class="outline-2">
+<h2 id="orga202e03"><span class="section-number-2">2.</span> <a href="#orga202e03">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>FiniteSizeCorrection</code> algorithm is given below.
@@ -366,10 +343,10 @@ A typical input file snippet to call the <code>FiniteSizeCorrection</code> algor
 </div>
 </div>
 
-<div id="outline-container-org7fedd18" class="outline-2">
-<h2 id="org7fedd18"><span class="section-number-2">3</span> <a href="#org7fedd18">Algorithm input</a></h2>
+<div id="outline-container-orgf3f8887" class="outline-2">
+<h2 id="orgf3f8887"><span class="section-number-2">3.</span> <a href="#orgf3f8887">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org75af3c8" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgb29432f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -418,7 +395,7 @@ A typical input file snippet to call the <code>FiniteSizeCorrection</code> algor
 </div>
 
 <div id="outline-container-interpolationgridsize" class="outline-3">
-<h3 id="interpolationgridsize"><span class="section-number-3">3.1</span> <a href="#interpolationgridsize">interpolationGridSize</a></h3>
+<h3 id="interpolationgridsize"><span class="section-number-3">3.1.</span> <a href="#interpolationgridsize">interpolationGridSize</a></h3>
 <div class="outline-text-3" id="text-interpolationgridsize">
 <p>
 The <code>interpolationGridSize</code> keyword can be used to control the density of the mesh used to interpolate the
@@ -431,10 +408,10 @@ between neighbouring <a href="../objects/GridVectors.html#ID-GridVectors">Grid V
 </div>
 
 
-<div id="outline-container-org88db978" class="outline-2">
-<h2 id="org88db978"><span class="section-number-2">4</span> <a href="#org88db978">Algorithm output</a></h2>
+<div id="outline-container-org7fd6a50" class="outline-2">
+<h2 id="org7fd6a50"><span class="section-number-2">4.</span> <a href="#org7fd6a50">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="orgf140db7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org9215369" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -463,8 +440,8 @@ algorithm of the electronic transition structure factor.
 </p>
 </div>
 
-<div id="outline-container-org402f02c" class="outline-3">
-<h3 id="org402f02c"><span class="section-number-3">4.1</span> <a href="#org402f02c">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgfc7dae7" class="outline-3">
+<h3 id="orgfc7dae7"><span class="section-number-3">4.1.</span> <a href="#orgfc7dae7">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
@@ -480,8 +457,8 @@ realtime 0.373321931 s
 </div>
 </div>
 
-<div id="outline-container-org62e5c04" class="outline-2">
-<h2 id="org62e5c04"><span class="section-number-2">5</span> <a href="#org62e5c04">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-orgc2957b5" class="outline-2">
+<h2 id="orgc2957b5"><span class="section-number-2">5.</span> <a href="#orgc2957b5">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Below an example <code>yaml</code> output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
@@ -512,8 +489,8 @@ Below an example <code>yaml</code> output stream is shown for a successful <code
 </div>
 
 
-<div id="outline-container-orgb1aad8b" class="outline-2">
-<h2 id="orgb1aad8b"><span class="section-number-2">6</span> <a href="#orgb1aad8b">Computational complexity</a></h2>
+<div id="outline-container-orgeb9ceaf" class="outline-2">
+<h2 id="orgeb9ceaf"><span class="section-number-2">6.</span> <a href="#orgeb9ceaf">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared to preceding Coupled Cluster theory calculations.
@@ -521,8 +498,8 @@ No considerable memory footprints or computational cost bottle necks are expecte
 </div>
 </div>
 
-<div id="outline-container-org7f6aef4" class="outline-2">
-<h2 id="org7f6aef4"><span class="section-number-2">7</span> <a href="#org7f6aef4">Theory</a></h2>
+<div id="outline-container-orge229a6b" class="outline-2">
+<h2 id="orge229a6b"><span class="section-number-2">7.</span> <a href="#orge229a6b">Theory</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
@@ -543,8 +520,8 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 
-<div id="outline-container-org7aa52a2" class="outline-2">
-<h2 id="org7aa52a2"><span class="section-number-2">8</span> <a href="#org7aa52a2">Literature</a></h2>
+<div id="outline-container-org59cdd0a" class="outline-2">
+<h2 id="org59cdd0a"><span class="section-number-2">8.</span> <a href="#org59cdd0a">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
@@ -554,7 +531,7 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-04-04 Mon 17:20</p>
+<p class="date">Created: 2022-07-06 Wed 11:46</p>
 </div>
 </body>
 </html>

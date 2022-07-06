@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-04-04 Mon 17:20 -->
+<!-- 2022-07-06 Wed 11:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Performance and compute resources</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -30,8 +30,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,21 +41,21 @@
   pre.src {
     position: relative;
     overflow: auto;
-    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -190,7 +191,6 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 
     <meta charset='UTF-8'>
@@ -217,28 +217,6 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -259,8 +237,7 @@
              }
 });
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -309,23 +286,23 @@
    </div>
  </nav>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Performance and compute resources</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2ba87a0">1. Generating the input file</a></li>
-<li><a href="#org51833f1">2. Dry and full calculation</a></li>
-<li><a href="#orgd9bc965">3. Exploited benchmarks</a></li>
-<li><a href="#orgc4206ae">4. Literature</a></li>
+<li><a href="#orgaf8e267">1. Generating the input file</a></li>
+<li><a href="#orgf01581c">2. Dry and full calculation</a></li>
+<li><a href="#org9ba06b8">3. Exploited benchmarks</a></li>
+<li><a href="#orgd5e19da">4. Literature</a></li>
 </ul>
 </div>
 </div>
 <p>
-Cc4s is designed to run highly parallel coupled cluster calculations.  It
+<code>Cc4s</code> is designed to run highly parallel coupled cluster calculations.  It
 allows calculations with far more than 100 electrons on modern high performance
-computing clusters. Currently, cc4s can not benefit from GPUs or other
+computing clusters. Currently, <code>Cc4s</code> can not benefit from GPUs or other
 accelerators.
 Note: although OpenMP threading is generally supported it is recommended to set
 </p>
@@ -336,41 +313,45 @@ Note: although OpenMP threading is generally supported it is recommended to set
 
 <p>
 In the following we present a way to estimate the required compute resources
-for a model system.  It is only necessary to download and compile cc4s. The
-computational complexity can now be estimated on two levels. First, a dry
+for models with arbitrary system sizes that can be chosen to reflect the dimensions
+of any targeted ab initio system. 
+In this manner <code>Cc4s</code> does not require actual input files for the specific ab initio
+system.
+The computational complexity can be estimated on two levels. First, a dry
 calculation can be performed which gives a first overview of the time and
 memory consumptions of the calculation. Thereafter, a full calculation can be
 performed to examine the performance on the target system. Note that the
 performance depends heavily on the hardware, network, compilers, and libraries.
 </p>
 
-<div id="outline-container-org2ba87a0" class="outline-2">
-<h2 id="org2ba87a0"><span class="section-number-2">1</span> <a href="#org2ba87a0">Generating the input file</a></h2>
+<div id="outline-container-orgaf8e267" class="outline-2">
+<h2 id="orgaf8e267"><span class="section-number-2">1.</span> <a href="#orgaf8e267">Generating the input file</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
-As input required are only the dimensions of the desired calculation.  It is
+The only input required are the dimensions of the desired calculation.  It is
 important to note that the performance depends only on the dimensions of the
 system as given below. Physical properties (periodic vs. molecular system, low
 bandgap vs.  high bandgap, etc.) have no impact.
 </p>
 
 <p>
-Most important system parameter is the number of electrons used in the post
-Hartree&#x2013;Fock calculation (core electrons are typically not concidered).  In
+The most important system parameter is the number of electrons used in the post
+Hartree&#x2013;Fock calculation (core electrons are typically not considered).  In
 <code>vasp</code> the number of valence electrons of a given  atom is given in the POTCAR
-file (ZVAL); the other electrons are treated within the pseudopotential approach
-(<a href="https://www.vasp.at/wiki/index.php/POTCAR">https://www.vasp.at/wiki/index.php/POTCAR</a>).  In a closed-shell calculation the
+file (ZVAL); the other electrons are treated within the frozen-core approximation
+(<a href="https://www.vasp.at/wiki/index.php/POTCAR">https://www.vasp.at/wiki/index.php/POTCAR</a>). 
+In a closed-shell calculation the
 number of occupied orbitals \(N_o\) is half the number of valence electrons
 \(N_\text{elec}\).  When using the <a href="../algorithms/BasisSetCorrection.html#ID-BasisSetCorrection">basis-set
 correction</a> typically 8-16 virtual orbitals per occupied orbital are needed to
 obtain converged results (see Ref. (<a href="#citeproc_bib_item_1">Irmler, Gallo, and Grüneis 2021</a>)).  Further
 input parameter is the number of field variables of the vertex \(N_\text{F}\). It
-has been shown that for convergent results this number can be chosen as small
+has been shown that for converged results this number can be chosen as small
 as 2-3 times \(N_v\).
 </p>
 
 <p>
-An exemplary snipped of the algorithm creating the required vertex reads
+An exemplary snippet of the algorithm creating the required vertex reads
 </p>
 
 <div class="org-src-container">
@@ -403,11 +384,11 @@ A full input file for a CCSD calculation can be found at
 </div>
 </div>
 
-<div id="outline-container-org51833f1" class="outline-2">
-<h2 id="org51833f1"><span class="section-number-2">2</span> <a href="#org51833f1">Dry and full calculation</a></h2>
+<div id="outline-container-orgf01581c" class="outline-2">
+<h2 id="orgf01581c"><span class="section-number-2">2.</span> <a href="#orgf01581c">Dry and full calculation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
-The generated input file can be either used in a dry calculation (running a
+The generated input file can either be used in a dry calculation (running a
 few seconds on a laptop device), or in a real calculation on the desired
 target machine.
 </p>
@@ -467,15 +448,17 @@ The full calculation is called by the following command:
 </div>
 
 
-<div id="outline-container-orgd9bc965" class="outline-2">
-<h2 id="orgd9bc965"><span class="section-number-2">3</span> <a href="#orgd9bc965">Exploited benchmarks</a></h2>
+<div id="outline-container-org9ba06b8" class="outline-2">
+<h2 id="org9ba06b8"><span class="section-number-2">3.</span> <a href="#org9ba06b8">Exploited benchmarks</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
-We have examined the performance of <code>cc4s</code> on two different clusters both using
+We have examined the performance of <code>Cc4s</code> on two different clusters both using
 different Intel Xeon CPUs.
-For the weak scaling benchmark the number of occupied orbitals was increased with growing node count. The number of virtuals per occupied was always 12 in all calculations. The number of field variables was kept almost constant at a value of around 3.5.
+For the weak scaling benchmark the number of occupied orbitals was increased with growing node count.
+The number of virtuals per occupied was set to 12 in all calculations. The number of field variables per virtual
+was kept almost constant at a value of around 3.5.
 </p>
-<table id="org6fcbe08" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgc6ae833" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Weak scaling of CCSD on Irene with Intel Skylake 8168 CPUs.</caption>
 
 <colgroup>
@@ -549,7 +532,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 </tbody>
 </table>
 
-<table id="orgb214c94" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org31a8ef7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Weak scaling of CCSD on raven with Intel CascadeLake 9242 CPUs.</caption>
 
 <colgroup>
@@ -639,7 +622,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 </tbody>
 </table>
 
-<table id="org64de6e6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org78a5abb" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 3:</span> Strong scaling on of CCSD raven \(N_o=123\), \(N_v=1114\), \(N_F=2000\)</caption>
 
 <colgroup>
@@ -728,8 +711,8 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 </div>
 
 
-<div id="outline-container-orgc4206ae" class="outline-2">
-<h2 id="orgc4206ae"><span class="section-number-2">4</span> <a href="#orgc4206ae">Literature</a></h2>
+<div id="outline-container-orgd5e19da" class="outline-2">
+<h2 id="orgd5e19da"><span class="section-number-2">4.</span> <a href="#orgd5e19da">Literature</a></h2>
 <div class="outline-text-2" id="text-4">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June): 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -738,7 +721,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-04-04 Mon 17:20</p>
+<p class="date">Created: 2022-07-06 Wed 11:46</p>
 </div>
 </body>
 </html>

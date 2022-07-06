@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-04-04 Mon 17:20 -->
+<!-- 2022-07-06 Wed 11:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How to run Cc4s calculations?</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -30,8 +30,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,21 +41,21 @@
   pre.src {
     position: relative;
     overflow: auto;
-    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -190,7 +191,6 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 
     <meta charset='UTF-8'>
@@ -217,28 +217,6 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -259,8 +237,7 @@
              }
 });
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -309,17 +286,17 @@
    </div>
  </nav>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">How to run Cc4s calculations?</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8a5e394"><b>Step 1</b>: Coupled cluster singles and doubles theory calculations</a></li>
-<li><a href="#orgea83b42"><b>Step 2</b>: Perturbative triples calculations</a></li>
-<li><a href="#org1f6928f"><b>Step 3</b>: Basis-set incompleteness error correction</a></li>
-<li><a href="#orgfa7759a"><b>Step 4</b>: Finite-size correction</a></li>
-<li><a href="#org8ed1ce0"><b>Final energy</b></a></li>
+<li><a href="#orgbabfdbf"><b>Step 1</b>: Coupled cluster singles and doubles theory calculations</a></li>
+<li><a href="#org17e7d4c"><b>Step 2</b>: Perturbative triples calculations</a></li>
+<li><a href="#org816bac8"><b>Step 3</b>: Basis-set incompleteness error correction</a></li>
+<li><a href="#orgb86d27f"><b>Step 4</b>: Finite-size correction</a></li>
+<li><a href="#orgdb094dd"><b>Final energy</b></a></li>
 </ul>
 </div>
 </div>
@@ -365,9 +342,9 @@ are located in the same directory.
 The <code>cc4s.in</code> YAML input file is described in the following section in detail.
 </p>
 
-<div id="outline-container-org8a5e394" class="outline-2">
-<h2 id="org8a5e394"><a href="#org8a5e394"><b>Step 1</b>: Coupled cluster singles and doubles theory calculations</a></h2>
-<div class="outline-text-2" id="text-org8a5e394">
+<div id="outline-container-orgbabfdbf" class="outline-2">
+<h2 id="orgbabfdbf"><a href="#orgbabfdbf"><b>Step 1</b>: Coupled cluster singles and doubles theory calculations</a></h2>
+<div class="outline-text-2" id="text-orgbabfdbf">
 <p>
 We start this tutorial by taking the first steps in <code>Cc4s</code> needed to compute the CCSD correlation energy.
 For this purpose essential data files have to be read from disk using the <code>Read</code> algorithm.
@@ -584,9 +561,9 @@ input files and always correspond to eV in the case of input files generated by 
 </div>
 </div>
 
-<div id="outline-container-orgea83b42" class="outline-2">
-<h2 id="orgea83b42"><a href="#orgea83b42"><b>Step 2</b>: Perturbative triples calculations</a></h2>
-<div class="outline-text-2" id="text-orgea83b42">
+<div id="outline-container-org17e7d4c" class="outline-2">
+<h2 id="org17e7d4c"><a href="#org17e7d4c"><b>Step 2</b>: Perturbative triples calculations</a></h2>
+<div class="outline-text-2" id="text-org17e7d4c">
 <p>
 We now proceed with the CCSD(T) energy calculation and seek to compute the (T) contribution,
 which has to be added to the CCSD correlation energy contribution estimated in the
@@ -653,9 +630,9 @@ as the correlation energy contribution. The corresponding block of <code>cc4s.ou
 </div>
 </div>
 
-<div id="outline-container-org1f6928f" class="outline-2">
-<h2 id="org1f6928f"><a href="#org1f6928f"><b>Step 3</b>: Basis-set incompleteness error correction</a></h2>
-<div class="outline-text-2" id="text-org1f6928f">
+<div id="outline-container-org816bac8" class="outline-2">
+<h2 id="org816bac8"><a href="#org816bac8"><b>Step 3</b>: Basis-set incompleteness error correction</a></h2>
+<div class="outline-text-2" id="text-org816bac8">
 <p>
 We note that in the present case, the CCSD correlation energy is computed using a set of truncated
 approximate natural orbitals. Increasing this basis set size yields correlation energies that
@@ -747,9 +724,9 @@ as the correction. The corresponding block of <code>cc4s.out.yaml</code> reads
 </div>
 </div>
 
-<div id="outline-container-orgfa7759a" class="outline-2">
-<h2 id="orgfa7759a"><a href="#orgfa7759a"><b>Step 4</b>: Finite-size correction</a></h2>
-<div class="outline-text-2" id="text-orgfa7759a">
+<div id="outline-container-orgb86d27f" class="outline-2">
+<h2 id="orgb86d27f"><a href="#orgb86d27f"><b>Step 4</b>: Finite-size correction</a></h2>
+<div class="outline-text-2" id="text-orgb86d27f">
 <p>
 In the present example the CCSD correlation energy is computed for a finite periodic simulation cell.
 Increasing the size of the employed periodic simulation cell
@@ -844,16 +821,16 @@ as the correction. The corresponding block of <code>cc4s.out.yaml</code> reads
 </div>
 </div>
 
-<div id="outline-container-org8ed1ce0" class="outline-2">
-<h2 id="org8ed1ce0"><a href="#org8ed1ce0"><b>Final energy</b></a></h2>
-<div class="outline-text-2" id="text-org8ed1ce0">
+<div id="outline-container-orgdb094dd" class="outline-2">
+<h2 id="orgdb094dd"><a href="#orgdb094dd"><b>Final energy</b></a></h2>
+<div class="outline-text-2" id="text-orgdb094dd">
 <p>
 We now discuss how to combine all energy contributions from above to obtain the final estimate of the
 ground state energy in the thermodynamic and complete basis-set limit.
 The table below summarizes all computed ground state energy contributions for the present example.
 </p>
 
-<table id="orgfeb85f9" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgd360f31" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Ground state energy summary for present example. All energies in eV.</caption>
 
 <colgroup>
@@ -910,7 +887,7 @@ The final <code>CCSD(T) energy + corrections</code> value can be used to study a
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-04-04 Mon 17:20</p>
+<p class="date">Created: 2022-07-06 Wed 11:46</p>
 </div>
 </body>
 </html>

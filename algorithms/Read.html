@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-04-04 Mon 17:20 -->
+<!-- 2022-07-06 Wed 11:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Read</title>
-<meta name="generator" content="Org mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -30,8 +30,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,21 +41,21 @@
   pre.src {
     position: relative;
     overflow: auto;
-    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -190,7 +191,6 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 
     <meta charset='UTF-8'>
@@ -217,28 +217,6 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -287,33 +265,33 @@
    </div>
  </nav>
 </div>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Read</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org67c7da6">1. Brief description</a></li>
-<li><a href="#org8c0646f">2. Algorithm call</a></li>
-<li><a href="#org911c7e5">3. Algorithm input</a>
+<li><a href="#orgfcf56a6">1. Brief description</a></li>
+<li><a href="#org6f7acac">2. Algorithm call</a></li>
+<li><a href="#org6f4d47d">3. Algorithm input</a>
 <ul>
 <li><a href="#what">3.1. what</a></li>
 </ul>
 </li>
-<li><a href="#orgc1c7da2">4. Algorithm output</a>
+<li><a href="#org02a243a">4. Algorithm output</a>
 <ul>
 <li><a href="#data">4.1. data</a></li>
-<li><a href="#org3f2aaa1">4.2. Sample <code>stdout</code></a></li>
-<li><a href="#org90dc683">4.3. Sample <code>yaml</code> output</a></li>
+<li><a href="#org204708e">4.2. Sample <code>stdout</code></a></li>
+<li><a href="#org118ab5f">4.3. Sample <code>yaml</code> output</a></li>
 </ul>
 </li>
-<li><a href="#org574fc04">5. Literature</a></li>
+<li><a href="#org8545e8d">5. Literature</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org67c7da6" class="outline-2">
-<h2 id="org67c7da6"><span class="section-number-2">1</span> <a href="#org67c7da6">Brief description</a></h2>
+<div id="outline-container-orgfcf56a6" class="outline-2">
+<h2 id="orgfcf56a6"><span class="section-number-2">1.</span> <a href="#orgfcf56a6">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>Read</code> reads a cc4s tensor or set of tensors.
@@ -321,8 +299,8 @@
 </div>
 </div>
 
-<div id="outline-container-org8c0646f" class="outline-2">
-<h2 id="org8c0646f"><span class="section-number-2">2</span> <a href="#org8c0646f">Algorithm call</a></h2>
+<div id="outline-container-org6f7acac" class="outline-2">
+<h2 id="org6f7acac"><span class="section-number-2">2.</span> <a href="#org6f7acac">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <a href="Read.html#ID-Read">Read</a>
@@ -341,10 +319,10 @@ algorithm is given below.
 </div>
 
 
-<div id="outline-container-org911c7e5" class="outline-2">
-<h2 id="org911c7e5"><span class="section-number-2">3</span> <a href="#org911c7e5">Algorithm input</a></h2>
+<div id="outline-container-org6f4d47d" class="outline-2">
+<h2 id="org6f4d47d"><span class="section-number-2">3.</span> <a href="#org6f4d47d">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org0c5017a" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org32b2230" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -368,17 +346,17 @@ algorithm is given below.
 </div>
 
 <div id="outline-container-what" class="outline-3">
-<h3 id="what"><span class="section-number-3">3.1</span> <a href="#what">what</a></h3>
+<h3 id="what"><span class="section-number-3">3.1.</span> <a href="#what">what</a></h3>
 <div class="outline-text-3" id="text-what">
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgc1c7da2" class="outline-2">
-<h2 id="orgc1c7da2"><span class="section-number-2">4</span> <a href="#orgc1c7da2">Algorithm output</a></h2>
+<div id="outline-container-org02a243a" class="outline-2">
+<h2 id="org02a243a"><span class="section-number-2">4.</span> <a href="#org02a243a">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="orgb6fdbe1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orga3dd09c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -402,13 +380,13 @@ algorithm is given below.
 </div>
 
 <div id="outline-container-data" class="outline-3">
-<h3 id="data"><span class="section-number-3">4.1</span> <a href="#data">data</a></h3>
+<h3 id="data"><span class="section-number-3">4.1.</span> <a href="#data">data</a></h3>
 <div class="outline-text-3" id="text-data">
 </div>
 </div>
 
-<div id="outline-container-org3f2aaa1" class="outline-3">
-<h3 id="org3f2aaa1"><span class="section-number-3">4.2</span> <a href="#org3f2aaa1">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org204708e" class="outline-3">
+<h3 id="org204708e"><span class="section-number-3">4.2.</span> <a href="#org204708e">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 The output of this algorithm reads
@@ -422,8 +400,8 @@ realtime 0.292085915 s
 </div>
 </div>
 
-<div id="outline-container-org90dc683" class="outline-3">
-<h3 id="org90dc683"><span class="section-number-3">4.3</span> <a href="#org90dc683">Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-org118ab5f" class="outline-3">
+<h3 id="org118ab5f"><span class="section-number-3">4.3.</span> <a href="#org118ab5f">Sample <code>yaml</code> output</a></h3>
 <div class="outline-text-3" id="text-4-3">
 <pre class="example">
 floatingPointOperations: 0
@@ -439,8 +417,8 @@ realtime: 0.292085915
 </div>
 </div>
 
-<div id="outline-container-org574fc04" class="outline-2">
-<h2 id="org574fc04"><span class="section-number-2">5</span> <a href="#org574fc04">Literature</a></h2>
+<div id="outline-container-org8545e8d" class="outline-2">
+<h2 id="org8545e8d"><span class="section-number-2">5.</span> <a href="#org8545e8d">Literature</a></h2>
 <div class="outline-text-2" id="text-5">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
 </div>
@@ -448,7 +426,7 @@ realtime: 0.292085915
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-04-04 Mon 17:20</p>
+<p class="date">Created: 2022-07-06 Wed 11:46</p>
 </div>
 </body>
 </html>
