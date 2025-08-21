@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How To Write</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,41 +303,40 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org240917c">1. Engine</a>
+<li><a href="#org29ca2ed">1. Engine</a>
 <ul>
-<li><a href="#org5ef5690">1.1. Introduction</a>
+<li><a href="#orgf5bc376">1.1. Introduction</a>
 <ul>
-<li><a href="#orga0452da">1.1.1. Installing a minimal emacs version locally</a></li>
+<li><a href="#orge842a72">1.1.1. Installing a minimal emacs version locally</a></li>
 </ul>
 </li>
-<li><a href="#org552fc06">1.2. Math</a></li>
-<li><a href="#orge91e746">1.3. Links</a></li>
-<li><a href="#orgc02fdc6">1.4. Bibliography</a>
+<li><a href="#org7d88661">1.2. Math</a></li>
+<li><a href="#orgbb14244">1.3. Links</a></li>
+<li><a href="#org4bd45fa">1.4. Bibliography</a>
 <ul>
-<li><a href="#orgaa0ce48">1.4.1. Literature</a></li>
-<li><a href="#orgcb6149f">1.4.2. More information</a></li>
+<li><a href="#org6a6ef19">1.4.1. Literature</a></li>
+<li><a href="#orgd7affe3">1.4.2. More information</a></li>
 </ul>
 </li>
-<li><a href="#org621130e">1.5. Src blocks</a></li>
+<li><a href="#org868d942">1.5. Src blocks</a></li>
 </ul>
 </li>
-<li><a href="#org3a855a1">2. Test locally</a></li>
-<li><a href="#orgb43f429">3. Conventions</a>
+<li><a href="#orgfa60822">2. Test locally</a></li>
+<li><a href="#orga3dd96d">3. Conventions</a>
 <ul>
-<li><a href="#org8c25159">3.1. How to document an Object</a></li>
-<li><a href="#org68d5178">3.2. How to document an Algorithm</a></li>
+<li><a href="#org5e32f34">3.1. How to document an Object</a></li>
+<li><a href="#org8d4fa72">3.2. How to document an Algorithm</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org240917c" class="outline-2">
-<h2 id="org240917c"><span class="section-number-2">1.</span> <a href="#org240917c">Engine</a></h2>
+<div id="outline-container-org29ca2ed" class="outline-2">
+<h2 id="org29ca2ed"><span class="section-number-2">1.</span> <a href="#org29ca2ed">Engine</a></h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org5ef5690" class="outline-3">
-<h3 id="org5ef5690"><span class="section-number-3">1.1.</span> <a href="#org5ef5690">Introduction</a></h3>
+<div id="outline-container-orgf5bc376" class="outline-3">
+<h3 id="orgf5bc376"><span class="section-number-3">1.1.</span> <a href="#orgf5bc376">Introduction</a></h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 This manual is written using the <a href="https://orgmode.org"><code>org-mode</code> markup language</a>.
@@ -352,9 +362,8 @@ You probably can install it from <a href="https://snapcraft.io/emacs">the snapst
 a supported distribution.
 </p>
 </div>
-
-<div id="outline-container-orga0452da" class="outline-4">
-<h4 id="orga0452da"><span class="section-number-4">1.1.1.</span> <a href="#orga0452da">Installing a minimal emacs version locally</a></h4>
+<div id="outline-container-orge842a72" class="outline-4">
+<h4 id="orge842a72"><span class="section-number-4">1.1.1.</span> <a href="#orge842a72">Installing a minimal emacs version locally</a></h4>
 <div class="outline-text-4" id="text-1-1-1">
 <p>
 In case you are having some problems installing emacs
@@ -405,11 +414,8 @@ You can use this emacs binary by writing a <code>config.mk</code> file with the 
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-org552fc06" class="outline-3">
-<h3 id="org552fc06"><span class="section-number-3">1.2.</span> <a href="#org552fc06">Math</a></h3>
+<div id="outline-container-org7d88661" class="outline-3">
+<h3 id="org7d88661"><span class="section-number-3">1.2.</span> <a href="#org7d88661">Math</a></h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Just use latex as if you were in latex
@@ -426,9 +432,8 @@ and references work too \ref{eqseq}.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orge91e746" class="outline-3">
-<h3 id="orge91e746"><span class="section-number-3">1.3.</span> <a href="#orge91e746">Links</a></h3>
+<div id="outline-container-orgbb14244" class="outline-3">
+<h3 id="orgbb14244"><span class="section-number-3">1.3.</span> <a href="#orgbb14244">Links</a></h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 org-mode has several types of links.
@@ -449,7 +454,7 @@ My section~<span style="color: #a626a4;">\ref</span>{<span style="font-weight: b
 is
 </p>
 
-<pre class="example" id="org281d1ad">
+<pre class="example" id="orga66c773">
 * My section
 :PROPERTIES:
 :CUSTOM_ID: sec-my-section
@@ -470,7 +475,7 @@ Checkout some other example in the
 Some important examples for us are
 </p>
 
-<pre class="example" id="org3b903ae">
+<pre class="example" id="org3123190">
 [[file:algorithms/CoupledCluster/CoupledCluster.org::#maxiterations][maxIterations keyword]]
 </pre>
 
@@ -480,12 +485,8 @@ and gets rendered as <a href="algorithms/CoupledCluster/CoupledCluster.html#maxi
 </p>
 </div>
 </div>
-
-
-
-
-<div id="outline-container-orgc02fdc6" class="outline-3">
-<h3 id="orgc02fdc6"><span class="section-number-3">1.4.</span> <a href="#orgc02fdc6">Bibliography</a></h3>
+<div id="outline-container-org4bd45fa" class="outline-3">
+<h3 id="org4bd45fa"><span class="section-number-3">1.4.</span> <a href="#org4bd45fa">Bibliography</a></h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 In order to use a bibtex file in a page,
@@ -508,8 +509,8 @@ and add citations like <code>cite:&amp;yourcite</code>, for instance
 Here an example of the rendered bibliography of the citations made up here.
 </p>
 </div>
-<div id="outline-container-orgaa0ce48" class="outline-4">
-<h4 id="orgaa0ce48"><span class="section-number-4">1.4.1.</span> <a href="#orgaa0ce48">Literature</a></h4>
+<div id="outline-container-org6a6ef19" class="outline-4">
+<h4 id="org6a6ef19"><span class="section-number-4">1.4.1.</span> <a href="#org6a6ef19">Literature</a></h4>
 <div class="outline-text-4" id="text-1-4-1">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Al-Hamdani, Yasmine S, Mariana Rossi, Dario Alfe, Theodoros Tsatsoulis, Benjamin Ramberger, J Gerit Brandenburg, Andrea Zen, et al. 2017. “Properties of the Water to Boron Nitride Interaction: From Zero to Two Dimensions with Benchmark Accuracy.” <i>The Journal of Chemical Physics</i> 147 (4): 044710. <a href="http://doi.org/10.1063/1.4985878">http://doi.org/10.1063/1.4985878</a>.</div>
@@ -517,9 +518,8 @@ Here an example of the rendered bibliography of the citations made up here.
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgcb6149f" class="outline-4">
-<h4 id="orgcb6149f"><span class="section-number-4">1.4.2.</span> <a href="#orgcb6149f">More information</a></h4>
+<div id="outline-container-orgd7affe3" class="outline-4">
+<h4 id="orgd7affe3"><span class="section-number-4">1.4.2.</span> <a href="#orgd7affe3">More information</a></h4>
 <div class="outline-text-4" id="text-1-4-2">
 <p>
 You can find more information in videos like <a href="https://www.youtube.com/watch?v=3u6eTSzHT6s">this</a> by the
@@ -528,10 +528,8 @@ You can find more information in videos like <a href="https://www.youtube.com/wa
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org621130e" class="outline-3">
-<h3 id="org621130e"><span class="section-number-3">1.5.</span> <a href="#org621130e">Src blocks</a></h3>
+<div id="outline-container-org868d942" class="outline-3">
+<h3 id="org868d942"><span class="section-number-3">1.5.</span> <a href="#org868d942">Src blocks</a></h3>
 <div class="outline-text-3" id="text-1-5">
 <p>
 If you want to write some code blocks, the equivalent of markdown's
@@ -547,8 +545,8 @@ def fun():
 in org is
 </p>
 <div class="org-src-container">
-<pre class="src src-org"><span style="color: #a0a1a7;">#+begin_src python</span>
-<span style="color: #a626a4;">def</span> <span style="color: #0184bc;">fun</span>():
+<pre class="src src-org"><span style="color: #a0a1a7;">#+begin_src python
+</span><span style="color: #a626a4;">def</span> <span style="color: #0184bc;">fun</span>():
     <span style="color: #a626a4;">pass</span>
 <span style="color: #a0a1a7;">#+end_src</span>
 </pre>
@@ -566,10 +564,8 @@ and it renders like:
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org3a855a1" class="outline-2">
-<h2 id="org3a855a1"><span class="section-number-2">2.</span> <a href="#org3a855a1">Test locally</a></h2>
+<div id="outline-container-orgfa60822" class="outline-2">
+<h2 id="orgfa60822"><span class="section-number-2">2.</span> <a href="#orgfa60822">Test locally</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 To build locally just make
@@ -603,13 +599,12 @@ periodically and refreshing your browser.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgb43f429" class="outline-2">
-<h2 id="orgb43f429"><span class="section-number-2">3.</span> <a href="#orgb43f429">Conventions</a></h2>
+<div id="outline-container-orga3dd96d" class="outline-2">
+<h2 id="orga3dd96d"><span class="section-number-2">3.</span> <a href="#orga3dd96d">Conventions</a></h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org8c25159" class="outline-3">
-<h3 id="org8c25159"><span class="section-number-3">3.1.</span> <a href="#org8c25159">How to document an Object</a></h3>
+<div id="outline-container-org5e32f34" class="outline-3">
+<h3 id="org5e32f34"><span class="section-number-3">3.1.</span> <a href="#org5e32f34">How to document an Object</a></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 In order to document an object, the following sections have to appear:
@@ -628,9 +623,8 @@ to list the references.</dd>
 </dl>
 </div>
 </div>
-
-<div id="outline-container-org68d5178" class="outline-3">
-<h3 id="org68d5178"><span class="section-number-3">3.2.</span> <a href="#org68d5178">How to document an Algorithm</a></h3>
+<div id="outline-container-org8d4fa72" class="outline-3">
+<h3 id="org8d4fa72"><span class="section-number-3">3.2.</span> <a href="#org8d4fa72">How to document an Algorithm</a></h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 The following sections have to be provided:
@@ -656,8 +650,8 @@ For instance for <a href="algorithms/PerturbativeTriples.html#ID-PerturbativeTri
       <span style="color: #8b4513;">coulombIntegrals</span>: CoulombIntegrals
       <span style="color: #8b4513;">amplitudes</span>: Amplitudes
       <span style="color: #8b4513;">slicedEigenEnergies</span>: EigenEnergies
-      <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">mp2PairEnergies: Mp2PairEnergies            # optional</span>
-    <span style="color: #8b4513;">out</span>:
+      <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">mp2PairEnergies: Mp2PairEnergies            # optional
+</span>    <span style="color: #8b4513;">out</span>:
       {}
 </pre>
 </div></dd>
@@ -720,7 +714,7 @@ to list the references.</dd>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

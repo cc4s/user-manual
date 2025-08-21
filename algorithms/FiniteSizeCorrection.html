@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FiniteSizeCorrection</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,28 +303,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org68522b0">1. Brief description</a></li>
-<li><a href="#orga202e03">2. Algorithm call</a></li>
-<li><a href="#orgf3f8887">3. Algorithm input</a>
+<li><a href="#orgddded91">1. Brief description</a></li>
+<li><a href="#orgea771b9">2. Algorithm call</a></li>
+<li><a href="#org135091d">3. Algorithm input</a>
 <ul>
 <li><a href="#interpolationgridsize">3.1. interpolationGridSize</a></li>
 </ul>
 </li>
-<li><a href="#org7fd6a50">4. Algorithm output</a>
+<li><a href="#org75a3dec">4. Algorithm output</a>
 <ul>
-<li><a href="#orgfc7dae7">4.1. Sample <code>stdout</code></a></li>
+<li><a href="#org4664587">4.1. Sample <code>stdout</code></a></li>
 </ul>
 </li>
-<li><a href="#orgc2957b5">5. Sample <code>yaml</code> output</a></li>
-<li><a href="#orgeb9ceaf">6. Computational complexity</a></li>
-<li><a href="#orge229a6b">7. Theory</a></li>
-<li><a href="#org59cdd0a">8. Literature</a></li>
+<li><a href="#orgef22a0a">5. Sample <code>yaml</code> output</a></li>
+<li><a href="#org579700f">6. Computational complexity</a></li>
+<li><a href="#org25e4d6a">7. Theory</a></li>
+<li><a href="#org6c9c795">8. Literature</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org68522b0" class="outline-2">
-<h2 id="org68522b0"><span class="section-number-2">1.</span> <a href="#org68522b0">Brief description</a></h2>
+<div id="outline-container-orgddded91" class="outline-2">
+<h2 id="orgddded91"><span class="section-number-2">1.</span> <a href="#orgddded91">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm calculates the electronic transition structure factor
@@ -321,9 +331,8 @@ and performs a tricubic interpolaton to estimate a finite size correlation energ
 </p>
 </div>
 </div>
-
-<div id="outline-container-orga202e03" class="outline-2">
-<h2 id="orga202e03"><span class="section-number-2">2.</span> <a href="#orga202e03">Algorithm call</a></h2>
+<div id="outline-container-orgea771b9" class="outline-2">
+<h2 id="orgea771b9"><span class="section-number-2">2.</span> <a href="#orgea771b9">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>FiniteSizeCorrection</code> algorithm is given below.
@@ -342,11 +351,10 @@ A typical input file snippet to call the <code>FiniteSizeCorrection</code> algor
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf3f8887" class="outline-2">
-<h2 id="orgf3f8887"><span class="section-number-2">3.</span> <a href="#orgf3f8887">Algorithm input</a></h2>
+<div id="outline-container-org135091d" class="outline-2">
+<h2 id="org135091d"><span class="section-number-2">3.</span> <a href="#org135091d">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="orgb29432f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgef9e28d" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -393,7 +401,6 @@ A typical input file snippet to call the <code>FiniteSizeCorrection</code> algor
 </tbody>
 </table>
 </div>
-
 <div id="outline-container-interpolationgridsize" class="outline-3">
 <h3 id="interpolationgridsize"><span class="section-number-3">3.1.</span> <a href="#interpolationgridsize">interpolationGridSize</a></h3>
 <div class="outline-text-3" id="text-interpolationgridsize">
@@ -406,12 +413,10 @@ between neighbouring <a href="../objects/GridVectors.html#ID-GridVectors">Grid V
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org7fd6a50" class="outline-2">
-<h2 id="org7fd6a50"><span class="section-number-2">4.</span> <a href="#org7fd6a50">Algorithm output</a></h2>
+<div id="outline-container-org75a3dec" class="outline-2">
+<h2 id="org75a3dec"><span class="section-number-2">4.</span> <a href="#org75a3dec">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org9215369" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org3c01682" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -439,9 +444,8 @@ an estimate of the finitie size error correction to the correlation energy. The 
 algorithm of the electronic transition structure factor.
 </p>
 </div>
-
-<div id="outline-container-orgfc7dae7" class="outline-3">
-<h3 id="orgfc7dae7"><span class="section-number-3">4.1.</span> <a href="#orgfc7dae7">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org4664587" class="outline-3">
+<h3 id="org4664587"><span class="section-number-3">4.1.</span> <a href="#org4664587">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
@@ -456,9 +460,8 @@ realtime 0.373321931 s
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgc2957b5" class="outline-2">
-<h2 id="orgc2957b5"><span class="section-number-2">5.</span> <a href="#orgc2957b5">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-orgef22a0a" class="outline-2">
+<h2 id="orgef22a0a"><span class="section-number-2">5.</span> <a href="#orgef22a0a">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Below an example <code>yaml</code> output stream is shown for a successful <code>FiniteSizeCorrection</code> algorithm run.
@@ -487,19 +490,16 @@ Below an example <code>yaml</code> output stream is shown for a successful <code
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-orgeb9ceaf" class="outline-2">
-<h2 id="orgeb9ceaf"><span class="section-number-2">6.</span> <a href="#orgeb9ceaf">Computational complexity</a></h2>
+<div id="outline-container-org579700f" class="outline-2">
+<h2 id="org579700f"><span class="section-number-2">6.</span> <a href="#org579700f">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 No considerable memory footprints or computational cost bottle necks are expected for this algorithm compared to preceding Coupled Cluster theory calculations.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orge229a6b" class="outline-2">
-<h2 id="orge229a6b"><span class="section-number-2">7.</span> <a href="#orge229a6b">Theory</a></h2>
+<div id="outline-container-org25e4d6a" class="outline-2">
+<h2 id="org25e4d6a"><span class="section-number-2">7.</span> <a href="#org25e4d6a">Theory</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 The methods employed in this algorithm are discussed in Refs. (<a href="#citeproc_bib_item_2">Liao and Grüneis 2016</a>) and (<a href="#citeproc_bib_item_1">Gruber et al. 2018</a>) .
@@ -519,9 +519,8 @@ However, we recommend to check convergence with respect to this parameter for ea
 </p>
 </div>
 </div>
-
-<div id="outline-container-org59cdd0a" class="outline-2">
-<h2 id="org59cdd0a"><span class="section-number-2">8.</span> <a href="#org59cdd0a">Literature</a></h2>
+<div id="outline-container-org6c9c795" class="outline-2">
+<h2 id="org6c9c795"><span class="section-number-2">8.</span> <a href="#org6c9c795">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Gruber, Thomas, Ke Liao, Theodoros Tsatsoulis, Felix Hummel, and Andreas Grüneis. 2018. “Applying the Coupled-Cluster Ansatz to Solids and Surfaces in the Thermodynamic Limit.” <i>Physical Review X</i> 8 (2): 021043. <a href="https://doi.org/10.1103/PhysRevX.8.021043">https://doi.org/10.1103/PhysRevX.8.021043</a>.</div>
@@ -531,7 +530,7 @@ However, we recommend to check convergence with respect to this parameter for ea
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

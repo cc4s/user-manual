@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mp2PairEnergies</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,15 +303,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org602d601">1. Brief description</a></li>
-<li><a href="#org4d59f38">2. Specification</a></li>
-<li><a href="#orgcc7637d">3. Literature</a></li>
+<li><a href="#orgfd2d6d4">1. Brief description</a></li>
+<li><a href="#org3123291">2. Specification</a></li>
+<li><a href="#orgf2e500a">3. Literature</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org602d601" class="outline-2">
-<h2 id="org602d601"><span class="section-number-2">1.</span> <a href="#org602d601">Brief description</a></h2>
+<div id="outline-container-orgfd2d6d4" class="outline-2">
+<h2 id="orgfd2d6d4"><span class="section-number-2">1.</span> <a href="#orgfd2d6d4">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>Mp2PairEnergies</code> is a matrix \( \epsilon_{ij} \)
@@ -337,9 +347,8 @@ and can be read in using the <a href="../algorithms/Read.html#ID-Read">Read</a> 
 </div>
 </div>
 </div>
-
-<div id="outline-container-org4d59f38" class="outline-2">
-<h2 id="org4d59f38"><span class="section-number-2">2.</span> <a href="#org4d59f38">Specification</a></h2>
+<div id="outline-container-org3123291" class="outline-2">
+<h2 id="org3123291"><span class="section-number-2">2.</span> <a href="#org3123291">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 An example <code>Mp2PairEnergies.yaml</code> file is given below.
@@ -361,10 +370,8 @@ An example <code>Mp2PairEnergies.yaml</code> file is given below.
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-orgcc7637d" class="outline-2">
-<h2 id="orgcc7637d"><span class="section-number-2">3.</span> <a href="#orgcc7637d">Literature</a></h2>
+<div id="outline-container-orgf2e500a" class="outline-2">
+<h2 id="orgf2e500a"><span class="section-number-2">3.</span> <a href="#orgf2e500a">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June): 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -373,7 +380,7 @@ An example <code>Mp2PairEnergies.yaml</code> file is given below.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

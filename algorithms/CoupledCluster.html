@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoupledCluster</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,9 +303,9 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org851edda">1. Brief description</a></li>
-<li><a href="#org70c27ad">2. Algorithm call</a></li>
-<li><a href="#org090aece">3. Algorithm input</a>
+<li><a href="#org653acc9">1. Brief description</a></li>
+<li><a href="#orgc62d87a">2. Algorithm call</a></li>
+<li><a href="#orgb249d33">3. Algorithm input</a>
 <ul>
 <li><a href="#method">3.1. method</a></li>
 <li><a href="#linearized">3.2. linearzied</a></li>
@@ -305,32 +316,31 @@
 <li><a href="#initialAmplitude">3.7. initialAmplitudes</a></li>
 <li><a href="#mixer">3.8. mixer</a>
 <ul>
-<li><a href="#org4be56ed">3.8.1. DiisMixer</a></li>
-<li><a href="#org09f438c">3.8.2. LinearMixer</a></li>
+<li><a href="#orgf670fb6">3.8.1. DiisMixer</a></li>
+<li><a href="#org823cf26">3.8.2. LinearMixer</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org70a2357">4. Algorithm output</a>
+<li><a href="#org3cf3afa">4. Algorithm output</a>
 <ul>
-<li><a href="#org6c3091c">4.1. Sample <code>stdout</code></a></li>
+<li><a href="#orgcc089bf">4.1. Sample <code>stdout</code></a></li>
 </ul>
 </li>
-<li><a href="#org4d3b18a">5. Sample <code>yaml</code> output</a></li>
-<li><a href="#org4dd3676">6. Computational complexity</a></li>
-<li><a href="#org91c77a4">7. Theory</a>
+<li><a href="#org1248ff6">5. Sample <code>yaml</code> output</a></li>
+<li><a href="#orgb7fd465">6. Computational complexity</a></li>
+<li><a href="#org80918da">7. Theory</a>
 <ul>
-<li><a href="#org04f6c82">7.1. Coupled-Cluster Singles Doubles (<code>Ccsd</code>)</a></li>
-<li><a href="#org9db9278">7.2. Direct-Ring Couple-Cluster Doubles (<code>Drccd</code>)</a></li>
+<li><a href="#org105171c">7.1. Coupled-Cluster Singles Doubles (<code>Ccsd</code>)</a></li>
+<li><a href="#orgfd95fd8">7.2. Direct-Ring Couple-Cluster Doubles (<code>Drccd</code>)</a></li>
 </ul>
 </li>
-<li><a href="#org49d038b">8. Literature</a></li>
+<li><a href="#orgef8ad15">8. Literature</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org851edda" class="outline-2">
-<h2 id="org851edda"><span class="section-number-2">1.</span> <a href="#org851edda">Brief description</a></h2>
+<div id="outline-container-org653acc9" class="outline-2">
+<h2 id="org653acc9"><span class="section-number-2">1.</span> <a href="#org653acc9">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This algorithm solves the CCSD amplitude equations using the Coulomb integrals
@@ -338,9 +348,8 @@ and Hartree&#x2013;Fock eigenenergies.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org70c27ad" class="outline-2">
-<h2 id="org70c27ad"><span class="section-number-2">2.</span> <a href="#org70c27ad">Algorithm call</a></h2>
+<div id="outline-container-orgc62d87a" class="outline-2">
+<h2 id="orgc62d87a"><span class="section-number-2">2.</span> <a href="#orgc62d87a">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <code>CoupledCluster</code> algorithm is given below.
@@ -359,21 +368,20 @@ A typical input file snippet to call the <code>CoupledCluster</code> algorithm i
     <span style="color: #8b4513;">mixer</span>:
       <span style="color: #8b4513;">type</span>: DiisMixer
       <span style="color: #8b4513;">maxResidua</span>: 5
-    <span style="color: #a0a1a7; font-weight: bold;">#</span><span style="color: #a0a1a7;">or for instance a linear mixer</span>
-    <span style="color: #a0a1a7; font-weight: bold;">#</span><span style="color: #a0a1a7;">mixer:</span>
-    <span style="color: #a0a1a7; font-weight: bold;">#  </span><span style="color: #a0a1a7;">type: LinearMixer</span>
-    <span style="color: #a0a1a7; font-weight: bold;">#  </span><span style="color: #a0a1a7;">ratio: 1.0</span>
-  <span style="color: #8b4513;">out</span>:
+    <span style="color: #a0a1a7; font-weight: bold;">#</span><span style="color: #a0a1a7;">or for instance a linear mixer
+</span>    <span style="color: #a0a1a7; font-weight: bold;">#</span><span style="color: #a0a1a7;">mixer:
+</span>    <span style="color: #a0a1a7; font-weight: bold;">#  </span><span style="color: #a0a1a7;">type: LinearMixer
+</span>    <span style="color: #a0a1a7; font-weight: bold;">#  </span><span style="color: #a0a1a7;">ratio: 1.0
+</span>  <span style="color: #8b4513;">out</span>:
     <span style="color: #8b4513;">amplitudes</span>: Amplitudes
 </pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org090aece" class="outline-2">
-<h2 id="org090aece"><span class="section-number-2">3.</span> <a href="#org090aece">Algorithm input</a></h2>
+<div id="outline-container-orgb249d33" class="outline-2">
+<h2 id="orgb249d33"><span class="section-number-2">3.</span> <a href="#orgb249d33">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org8690b7e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org2fd03f3" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords</caption>
 
 <colgroup>
@@ -445,7 +453,6 @@ A typical input file snippet to call the <code>CoupledCluster</code> algorithm i
 </tbody>
 </table>
 </div>
-
 <div id="outline-container-method" class="outline-3">
 <h3 id="method"><span class="section-number-3">3.1.</span> <a href="#method">method</a></h3>
 <div class="outline-text-3" id="text-method">
@@ -471,7 +478,6 @@ with the Second Order Screened Exchange (SOSEX) correction
 </dl>
 </div>
 </div>
-
 <div id="outline-container-linearized" class="outline-3">
 <h3 id="linearized"><span class="section-number-3">3.2.</span> <a href="#linearized">linearzied</a></h3>
 <div class="outline-text-3" id="text-linearized">
@@ -485,7 +491,6 @@ amplitude equations.
 </p>
 </div>
 </div>
-
 <div id="outline-container-integralsslicesize" class="outline-3">
 <h3 id="integralsslicesize"><span class="section-number-3">3.3.</span> <a href="#integralsslicesize">integralsSliceSize</a></h3>
 <div class="outline-text-3" id="text-integralsslicesize">
@@ -497,7 +502,6 @@ computational efficency with memory usage. Smaller/larger values reduce/increase
 </p>
 </div>
 </div>
-
 <div id="outline-container-maxiterations" class="outline-3">
 <h3 id="maxiterations"><span class="section-number-3">3.4.</span> <a href="#maxiterations">maxIterations</a></h3>
 <div class="outline-text-3" id="text-maxiterations">
@@ -511,7 +515,6 @@ thresholds.
 </p>
 </div>
 </div>
-
 <div id="outline-container-energyconvergence" class="outline-3">
 <h3 id="energyconvergence"><span class="section-number-3">3.5.</span> <a href="#energyconvergence">energyConvergence</a></h3>
 <div class="outline-text-3" id="text-energyconvergence">
@@ -521,7 +524,6 @@ If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achi
 </p>
 </div>
 </div>
-
 <div id="outline-container-amplitudesconvergence" class="outline-3">
 <h3 id="amplitudesconvergence"><span class="section-number-3">3.6.</span> <a href="#amplitudesconvergence">amplitudesConvergence</a></h3>
 <div class="outline-text-3" id="text-amplitudesconvergence">
@@ -531,7 +533,6 @@ If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achi
 </p>
 </div>
 </div>
-
 <div id="outline-container-initialAmplitude" class="outline-3">
 <h3 id="initialAmplitude"><span class="section-number-3">3.7.</span> <a href="#initialAmplitude">initialAmplitudes</a></h3>
 <div class="outline-text-3" id="text-initialAmplitude">
@@ -540,9 +541,6 @@ If <code>energyConvergence</code> and <code>amplitudesConvergence</code> is achi
 </p>
 </div>
 </div>
-
-
-
 <div id="outline-container-mixer" class="outline-3">
 <h3 id="mixer"><span class="section-number-3">3.8.</span> <a href="#mixer">mixer</a></h3>
 <div class="outline-text-3" id="text-mixer">
@@ -553,9 +551,8 @@ iterations to improve the guess for the next iteration.
 <code>mixer: type</code> can currently be set to <code>*DiisMixer</code> or <code>*LinearMixer</code>.
 </p>
 </div>
-
-<div id="outline-container-org4be56ed" class="outline-4">
-<h4 id="org4be56ed"><span class="section-number-4">3.8.1.</span> <a href="#org4be56ed">DiisMixer</a></h4>
+<div id="outline-container-orgf670fb6" class="outline-4">
+<h4 id="orgf670fb6"><span class="section-number-4">3.8.1.</span> <a href="#orgf670fb6">DiisMixer</a></h4>
 <div class="outline-text-4" id="text-3-8-1">
 <p>
 For <code>mixer: type: DissMixer</code>, it is possible to specify <code>mixer: maxResidua</code>, which controls the number of residual
@@ -575,10 +572,8 @@ More residual vectors result in a larger memory footprint.
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org09f438c" class="outline-4">
-<h4 id="org09f438c"><span class="section-number-4">3.8.2.</span> <a href="#org09f438c">LinearMixer</a></h4>
+<div id="outline-container-org823cf26" class="outline-4">
+<h4 id="org823cf26"><span class="section-number-4">3.8.2.</span> <a href="#org823cf26">LinearMixer</a></h4>
 <div class="outline-text-4" id="text-3-8-2">
 <p>
 For <code>mixer: type: LinearMixer</code> it is possible to specify <code>mixer: ratio</code>, which controls the mixing ratio used
@@ -592,7 +587,7 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 <dt>Example</dt><dd></dd>
 </dl>
 <div class="org-src-container">
-<pre class="src src-yaml" id="org1269e84"><span style="color: #8b4513;">mixer</span>:
+<pre class="src src-yaml" id="orgf6e3694"><span style="color: #8b4513;">mixer</span>:
   <span style="color: #8b4513;">type</span>: LinearMixer
   <span style="color: #8b4513;">ratio</span>: 1.0
 </pre>
@@ -601,11 +596,10 @@ We recommend to set <code>mixer: ratio: 1.0</code>. Smaller ratios result in a s
 </div>
 </div>
 </div>
-
-<div id="outline-container-org70a2357" class="outline-2">
-<h2 id="org70a2357"><span class="section-number-2">4.</span> <a href="#org70a2357">Algorithm output</a></h2>
+<div id="outline-container-org3cf3afa" class="outline-2">
+<h2 id="org3cf3afa"><span class="section-number-2">4.</span> <a href="#org3cf3afa">Algorithm output</a></h2>
 <div class="outline-text-2" id="text-4">
-<table id="org8769604" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org70faaba" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Output keywords for CoupledCluster</caption>
 
 <colgroup>
@@ -634,9 +628,8 @@ that estimate the finite simulation cell size error (<b>FiniteSizeCorrection</b>
 and the basis set incompleteness errors (<b>BasisSetCorrection</b>).
 </p>
 </div>
-
-<div id="outline-container-org6c3091c" class="outline-3">
-<h3 id="org6c3091c"><span class="section-number-3">4.1.</span> <a href="#org6c3091c">Sample <code>stdout</code></a></h3>
+<div id="outline-container-orgcc089bf" class="outline-3">
+<h3 id="orgcc089bf"><span class="section-number-3">4.1.</span> <a href="#orgcc089bf">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Below an example standard output stream is shown for a successful <b>CoupledCluster</b> algorithm run.
@@ -672,9 +665,8 @@ realtime 9.189542891 s
 </div>
 </div>
 </div>
-
-<div id="outline-container-org4d3b18a" class="outline-2">
-<h2 id="org4d3b18a"><span class="section-number-2">5.</span> <a href="#org4d3b18a">Sample <code>yaml</code> output</a></h2>
+<div id="outline-container-org1248ff6" class="outline-2">
+<h2 id="org1248ff6"><span class="section-number-2">5.</span> <a href="#org1248ff6">Sample <code>yaml</code> output</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 Below an example <code>yaml</code> output stream is shown for a successful <b>CoupledCluster</b> algorithm run.
@@ -696,11 +688,8 @@ Below an example <code>yaml</code> output stream is shown for a successful <b>Co
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-org4dd3676" class="outline-2">
-<h2 id="org4dd3676"><span class="section-number-2">6.</span> <a href="#org4dd3676">Computational complexity</a></h2>
+<div id="outline-container-orgb7fd465" class="outline-2">
+<h2 id="orgb7fd465"><span class="section-number-2">6.</span> <a href="#orgb7fd465">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This section explains computational or memory footprints
@@ -738,9 +727,8 @@ scales as \(\mathcal O(N_\mathrm{o}^2 N_\mathrm{v}^2)\)</dd>
 </dl>
 </div>
 </div>
-
-<div id="outline-container-org91c77a4" class="outline-2">
-<h2 id="org91c77a4"><span class="section-number-2">7.</span> <a href="#org91c77a4">Theory</a></h2>
+<div id="outline-container-org80918da" class="outline-2">
+<h2 id="org80918da"><span class="section-number-2">7.</span> <a href="#org80918da">Theory</a></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 Coupled-cluster employs the exponential Ansatz for the correlated wave function
@@ -774,9 +762,8 @@ algorithm by solving the amplitude equation of the employed
 coupled-cluster method, described below:
 </p>
 </div>
-
-<div id="outline-container-org04f6c82" class="outline-3">
-<h3 id="org04f6c82"><span class="section-number-3">7.1.</span> <a href="#org04f6c82">Coupled-Cluster Singles Doubles (<code>Ccsd</code>)</a></h3>
+<div id="outline-container-org105171c" class="outline-3">
+<h3 id="org105171c"><span class="section-number-3">7.1.</span> <a href="#org105171c">Coupled-Cluster Singles Doubles (<code>Ccsd</code>)</a></h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 The cluster-operator is truncated containing only single and double
@@ -799,9 +786,8 @@ a text-book introduction of the original works of
 </p>
 </div>
 </div>
-
-<div id="outline-container-org9db9278" class="outline-3">
-<h3 id="org9db9278"><span class="section-number-3">7.2.</span> <a href="#org9db9278">Direct-Ring Couple-Cluster Doubles (<code>Drccd</code>)</a></h3>
+<div id="outline-container-orgfd95fd8" class="outline-3">
+<h3 id="orgfd95fd8"><span class="section-number-3">7.2.</span> <a href="#orgfd95fd8">Direct-Ring Couple-Cluster Doubles (<code>Drccd</code>)</a></h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 This method uses only the double
@@ -842,16 +828,15 @@ We recommend the following review article and references therein to get started 
 </div>
 </div>
 </div>
-
-<div id="outline-container-org49d038b" class="outline-2">
-<h2 id="org49d038b"><span class="section-number-2">8.</span> <a href="#org49d038b">Literature</a></h2>
+<div id="outline-container-orgef8ad15" class="outline-2">
+<h2 id="orgef8ad15"><span class="section-number-2">8.</span> <a href="#orgef8ad15">Literature</a></h2>
 <div class="outline-text-2" id="text-8">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Bartlett, R.J., and Monika Musiał. 2007. “Coupled-cluster theory in quantum chemistry.” <i>Rev. Mod. Phys.</i> 79 (1): 291–352. doi:<a href="https://doi.org/10.1103/RevModPhys.79.291">10.1103/RevModPhys.79.291</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>Chen, Guo P., Matthew M. Agee, and Filipp Furche. 2018. “Performance and Scope of Perturbative Corrections to Random-Phase Approximation Energies.” <i>J. Chem. Theory Comput.</i> 14: 5701–14. doi:<a href="https://doi.org/10.1021/acs.jctc.8b00777">10.1021/acs.jctc.8b00777</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_3"></a>Coester, F., and H. Kümmel. 1960. “Short-Range Correlations in Nuclear Wave Functions.” <i>Nucl. Phys.</i> 17 (June): 477–85. doi:<a href="https://doi.org/10.1016/0029-5582(60)90140-1">10.1016/0029-5582(60)90140-1</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_4"></a>Freeman, David. 1977. “Coupled-Cluster Expansion Applied to the Electron Gas: Inclusion of Ring and Exchange Effects.” <i>Physical Review B</i> 15 (12): 5512–21. doi:<a href="https://doi.org/10.1103/PhysRevB.15.5512">10.1103/PhysRevB.15.5512</a>.</div>
-  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Furche, Filipp. 2008. “Developing the Random Phase Approximation into a Practical Post-Kohnsham Correlation Model.” <i>J. Chem. Phys.</i> 129: 114105. doi:<a href="https://doi.org/10.1063/1.2977789">10.1063/1.2977789</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>Furche, Filipp. 2008. “Developing the Random Phase Approximation into a Practical Post-KohnSham Correlation Model.” <i>J. Chem. Phys.</i> 129: 114105. doi:<a href="https://doi.org/10.1063/1.2977789">10.1063/1.2977789</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_6"></a>Gell-Mann, Murray, and Keith A. Brueckner. 1957. “Correlation Energy of an Electron Gas at High Density.” <i>Phys. Rev.</i> 106 (2): 364–68. doi:<a href="https://doi.org/10.1103/PhysRev.106.364">10.1103/PhysRev.106.364</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_7"></a>Grüneis, Andreas, Martijn Marsman, Judith Harl, Laurids Schimka, and Georg Kresse. 2009. “Making the Random Phase Approximation to Electronic Correlation Accurate.” <i>J. Chem. Phys.</i> 131 (15): 154115. doi:<a href="https://doi.org/10.1063/1.3250347">10.1063/1.3250347</a>.</div>
   <div class="csl-entry"><a id="citeproc_bib_item_8"></a>Macke, W. 1950. “Über Die Wechselwirkungen Im Fermi-Gas, Polarisationserscheinungen, Correlationsenergie, Elektronenkondensation.” <i>Z. Naturforsch.</i> 5a (8): 192–208. <a href="http://zfn.mpdl.mpg.de/data/Reihe_A/5/ZNA-1950-5a-0192.pdf">http://zfn.mpdl.mpg.de/data/Reihe_A/5/ZNA-1950-5a-0192.pdf</a>.</div>
@@ -863,7 +848,7 @@ We recommend the following review article and references therein to get started 
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

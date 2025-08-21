@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SecondOrderPerturbationTheory</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,18 +303,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org119c6fd">1. Example <code>Cc4s</code> input</a></li>
-<li><a href="#org92c0fbc">2. Input Description</a></li>
-<li><a href="#org00b288a">3. Output</a></li>
-<li><a href="#orgb013d3a">4. Computational Complexity and memory footprint</a></li>
-<li><a href="#orgc24ed57">5. Theory</a></li>
-<li><a href="#org1d1e5d2">6. Literature</a></li>
+<li><a href="#org3b35bab">1. Example <code>Cc4s</code> input</a></li>
+<li><a href="#orga81b1cd">2. Input Description</a></li>
+<li><a href="#org345c502">3. Output</a></li>
+<li><a href="#org10c4b56">4. Computational Complexity and memory footprint</a></li>
+<li><a href="#org7992a2f">5. Theory</a></li>
+<li><a href="#org4e9cc72">6. Literature</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org119c6fd" class="outline-2">
-<h2 id="org119c6fd"><span class="section-number-2">1.</span> <a href="#org119c6fd">Example <code>Cc4s</code> input</a></h2>
+<div id="outline-container-org3b35bab" class="outline-2">
+<h2 id="org3b35bab"><span class="section-number-2">1.</span> <a href="#org3b35bab">Example <code>Cc4s</code> input</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A typical input file snippet to call the <code>SecondOrderPerturbationTheory</code> algorithm is given below.
@@ -320,10 +330,8 @@ A typical input file snippet to call the <code>SecondOrderPerturbationTheory</co
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org92c0fbc" class="outline-2">
-<h2 id="org92c0fbc"><span class="section-number-2">2.</span> <a href="#org92c0fbc">Input Description</a></h2>
+<div id="outline-container-orga81b1cd" class="outline-2">
+<h2 id="orga81b1cd"><span class="section-number-2">2.</span> <a href="#orga81b1cd">Input Description</a></h2>
 <div class="outline-text-2" id="text-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Input keywords for PerturbativeTriples</caption>
@@ -358,10 +366,8 @@ A typical input file snippet to call the <code>SecondOrderPerturbationTheory</co
 </table>
 </div>
 </div>
-
-
-<div id="outline-container-org00b288a" class="outline-2">
-<h2 id="org00b288a"><span class="section-number-2">3.</span> <a href="#org00b288a">Output</a></h2>
+<div id="outline-container-org345c502" class="outline-2">
+<h2 id="org345c502"><span class="section-number-2">3.</span> <a href="#org345c502">Output</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Below an example standard output stream is shown for a successful <code>SecondOrderPerturbationTheory</code> algorithm run
@@ -381,27 +387,24 @@ realtime 0.170357500 s
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb013d3a" class="outline-2">
-<h2 id="orgb013d3a"><span class="section-number-2">4.</span> <a href="#orgb013d3a">Computational Complexity and memory footprint</a></h2>
+<div id="outline-container-org10c4b56" class="outline-2">
+<h2 id="org10c4b56"><span class="section-number-2">4.</span> <a href="#org10c4b56">Computational Complexity and memory footprint</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Two objects of size \(\mathcal{O}{(N_\mathrm{o}^2 N_\mathrm{v}^2)}\) are stored in main memory. The computational complexity should be negligible as is of order \(\mathcal{O}{(N_o^2 N_v^2)}\).
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc24ed57" class="outline-2">
-<h2 id="orgc24ed57"><span class="section-number-2">5.</span> <a href="#orgc24ed57">Theory</a></h2>
+<div id="outline-container-org7992a2f" class="outline-2">
+<h2 id="org7992a2f"><span class="section-number-2">5.</span> <a href="#org7992a2f">Theory</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 The implemented expression assumes Hartree&#x2013;Fock one-electron energies and can be found in Ref.(<a href="#citeproc_bib_item_1">Moller and Plesset 1934</a>).
 </p>
 </div>
 </div>
-
-<div id="outline-container-org1d1e5d2" class="outline-2">
-<h2 id="org1d1e5d2"><span class="section-number-2">6.</span> <a href="#org1d1e5d2">Literature</a></h2>
+<div id="outline-container-org4e9cc72" class="outline-2">
+<h2 id="org4e9cc72"><span class="section-number-2">6.</span> <a href="#org4e9cc72">Literature</a></h2>
 <div class="outline-text-2" id="text-6">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Moller, C, and MS Plesset. 1934. “Note on an Approximation Treatment for Many-Electron Systems.” <i>Phys. Rev.</i> 46 (7): 0618–22.</div>
@@ -410,7 +413,7 @@ The implemented expression assumes Hartree&#x2013;Fock one-electron energies and
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

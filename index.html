@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Cc4s User Documentation</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -271,61 +271,58 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org828b355">1. What is Cc4s?</a></li>
-<li><a href="#org7d56c87">2. How to get started?</a></li>
-<li><a href="#org89e423a">3. How to run Cc4s calculations?</a></li>
-<li><a href="#orgd82338a">4. Interfaces to Cc4s</a></li>
-<li><a href="#orge7ad3fd">5. Algorithms in Cc4s</a></li>
-<li><a href="#org910987a">6. Important objects</a></li>
-<li><a href="#orgf2f21c8">7. Computational complexity</a></li>
-<li><a href="#org9e2df1a">8. Contributors, Acknowledgements and Citation</a></li>
-<li><a href="#orgc9fffce">9. Documentation guide</a></li>
-<li><a href="#orgd6a0c67">10. Contact</a></li>
+<li><a href="#orgb1447fa">1. What is Cc4s?</a></li>
+<li><a href="#org9c45f74">2. How to get started?</a></li>
+<li><a href="#orgbff1f43">3. How to run Cc4s calculations?</a></li>
+<li><a href="#org2ef4cc4">4. Interfaces to Cc4s</a></li>
+<li><a href="#org293f70d">5. Algorithms in Cc4s</a></li>
+<li><a href="#org2c8e214">6. Important objects</a></li>
+<li><a href="#org139f28f">7. Computational complexity</a></li>
+<li><a href="#org22e4026">8. Contributors, Acknowledgements and Citation</a></li>
+<li><a href="#org22bd46e">9. Documentation guide</a></li>
+<li><a href="#org16712e4">10. Contact</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org828b355" class="outline-2">
-<h2 id="org828b355"><span class="section-number-2">1.</span> <a href="#org828b355">What is Cc4s?</a></h2>
+<div id="outline-container-orgb1447fa" class="outline-2">
+<h2 id="orgb1447fa"><span class="section-number-2">1.</span> <a href="#orgb1447fa">What is Cc4s?</a></h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li><a href="./what/what.html">About the code</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org7d56c87" class="outline-2">
-<h2 id="org7d56c87"><span class="section-number-2">2.</span> <a href="#org7d56c87">How to get started?</a></h2>
+<div id="outline-container-org9c45f74" class="outline-2">
+<h2 id="org9c45f74"><span class="section-number-2">2.</span> <a href="#org9c45f74">How to get started?</a></h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li><a href="./gettingstarted/gettingstarted.html">Download, compile and run tests</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org89e423a" class="outline-2">
-<h2 id="org89e423a"><span class="section-number-2">3.</span> <a href="#org89e423a">How to run Cc4s calculations?</a></h2>
+<div id="outline-container-orgbff1f43" class="outline-2">
+<h2 id="orgbff1f43"><span class="section-number-2">3.</span> <a href="#orgbff1f43">How to run Cc4s calculations?</a></h2>
 <div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li><a href="tutorials/Rbn_tutorial.html">Take a walk through a CCSD(T) calculation for a BN crystal</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orgd82338a" class="outline-2">
-<h2 id="orgd82338a"><span class="section-number-2">4.</span> <a href="#orgd82338a">Interfaces to Cc4s</a></h2>
+<div id="outline-container-org2ef4cc4" class="outline-2">
+<h2 id="org2ef4cc4"><span class="section-number-2">4.</span> <a href="#org2ef4cc4">Interfaces to Cc4s</a></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Interfaces are available for
 </p>
 <ul class="org-ul">
 <li><a href="interfaces/vasp.html">VASP</a></li>
-<li>FHI-AIMS (under construction)</li>
+<li>FHI-AIMS (<a href="https://gitlab.com/moerman1/fhi-cc4s">CC-AIMS</a>)</li>
+<li>exciting (under construction)</li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-orge7ad3fd" class="outline-2">
-<h2 id="orge7ad3fd"><span class="section-number-2">5.</span> <a href="#orge7ad3fd">Algorithms in Cc4s</a></h2>
+<div id="outline-container-org293f70d" class="outline-2">
+<h2 id="org293f70d"><span class="section-number-2">5.</span> <a href="#org293f70d">Algorithms in Cc4s</a></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 The most important algorithms include
@@ -343,9 +340,8 @@ You can find a complete list of algorithms
 </p>
 </div>
 </div>
-
-<div id="outline-container-org910987a" class="outline-2">
-<h2 id="org910987a"><span class="section-number-2">6.</span> <a href="#org910987a">Important objects</a></h2>
+<div id="outline-container-org2c8e214" class="outline-2">
+<h2 id="org2c8e214"><span class="section-number-2">6.</span> <a href="#org2c8e214">Important objects</a></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 The most important objects used by algorithms include
@@ -362,30 +358,24 @@ You can find a complete list of objects
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-orgf2f21c8" class="outline-2">
-<h2 id="orgf2f21c8"><span class="section-number-2">7.</span> <a href="#orgf2f21c8">Computational complexity</a></h2>
+<div id="outline-container-org139f28f" class="outline-2">
+<h2 id="org139f28f"><span class="section-number-2">7.</span> <a href="#org139f28f">Computational complexity</a></h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li><a href="./performance/performance.html">Performance and compute resources</a></li>
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-org9e2df1a" class="outline-2">
-<h2 id="org9e2df1a"><span class="section-number-2">8.</span> <a href="#org9e2df1a">Contributors, Acknowledgements and Citation</a></h2>
+<div id="outline-container-org22e4026" class="outline-2">
+<h2 id="org22e4026"><span class="section-number-2">8.</span> <a href="#org22e4026">Contributors, Acknowledgements and Citation</a></h2>
 <div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li><a href="./acknowledgements/acknowledgements.html">Acknowledgements and how to cite?</a></li>
 </ul>
 </div>
 </div>
-
-
-<div id="outline-container-orgc9fffce" class="outline-2">
-<h2 id="orgc9fffce"><span class="section-number-2">9.</span> <a href="#orgc9fffce">Documentation guide</a></h2>
+<div id="outline-container-org22bd46e" class="outline-2">
+<h2 id="org22bd46e"><span class="section-number-2">9.</span> <a href="#org22bd46e">Documentation guide</a></h2>
 <div class="outline-text-2" id="text-9">
 <p>
 If you are writing documentation for <code>Cc4s</code>, read the
@@ -393,9 +383,8 @@ If you are writing documentation for <code>Cc4s</code>, read the
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgd6a0c67" class="outline-2">
-<h2 id="orgd6a0c67"><span class="section-number-2">10.</span> <a href="#orgd6a0c67">Contact</a></h2>
+<div id="outline-container-org16712e4" class="outline-2">
+<h2 id="org16712e4"><span class="section-number-2">10.</span> <a href="#org16712e4">Contact</a></h2>
 <div class="outline-text-2" id="text-10">
 <p>
 <a href="./contact/contact.html">Contacting the developers</a>.
@@ -404,7 +393,7 @@ If you are writing documentation for <code>Cc4s</code>, read the
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

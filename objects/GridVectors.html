@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>GridVectors</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,15 +303,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9874d6f">1. Brief description</a></li>
-<li><a href="#org7b2082f">2. Specification</a></li>
-<li><a href="#org780bf83">3. Literature</a></li>
+<li><a href="#org52dcf12">1. Brief description</a></li>
+<li><a href="#orgd63dcd6">2. Specification</a></li>
+<li><a href="#orgdeacabd">3. Literature</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org9874d6f" class="outline-2">
-<h2 id="org9874d6f"><span class="section-number-2">1.</span> <a href="#org9874d6f">Brief description</a></h2>
+<div id="outline-container-org52dcf12" class="outline-2">
+<h2 id="org52dcf12"><span class="section-number-2">1.</span> <a href="#org52dcf12">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>GridVectors</code> object contains the grid vectors of the employed plane-wave
@@ -319,9 +329,8 @@ and can be read in using the <a href="../algorithms/Read.html#ID-Read">Read</a> 
 </div>
 </div>
 </div>
-
-<div id="outline-container-org7b2082f" class="outline-2">
-<h2 id="org7b2082f"><span class="section-number-2">2.</span> <a href="#org7b2082f">Specification</a></h2>
+<div id="outline-container-orgd63dcd6" class="outline-2">
+<h2 id="orgd63dcd6"><span class="section-number-2">2.</span> <a href="#orgd63dcd6">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 An example <code>GridVectors.yaml</code> file is given below.
@@ -337,8 +346,8 @@ An example <code>GridVectors.yaml</code> file is given below.
     <span style="color: #8b4513;">type</span>: Momentum
 <span style="color: #8b4513;">elements</span>:
   <span style="color: #8b4513;">type</span>: TextFile
-<span style="color: #8b4513;">unit</span>: 0.529177249       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">=(Bohr^-1/Angstrom^-1)</span>
-<span style="color: #8b4513;">metaData</span>:
+<span style="color: #8b4513;">unit</span>: 0.529177249       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">=(Bohr^-1/Angstrom^-1)
+</span><span style="color: #8b4513;">metaData</span>:
   <span style="color: #8b4513;">Gi</span>: [ 0.252561935025589E+01, 0.000000000000000E+00, 0.000000000000000E+00]
   <span style="color: #8b4513;">Gj</span>: [ 0.000000000000000E+00, 0.145816657115789E+01,-0.324282236706067E+00]
   <span style="color: #8b4513;">Gk</span>: [ 0.000000000000000E+00, 0.000000000000000E+00, 0.972847656107296E+00]
@@ -351,9 +360,8 @@ The last three lines correspond to the reciprocal lattice vectors
 </p>
 </div>
 </div>
-
-<div id="outline-container-org780bf83" class="outline-2">
-<h2 id="org780bf83"><span class="section-number-2">3.</span> <a href="#org780bf83">Literature</a></h2>
+<div id="outline-container-orgdeacabd" class="outline-2">
+<h2 id="orgdeacabd"><span class="section-number-2">3.</span> <a href="#orgdeacabd">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
 </div>
@@ -361,7 +369,7 @@ The last three lines correspond to the reciprocal lattice vectors
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

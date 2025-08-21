@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoulombPotential</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,15 +303,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0e3c785">1. Brief description</a></li>
-<li><a href="#org2aee9ea">2. Specification</a></li>
-<li><a href="#org3fe91ca">3. Literature</a></li>
+<li><a href="#org58aa50c">1. Brief description</a></li>
+<li><a href="#org91c171c">2. Specification</a></li>
+<li><a href="#org704c756">3. Literature</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org0e3c785" class="outline-2">
-<h2 id="org0e3c785"><span class="section-number-2">1.</span> <a href="#org0e3c785">Brief description</a></h2>
+<div id="outline-container-org58aa50c" class="outline-2">
+<h2 id="org58aa50c"><span class="section-number-2">1.</span> <a href="#org58aa50c">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>CoulombPotential</code> stores the Coulomb potential \(\tilde{v}(G)\)  used for the calculation of the
@@ -319,11 +329,8 @@ and can be read into <code>Cc4s</code> using the <a href="../algorithms/Read.htm
 </div>
 </div>
 </div>
-
-
-
-<div id="outline-container-org2aee9ea" class="outline-2">
-<h2 id="org2aee9ea"><span class="section-number-2">2.</span> <a href="#org2aee9ea">Specification</a></h2>
+<div id="outline-container-org91c171c" class="outline-2">
+<h2 id="org91c171c"><span class="section-number-2">2.</span> <a href="#org91c171c">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 An example <code>CoulombPotential.yaml</code> file is given below
@@ -342,9 +349,8 @@ An example <code>CoulombPotential.yaml</code> file is given below
 </div>
 </div>
 </div>
-
-<div id="outline-container-org3fe91ca" class="outline-2">
-<h2 id="org3fe91ca"><span class="section-number-2">3.</span> <a href="#org3fe91ca">Literature</a></h2>
+<div id="outline-container-org704c756" class="outline-2">
+<h2 id="org704c756"><span class="section-number-2">3.</span> <a href="#org704c756">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
 </div>
@@ -352,7 +358,7 @@ An example <code>CoulombPotential.yaml</code> file is given below
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

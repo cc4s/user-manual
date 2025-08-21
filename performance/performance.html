@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Performance and compute resources</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,10 +303,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgaf8e267">1. Generating the input file</a></li>
-<li><a href="#orgf01581c">2. Dry and full calculation</a></li>
-<li><a href="#org9ba06b8">3. Exploited benchmarks</a></li>
-<li><a href="#orgd5e19da">4. Literature</a></li>
+<li><a href="#orgfd7d6fa">1. Generating the input file</a></li>
+<li><a href="#orgb4262c3">2. Dry and full calculation</a></li>
+<li><a href="#org1beba67">3. Exploited benchmarks</a></li>
+<li><a href="#org7b6f074">4. Literature</a></li>
 </ul>
 </div>
 </div>
@@ -323,9 +334,8 @@ memory consumptions of the calculation. Thereafter, a full calculation can be
 performed to examine the performance on the target system. Note that the
 performance depends heavily on the hardware, network, compilers, and libraries.
 </p>
-
-<div id="outline-container-orgaf8e267" class="outline-2">
-<h2 id="orgaf8e267"><span class="section-number-2">1.</span> <a href="#orgaf8e267">Generating the input file</a></h2>
+<div id="outline-container-orgfd7d6fa" class="outline-2">
+<h2 id="orgfd7d6fa"><span class="section-number-2">1.</span> <a href="#orgfd7d6fa">Generating the input file</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The only input required are the dimensions of the desired calculation.  It is
@@ -357,7 +367,7 @@ An exemplary snippet of the algorithm creating the required vertex reads
 <div class="org-src-container">
 <pre class="src src-yaml">- <span style="color: #8b4513;">name</span>: UegVertexGenerator
   <span style="color: #8b4513;">in</span>:
-    <span style="color: #8b4513;">No</span>: 123
+    <span style="font-weight: bold; text-decoration: underline;">No</span>: 123
     <span style="color: #8b4513;">Nv</span>: 1114
     <span style="color: #8b4513;">NF</span>: 2000
     <span style="color: #8b4513;">halfGrid</span>: 1
@@ -383,9 +393,8 @@ A full input file for a CCSD calculation can be found at
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgf01581c" class="outline-2">
-<h2 id="orgf01581c"><span class="section-number-2">2.</span> <a href="#orgf01581c">Dry and full calculation</a></h2>
+<div id="outline-container-orgb4262c3" class="outline-2">
+<h2 id="orgb4262c3"><span class="section-number-2">2.</span> <a href="#orgb4262c3">Dry and full calculation</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 The generated input file can either be used in a dry calculation (running a
@@ -446,10 +455,8 @@ The full calculation is called by the following command:
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org9ba06b8" class="outline-2">
-<h2 id="org9ba06b8"><span class="section-number-2">3.</span> <a href="#org9ba06b8">Exploited benchmarks</a></h2>
+<div id="outline-container-org1beba67" class="outline-2">
+<h2 id="org1beba67"><span class="section-number-2">3.</span> <a href="#org1beba67">Exploited benchmarks</a></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 We have examined the performance of <code>Cc4s</code> on two different clusters both using
@@ -458,7 +465,7 @@ For the weak scaling benchmark the number of occupied orbitals was increased wit
 The number of virtuals per occupied was set to 12 in all calculations. The number of field variables per virtual
 was kept almost constant at a value of around 3.5.
 </p>
-<table id="orgc6ae833" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org4c61c8c" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Weak scaling of CCSD on Irene with Intel Skylake 8168 CPUs.</caption>
 
 <colgroup>
@@ -532,7 +539,7 @@ was kept almost constant at a value of around 3.5.
 </tbody>
 </table>
 
-<table id="org31a8ef7" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org1094fb2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 2:</span> Weak scaling of CCSD on raven with Intel CascadeLake 9242 CPUs.</caption>
 
 <colgroup>
@@ -622,7 +629,7 @@ was kept almost constant at a value of around 3.5.
 </tbody>
 </table>
 
-<table id="org78a5abb" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org45b7e3f" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 3:</span> Strong scaling on of CCSD raven \(N_o=123\), \(N_v=1114\), \(N_F=2000\)</caption>
 
 <colgroup>
@@ -709,10 +716,8 @@ was kept almost constant at a value of around 3.5.
 </table>
 </div>
 </div>
-
-
-<div id="outline-container-orgd5e19da" class="outline-2">
-<h2 id="orgd5e19da"><span class="section-number-2">4.</span> <a href="#orgd5e19da">Literature</a></h2>
+<div id="outline-container-org7b6f074" class="outline-2">
+<h2 id="org7b6f074"><span class="section-number-2">4.</span> <a href="#org7b6f074">Literature</a></h2>
 <div class="outline-text-2" id="text-4">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Irmler, Andreas, Alejandro Gallo, and Andreas Grüneis. 2021. “Focal-Point Approach with Pair-Specific Cusp Correction for Coupled-Cluster Theory.” <i>The Journal of Chemical Physics</i> 154 (June): 234103. doi:<a href="https://doi.org/10.1063/5.0050054">10.1063/5.0050054</a>.</div>
@@ -721,7 +726,7 @@ was kept almost constant at a value of around 3.5.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

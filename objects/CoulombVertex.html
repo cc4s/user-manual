@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoulombVertex</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -217,27 +217,38 @@
     <link rel="stylesheet" type="text/css" href="/user-manual/data/css/rtd-full.css"/>
 
     <script type="text/javascript" src="/user-manual/data/js/readtheorg.js"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
@@ -292,15 +303,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org838d527">1. Brief description</a></li>
-<li><a href="#orgef9dd7f">2. Specification</a></li>
-<li><a href="#org2e05b82">3. Literature</a></li>
+<li><a href="#orga10d67f">1. Brief description</a></li>
+<li><a href="#org94c625d">2. Specification</a></li>
+<li><a href="#org7ad1915">3. Literature</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org838d527" class="outline-2">
-<h2 id="org838d527"><span class="section-number-2">1.</span> <a href="#org838d527">Brief description</a></h2>
+<div id="outline-container-orga10d67f" class="outline-2">
+<h2 id="orga10d67f"><span class="section-number-2">1.</span> <a href="#orga10d67f">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 The <code>CoulombVertex</code> \(\Gamma^q_{rF}\)
@@ -336,9 +346,8 @@ and can be read into <code>Cc4s</code> using the <a href="../algorithms/Read.htm
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgef9dd7f" class="outline-2">
-<h2 id="orgef9dd7f"><span class="section-number-2">2.</span> <a href="#orgef9dd7f">Specification</a></h2>
+<div id="outline-container-org94c625d" class="outline-2">
+<h2 id="org94c625d"><span class="section-number-2">2.</span> <a href="#org94c625d">Specification</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 For periodic systems the <code>CoulombVertex</code> \(\Gamma^q_{rF}\) is computed from
@@ -407,16 +416,15 @@ An example <code>CoulombVertex.yaml</code> file is given below
   <span style="color: #8b4513;">type</span>: State
 <span style="color: #8b4513;">elements</span>:
   <span style="color: #8b4513;">type</span>: IeeeBinaryFile
-<span style="color: #8b4513;">unit</span>: 0.1917011272153577       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">= sqrt(Eh/eV)</span>
-<span style="color: #8b4513;">metaData</span>:
+<span style="color: #8b4513;">unit</span>: 0.1917011272153577       <span style="color: #a0a1a7; font-weight: bold;"># </span><span style="color: #a0a1a7;">= sqrt(Eh/eV)
+</span><span style="color: #8b4513;">metaData</span>:
   <span style="color: #8b4513;">halfGrid</span>: 1
 </pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-org2e05b82" class="outline-2">
-<h2 id="org2e05b82"><span class="section-number-2">3.</span> <a href="#org2e05b82">Literature</a></h2>
+<div id="outline-container-org7ad1915" class="outline-2">
+<h2 id="org7ad1915"><span class="section-number-2">3.</span> <a href="#org7ad1915">Literature</a></h2>
 <div class="outline-text-2" id="text-3">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>Hummel, Felix, Theodoros Tsatsoulis, and Andreas Grüneis. 2017. “Low Rank Factorization of the Coulomb Integrals for Periodic Coupled Cluster Theory.” <i>The Journal of Chemical Physics</i> 146 (12): 124105. <a href="http://doi.org/10.1063/1.4977994">http://doi.org/10.1063/1.4977994</a>.</div>
@@ -425,7 +433,7 @@ An example <code>CoulombVertex.yaml</code> file is given below
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>

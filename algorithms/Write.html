@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-06 Wed 11:46 -->
+<!-- 2025-08-21 Thu 12:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Write</title>
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -190,7 +190,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
+  .org-svg { }
 </style>
 
     <meta charset='UTF-8'>
@@ -271,33 +271,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4d1b197">1. Brief description</a></li>
-<li><a href="#org0a27dbb">2. Algorithm call</a></li>
-<li><a href="#org28a1cc7">3. Algorithm input</a>
+<li><a href="#org23ea19b">1. Brief description</a></li>
+<li><a href="#org04c9863">2. Algorithm call</a></li>
+<li><a href="#orga108fc4">3. Algorithm input</a>
 <ul>
 <li><a href="#what">3.1. what</a></li>
 <li><a href="#data">3.2. data</a></li>
 <li><a href="#binary">3.3. binary</a></li>
-<li><a href="#org2eeeb9b">3.4. Sample <code>stdout</code></a></li>
-<li><a href="#orgb16bcaa">3.5. Sample <code>yaml</code> output</a></li>
+<li><a href="#org7ea85bd">3.4. Sample <code>stdout</code></a></li>
+<li><a href="#orgc62d913">3.5. Sample <code>yaml</code> output</a></li>
 </ul>
 </li>
-<li><a href="#org04a3c02">4. Literature</a></li>
+<li><a href="#org126d8b1">4. Literature</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org4d1b197" class="outline-2">
-<h2 id="org4d1b197"><span class="section-number-2">1.</span> <a href="#org4d1b197">Brief description</a></h2>
+<div id="outline-container-org23ea19b" class="outline-2">
+<h2 id="org23ea19b"><span class="section-number-2">1.</span> <a href="#org23ea19b">Brief description</a></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <code>Write</code> writes a cc4s tensor or set of tensors.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org0a27dbb" class="outline-2">
-<h2 id="org0a27dbb"><span class="section-number-2">2.</span> <a href="#org0a27dbb">Algorithm call</a></h2>
+<div id="outline-container-org04c9863" class="outline-2">
+<h2 id="org04c9863"><span class="section-number-2">2.</span> <a href="#org04c9863">Algorithm call</a></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 A typical input file snippet to call the <a href="Write.html#ID-Write">Write</a>
@@ -314,12 +312,10 @@ algorithm is given below.
 </div>
 </div>
 </div>
-
-
-<div id="outline-container-org28a1cc7" class="outline-2">
-<h2 id="org28a1cc7"><span class="section-number-2">3.</span> <a href="#org28a1cc7">Algorithm input</a></h2>
+<div id="outline-container-orga108fc4" class="outline-2">
+<h2 id="orga108fc4"><span class="section-number-2">3.</span> <a href="#orga108fc4">Algorithm input</a></h2>
 <div class="outline-text-2" id="text-3">
-<table id="org57059ac" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgcfb9e05" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
@@ -351,7 +347,6 @@ algorithm is given below.
 </tbody>
 </table>
 </div>
-
 <div id="outline-container-what" class="outline-3">
 <h3 id="what"><span class="section-number-3">3.1.</span> <a href="#what">what</a></h3>
 <div class="outline-text-3" id="text-what">
@@ -360,7 +355,6 @@ Defines the yaml file name where the tensor or sets of tensors are written to.
 </p>
 </div>
 </div>
-
 <div id="outline-container-data" class="outline-3">
 <h3 id="data"><span class="section-number-3">3.2.</span> <a href="#data">data</a></h3>
 <div class="outline-text-3" id="text-data">
@@ -369,7 +363,6 @@ Defines the tensor or sets of tensors that should be written to disk.
 </p>
 </div>
 </div>
-
 <div id="outline-container-binary" class="outline-3">
 <h3 id="binary"><span class="section-number-3">3.3.</span> <a href="#binary">binary</a></h3>
 <div class="outline-text-3" id="text-binary">
@@ -378,10 +371,8 @@ Pseudo-boolean (i.e. use 0 or 1) flag determines writing a text- or binary-file.
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org2eeeb9b" class="outline-3">
-<h3 id="org2eeeb9b"><span class="section-number-3">3.4.</span> <a href="#org2eeeb9b">Sample <code>stdout</code></a></h3>
+<div id="outline-container-org7ea85bd" class="outline-3">
+<h3 id="org7ea85bd"><span class="section-number-3">3.4.</span> <a href="#org7ea85bd">Sample <code>stdout</code></a></h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 A typical output of this algorithm reads
@@ -395,12 +386,11 @@ realtime 0.011545188 s
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb16bcaa" class="outline-3">
-<h3 id="orgb16bcaa"><span class="section-number-3">3.5.</span> <a href="#orgb16bcaa">Sample <code>yaml</code> output</a></h3>
+<div id="outline-container-orgc62d913" class="outline-3">
+<h3 id="orgc62d913"><span class="section-number-3">3.5.</span> <a href="#orgc62d913">Sample <code>yaml</code> output</a></h3>
 <div class="outline-text-3" id="text-3-5">
-<pre class="example">
-floatingPointOperations: 0
+<div class="org-src-container">
+<pre class="src src-nil">floatingPointOperations: 0
 flops: 0
 in:
   binary: 0
@@ -423,9 +413,9 @@ realtime: 0.011545188
 </div>
 </div>
 </div>
-
-<div id="outline-container-org04a3c02" class="outline-2">
-<h2 id="org04a3c02"><span class="section-number-2">4.</span> <a href="#org04a3c02">Literature</a></h2>
+</div>
+<div id="outline-container-org126d8b1" class="outline-2">
+<h2 id="org126d8b1"><span class="section-number-2">4.</span> <a href="#org126d8b1">Literature</a></h2>
 <div class="outline-text-2" id="text-4">
 <style>.csl-entry{text-indent: -1.5em; margin-left: 1.5em;}</style><div class="csl-bib-body">
 </div>
@@ -433,7 +423,7 @@ realtime: 0.011545188
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2022-07-06 Wed 11:46</p>
+<p class="date">Created: 2025-08-21 Thu 12:24</p>
 </div>
 </body>
 </html>
